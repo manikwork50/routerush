@@ -50,6 +50,19 @@
       background: #e04d00;
     }
 
+    #funFact {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #fff;
+      font-weight: bold;
+      max-width: 90%;
+      text-shadow: 1px 1px 3px #000;
+      padding: 10px 20px;
+      border-radius: 6px;
+      background: rgba(0,0,0,0.4);
+      animation: fadeIn 1.5s ease;
+    }
+
     nav {
       background: rgba(0,0,0,0.7);
       padding: 15px;
@@ -105,14 +118,41 @@
   <p>Discover Secret Routes. Plan Better. Travel Smarter.</p>
   <a href="map.html" class="btn">📍 Find a Route</a>
   <a href="gallery.html" class="btn">🖼️ View Gallery</a>
+
+  <!-- Fun Fact Section -->
+  <div id="funFact"></div>
 </section>
 
 <footer>
-  Follow me: 
+  Follow me:
   <a href="https://instagram.com/manik_rao_b" style="color:#fff;">Instagram</a> | 
   <a href="https://www.youtube.com/@learnandexplorething" style="color:#fff;">YouTube</a>
   <br>© 2025 RouteRush | Travel, Map & Fun
 </footer>
+
+<script>
+  const funFacts = [
+    "Did you know? The world’s longest road is the Pan-American Highway — it stretches over 30,000 km!",
+    "India has the world’s highest motorable road at Khardung La Pass, 5,359m above sea level.",
+    "You can visit 4 countries at once at the Four Corners Monument in the USA!",
+    "There’s a place in Norway where the sun never sets for 76 days in summer.",
+    "Japan has more than 5 million vending machines!",
+    "The Great Wall of China is over 21,000 km long — that’s half the Earth’s circumference.",
+    "There's an underwater post office in Vanuatu.",
+    "Bhutan measures its success by Gross National Happiness, not GDP.",
+    "India's train network is one of the largest employers in the world.",
+    "The shortest place name is ‘Å’ in Norway and Sweden."
+  ];
+
+  function showRandomFact() {
+    const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
+    document.getElementById("funFact").innerText = randomFact;
+  }
+
+  // Show new fact every 10 seconds automatically
+  setInterval(showRandomFact, 10000);
+  showRandomFact(); // Show one immediately on page load
+</script>
 
 </body>
 </html>
