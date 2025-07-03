@@ -1,22 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>RouteRush Gallery</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>RouteRush - Travel Gallery</title>
+  <style>
+    body { margin:0; font-family:'Segoe UI', sans-serif; background:#f5f5f5; }
+    nav { background:#007B8F; padding:15px; text-align:center; }
+    nav a { color:#fff; margin:0 20px; text-decoration:none; font-weight:bold; }
+    nav a:hover { text-decoration:underline; }
+
+    h1 { text-align:center; margin:30px 0; color:#007B8F; }
+
+    .gallery {
+      display:flex; flex-wrap:wrap; justify-content:center;
+      gap:15px; padding:20px;
+    }
+
+    .gallery img {
+      width:300px; height:200px; object-fit:cover;
+      border-radius:8px;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform:scale(1.05);
+    }
+
+    footer {
+      background:#007B8F; color:#fff; text-align:center;
+      padding:15px; margin-top:30px;
+    }
+  </style>
 </head>
 <body>
-<header>
-  <h1>📸 RouteRush Gallery</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="map.html">Map</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
 
-<section style="padding:20px; text-align:center;">
-  <h2>Our Travel Moments</h2>
-  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:10px; padding:10px;">
-    <img src="https://source.unsplash.com/400x300/?travel" width="300">
+<nav>
+  <a href="index.html">Home</a>
+  <a href="map.html">Map</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<h1>🖼️ Travel Gallery</h1>
+
+<div class="gallery">
+  <img src="https://source.unsplash.com/600x400/?travel,mountains" alt="Mountains">
+  <img src="https://source.unsplash.com/600x400/?beach,travel" alt="Beach">
+  <img src="https://source.unsplash.com/600x400/?forest,trekking" alt="Forest">
+  <img src="https://source.unsplash.com/600x400/?city,night" alt="City Lights">
+  <img src="https://source.unsplash.com/600x400/?desert,safari" alt="Desert">
+  <img src="https://source.unsplash.com/600x400/?waterfall,travel" alt="Waterfall">
+</div>
+
+<footer>
+  Follow: 
+  <a href="https://instagram.com/manik_rao_b" style="color:#fff;">Instagram</a> | 
+  <a href="https://www.youtube.com/@learnandexplorething" style="color:#fff;">YouTube</a>
+  <br>© 2025 RouteRush
+</footer>
+
+</body>
+</html>
