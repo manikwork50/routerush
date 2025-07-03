@@ -1,36 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>RouteRush</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>RouteRush - Explore Your Next Adventure</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+  <style>
+    * { margin:0; padding:0; box-sizing: border-box; }
+    body, html { height:100%; font-family:'Segoe UI', sans-serif; }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+      animation: fadeIn 1.5s ease;
+    }
+
+    .hero h1 {
+      font-size: 60px;
+      margin-bottom: 20px;
+      animation: slideDown 1.5s ease;
+    }
+
+    .hero p {
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      padding: 14px 26px;
+      background: #FF5E00;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      text-decoration: none;
+      transition: background 0.3s;
+      margin: 10px;
+      display:inline-block;
+    }
+
+    .btn:hover {
+      background: #e04d00;
+    }
+
+    nav {
+      background: rgba(0,0,0,0.7);
+      padding: 15px;
+      text-align: center;
+      position: fixed;
+      top:0;
+      width: 100%;
+      z-index: 999;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 17px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #007B8F;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+      from {opacity:0;}
+      to {opacity:1;}
+    }
+
+    @keyframes slideDown {
+      from {transform: translateY(-30px);}
+      to {transform: translateY(0);}
+    }
+  </style>
 </head>
 <body>
-<header>
-  <h1>RouteRush 🌍</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="map.html">Map</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
 
-<div class="hero">
-  <video autoplay muted loop>
-    <source src="video/intro.mp4" type="video/mp4">
-  </video>
-  <div class="hero-text">
-    <h1>Rush Your Route to Hidden Places</h1>
-    <a class="btn" href="map.html">Start Exploring 🚀</a>
-  </div>
-</div>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="map.html">Map</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<section class="hero">
+  <h1>🌍 RouteRush</h1>
+  <p>Discover Secret Routes. Plan Better. Travel Smarter.</p>
+  <a href="map.html" class="btn">📍 Find a Route</a>
+  <a href="gallery.html" class="btn">🖼️ View Gallery</a>
+</section>
 
 <footer>
-  Connect:
-  <a href="https://instagram.com/manik_rao_b">Instagram</a> |
-  <a href="https://youtube.com/@learnandexplorething">YouTube</a>
-  <br>&copy; 2025 RouteRush
+  Follow me: 
+  <a href="https://instagram.com/manik_rao_b" style="color:#fff;">Instagram</a> | 
+  <a href="https://www.youtube.com/@learnandexplorething" style="color:#fff;">YouTube</a>
+  <br>© 2025 RouteRush | Travel, Map & Fun
 </footer>
+
 </body>
 </html>
