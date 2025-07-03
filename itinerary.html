@@ -42,3 +42,271 @@
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
+
+    label { display:block; margin:10px 0 5px; color:#333; font-weight:bold; }
+    input, textarea {
+      width:100%;
+      padding:10px;
+      border:1px solid #ccc;
+      border-radius:5px;
+      margin-bottom:15px;
+    }
+    button {
+      background: #FF5E00;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 5px 2px;
+    }
+    button:hover { background: #e04d00; }
+    ul { list-style-type: none; padding: 0; }
+    li {
+      background:#f1f1f1;
+      padding: 8px;
+      margin: 5px 0;
+      border-radius: 4px;
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+    }
+    .remove-btn {
+      background: crimson;
+      border: none;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    footer {
+      background: #007B8F;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="map.html">Map</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="blog.html">Blog</a>
+  <a href="itinerary.html">Itinerary</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<h1>📝 Plan Your Trip</h1>
+
+<div class="container">
+  <label>Trip Name</label>
+  <input type="text" id="tripName" placeholder="Example: Goa Getaway">
+
+  <label>Start Date</label>
+  <input type="date" id="startDate">
+
+  <label>End Date</label>
+  <input type="date" id="endDate">
+
+  <label>Add Destination</label>
+  <input type="text" id="destinationInput" placeholder="Type a destination...">
+  <button onclick="addDestination()">Add</button>
+
+  <ul id="destinationList"></ul>
+
+  <label>Notes</label>
+  <textarea id="notes" rows="5" placeholder="Add your trip notes here..."></textarea>
+
+  <button onclick="printItinerary()">Print Itinerary</button>
+  <button onclick="downloadPDF()">Download PDF</button>
+</div>
+
+<footer>
+  Follow me:
+  <a href="https://instagram.com/manik_rao_b" style="color:#fff;">Instagram</a> |
+  <a href="https://www.youtube.com/@learnandexplorething" style="color:#fff;">YouTube</a>
+  <br>© 2025 RouteRush | Travel, Map & Fun
+</footer>
+
+<script>
+  function addDestination() {
+    const destInput = document.getElementById("destinationInput");
+    const destValue = destInput.value.trim();
+    if (destValue) {
+      const li = document.createElement("li");
+      li.innerHTML = `${destValue} <button class="remove-btn" onclick="this.parentElement.remove()">Remove</button>`;
+      document.getElementById("destinationList").appendChild(li);
+      destInput.value = "";
+    } else {
+      alert("Please enter a destination.");
+    }
+  }
+
+  function printItinerary() {
+    window.print();
+  }
+
+  async function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Load logo image as Base64 (you can replace this URL with any PNG you like)
+    const logoUrl = 'https://cdn-icons-png.flaticon.com/512/854/854878.png';
+    const imgData = await fetch(logoUrl)
+      .then(res => res.blob())
+      .then(blob => new Promise(resolve => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.readAsDataURL(blob);
+      }));
+
+    // HEADER with Logo
+    doc.setFillColor(0, 123, 143);
+    doc.rect(0, 0, 210, 25, 'F');
+    doc.addImage(imgData, 'PNG', 10, 3, 18, 18);
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(16);
+    doc.text("RouteRush Trip Itinerary", 105, 16, { align: "center" });
+
+    let y = 35;
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(12);
+    doc.text(`Trip Name: ${document.getElementById("tripName").value}`, 20, y);
+    y += 8;
+    doc.text(`Start Date: ${document.getElementById("startDate").value}`, 20, y);
+    y += 8;
+    doc.text(`End Date: ${document.getElementById("endDate").value}`, 20, y);
+    y += 12;
+
+    doc.setFontSize(14);
+    doc.text("Destinations:", 20, y);
+    y += 8;
+
+    const destinations = document.querySelectorAll("#destinationList li");
+    if (destinations.length === 0) {
+      doc.setFontSize(12);
+      doc.text("No destinations added.", 25, y);
+      y += 8;
+    } else {
+      destinations.forEach((li, index) => {
+        doc.setFontSize(12);
+        doc.text(`${index + 1}. ${li.innerText.replace('Remove','').trim()}`, 25, y);
+        y += 7;
+      });
+    }
+
+    y += 10;
+    doc.setFontSize(14);
+    doc.text("Notes:", 20, y);
+    y += 8;
+    const notes = document.getElementById("notes").value || "(No notes added)";
+    doc.setFontSize(12);
+    doc.text(notes, 25, y, { maxWidth: 160 });
+
+    // FOOTER
+    const pageHeight = doc.internal.pageSize.height;
+    doc.setDrawColor(0, 123, 143);
+    doc.line(10, pageHeight - 20, 200, pageHeight - 20);
+    doc.setFontSize(10);
+    doc.setTextColor(100);
+    const today = new Date();
+    const dateStr = today.toLocaleDateString();
+    doc.text(`Generated on: ${dateStr}`, 20, pageHeight - 10);
+    doc.text("© 2025 RouteRush | Travel, Map & Fun", 200, pageHeight - 10, { align: "right" });
+
+    doc.save("RouteRush_Itinerary.pdf");
+  }
+</script>
+<script>
+  function addDestination() {
+    const destInput = document.getElementById("destinationInput");
+    const destValue = destInput.value.trim();
+    if (destValue) {
+      const li = document.createElement("li");
+      li.innerHTML = `${destValue} <button class="remove-btn" onclick="this.parentElement.remove()">Remove</button>`;
+      document.getElementById("destinationList").appendChild(li);
+      destInput.value = "";
+    } else {
+      alert("Please enter a destination.");
+    }
+  }
+
+  function printItinerary() {
+    window.print();
+  }
+
+  function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Logo
+    const logoUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/OOjs_UI_icon_mapPin-progressive.svg/1200px-OOjs_UI_icon_mapPin-progressive.svg.png';
+
+    const watermarkUrl = 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80';
+
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.src = watermarkUrl;
+
+    img.onload = () => {
+      // Watermark
+      doc.addImage(img, 'JPEG', 0, 0, 210, 297, '', 'FAST');
+
+      // Logo
+      const logo = new Image();
+      logo.crossOrigin = 'anonymous';
+      logo.src = logoUrl;
+      logo.onload = () => {
+        doc.addImage(logo, 'PNG', 10, 10, 20, 20);
+
+        let y = 35;
+        doc.setFontSize(22);
+        doc.text("RouteRush Trip Itinerary", 40, y);
+        y += 10;
+
+        doc.setFontSize(13);
+        doc.text(`Trip Name: ${document.getElementById("tripName").value}`, 20, y);
+        y += 8;
+        doc.text(`Start Date: ${document.getElementById("startDate").value}`, 20, y);
+        y += 8;
+        doc.text(`End Date: ${document.getElementById("endDate").value}`, 20, y);
+        y += 10;
+
+        doc.setFontSize(14);
+        doc.text("Destinations:", 20, y);
+        y += 8;
+
+        const destinations = document.querySelectorAll("#destinationList li");
+        destinations.forEach((li, index) => {
+          doc.setFontSize(12);
+          doc.text(`${index + 1}. ${li.innerText.replace('Remove','').trim()}`, 25, y);
+          y += 7;
+        });
+
+        y += 8;
+        doc.setFontSize(14);
+        doc.text("Notes:", 20, y);
+        y += 8;
+        const notes = document.getElementById("notes").value;
+        doc.setFontSize(12);
+        doc.text(notes || "(No notes added)", 25, y, { maxWidth: 160 });
+
+        // Footer
+        const today = new Date().toLocaleDateString();
+        doc.setFontSize(10);
+        doc.text(`Generated by RouteRush on ${today}`, 20, 290);
+
+        doc.save("RouteRush_Itinerary.pdf");
+      };
+    };
+  }
+</script>
+</body>
+</html>
+
+</body>
+</html>
