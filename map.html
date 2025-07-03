@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RouteRush Map</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+</head>
+<body>
+<header>
+  <h1>🗺️ RouteRush Map</h1>
+  <a class="btn" href="index.html">⬅ Back</a>
+</header>
+
+<div id="map"></div>
+<div class="loader" id="loader">Loading map & fun facts...</div>
+
+<footer>
+  © 2025 RouteRush
+</footer>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.min.js"></script>
+<script>
+const map = L.map('map').setView([15,75],7);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+const start = L.marker([15,75]).addTo(map).bindPopup('Start Exploring!').openPopup();
+fetch('https://api.quotable.io/random')
+  .then(res=>res.json())
+  .then(data=>{
+    document.getElementById('loader').innerHTML = 'Fun Fact: ' + data.content;
+    setTimeout(()=>document.getElementById('loader').style.display='none',3000);
+  });
+</script>
+</body>
+</html>
