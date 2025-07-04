@@ -25,7 +25,7 @@
       z-index:-1;
     }
     nav {
-      background: rgba(0,0,0,0);
+      background: rgba(0,0,0,0.7);
       padding: 16px;
       text-align: center;
       position: relative;
@@ -95,6 +95,45 @@
     @keyframes fadeIn {
       from { opacity: 0; } to { opacity: 1; }
     }
+    /* Spinner Overlay */
+    .spinner-overlay {
+      position: fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      display: none;
+    }
+    .spinner {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #FF5E00;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    /* Toast message */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #28a745;
+      color: #fff;
+      padding: 14px 26px;
+      border-radius: 30px;
+      font-weight: bold;
+      z-index: 1000;
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
   </style>
 </head>
 <body>
@@ -115,21 +154,57 @@
   <h1>📬 Contact WanderMap</h1>
   <p>Have questions, suggestions, or want to collaborate? Drop a message below — I'd love to hear from you!</p>
 
-  <form action="https://formspree.io/f/xjkrznnb" method="POST">
+  <form id="contact-form" action="https://formspree.io/f/xjkrznnb" method="POST">
     <input type="text" name="name" placeholder="Your Name" required>
     <input type="email" name="email" placeholder="Your Email" required>
     <textarea name="message" rows="5" placeholder="Your Message..." required></textarea>
-
-    <!-- Redirect to your GitHub Pages thankyou.html -->
-    <input type="hidden" name="_redirect" value="https://manikwork50.github.io/routerush/blob/main/thankyou.html">
-
     <button type="submit">Send Message</button>
   </form>
 </div>
 
+<!-- Spinner Overlay -->
+<div class="spinner-overlay" id="spinner">
+  <div class="spinner"></div>
+</div>
+
+<!-- Toast Message -->
+<div class="toast" id="toast">✅ Message Sent!</div>
+
 <footer>
   &copy; 2025 WanderMap | Created & Managed by Manik Rao | Travel Better 🌏
 </footer>
+
+<script>
+  document.getElementById("contact-form").addEventListener("submit", function(e){
+    e.preventDefault();
+    const form = e.target;
+    const spinner = document.getElementById("spinner");
+    const toast = document.getElementById("toast");
+
+    // Show spinner
+    spinner.style.display = "flex";
+
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      spinner.style.display = "none";
+      if (response.ok) {
+        // Show toast
+        toast.style.display = "block";
+        setTimeout(() => {
+          window.location.href = "https://manikwork50.github.io/routerush/thankyou.html";
+        }, 1500);
+      } else {
+        alert("Oops! Something went wrong. Please try again.");
+      }
+    }).catch(error => {
+      spinner.style.display = "none";
+      alert("Error: " + error);
+    });
+  });
+</script>
 
 </body>
 </html>
