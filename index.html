@@ -2,157 +2,126 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>RouteRush - Explore Your Next Adventure</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+  <title>Welcome to WanderMap</title>
   <style>
-    * { margin:0; padding:0; box-sizing: border-box; }
-    body, html { height:100%; font-family:'Segoe UI', sans-serif; }
-
-    .hero {
-      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
       color: #fff;
-      text-align: center;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-      animation: fadeIn 1.5s ease;
+      overflow-x:hidden;
     }
-
-    .hero h1 {
-      font-size: 60px;
-      margin-bottom: 20px;
-      animation: slideDown 1.5s ease;
+    .bg-image {
+      position: fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      object-fit:cover;
+      z-index: -1;
     }
-
-    .hero p {
-      font-size: 22px;
-      margin-bottom: 30px;
+    .overlay {
+      position: fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background: rgba(0,0,0,0.6);
+      z-index: -1;
     }
-
-    .btn {
-      padding: 14px 26px;
-      background: #FF5E00;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      font-size: 18px;
-      text-decoration: none;
-      transition: background 0.3s;
-      margin: 10px;
-      display:inline-block;
-    }
-
-    .btn:hover {
-      background: #e04d00;
-    }
-
-    #funFact {
-      margin-top: 20px;
-      font-size: 20px;
-      color: #fff;
-      font-weight: bold;
-      max-width: 90%;
-      text-shadow: 1px 1px 3px #000;
-      padding: 10px 20px;
-      border-radius: 6px;
-      background: rgba(0,0,0,0.4);
-      animation: fadeIn 1.5s ease;
-    }
-
     nav {
       background: rgba(0,0,0,0.7);
-      padding: 15px;
+      padding: 18px;
       text-align: center;
-      position: fixed;
-      top:0;
-      width: 100%;
-      z-index: 999;
+      position: relative;
+      z-index: 2;
     }
-
     nav a {
       color: #fff;
-      margin: 0 20px;
+      margin: 0 18px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 17px;
+      transition: color 0.3s;
     }
-
     nav a:hover {
-      text-decoration: underline;
+      color: #FFB347;
     }
-
-    footer {
-      background: #007B8F;
-      color: #fff;
-      padding: 15px;
+    .hero {
+      padding: 80px 20px;
       text-align: center;
+      animation: fadeIn 2s ease;
     }
-
+    .hero h1 {
+      font-size: 3.2em;
+      color: #FFB347;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.3em;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #ddd;
+    }
+    .cta-buttons {
+      margin-top: 40px;
+      animation: fadeInUp 2s ease;
+    }
+    .cta-buttons a {
+      display: inline-block;
+      margin: 10px;
+      padding: 14px 28px;
+      background: #FF5E00;
+      color: #fff;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .cta-buttons a:hover {
+      background: #FFB347;
+    }
+    footer {
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      text-align: center;
+      padding: 16px;
+      margin-top: 60px;
+      position: relative;
+      z-index: 2;
+    }
     @keyframes fadeIn {
-      from {opacity:0;}
-      to {opacity:1;}
+      from { opacity: 0; } to { opacity: 1; }
     }
-
-    @keyframes slideDown {
-      from {transform: translateY(-30px);}
-      to {transform: translateY(0);}
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
+<img src="img/nature-home-bg.jpg" alt="WanderMap Background" class="bg-image">
+<div class="overlay"></div>
+
 <nav>
   <a href="index.html">Home</a>
   <a href="map.html">Map</a>
   <a href="gallery.html">Gallery</a>
+  <a href="blog.html">Blog</a>
   <a href="about.html">About</a>
   <a href="contact.html">Contact</a>
 </nav>
 
-<section class="hero">
-  <h1>🌍 RouteRush</h1>
-  <p>Discover Secret Routes. Plan Better. Travel Smarter.</p>
-  <a href="map.html" class="btn">📍 Find a Route</a>
-  <a href="gallery.html" class="btn">🖼️ View Gallery</a>
+<div class="hero">
+  <h1>Welcome to WanderMap 🌍</h1>
+  <p>Your personal travel guide to hidden gems, road trip routes, adventure destinations, and local experiences across India and beyond. Discover itineraries, live maps, weather, stories and more — all crafted for the curious traveler in you.</p>
 
-  <!-- Fun Fact Section -->
-  <div id="funFact"></div>
-</section>
+  <div class="cta-buttons">
+    <a href="map.html">Explore Map</a>
+    <a href="blog.html">Read Travel Stories</a>
+    <a href="gallery.html">View Gallery</a>
+  </div>
+</div>
 
 <footer>
-  Follow me:
-  <a href="https://instagram.com/manik_rao_b" style="color:#fff;">Instagram</a> | 
-  <a href="https://www.youtube.com/@learnandexplorething" style="color:#fff;">YouTube</a>
-  <br>© 2025 RouteRush | Travel, Map & Fun
+  &copy; 2025 WanderMap | Created & Managed by Manik Rao | Travel Better 🌏
 </footer>
-
-<script>
-  const funFacts = [
-    "Did you know? The world’s longest road is the Pan-American Highway — it stretches over 30,000 km!",
-    "India has the world’s highest motorable road at Khardung La Pass, 5,359m above sea level.",
-    "You can visit 4 countries at once at the Four Corners Monument in the USA!",
-    "There’s a place in Norway where the sun never sets for 76 days in summer.",
-    "Japan has more than 5 million vending machines!",
-    "The Great Wall of China is over 21,000 km long — that’s half the Earth’s circumference.",
-    "There's an underwater post office in Vanuatu.",
-    "Bhutan measures its success by Gross National Happiness, not GDP.",
-    "India's train network is one of the largest employers in the world.",
-    "The shortest place name is ‘Å’ in Norway and Sweden."
-  ];
-
-  function showRandomFact() {
-    const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
-    document.getElementById("funFact").innerText = randomFact;
-  }
-
-  // Show new fact every 10 seconds automatically
-  setInterval(showRandomFact, 10000);
-  showRandomFact(); // Show one immediately on page load
-</script>
 
 </body>
 </html>
