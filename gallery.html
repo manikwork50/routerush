@@ -2,87 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>RouteRush - Gallery</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WanderMap Gallery</title>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Segoe UI', sans-serif; background:#f5f5f5; }
+    body {
+      font-family:'Segoe UI', sans-serif;
+      color: #fff;
+      overflow-x:hidden;
+    }
+    .bg-image {
+      position: fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      object-fit:cover;
+      z-index:-1;
+    }
+    .overlay {
+      position: fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background: rgba(0,0,0,0.6);
+      z-index:-1;
+    }
     nav {
       background: rgba(0,0,0,0.7);
-      padding: 15px;
+      padding: 16px;
       text-align: center;
-      position: fixed;
-      top:0;
-      width: 100%;
-      z-index: 999;
     }
     nav a {
       color: #fff;
       margin: 0 20px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 17px;
+      transition: color 0.3s;
     }
-    nav a:hover { text-decoration: underline; }
-    h1 {
-      text-align:center;
-      margin-top:80px;
-      color:#333;
-      font-size: 36px;
+    nav a:hover {
+      color: #FFB347;
     }
     .gallery {
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 10px;
+      max-width: 1200px;
+      margin: 60px auto;
       padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      animation: fadeIn 2s ease;
     }
     .gallery img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius:8px;
-      transition: 0.4s ease;
+      width:100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      transition: transform 0.4s ease;
     }
     .gallery img:hover {
       transform: scale(1.05);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
     footer {
-      background: #007B8F;
+      background: rgba(0,0,0,0.8);
       color: #fff;
-      padding: 15px;
       text-align: center;
-      margin-top:20px;
+      padding: 16px;
+      margin-top: 60px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
     }
   </style>
 </head>
 <body>
+
+<img src="img/nature-gallery-bg.jpg" alt="Gallery Background" class="bg-image">
+<div class="overlay"></div>
 
 <nav>
   <a href="index.html">Home</a>
   <a href="map.html">Map</a>
   <a href="gallery.html">Gallery</a>
   <a href="blog.html">Blog</a>
-  <a href="itinerary.html">Itinerary</a>
+  <a href="about.html">About</a>
   <a href="contact.html">Contact</a>
 </nav>
 
-<h1>🖼️ RouteRush Gallery</h1>
-
 <div class="gallery">
-  <img src="https://source.unsplash.com/featured/?travel" alt="">
-  <img src="https://source.unsplash.com/featured/?mountain" alt="">
-  <img src="https://source.unsplash.com/featured/?beach" alt="">
-  <img src="https://source.unsplash.com/featured/?sunrise" alt="">
-  <img src="https://source.unsplash.com/featured/?forest" alt="">
-  <img src="https://source.unsplash.com/featured/?adventure" alt="">
+  <img src="https://unsplash.com/photos/india-tourist-attraction-mughal-architecture-gwalior-fort-gwalior-madhya-pradesh-india-nucJeErIZSw" alt="Travel Image">
+  <img src="https://unsplash.com/photos/people-near-taj-mahal-eU4pipU_8HA" alt="Travel Image">
+  <img src="https://unsplash.com/photos/a-path-through-a-forest-with-lots-of-trees-8mYAWekv_JM" alt="Travel Image">
+  <img src="https://unsplash.com/photos/mountain-reflecting-on-body-of-water-YdROcw9okMw" alt="Travel Image">
+  <img src="https://unsplash.com/photos/hawa-mahal-india-at-daytime-WCgioEcEVNc" alt="Travel Image">
+  <img src="https://unsplash.com/photos/green-metal-bridge-over-snow-covered-mountain-during-daytime-_coy_nolInw" alt="Travel Image">
 </div>
 
 <footer>
-  Follow me:
-  <a href="https://instagram.com/manik_rao_b" style="color:#fff;">Instagram</a> |
-  <a href="https://www.youtube.com/@learnandexplorething" style="color:#fff;">YouTube</a>
-  <br>© 2025 RouteRush | Travel, Map & Fun
+  &copy; 2025 WanderMap | Created & Managed by Manik Rao | Travel Better 🌏
 </footer>
 
 </body>
