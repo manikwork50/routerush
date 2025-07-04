@@ -2,23 +2,129 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>About RouteRush</title>
+  <title>About WanderMap</title>
   <style>
-    body { margin:0; font-family:'Segoe UI', sans-serif; background:#f5f5f5; color:#333; }
-    nav { background:#007B8F; padding:15px; text-align:center; }
-    nav a { color:#fff; margin:0 20px; text-decoration:none; font-weight:bold; }
-    nav a:hover { text-decoration:underline; }
-    .content { padding:40px; max-width:800px; margin:auto; text-align:center; }
-    h1 { color:#007B8F; margin-bottom:20px; }
-    img { max-width:250px; border-radius:10px; margin:20px auto; display:block; }
-    footer {
-      background:#007B8F; color:#fff; text-align:center;
-      padding:15px; margin-top:30px;
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      color:#fff;
+      overflow-x:hidden;
     }
-    a { color: #FF5E00; }
+    nav {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    nav a {
+      color:#fff;
+      margin:0 20px;
+      text-decoration:none;
+      font-weight:bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color:#FF5E00;
+    }
+    .video-bg {
+      position:fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      object-fit:cover;
+      z-index:-1;
+    }
+    .overlay {
+      position:fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background:rgba(0,0,0,0.6);
+      z-index:-1;
+    }
+    .content {
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      animation: fadeIn 2s ease;
+    }
+    h1 {
+      color:#FFB347;
+      margin-bottom:20px;
+      font-size:2.8em;
+    }
+    img {
+      max-width:250px;
+      border-radius:15px;
+      margin:20px auto;
+      display:block;
+      box-shadow:0 4px 20px rgba(0,0,0,0.5);
+      animation: zoomIn 2s ease;
+    }
+    p {
+      margin: 20px 0;
+      line-height:1.8;
+      font-size:1.1em;
+      color:#ddd;
+      animation: fadeInUp 2.5s ease;
+    }
+    footer {
+      background: rgba(0,0,0,0.8);
+      color:#fff;
+      text-align:center;
+      padding:15px;
+      margin-top:30px;
+      position: relative;
+      z-index: 2;
+    }
+    a {
+      color: #FFB347;
+      text-decoration: none;
+    }
+    a:hover {
+      color:#FF5E00;
+    }
+    .social-bar {
+      position:fixed;
+      top:50%;
+      left:10px;
+      transform:translateY(-50%);
+      z-index:10;
+    }
+    .social-bar a {
+      display:block;
+      margin:10px 0;
+      color:#fff;
+      font-size:1.5em;
+      transition: transform 0.3s;
+    }
+    .social-bar a:hover {
+      transform:scale(1.2);
+      color:#FFB347;
+    }
+
+    @keyframes fadeIn {
+      from { opacity:0; } to { opacity:1; }
+    }
+    @keyframes zoomIn {
+      from { transform:scale(0.5); opacity:0; }
+      to { transform:scale(1); opacity:1; }
+    }
+    @keyframes fadeInUp {
+      from { opacity:0; transform:translateY(30px); }
+      to { opacity:1; transform:translateY(0); }
+    }
   </style>
+  <script src="https://kit.fontawesome.com/a2d9d5c36c.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+<video autoplay muted loop playsinline class="video-bg">
+  <source src="video/nature-bg.mp4" type="video/mp4">
+  <!-- Fallback image if video not supported -->
+  <img src="img/nature-bg.jpg" alt="Nature Background" style="width:100%; height:100%; object-fit:cover;">
+</video>
+<div class="overlay"></div>
 
 <nav>
   <a href="index.html">Home</a>
@@ -28,18 +134,23 @@
   <a href="contact.html">Contact</a>
 </nav>
 
+<div class="social-bar">
+  <a href="https://instagram.com/manik_rao_b" target="_blank"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.youtube.com/@learnandexplorething" target="_blank"><i class="fab fa-youtube"></i></a>
+</div>
+
 <div class="content">
-  <h1>🌍 About RouteRush</h1>
+  <h1>🌍 About WanderMap</h1>
 
   <img src="img/manik-profile.jpg" alt="Manik Rao Travel Explorer">
 
-  <p>Hi, I'm <strong>Manik Rao</strong>, a passionate traveler and digital creator. I founded <strong>RouteRush</strong> to help fellow travel enthusiasts discover secret routes, plan smarter journeys, and explore hidden destinations across India and beyond.</p>
+  <p>Hi, I'm <strong>Manik Rao</strong>, a passionate traveler and digital creator. I founded <strong>WanderMap</strong> to help fellow travel enthusiasts discover secret routes, plan smarter journeys, and explore hidden destinations across India and beyond.</p>
 
   <p>I love road trips, biking to lesser-known places, and documenting my adventures. This website is a reflection of my journeys and built as a free tool for anyone who loves traveling like me.</p>
 
-  <p>RouteRush is powered by reliable, free, open-source services including <strong>OpenStreetMap</strong> for maps, <strong>OpenWeather API</strong> for live weather info, and <strong>OSRM</strong> for routing directions by car, cycle, or on foot.</p>
+  <p><strong>WanderMap</strong> is powered by reliable, free, open-source services including <strong>OpenStreetMap</strong> for maps, <strong>OpenWeather API</strong> for live weather info, and <strong>OSRM</strong> for routing directions by car, cycle, or on foot.</p>
 
-  <p>You’ll also find interactive maps, travel itineraries, weather updates, gallery pages, and regular travel blogs to keep your wanderlust alive!</p>
+  <p>You'll also find interactive maps, travel itineraries, weather updates, gallery pages, and regular travel blogs to keep your wanderlust alive!</p>
 
   <p>Follow my adventures here:
     <br>
@@ -49,7 +160,7 @@
 </div>
 
 <footer>
-  &copy; 2025 RouteRush | Built & Managed by Manik Rao | Travel Better
+  &copy; 2025 WanderMap | Built & Managed by Manik Rao | Travel Better
 </footer>
 
 </body>
