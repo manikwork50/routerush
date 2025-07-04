@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>About WanderMap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
@@ -10,6 +11,7 @@
       color:#fff;
       overflow-x:hidden;
     }
+
     nav {
       background: rgba(0, 0, 0, 0.7);
       padding: 15px;
@@ -27,47 +29,74 @@
     nav a:hover {
       color:#FF5E00;
     }
+
+    .parallax-bg {
+      background-image: url('img/nature-contact-bg.jpg');
+      min-height: 100vh;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -3;
+    }
+
     .video-bg {
       position:fixed;
       top:0; left:0;
       width:100%; height:100%;
       object-fit:cover;
-      z-index:-1;
+      z-index:-2;
+      opacity: 0.5;
     }
+
     .overlay {
       position:fixed;
       top:0; left:0;
       width:100%; height:100%;
-      background:rgba(0,0,0,0.6);
+      background:rgba(0,0,0,0.5);
       z-index:-1;
     }
+
     .content {
       padding: 60px 20px;
       max-width: 800px;
-      margin: auto;
+      margin: 60px auto;
       text-align: center;
       animation: fadeIn 2s ease;
+      position: relative;
+      z-index: 3;
+
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
     }
+
     h1 {
       color:#FFB347;
       margin-bottom:20px;
       font-size:2.8em;
     }
+
     img {
       max-width:250px;
       border-radius:15px;
       margin:20px auto;
       display:block;
       box-shadow:0 4px 20px rgba(0,0,0,0.5);
-      animation: zoomIn 2s ease;
     }
+
     p {
       margin: 20px 0;
       line-height:1.8;
       font-size:1.1em;
       color:#ddd;
-      animation: fadeInUp 2.5s ease;
     }
+
     footer {
       background: rgba(0,0,0,0.8);
       color:#fff;
@@ -75,15 +104,18 @@
       padding:15px;
       margin-top:30px;
       position: relative;
-      z-index: 2;
+      z-index: 3;
     }
+
     a {
       color: #FFB347;
       text-decoration: none;
     }
+
     a:hover {
       color:#FF5E00;
     }
+
     .social-bar {
       position:fixed;
       top:50%;
@@ -91,6 +123,7 @@
       transform:translateY(-50%);
       z-index:10;
     }
+
     .social-bar a {
       display:block;
       margin:10px 0;
@@ -98,32 +131,61 @@
       font-size:1.5em;
       transition: transform 0.3s;
     }
+
     .social-bar a:hover {
       transform:scale(1.2);
       color:#FFB347;
     }
 
+    /* Animations */
+    .fade-in-section, .fade-in-image, .fade-in-heading {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-in-heading { transform: translateY(-20px); }
+    .fade-in-image { transform: scale(0.8); }
+
+    .visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in-image.visible {
+      transform: scale(1);
+    }
+
+    .fade-in-heading.visible {
+      transform: translateY(0);
+    }
+
+    /* Delay classes */
+    .delay-1 { transition-delay: 0.2s; }
+    .delay-2 { transition-delay: 0.4s; }
+    .delay-3 { transition-delay: 0.6s; }
+    .delay-4 { transition-delay: 0.8s; }
+    .delay-5 { transition-delay: 1s; }
+
     @keyframes fadeIn {
       from { opacity:0; } to { opacity:1; }
     }
-    @keyframes zoomIn {
-      from { transform:scale(0.5); opacity:0; }
-      to { transform:scale(1); opacity:1; }
-    }
-    @keyframes fadeInUp {
-      from { opacity:0; transform:translateY(30px); }
-      to { opacity:1; transform:translateY(0); }
+
+    @media(max-width: 768px) {
+      h1 { font-size: 2.2em; }
+      .content { margin: 40px 20px; }
     }
   </style>
   <script src="https://kit.fontawesome.com/a2d9d5c36c.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
+<div class="parallax-bg"></div>
+
 <video autoplay muted loop playsinline class="video-bg">
   <source src="video/nature-bg.mp4" type="video/mp4">
-  <!-- Fallback image if video not supported -->
-  <img src="img/nature-contact-bg.jpg" alt="WanderMap Background" class="bg-image">
 </video>
+
 <div class="overlay"></div>
 
 <nav>
@@ -140,19 +202,28 @@
 </div>
 
 <div class="content">
-  <h1>🌍 About WanderMap</h1>
+  <h1 class="fade-in-heading delay-1">🌍 About WanderMap</h1>
 
-  <img src="img/manik-profile.jpg" alt="Manik Rao Travel Explorer">
+  <img src="img/manik-profile.jpg" alt="Manik Rao Travel Explorer" class="fade-in-image delay-2">
 
-  <p>Hi, I'm <strong>Manik Rao</strong>, a passionate traveler and digital creator. I founded <strong>WanderMap</strong> to help fellow travel enthusiasts discover secret routes, plan smarter journeys, and explore hidden destinations across India and beyond.</p>
+  <p class="fade-in-section delay-3">
+    Hi, I'm <strong>Manik Rao</strong>, a passionate traveler and digital creator. I founded <strong>WanderMap</strong> to help fellow travel enthusiasts discover secret routes, plan smarter journeys, and explore hidden destinations across India and beyond.
+  </p>
 
-  <p>I love road trips, biking to lesser-known places, and documenting my adventures. This website is a reflection of my journeys and built as a free tool for anyone who loves traveling like me.</p>
+  <p class="fade-in-section delay-4">
+    I love road trips, biking to lesser-known places, and documenting my adventures. This website is a reflection of my journeys and built as a free tool for anyone who loves traveling like me.
+  </p>
 
-  <p><strong>WanderMap</strong> is powered by reliable, free, open-source services including <strong>OpenStreetMap</strong> for maps, <strong>OpenWeather API</strong> for live weather info, and <strong>OSRM</strong> for routing directions by car, cycle, or on foot.</p>
+  <p class="fade-in-section delay-5">
+    <strong>WanderMap</strong> is powered by reliable, free, open-source services including <strong>OpenStreetMap</strong> for maps, <strong>OpenWeather API</strong> for live weather info, and <strong>OSRM</strong> for routing directions by car, cycle, or on foot.
+  </p>
 
-  <p>You'll also find interactive maps, travel itineraries, weather updates, gallery pages, and regular travel blogs to keep your wanderlust alive!</p>
+  <p class="fade-in-section delay-1">
+    You'll also find interactive maps, travel itineraries, weather updates, gallery pages, and regular travel blogs to keep your wanderlust alive!
+  </p>
 
-  <p>Follow my adventures here:
+  <p class="fade-in-section delay-2">
+    Follow my adventures here:
     <br>
     📸 <a href="https://instagram.com/manik_rao_b" target="_blank">Instagram</a> |
     🎥 <a href="https://www.youtube.com/@learnandexplorething" target="_blank">YouTube</a>
@@ -162,6 +233,26 @@
 <footer>
   &copy; 2025 WanderMap | Built & Managed by Manik Rao | Travel Better
 </footer>
+
+<script>
+  const elements = document.querySelectorAll('.fade-in-section, .fade-in-image, .fade-in-heading');
+
+  const appearOptions = {
+    threshold: 0.1
+  }
+
+  const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    });
+  }, appearOptions);
+
+  elements.forEach(el => {
+    appearOnScroll.observe(el);
+  });
+</script>
 
 </body>
 </html>
