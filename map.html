@@ -2,65 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>RouteRush - Travel Map</title>
+  <title>RouteRush Map</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
   <link rel="stylesheet" href="https://unpkg.com/awesomplete/awesomplete.css">
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Segoe UI', sans-serif; background:#f5f5f5; }
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; background: #f0f8ff; }
+    h1 { text-align: center; margin: 20px 0; color: #007B8F; }
     nav {
-      background: rgba(0,0,0,0.7);
-      padding: 15px;
-      text-align: center;
-      position: fixed;
-      top:0;
-      width: 100%;
-      z-index: 999;
+      background: #007B8F; padding: 12px; text-align: center;
     }
     nav a {
-      color: #fff;
-      margin: 0 20px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 17px;
+      color: #fff; margin: 0 15px; text-decoration: none; font-weight: bold;
     }
-    nav a:hover { text-decoration: underline; }
-    h1 {
-      text-align:center;
-      margin-top:80px;
-      color:#333;
-      font-size: 32px;
-    }
-    .controls {
-      text-align:center;
-      margin: 20px;
-    }
-    input, select, button {
-      padding: 10px;
-      margin: 5px;
-      font-size: 16px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+    #map { height: 450px; margin: 20px; border-radius: 10px; }
+    input, button {
+      padding: 10px; margin: 5px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;
     }
     button {
-      background: #FF5E00;
-      color: #fff;
-      border: none;
+      background: #FF5E00; color: #fff; border: none;
     }
     button:hover { background: #e04d00; cursor: pointer; }
-    #map {
-      height: 500px;
-      margin: 20px;
-      border-radius: 8px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    #output, #funFact { text-align: center; margin: 10px auto; font-size: 16px; }
+    #weatherBox {
+      margin:20px auto; text-align:center; background:#e0f7fa;
+      padding:15px; border-radius:10px; max-width:400px;
     }
-    footer {
-      background: #007B8F;
-      color: #fff;
-      padding: 15px;
-      text-align: center;
-      margin-top: 20px;
+    #adBanner {
+      margin:20px auto; text-align:center;
+    }
+    #adBanner p {
+      background:#ffefc3; padding:10px; border:1px solid #ccc; border-radius:5px; display:inline-block;
     }
   </style>
 </head>
@@ -71,44 +43,42 @@
   <a href="map.html">Map</a>
   <a href="gallery.html">Gallery</a>
   <a href="blog.html">Blog</a>
-  <a href="itinerary.html">Itinerary</a>
   <a href="contact.html">Contact</a>
 </nav>
 
-<h1>🗺️ Plan Your Route</h1>
+<h1>📍 RouteRush Map & Distance Finder</h1>
 
-<div class="controls">
-  <input id="fromPlace" class="awesomplete" placeholder="From">
-  <input id="toPlace" class="awesomplete" placeholder="To">
-  <select id="mode">
-    <option value="driving">Car</option>
-    <option value="walking">Walk</option>
-    <option value="cycling">Cycle</option>
-  </select>
+<div style="text-align:center;">
+  <input id="fromPlace" placeholder="From" class="awesomplete">
+  <input id="toPlace" placeholder="To" class="awesomplete">
   <button onclick="showRoute()">Show Route</button>
-  <button onclick="shareRoute()">Share</button>
 </div>
 
+<div id="output"></div>
+<div id="funFact"></div>
 <div id="map"></div>
 
-<footer>
-  Follow me:
-  <a href="https://instagram.com/manik_rao_b" style="color:#fff;">Instagram</a> |
-  <a href="https://www.youtube.com/@learnandexplorething" style="color:#fff;">YouTube</a>
-  <br>© 2025 RouteRush | Travel, Map & Fun
-</footer>
+<div id="weatherBox">
+  <h3>🌤️ Weather at Destination</h3>
+  <p id="weatherInfo">Weather will appear after routing.</p>
+</div>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<div id="adBanner">
+  <p>Your AdSense Banner Here</p>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="https://unpkg.com/awesomplete/awesomplete.min.js"></script>
 
 <script>
-  const map = L.map('map').setView([15.0, 75.0], 6);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
-
+  const map = L.map('map').setView([15, 75], 6);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(map);
   let routeLayer;
-  let startMarker, endMarker;
+
+  const fromInput = document.getElementById("fromPlace");
+  const toInput = document.getElementById("toPlace");
+  new Awesomplete(fromInput);
+  new Awesomplete(toInput);
 
   function fetchSuggestions(input) {
     input.addEventListener("input", () => {
@@ -116,22 +86,16 @@
       fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(input.value)}`)
         .then(res => res.json())
         .then(data => {
-          input.awesomplete.list = data.map(item => item.display_name);
+          const list = data.map(item => item.display_name);
+          input.awesomplete.list = list;
         });
     });
   }
-
-  const fromInput = document.getElementById("fromPlace");
-  const toInput = document.getElementById("toPlace");
-  new Awesomplete(fromInput);
-  new Awesomplete(toInput);
   fetchSuggestions(fromInput);
   fetchSuggestions(toInput);
 
   function showRoute() {
-    const from = fromInput.value;
-    const to = toInput.value;
-    const mode = document.getElementById("mode").value;
+    const from = fromInput.value, to = toInput.value;
     if (!from || !to) { alert("Enter both places"); return; }
 
     Promise.all([
@@ -142,45 +106,61 @@
       const fromCoords = [fromData[0].lat, fromData[0].lon];
       const toCoords = [toData[0].lat, toData[0].lon];
 
-      fetch(`https://router.project-osrm.org/route/v1/${mode}/${fromCoords[1]},${fromCoords[0]};${toCoords[1]},${toCoords[0]}?overview=full&geometries=geojson`)
+      fetch(`https://router.project-osrm.org/route/v1/driving/${fromCoords[1]},${fromCoords[0]};${toCoords[1]},${toCoords[0]}?overview=full&geometries=geojson`)
         .then(r => r.json())
         .then(routeData => {
           if (routeData.code !== 'Ok') { alert("Route not found."); return; }
-          const route = routeData.routes[0];
-          const distKm = (route.distance / 1000).toFixed(2);
-          const timeMin = Math.round(route.duration / 60);
-          const hours = Math.floor(timeMin / 60);
-          const mins = timeMin % 60;
-          let durationStr = "";
-          if (hours > 0) durationStr += `${hours} hr `;
-          durationStr += `${mins} min`;
 
-          alert(`Distance: ${distKm} km | Duration: ${durationStr}`);
+          const route = routeData.routes[0];
+          const distance = (route.distance / 1000).toFixed(2);
+          const durationMins = Math.round(route.duration / 60);
+          const hours = Math.floor(durationMins / 60);
+          const mins = durationMins % 60;
+          const durationText = hours > 0 ? `${hours} hr ${mins} min` : `${mins} min`;
+
+          document.getElementById("output").innerText = `Distance: ${distance} km | Duration: ${durationText}`;
 
           if (routeLayer) map.removeLayer(routeLayer);
-          routeLayer = L.geoJSON(route.geometry, { color: '#007B8F' }).addTo(map);
-
-          if (startMarker) map.removeLayer(startMarker);
-          if (endMarker) map.removeLayer(endMarker);
-          startMarker = L.marker(fromCoords).addTo(map).bindPopup("Start").openPopup();
-          endMarker = L.marker(toCoords).addTo(map).bindPopup("End").openPopup();
-
+          routeLayer = L.geoJSON(route.geometry, { color: 'blue' }).addTo(map);
           map.fitBounds(L.geoJSON(route.geometry).getBounds());
+
+          fetchWeather(to);
         });
     });
   }
 
-  function shareRoute() {
-    const from = fromInput.value;
-    const to = toInput.value;
-    if (!from || !to) { alert("Enter both places"); return; }
-    const msg = `Check this travel route from ${from} to ${to}!`;
-    if (navigator.share) {
-      navigator.share({ title: 'RouteRush Travel Route', text: msg, url: location.href });
-    } else {
-      prompt("Copy to share:", `${msg} ${location.href}`);
-    }
+  function fetchWeather(city) {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=02913f6d96135db7a1f6cdbfca5a1792&units=metric`)
+      .then(response => response.json())
+      .then(data => {
+        const temp = data.main.temp;
+        const desc = data.weather[0].description;
+        const icon = data.weather[0].icon;
+        document.getElementById("weatherInfo").innerHTML = `
+          <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="Icon"><br>
+          <strong>${city}</strong>: ${temp}°C, ${desc}
+        `;
+      })
+      .catch(() => {
+        document.getElementById("weatherInfo").innerText = "Weather unavailable.";
+      });
   }
+
+  const facts = [
+    "India has the world’s highest cricket ground at Chail, Himachal Pradesh.",
+    "The Great Wall of China is visible from space — but only under specific conditions.",
+    "Lake Baikal in Russia holds 20% of the world’s fresh water.",
+    "The Amazon rainforest produces 20% of the world's oxygen supply.",
+    "The world’s longest road is the Pan-American Highway spanning 19,000 miles."
+  ];
+
+  function showRandomFact() {
+    const fact = facts[Math.floor(Math.random() * facts.length)];
+    document.getElementById("funFact").innerText = `💡 Fun Fact: ${fact}`;
+  }
+
+  showRandomFact();
+  setInterval(showRandomFact, 10000);
 </script>
 
 </body>
