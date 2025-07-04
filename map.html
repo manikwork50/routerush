@@ -1,148 +1,187 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>RouteRush Map</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css">
+  <meta charset="UTF-8">
+  <title>RouteRush - Travel Map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/awesomplete/awesomplete.css">
   <style>
-    #map { height: 500px; margin: 20px; border-radius: 10px; }
-    .bounce {
-      animation: bounce 0.8s infinite alternate;
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Segoe UI', sans-serif; background:#f5f5f5; }
+    nav {
+      background: rgba(0,0,0,0.7);
+      padding: 15px;
+      text-align: center;
+      position: fixed;
+      top:0;
+      width: 100%;
+      z-index: 999;
     }
-    @keyframes bounce {
-      0% { transform: translateY(0px); }
-      100% { transform: translateY(-10px); }
+    nav a {
+      color: #fff;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 17px;
+    }
+    nav a:hover { text-decoration: underline; }
+    h1 {
+      text-align:center;
+      margin-top:80px;
+      color:#333;
+      font-size: 32px;
+    }
+    .controls {
+      text-align:center;
+      margin: 20px;
+    }
+    input, select, button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
     button {
-      background:#007B8F; color:#fff; border:none; padding:8px 12px;
-      margin:5px; border-radius:5px; cursor:pointer;
+      background: #FF5E00;
+      color: #fff;
+      border: none;
     }
-    button:hover { background:#005f70; }
-    .map-loader {
-      position:fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      background: rgba(255,255,255,0.8);
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      z-index:9999;
+    button:hover { background: #e04d00; cursor: pointer; }
+    #map {
+      height: 500px;
+      margin: 20px;
+      border-radius: 8px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
     }
-    .spinner {
-      border: 6px solid #f3f3f3;
-      border-top: 6px solid #007B8F;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    footer {
+      background: #007B8F;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-<h2 style="text-align:center;">🗺️ RouteRush Map</h2>
 
-<div style="text-align:center; padding:10px;">
-  <input id="fromPlace" placeholder="From" style="padding:8px;">
-  <input id="toPlace" placeholder="To" style="padding:8px;">
-  <select id="mode" style="padding:8px;">
-    <option value="car">🚗 Car</option>
-    <option value="bike">🚴‍♂️ Bike</option>
-    <option value="foot">🚶 Walk</option>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="map.html">Map</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="blog.html">Blog</a>
+  <a href="itinerary.html">Itinerary</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<h1>🗺️ Plan Your Route</h1>
+
+<div class="controls">
+  <input id="fromPlace" class="awesomplete" placeholder="From">
+  <input id="toPlace" class="awesomplete" placeholder="To">
+  <select id="mode">
+    <option value="driving">Car</option>
+    <option value="walking">Walk</option>
+    <option value="cycling">Cycle</option>
   </select>
-  <button onclick="findRoute()">Show Route</button>
-  <button onclick="clearRoute()">Clear Route</button>
+  <button onclick="showRoute()">Show Route</button>
+  <button onclick="shareRoute()">Share</button>
 </div>
 
 <div id="map"></div>
-<div id="routeInfo" style="text-align:center; font-weight:bold; padding:10px;"></div>
 
-<div style="text-align:center;">
-  <button onclick="copyLink()">📋 Copy Map Link</button>
-</div>
+<footer>
+  Follow me:
+  <a href="https://instagram.com/manik_rao_b" style="color:#fff;">Instagram</a> |
+  <a href="https://www.youtube.com/@learnandexplorething" style="color:#fff;">YouTube</a>
+  <br>© 2025 RouteRush | Travel, Map & Fun
+</footer>
 
-<div class="map-loader" id="mapLoader" style="display:none;">
-  <div class="spinner"></div>
-</div>
-
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/awesomplete/awesomplete.min.js"></script>
 
 <script>
-const map = L.map('map').setView([15,75],7);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+  const map = L.map('map').setView([15.0, 75.0], 6);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
 
-let control, fromMarker, toMarker;
+  let routeLayer;
+  let startMarker, endMarker;
 
-function findRoute() {
-  const from = document.getElementById('fromPlace').value;
-  const to = document.getElementById('toPlace').value;
-  const mode = document.getElementById('mode').value;
-  document.getElementById('routeInfo').innerHTML = "";
-  if (!from || !to) { alert("Enter both places"); return; }
-
-  document.getElementById('mapLoader').style.display = 'flex';
-
-  Promise.all([
-    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(from)}`).then(r=>r.json()),
-    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(to)}`).then(r=>r.json())
-  ]).then(([fromData, toData])=>{
-    if (!fromData[0] || !toData[0]) { alert("Places not found."); document.getElementById('mapLoader').style.display='none'; return; }
-
-    const fromLatLng = L.latLng(fromData[0].lat, fromData[0].lon);
-    const toLatLng = L.latLng(toData[0].lat, toData[0].lon);
-
-    if (control) map.removeControl(control);
-    if (fromMarker) map.removeLayer(fromMarker);
-    if (toMarker) map.removeLayer(toMarker);
-
-    const iconBounce = L.icon({
-      iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
-      iconSize: [36,36],
-      className: 'bounce'
+  function fetchSuggestions(input) {
+    input.addEventListener("input", () => {
+      if (input.value.length < 3) return;
+      fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(input.value)}`)
+        .then(res => res.json())
+        .then(data => {
+          input.awesomplete.list = data.map(item => item.display_name);
+        });
     });
+  }
 
-    fromMarker = L.marker(fromLatLng, {icon: iconBounce}).addTo(map).bindPopup("Start: " + from);
-    toMarker = L.marker(toLatLng, {icon: iconBounce}).addTo(map).bindPopup("End: " + to);
+  const fromInput = document.getElementById("fromPlace");
+  const toInput = document.getElementById("toPlace");
+  new Awesomplete(fromInput);
+  new Awesomplete(toInput);
+  fetchSuggestions(fromInput);
+  fetchSuggestions(toInput);
 
-    control = L.Routing.control({
-      waypoints: [fromLatLng, toLatLng],
-      router: L.Routing.osrmv1({serviceUrl: `https://router.project-osrm.org/route/v1/${mode}`}),
-      routeWhileDragging: false, show: false
-    }).addTo(map);
+  function showRoute() {
+    const from = fromInput.value;
+    const to = toInput.value;
+    const mode = document.getElementById("mode").value;
+    if (!from || !to) { alert("Enter both places"); return; }
 
-    control.on('routesfound', function(e) {
-      const route = e.routes[0];
-      const km = (route.summary.totalDistance/1000).toFixed(2);
-      const s = route.summary.totalTime;
-      const d = Math.floor(s/86400), h = Math.floor((s%86400)/3600), m = Math.floor((s%3600)/60);
-      let dur = '';
-      if(d>0) dur+=d+'d ';
-      if(h>0) dur+=h+'h ';
-      if(m>0) dur+=m+'m';
-      document.getElementById('routeInfo').innerText = `🚩 ${km} km | ⏳ ${dur}`;
-      document.getElementById('mapLoader').style.display='none';
+    Promise.all([
+      fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(from)}`).then(r => r.json()),
+      fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(to)}`).then(r => r.json())
+    ]).then(([fromData, toData]) => {
+      if (!fromData[0] || !toData[0]) { alert("Places not found."); return; }
+      const fromCoords = [fromData[0].lat, fromData[0].lon];
+      const toCoords = [toData[0].lat, toData[0].lon];
+
+      fetch(`https://router.project-osrm.org/route/v1/${mode}/${fromCoords[1]},${fromCoords[0]};${toCoords[1]},${toCoords[0]}?overview=full&geometries=geojson`)
+        .then(r => r.json())
+        .then(routeData => {
+          if (routeData.code !== 'Ok') { alert("Route not found."); return; }
+          const route = routeData.routes[0];
+          const distKm = (route.distance / 1000).toFixed(2);
+          const timeMin = Math.round(route.duration / 60);
+          const hours = Math.floor(timeMin / 60);
+          const mins = timeMin % 60;
+          let durationStr = "";
+          if (hours > 0) durationStr += `${hours} hr `;
+          durationStr += `${mins} min`;
+
+          alert(`Distance: ${distKm} km | Duration: ${durationStr}`);
+
+          if (routeLayer) map.removeLayer(routeLayer);
+          routeLayer = L.geoJSON(route.geometry, { color: '#007B8F' }).addTo(map);
+
+          if (startMarker) map.removeLayer(startMarker);
+          if (endMarker) map.removeLayer(endMarker);
+          startMarker = L.marker(fromCoords).addTo(map).bindPopup("Start").openPopup();
+          endMarker = L.marker(toCoords).addTo(map).bindPopup("End").openPopup();
+
+          map.fitBounds(L.geoJSON(route.geometry).getBounds());
+        });
     });
-  }).catch(()=>{ alert("Something went wrong."); document.getElementById('mapLoader').style.display='none'; });
-}
+  }
 
-function clearRoute() {
-  if (control) { map.removeControl(control); control = null; }
-  if (fromMarker) { map.removeLayer(fromMarker); fromMarker = null; }
-  if (toMarker) { map.removeLayer(toMarker); toMarker = null; }
-  document.getElementById('routeInfo').innerHTML = "";
-  document.getElementById('fromPlace').value = "";
-  document.getElementById('toPlace').value = "";
-}
-
-function copyLink() {
-  navigator.clipboard.writeText(window.location.href)
-  .then(()=>alert("Map link copied to clipboard!"))
-  .catch(()=>alert("Failed to copy link."));
-}
+  function shareRoute() {
+    const from = fromInput.value;
+    const to = toInput.value;
+    if (!from || !to) { alert("Enter both places"); return; }
+    const msg = `Check this travel route from ${from} to ${to}!`;
+    if (navigator.share) {
+      navigator.share({ title: 'RouteRush Travel Route', text: msg, url: location.href });
+    } else {
+      prompt("Copy to share:", `${msg} ${location.href}`);
+    }
+  }
 </script>
+
 </body>
 </html>
