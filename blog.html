@@ -2,187 +2,94 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>RouteRush Blog - Travel Stories</title>
+  <title>Top 20 Indian Destinations — WanderMap</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore the top 20 must-visit places in India with stunning visuals and travel tips.">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', sans-serif; background: #f7f7f7; }
-
-    nav {
-      background: #007B8F;
-      padding: 15px;
-      text-align: center;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 999;
-    }
-    nav a {
-      color: #fff;
-      margin: 0 20px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
-    }
-    nav a:hover { text-decoration: underline; }
-
-    h1 {
-      text-align: center;
-      margin-top: 80px;
-      color: #333;
-      font-size: 32px;
-    }
-
-    .blog-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 20px;
-      padding: 30px;
-      max-width: 1300px;
-      margin: auto;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-      transition: transform 0.3s, opacity 0.5s ease;
-      opacity: 0;
-      animation: fadeIn 1s forwards;
-    }
-    .card:hover { transform: translateY(-6px); }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      transition: transform 0.3s;
-    }
-    .card:hover img {
-      transform: scale(1.03);
-    }
-    .card-content {
-      padding: 15px;
-    }
-    .card-content h2 {
-      font-size: 18px;
-      color: #333;
-      margin-bottom: 8px;
-    }
-    .card-content p {
-      font-size: 14px;
-      color: #555;
-    }
-    .card-content a {
-      display: inline-block;
-      margin-top: 10px;
-      text-decoration: none;
-      color: #FF5E00;
-      font-weight: bold;
-      font-size: 14px;
-    }
-    .card-content a:hover { text-decoration: underline; }
-
-    footer {
-      background: #007B8F;
-      color: #fff;
-      padding: 15px;
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    /* Fade-in animation */
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-
-    /* Modal popup */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7);
-    }
-    .modal-content {
-      background: #fff;
-      margin: 80px auto;
-      padding: 20px;
-      border-radius: 8px;
-      max-width: 500px;
-      position: relative;
-    }
-    .close {
-      position: absolute;
-      top: 8px; right: 12px;
-      font-size: 22px;
-      cursor: pointer;
-      color: #333;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box }
+    body, html { height: 100%; font-family: 'Segoe UI', sans-serif; background: #333; color: #fff; }
+    video#bgvid { position: fixed; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-1; }
+    .overlay { position: relative; z-index:1; padding:20px; background: rgba(0,0,0,0.5); min-height:100vh; }
+    nav { text-align:center; padding:20px }
+    nav a { color:#fff; margin:0 15px; font-size:18px; text-decoration:none }
+    nav a:hover { text-decoration:underline }
+    h1 { text-align:center; margin-bottom:20px; font-size:32px }
+    .place-container { max-width:1200px; margin:auto; display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:20px }
+    .card { background:#222; border-radius:10px; overflow:hidden; opacity:0; transform: translateY(20px); animation:fadeSlide 0.6s forwards }
+    .card img { width:100%; height:180px; object-fit:cover }
+    .card-content { padding:15px }
+    .card-content h2 { font-size:20px; margin-bottom:10px }
+    .card-content p { font-size:14px; color:#ccc; }
+    .card-content a { color:#FF5E00; text-decoration:none; font-weight:bold }
+    @keyframes fadeSlide { to { opacity:1; transform:translateY(0) } }
+    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); }
+    .modal-content { background:#fff; color:#000; padding:20px; margin:80px auto; border-radius:8px; max-width:600px; position:relative }
+    .close { position:absolute; right:15px; top:10px; font-size:24px; cursor:pointer }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="map.html">Map</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="blog.html">Blog</a>
-  <a href="about.html">About</a>
-</nav>
+<video id="bgvid" autoplay muted loop>
+  <source src="https://cdn.videvo.net/videvo_files/video/free/2019-02/large_watermarked/190104_01_IndiaShin_temple_timelapse_1080p_preview.mp4" type="video/mp4">
+</video>
 
-<h1>✈️ 50 Travel Stories & Adventures</h1>
-
-<div class="blog-container" id="blogContainer"></div>
-
-<footer>
-  Follow me: 
-  <a href="https://instagram.com/manik_rao_b" style="color:#fff;">Instagram</a> | 
-  <a href="https://www.youtube.com/@learnandexplorething" style="color:#fff;">YouTube</a><br>
-  © 2025 RouteRush | Travel & Maps
-</footer>
-
-<!-- Modal -->
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2>Travel Story Details</h2>
-    <p>This is a placeholder modal content for your travel story. You can replace this text with a real blog or trip itinerary later.</p>
-  </div>
+<div class="overlay">
+  <nav><a href="index.html">Home</a><a href="blog.html">Blog</a><a href="gallery.html">Gallery</a><a href="about.html">About</a></nav>
+  
+  <h1>🇮🇳 Top 20 Must-Visit Destinations in India</h1>
+  
+  <div class="place-container" id="placeContainer"></div>
 </div>
 
+<!-- Modal -->
+<div id="myModal" class="modal"><div class="modal-content"><span class="close">&times;</span><h2 id="modalTitle"></h2><p id="modalDesc"></p></div></div>
+
 <script>
-  const container = document.getElementById('blogContainer');
-  const modal = document.getElementById('myModal');
-  const closeBtn = document.querySelector('.close');
+const places = [
+  { title:"Taj Mahal, Agra", desc:"Iconic white-marble mausoleum built by Mughal emperor Shah Jahan.", imgQuery:"agra,taj mahal" },
+  { title:"Jaipur Forts", desc:"Historic forts & palaces in the Pink City of Rajasthan.", imgQuery:"jaipur,fort,rajasthan" },
+  { title:"Varanasi Ghats", desc:"Spiritual life on the steps of the Ganges river.", imgQuery:"varanasi,ghats,ganges" },
+  { title:"Kerala Backwaters", desc:"Houseboat cruises among palm-lined canals.", imgQuery:"kerala,backwaters" },
+  { title:"Goa Beaches", desc:"Golden sands, vibrant shacks, and sunset parties.", imgQuery:"goa,beach" },
+  { title:"Himalayan Trek, Uttarakhand", desc:"Breathtaking treks in the snow-capped Himalayas.", imgQuery:"uttarakhand,trek" },
+  { title:"Amritsar Golden Temple", desc:"Sacred Sikh shrine gilded with gold.", imgQuery:"amritsar,golden temple" },
+  { title:"Mysore Palace", desc:"Opulent royal palace in Karnataka’s heritage city.", imgQuery:"mysore,palace" },
+  { title:"Leh-Ladakh", desc:"High-altitude desert, monasteries & lakes.", imgQuery:"leh ladakh" },
+  { title:"Rann of Kutch", desc:"Seasonal salt marshes, cultural festival.", imgQuery:"rann kutch" },
+  { title:"Darjeeling Tea Gardens", desc:"Terraced tea estates with Himalayan views.", imgQuery:"darjeeling,tea garden" },
+  { title:"Andaman Islands", desc:"Crystal-clear beaches & coral reefs.", imgQuery:"andaman,islands,beach" },
+  { title:"Bandhavgarh National Park", desc:"Rich tiger reserve & forest canopies.", imgQuery:"bandhavgarh,tiger reserve" },
+  { title:"Kaziranga National Park", desc:"Home to the one-horned rhino of Assam.", imgQuery:"kaziranga,assam" },
+  { title:"Khajuraho Temples", desc:"UNESCO City of erotic stone carvings.", imgQuery:"khajuraho,temples" },
+  { title:"Sundarbans Mangrove", desc:"Largest delta with Bengal tigers and rivers.", imgQuery:"sundarbans,india" },
+  { title:"Pondicherry", desc:"French colonial quarters and seaside.", imgQuery:"pondicherry,france india" },
+  { title:"Udaipur Lakes", desc:"Romantic palaces and lakeside vistas.", imgQuery:"udaipur,lake" },
+  { title:"Hampi Ruins", desc:"Ancient Vijayanagara empire ruins.", imgQuery:"hampi,ruins" },
+  { title:"Rishikesh & Ganga", desc:"Yoga capital and white-water rafting hub.", imgQuery:"rishikesh,rafting" }
+];
 
-  for (let i = 1; i <= 50; i++) {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.animationDelay = (i * 0.05) + "s";
-    card.innerHTML = `
-      <img src="https://source.unsplash.com/400x300/?travel,landscape,place&sig=${i}" alt="Travel Story ${i}">
-      <div class="card-content">
-        <h2>Travel Story #${i}</h2>
-        <p>An unforgettable adventure to destination number ${i}, filled with beautiful landscapes, local culture and memories.</p>
-        <a href="#" class="openModal">Read More →</a>
-      </div>
-    `;
-    container.appendChild(card);
-  }
+const container = document.getElementById('placeContainer');
+const modal = document.getElementById('myModal');
+const titleEl = document.getElementById('modalTitle');
+const descEl = document.getElementById('modalDesc');
+const closeBtn = document.querySelector('.close');
 
-  // Modal logic
-  document.querySelectorAll('.openModal').forEach(link => {
-    link.onclick = function(e) {
-      e.preventDefault();
-      modal.style.display = "block";
-    }
-  });
+places.forEach((p,i) => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.style.animationDelay = (i*0.05)+'s';
+  card.innerHTML = `<img src="https://source.unsplash.com/400x250/?${encodeURIComponent(p.imgQuery)}" alt="${p.title}"><div class="card-content"><h2>${p.title}</h2><p>${p.desc}</p><a href="#" class="openModal">Read More</a></div>`;
+  container.appendChild(card);
+  card.querySelector('.openModal').onclick = e => {
+    e.preventDefault();
+    titleEl.textContent = p.title;
+    descEl.textContent = p.desc;
+    modal.style.display = 'block';
+  };
+});
 
-  closeBtn.onclick = () => modal.style.display = "none";
-  window.onclick = (e) => { if(e.target == modal) modal.style.display = "none"; }
+closeBtn.onclick = () => modal.style.display = 'none';
+window.onclick = e => { if (e.target==modal) modal.style.display = 'none'; };
 </script>
 
 </body>
