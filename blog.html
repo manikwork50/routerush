@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>RouteRush Blog - 50 Travel Stories</title>
+  <title>RouteRush Blog - Travel Stories</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Segoe UI', sans-serif; background:#f7f7f7; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f7f7f7; }
 
     nav {
-      background: rgba(0,0,0,0.7);
+      background: #007B8F;
       padding: 15px;
       text-align: center;
       position: fixed;
-      top:0;
+      top: 0;
       width: 100%;
       z-index: 999;
     }
@@ -22,20 +22,20 @@
       margin: 0 20px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 17px;
+      font-size: 16px;
     }
     nav a:hover { text-decoration: underline; }
 
     h1 {
-      text-align:center;
-      margin-top:80px;
-      color:#333;
-      font-size: 36px;
+      text-align: center;
+      margin-top: 80px;
+      color: #333;
+      font-size: 32px;
     }
 
     .blog-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
       gap: 20px;
       padding: 30px;
       max-width: 1300px;
@@ -46,23 +46,29 @@
       background: #fff;
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      transition: transform 0.3s, opacity 0.5s ease;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
     }
-    .card:hover { transform: translateY(-5px); }
+    .card:hover { transform: translateY(-6px); }
 
     .card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .card:hover img {
+      transform: scale(1.03);
     }
     .card-content {
       padding: 15px;
     }
     .card-content h2 {
-      font-size: 20px;
+      font-size: 18px;
       color: #333;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .card-content p {
       font-size: 14px;
@@ -74,6 +80,7 @@
       text-decoration: none;
       color: #FF5E00;
       font-weight: bold;
+      font-size: 14px;
     }
     .card-content a:hover { text-decoration: underline; }
 
@@ -83,6 +90,36 @@
       padding: 15px;
       text-align: center;
       margin-top: 40px;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* Modal popup */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+    }
+    .modal-content {
+      background: #fff;
+      margin: 80px auto;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      position: relative;
+    }
+    .close {
+      position: absolute;
+      top: 8px; right: 12px;
+      font-size: 22px;
+      cursor: pointer;
+      color: #333;
     }
   </style>
 </head>
@@ -94,7 +131,6 @@
   <a href="gallery.html">Gallery</a>
   <a href="blog.html">Blog</a>
   <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
 </nav>
 
 <h1>✈️ 50 Travel Stories & Adventures</h1>
@@ -102,28 +138,51 @@
 <div class="blog-container" id="blogContainer"></div>
 
 <footer>
-  Follow me:
+  Follow me: 
   <a href="https://instagram.com/manik_rao_b" style="color:#fff;">Instagram</a> | 
-  <a href="https://www.youtube.com/@learnandexplorething" style="color:#fff;">YouTube</a>
-  <br>© 2025 RouteRush | Travel, Map & Fun
+  <a href="https://www.youtube.com/@learnandexplorething" style="color:#fff;">YouTube</a><br>
+  © 2025 RouteRush | Travel & Maps
 </footer>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Travel Story Details</h2>
+    <p>This is a placeholder modal content for your travel story. You can replace this text with a real blog or trip itinerary later.</p>
+  </div>
+</div>
 
 <script>
   const container = document.getElementById('blogContainer');
+  const modal = document.getElementById('myModal');
+  const closeBtn = document.querySelector('.close');
 
   for (let i = 1; i <= 50; i++) {
     const card = document.createElement('div');
     card.className = 'card';
+    card.style.animationDelay = (i * 0.05) + "s";
     card.innerHTML = `
-      <img src="https://source.unsplash.com/400x300/?travel,place,landscape&sig=${i}" alt="Travel Story ${i}">
+      <img src="https://source.unsplash.com/400x300/?travel,landscape,place&sig=${i}" alt="Travel Story ${i}">
       <div class="card-content">
         <h2>Travel Story #${i}</h2>
-        <p>An unforgettable adventure to destination number ${i}, filled with unique landscapes and memories.</p>
-        <a href="#">Read More →</a>
+        <p>An unforgettable adventure to destination number ${i}, filled with beautiful landscapes, local culture and memories.</p>
+        <a href="#" class="openModal">Read More →</a>
       </div>
     `;
     container.appendChild(card);
   }
+
+  // Modal logic
+  document.querySelectorAll('.openModal').forEach(link => {
+    link.onclick = function(e) {
+      e.preventDefault();
+      modal.style.display = "block";
+    }
+  });
+
+  closeBtn.onclick = () => modal.style.display = "none";
+  window.onclick = (e) => { if(e.target == modal) modal.style.display = "none"; }
 </script>
 
 </body>
