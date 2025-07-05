@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>WanderMap — Route & Weather</title>
+  <title>WanderMap — Map, Routes & Weather</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { margin:0; font-family:'Segoe UI', sans-serif; background:#f5f5f5; }
@@ -16,17 +16,62 @@
     }
     nav a:hover { color: #FF5E00; }
     #map { height: 85vh; margin-top: 120px; }
-    .controls {
-      text-align:center; margin:15px;
-    }
+    .controls { text-align:center; margin:15px; }
     input, select, button {
-      padding: 8px; margin: 6px; border: 1px solid #ccc; border-radius: 5px;
-      font-size: 14px;
+      padding: 8px; margin: 6px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;
     }
-    button {
-      background: #007B8F; color: #fff; border: none;
-    }
+    button { background: #007B8F; color: #fff; border: none; }
     button:hover { background: #005f6e; cursor:pointer; }
+
+    .weather-box {
+      position: fixed; bottom: 20px; left: 20px;
+      background: #fff; color: #333;
+      border-radius: 8px; padding: 14px 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      font-size: 14px; line-height: 1.6;
+      z-index: 20; display: none; cursor: move;
+    }
+    .weather-box h4 {
+      margin: 0 0 6px; font-size: 16px; color: #007B8F;
+    }
+
+    /* Loading Spinner */
+    .spinner-overlay {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255,255,255,0.8);
+      z-index: 9999; display: flex;
+      align-items: center; justify-content: center;
+    }
+    .spinner {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #FF5E00;
+      border-radius: 50%;
+      width: 60px; height: 60px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform:rotate(0deg); }
+      100% { transform:rotate(360deg); }
+    }
+
+    /* Back to Top button */
+    .back-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #FF5E00;
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 50%;
+      font-size: 18px;
+      text-align: center;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: none;
+    }
+    .back-top:hover { background: #FF8020; }
   </style>
 </head>
 <body>
@@ -53,13 +98,29 @@
 
 <div id="map"></div>
 
+<!-- Weather Box -->
+<div class="weather-box" id="weatherBox">
+  <h4>🌦️ Weather Info</h4>
+  <div id="weatherDetails">Click on the map to see weather.</div>
+</div>
+
+<!-- Loading Spinner -->
+<div class="spinner-overlay" id="spinner">
+  <div class="spinner"></div>
+</div>
+
+<!-- Back to Top button -->
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</div>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiM_R3u7K9pIm9vrg7-XVz-AR2WLeRC-k&libraries=places&callback=initMap" async defer></script>
 <script>
 let map, directionsService, directionsRenderer;
 
 function initMap() {
+  document.getElementById("spinner").style.display = "none";
+
   map = new google.maps.Map(document.getElementById("map"), {
-    center: {lat: 22.9734, lng: 78.6569},
+    center: {lat:22.9734, lng:78.6569},
     zoom: 5,
     styles: [
       { elementType: 'geometry', stylers: [{color:'#f5f5f5'}] },
@@ -76,7 +137,6 @@ function initMap() {
   new google.maps.places.Autocomplete(document.getElementById("from"));
   new google.maps.places.Autocomplete(document.getElementById("to"));
 
-  // Click anywhere on map to show weather
   map.addListener("click", (e) => {
     const lat = e.latLng.lat();
     const lng = e.latLng.lng();
@@ -112,18 +172,54 @@ function calcRoute() {
   });
 }
 
-// Fetch and display weather on click
 function fetchWeather(lat, lng) {
-  const apiKey = "86f8e6c59d5f77cc6f8c5a354f20f6f9"; // replace if needed
+  const apiKey = "86f8e6c59d5f77cc6f8c5a354f20f6f9";
   fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=${apiKey}`)
     .then(res => res.json())
     .then(data => {
-      alert(`🌦️ ${data.name}: ${data.weather[0].main}, ${data.main.temp}°C`);
+      const weatherDiv = document.getElementById("weatherDetails");
+      const box = document.getElementById("weatherBox");
+      weatherDiv.innerHTML = `
+        <strong>📍 ${data.name}</strong><br>
+        ${data.weather[0].description}<br>
+        🌡️ Temp: ${data.main.temp}°C<br>
+        💨 Wind: ${data.wind.speed} m/s
+      `;
+      box.style.display = "block";
     })
-    .catch(() => alert("Could not fetch weather data."));
+    .catch(() => {
+      document.getElementById("weatherDetails").innerHTML = "Could not fetch weather data.";
+    });
 }
 
-window.initMap = initMap;
+dragElement(document.getElementById("weatherBox"));
+function dragElement(elmnt) {
+  let pos1=0, pos2=0, pos3=0, pos4=0;
+  elmnt.onmousedown = dragMouseDown;
+  function dragMouseDown(e) {
+    e.preventDefault();
+    pos3 = e.clientX; pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+  function elementDrag(e) {
+    e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX; pos4 = e.clientY;
+    elmnt.style.top = (elmnt.offsetTop - pos2)+"px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1)+"px";
+  }
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+
+// Show Back-to-Top button when scrolled down
+window.onscroll = function() {
+  document.getElementById("backTop").style.display = window.scrollY > 200 ? "block" : "none";
+}
 </script>
 
 </body>
