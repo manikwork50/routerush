@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>WanderMap — Categorized Travel Gallery</title>
+  <title>WanderMap — Paginated Travel Gallery</title>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
@@ -26,24 +26,6 @@
     }
     nav a:hover { color: #FFB347; }
 
-    .filter-buttons {
-      text-align: center;
-      margin: 20px;
-    }
-    .filter-buttons button {
-      background: #333;
-      color: #fff;
-      border: none;
-      padding: 8px 16px;
-      margin: 8px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    .filter-buttons button:hover, .filter-buttons button.active {
-      background: #FF5E00;
-    }
-
     .gallery {
       max-width: 1200px;
       margin: 20px auto;
@@ -63,7 +45,24 @@
     }
     .gallery img:hover { transform: scale(1.04); }
 
-    /* Lightbox */
+    .load-more {
+      text-align: center;
+      margin: 30px;
+    }
+    .load-more button {
+      background: #FF5E00;
+      color: #fff;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .load-more button:hover {
+      background: #FF8020;
+    }
+
     .lightbox {
       position: fixed;
       top:0; left:0;
@@ -110,16 +109,11 @@
   <a href="contact.html">Contact</a>
 </nav>
 
-<div class="filter-buttons">
-  <button class="active" onclick="filterGallery('all')">All</button>
-  <button onclick="filterGallery('Beaches')">Beaches</button>
-  <button onclick="filterGallery('Mountains')">Mountains</button>
-  <button onclick="filterGallery('Temples')">Temples</button>
-  <button onclick="filterGallery('Cities')">Cities</button>
-  <button onclick="filterGallery('Wildlife')">Wildlife</button>
-</div>
-
 <div class="gallery" id="gallery"></div>
+
+<div class="load-more" id="loadMoreContainer">
+  <button onclick="loadImages()">Load More</button>
+</div>
 
 <div class="lightbox" id="lightbox" onclick="this.style.display='none'">
   <img id="lightboxImg" src="" alt="Preview">
@@ -131,46 +125,50 @@
 
 <script>
 const images = [
-  {src:'img/goa_beach.jpg', category:'Beaches'},
-  {src:'img/ladakh_pass.jpg', category:'Mountains'},
-  {src:'img/kedarnath_temple.jpg', category:'Temples'},
-  {src:'img/mysore.jpg', category:'Cities'},
-  {src:'img/varanasi_ghat.jpg', category:'Temples'},
-  {src:'img/shimla_snow.jpg', category:'Mountains'},
-  {src:'img/rishikesh_rafting.jpg', category:'Wildlife'},
-  {src:'img/Taj Mahal_blog.jpg', category:'Cities'},
-  {src:'img/hampi_ruins.jpg', category:'Temples'},
-  {src:'img/jaipur_fort.jpg', category:'Cities'}
+  'img/goa_beach.jpg',
+  'img/ladakh_pass.jpg',
+  'img/kedarnath_temple.jpg',
+  'img/mysore.jpg',
+  'img/varanasi_ghat.jpg',
+  'img/shimla_snow.jpg',
+  'img/rishikesh_rafting.jpg',
+  'img/Taj Mahal_blog.jpg',
+  'img/hampi_ruins.jpg',
+  'img/jaipur_fort.jpg',
+  'img/amritsar_golden_temple.jpg',
+  'img/nature-home-bg.jpg'
 ];
 
+let currentIndex = 0;
+const imagesPerPage = 6;
 const gallery = document.getElementById("gallery");
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightboxImg");
 
-function renderGallery(filter='all') {
-  gallery.innerHTML = '';
-  const filteredImages = filter === 'all' ? images : images.filter(img => img.category === filter);
-  filteredImages.forEach(item => {
+function loadImages() {
+  const end = currentIndex + imagesPerPage;
+  const slicedImages = images.slice(currentIndex, end);
+
+  slicedImages.forEach(src => {
     const img = document.createElement("img");
-    img.src = item.src;
-    img.alt = item.category;
+    img.src = src;
+    img.alt = "Destination";
     img.onclick = () => {
-      lightboxImg.src = item.src;
+      lightboxImg.src = src;
       lightbox.style.display = "flex";
     };
     gallery.appendChild(img);
   });
+
+  currentIndex += imagesPerPage;
+
+  if (currentIndex >= images.length) {
+    document.getElementById("loadMoreContainer").style.display = "none";
+  }
 }
 
-// Initialize
-renderGallery();
-
-// Filter Buttons
-function filterGallery(category) {
-  renderGallery(category);
-  document.querySelectorAll('.filter-buttons button').forEach(btn => btn.classList.remove('active'));
-  document.querySelector(`.filter-buttons button[onclick="filterGallery('${category}')"]`).classList.add('active');
-}
+// Load initial images
+loadImages();
 </script>
 
 </body>
