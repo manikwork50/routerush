@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>About WanderMap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
       font-family:'Segoe UI', sans-serif;
       color:#333;
       background: #f7f7f7;
-      overflow-x:hidden;
     }
     nav {
       background: #fff;
@@ -27,38 +27,37 @@
     nav a:hover {
       color: #FF5E00;
     }
-    .about-container {
-      max-width: 800px;
-      margin: 60px auto 40px;
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
       padding: 20px;
-      text-align: center;
-      animation: fadeIn 1.5s ease;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      line-height: 1.8;
     }
     h1 {
-      font-size: 3em;
-      color: #007B8F;
+      font-size: 2.5em;
       margin-bottom: 20px;
+      color: #007B8F;
+      text-align: center;
+    }
+    h2 {
+      color: #FF5E00;
+      margin-top: 30px;
     }
     p {
-      font-size: 1.1em;
-      line-height: 1.8em;
+      font-size: 1.05em;
       color: #555;
-      margin-bottom: 16px;
-    }
-    .highlight {
-      color: #FF5E00;
-      font-weight: 600;
+      margin-bottom: 20px;
     }
     footer {
       background: #fff;
       color: #777;
       text-align: center;
       padding: 16px;
-      margin-top: 50px;
+      margin-top: 60px;
       border-top: 1px solid #eee;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; } to { opacity: 1; }
     }
   </style>
 </head>
@@ -73,6 +72,37 @@
   <a href="contact.html">Contact</a>
 </nav>
 
-<div class="about-container">
-  <h1>About WanderMap</h1>
-  <p><strong>WanderMap</strong> is your ultimate travel companion designed to help you discover, plan, and experience the b
+<div class="container">
+  <h1>🌍 About WanderMap</h1>
+
+  <p>Welcome to <strong>WanderMap</strong> — your ultimate travel companion for discovering places, calculating accurate travel routes, viewing live travel durations for multiple modes (Car, Walk, Cycle, Bus, Train), and getting real-time destination weather, all powered by <strong>Google Maps API</strong>.</p>
+
+  <h2>👨‍💻 About the Founder</h2>
+  <p>Hi, I'm <strong>Manik Rao</strong>, a passionate traveler, web developer, and explorer from India. I founded WanderMap because of my personal need for a platform where travelers could effortlessly plan routes, compare travel times for various transportation modes, view weather forecasts, and discover hidden destinations — all in one place with a clean, intuitive interface.</p>
+
+  <h2>🚀 Why I Built WanderMap</h2>
+  <p>While traveling, I constantly found myself juggling between multiple apps for route distances, weather updates, and location details. I wanted to create a unified, easy-to-use, free tool for fellow travelers and explorers to plan better journeys. With WanderMap, you can:</p>
+
+  <ul style="margin: 20px 0 20px 30px; color:#555;">
+    <li>📍 Calculate distance and duration for different travel modes using <strong>Google Maps API</strong></li>
+    <li>🌦️ View real-time destination weather</li>
+    <li>🗺️ Explore curated destination galleries and travel stories</li>
+    <li>🛤️ Seamlessly switch between car, walk, cycle, train, and bus routes</li>
+    <li>🎒 Discover top travel destinations across India and the world</li>
+  </ul>
+
+  <p>WanderMap is my humble attempt to make travel smarter, simpler, and more enjoyable for all of us who love exploring this beautiful planet.</p>
+
+  <h2>🔧 Built With</h2>
+  <p>💻 Developed using <strong>HTML5, CSS3, JavaScript</strong> and integrates <strong>Google Maps JavaScript API</strong> for live routing and travel data. It also utilizes <strong>OpenWeather API</strong> for weather updates and <strong>Unsplash</strong> for destination images.</p>
+
+  <p>If you have ideas, feedback, or would like to collaborate — <a href="contact.html" style="color:#FF5E00; font-weight:bold;">reach out here</a>. I’d love to hear from you!</p>
+
+</div>
+
+<footer>
+  &copy; 2025 WanderMap | Created & Managed by Manik Rao | Travel Better 🌏
+</footer>
+
+</body>
+</html>
