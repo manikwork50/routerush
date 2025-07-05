@@ -15,13 +15,28 @@
       color: #333; margin: 0 18px; text-decoration: none; font-weight: bold;
     }
     nav a:hover { color: #FF5E00; }
-    #map { height: 85vh; margin-top: 120px; }
-    .controls { text-align:center; margin:15px; }
+
+    .controls {
+      position: fixed;
+      top: 58px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      background: #fff;
+      padding: 10px 0;
+      z-index: 15;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
     input, select, button {
       padding: 8px; margin: 6px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;
     }
     button { background: #007B8F; color: #fff; border: none; }
     button:hover { background: #005f6e; cursor:pointer; }
+
+    #map {
+      height: calc(100vh - 130px);
+      margin-top: 108px;
+    }
 
     .weather-box {
       position: fixed; bottom: 20px; left: 20px;
@@ -35,7 +50,6 @@
       margin: 0 0 6px; font-size: 16px; color: #007B8F;
     }
 
-    /* Loading Spinner */
     .spinner-overlay {
       position: fixed; top: 0; left: 0;
       width: 100%; height: 100%;
@@ -55,7 +69,6 @@
       100% { transform:rotate(360deg); }
     }
 
-    /* Back to Top button */
     .back-top {
       position: fixed;
       bottom: 20px;
@@ -98,18 +111,15 @@
 
 <div id="map"></div>
 
-<!-- Weather Box -->
 <div class="weather-box" id="weatherBox">
   <h4>🌦️ Weather Info</h4>
   <div id="weatherDetails">Click on the map to see weather.</div>
 </div>
 
-<!-- Loading Spinner -->
 <div class="spinner-overlay" id="spinner">
   <div class="spinner"></div>
 </div>
 
-<!-- Back to Top button -->
 <div class="back-top" id="backTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiM_R3u7K9pIm9vrg7-XVz-AR2WLeRC-k&libraries=places&callback=initMap" async defer></script>
@@ -216,7 +226,6 @@ function dragElement(elmnt) {
   }
 }
 
-// Show Back-to-Top button when scrolled down
 window.onscroll = function() {
   document.getElementById("backTop").style.display = window.scrollY > 200 ? "block" : "none";
 }
