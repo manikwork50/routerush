@@ -2,19 +2,19 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>WanderMap — Full Google Maps Route</title>
+  <title>WanderMap Dark — Route & Weather</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    html, body { height: 100%; margin: 0; padding: 0; }
+    html, body { height: 100%; margin: 0; padding: 0; background: #111; color: #eee; }
     #map { height: 100%; }
     #panel {
       position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
-      z-index: 5; background: #fff; padding: 10px; border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3); display: flex; gap: 8px;
+      z-index: 5; background: #222; color: #fff; padding: 10px; border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5); display: flex; gap: 8px;
     }
     #panel input, #panel button {
-      padding: 8px; border: 1px solid #ccc; border-radius: 4px;
-      font-size: 14px;
+      padding: 8px; border: 1px solid #555; border-radius: 4px;
+      background: #333; color: #fff;
     }
     #modeBtns button {
       padding: 8px 12px; margin: 0 2px; border: none;
@@ -22,9 +22,8 @@
     }
     #output {
       position: absolute; bottom: 20px; left: 20px;
-      background: rgba(255,255,255,0.9); padding: 10px;
-      border-radius: 6px; box-shadow: 0 0 5px rgba(0,0,0,0.2);
-      font-family: sans-serif; font-size: 14px;
+      background: rgba(30,30,30,0.95); color: #fff;
+      padding: 10px; border-radius: 6px; font-family: sans-serif;
     }
   </style>
 </head>
@@ -47,63 +46,63 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiM_R3u7K9pIm9vrg7-XVz-AR2WLeRC-k&libraries=places"></script>
 <script>
-  let map, directionsService, directionsRenderer, travelMode = 'DRIVING';
+let map, directionsService, directionsRenderer, travelMode = 'DRIVING';
 
-  function initMap() {
-    map = new google.maps.Map(document.getElementById("map"), {
-      center: {lat: 21.1458, lng: 79.0882}, zoom: 5
-    });
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: {lat: 22.9734, lng: 78.6569}, zoom: 5,
+    styles: [ { elementType: 'geometry', stylers: [{color: '#1d2c4d'}] },
+      { elementType: 'labels.text.stroke', stylers: [{color: '#1a3646'}] },
+      { elementType: 'labels.text.fill', stylers: [{color: '#8ec3b9'}] },
+      { featureType: 'water', stylers: [{color: '#17263c'}] }]
+  });
 
-    directionsService = new google.maps.DirectionsService();
-    directionsRenderer = new google.maps.DirectionsRenderer({ map });
+  directionsService = new google.maps.DirectionsService();
+  directionsRenderer = new google.maps.DirectionsRenderer({ map });
 
-    const fromInput = new google.maps.places.Autocomplete(document.getElementById("from"));
-    const toInput = new google.maps.places.Autocomplete(document.getElementById("to"));
-  }
+  const fromInput = new google.maps.places.Autocomplete(document.getElementById("from"));
+  const toInput = new google.maps.places.Autocomplete(document.getElementById("to"));
+}
 
-  function setMode(mode) {
-    travelMode = mode;
-  }
+function setMode(mode) {
+  travelMode = mode;
+}
 
-  function calcRoute() {
-    const from = document.getElementById("from").value;
-    const to = document.getElementById("to").value;
-    if (!from || !to) { alert("Please enter both places."); return; }
+function calcRoute() {
+  const from = document.getElementById("from").value;
+  const to = document.getElementById("to").value;
+  if (!from || !to) return alert("Enter both places.");
 
-    const request = {
-      origin: from, destination: to, travelMode
-    };
+  directionsService.route({
+    origin: from, destination: to, travelMode
+  }, (result, status) => {
+    if (status === 'OK') {
+      directionsRenderer.setDirections(result);
+      const leg = result.routes[0].legs[0];
+      document.getElementById("output").innerHTML =
+        `<strong>Distance:</strong> ${leg.distance.text}<br>
+         <strong>Duration:</strong> ${leg.duration.text}`;
+      fetchWeather(to);
+    } else {
+      alert("Routing failed: " + status);
+    }
+  });
+}
 
-    directionsService.route(request, (result, status) => {
-      if (status === 'OK') {
-        directionsRenderer.setDirections(result);
-        const leg = result.routes[0].legs[0];
-        document.getElementById("output").innerHTML =
-          `<strong>Distance:</strong> ${leg.distance.text}<br>
-           <strong>Duration:</strong> ${leg.duration.text}`;
-        fetchWeather(to);
-      } else {
-        alert("Route failed: " + status);
-      }
-    });
-  }
+function fetchWeather(city) {
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=02913f6d96135db7a1f6cdbfca5a1792&units=metric`)
+  .then(res => res.json())
+  .then(data => {
+    const temp = data.main.temp;
+    const desc = data.weather[0].description;
+    const icon = data.weather[0].icon;
+    document.getElementById("output").innerHTML +=
+      `<br><strong>${city}:</strong> ${temp}°C, ${desc}
+       <img src="https://openweathermap.org/img/wn/${icon}.png">`;
+  }).catch(()=>{ document.getElementById("output").innerHTML += "<br>Weather unavailable."; });
+}
 
-  function fetchWeather(city) {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=02913f6d96135db7a1f6cdbfca5a1792&units=metric`)
-    .then(res => res.json())
-    .then(data => {
-      const temp = data.main.temp;
-      const desc = data.weather[0].description;
-      const icon = data.weather[0].icon;
-      document.getElementById("output").innerHTML +=
-        `<br><strong>${city}:</strong> ${temp}°C, ${desc} <img src="https://openweathermap.org/img/wn/${icon}@2x.png">`;
-    })
-    .catch(() => {
-      document.getElementById("output").innerHTML += "<br>Weather unavailable.";
-    });
-  }
-
-  window.onload = initMap;
+window.onload = initMap;
 </script>
 
 </body>
