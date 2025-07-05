@@ -58,12 +58,14 @@
 </head>
 <body>
 
+<!-- ✅ Navigation Bar -->
 <nav>
-  <a href="#">Home</a>
-  <a href="#">Map</a>
-  <a href="#">Gallery</a>
+  <a href="index.html">Home</a>
+  <a href="map.html">Map</a>
+  <a href="gallery.html">Gallery</a>
 </nav>
 
+<!-- ✅ Route Controls -->
 <div class="controls">
   <input id="from" placeholder="From location">
   <input id="to" placeholder="To location">
@@ -85,19 +87,22 @@
   </div>
 </div>
 
+<!-- ✅ Map -->
 <div id="map"></div>
 
+<!-- ✅ Loading Spinner -->
 <div class="spinner-overlay" id="spinner">
   <div class="spinner"></div>
 </div>
 
-<!-- Modal -->
+<!-- ✅ Travel Details Modal -->
 <div class="modal" id="routeDetailsModal">
   <h3>🛣️ Travel Details</h3>
   <div id="routeDetailsContent" style="font-size:14px; line-height:1.6;"></div>
   <button onclick="document.getElementById('routeDetailsModal').style.display='none'">Close</button>
 </div>
 
+<!-- ✅ Google Maps Script -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiM_R3u7K9pIm9vrg7-XVz-AR2WLeRC-k&libraries=places&callback=initMap" async defer></script>
 <script>
 let map, directionsService, directionsRenderer, geoCoder;
@@ -115,7 +120,6 @@ function initMap() {
   geoCoder = new google.maps.Geocoder();
 }
 
-// Main function
 function calcRoute() {
   const from = document.getElementById("from").value;
   const to = document.getElementById("to").value;
@@ -123,13 +127,12 @@ function calcRoute() {
   if (!from || !to) { alert("Enter both locations."); return; }
 
   if (mode === "FLIGHT") {
-    // Get coordinates and calculate air distance
     Promise.all([
       getCoords(from),
       getCoords(to)
     ]).then(([fromCoords, toCoords]) => {
       const distance = haversine(fromCoords.lat, fromCoords.lng, toCoords.lat, toCoords.lng).toFixed(1);
-      const hours = Math.ceil(distance / 600); // 600 km/h flight speed
+      const hours = Math.ceil(distance / 600);
       let content = `<strong>From:</strong> ${from}<br><strong>To:</strong> ${to}<br>
         <strong>Mode:</strong> ✈️ By Air<br><strong>Distance:</strong> ${distance} km<br>
         <strong>Est. Time:</strong> ${hours} hr(s)<br>
@@ -168,7 +171,6 @@ function calcRoute() {
   });
 }
 
-// Get LatLng from address
 function getCoords(address) {
   return new Promise((resolve, reject) => {
     geoCoder.geocode({ address }, (results, status) => {
@@ -182,9 +184,8 @@ function getCoords(address) {
   });
 }
 
-// Haversine formula for air distance
 function haversine(lat1, lon1, lat2, lon2) {
-  const R = 6371; // Radius of Earth in km
+  const R = 6371;
   const dLat = deg2rad(lat2-lat1);
   const dLon = deg2rad(lon2-lon1);
   const a =
