@@ -33,16 +33,14 @@
     }
     nav a {
       color: #fff;
-      margin: 0 18px;
+      margin: 0 14px;
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s;
     }
-    nav a:hover {
-      color: #FFB347;
-    }
+    nav a:hover { color: #FFB347; }
     .hero {
-      padding: 80px 20px;
+      padding: 80px 20px 40px;
       text-align: center;
       animation: fadeIn 2s ease;
     }
@@ -52,45 +50,70 @@
       margin-bottom: 20px;
     }
     .hero p {
-      font-size: 1.3em;
+      font-size: 1.2em;
       line-height: 1.6;
       max-width: 800px;
       margin: 0 auto;
       color: #ddd;
     }
     .cta-buttons {
-      margin-top: 40px;
-      animation: fadeInUp 2s ease;
+      margin-top: 30px;
     }
     .cta-buttons a {
       display: inline-block;
-      margin: 10px;
-      padding: 14px 28px;
+      margin: 8px;
+      padding: 14px 26px;
       background: #FF5E00;
       color: #fff;
       border-radius: 30px;
       text-decoration: none;
       font-weight: bold;
-      transition: background 0.3s;
     }
-    .cta-buttons a:hover {
-      background: #FFB347;
+    .cta-buttons a:hover { background: #FFB347; }
+    .ad-container, .affiliate-wrap, .sponsored-wrap, .donate-wrap {
+      margin: 40px auto;
+      padding: 10px;
+      text-align: center;
+      max-width: 1000px;
+    }
+    .affiliate-card, .sponsored-card {
+      display: inline-block;
+      background: #fff;
+      color: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 300px;
+      margin: 12px;
+      text-align: left;
+    }
+    .affiliate-card img, .sponsored-card img {
+      width:100%; height:160px; object-fit:cover;
+    }
+    .affiliate-card div, .sponsored-card div {
+      padding: 12px;
+    }
+    .affiliate-card a, .sponsored-card a {
+      display:inline-block;
+      margin-top: 8px;
+      padding: 8px 12px;
+      background:#FF5E00;
+      color:#fff;
+      border-radius:4px;
+      text-decoration:none;
+    }
+    .donate-wrap a {
+      background:#FFB347;
+      padding:12px 20px;
+      color:#fff;
+      text-decoration:none;
+      border-radius:30px;
     }
     footer {
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.85);
       color: #fff;
       text-align: center;
       padding: 16px;
-      margin-top: 60px;
-      position: relative;
-      z-index: 2;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; } to { opacity: 1; }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -104,24 +127,85 @@
   <a href="map.html">Map</a>
   <a href="gallery.html">Gallery</a>
   <a href="blog.html">Blog</a>
+  <a href="deals.html">Deals</a>
   <a href="about.html">About</a>
   <a href="contact.html">Contact</a>
 </nav>
 
 <div class="hero">
   <h1>Welcome to WanderMap 🌍</h1>
-  <p>Your personal travel guide to hidden gems, road trip routes, adventure destinations, and local experiences across India and beyond. Discover itineraries, live maps, weather, stories and more — all crafted for the curious traveler in you.</p>
-
+  <p>Your personal travel guide to hidden gems, road trip routes, adventure destinations, and curated itineraries across India and beyond.</p>
   <div class="cta-buttons">
     <a href="map.html">Explore Map</a>
-    <a href="blog.html">Read Travel Stories</a>
-    <a href="gallery.html">View Gallery</a>
+    <a href="deals.html">Travel Deals</a>
+    <a href="blog.html">Read Stories</a>
   </div>
 </div>
 
+<!-- AdSense Banner -->
+<div class="ad-container">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632"
+     crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block; text-align:center;"
+       data-ad-client="ca-pub-8124807245840632"
+       data-ad-slot="1234567890"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<!-- Affiliate Marketing Cards -->
+<div class="affiliate-wrap">
+  <h2 style="color:#FFB347;">🔥 Top Travel Deals</h2>
+  <div class="affiliate-card">
+    <img src="https://source.unsplash.com/400x200/?hotel">
+    <div>
+      <h4>50% Off on Hotels</h4>
+      <p>Massive discounts on top hotels via Booking.com</p>
+      <a href="https://www.booking.com/?aid=your_aff_id" target="_blank">Book Now</a>
+    </div>
+  </div>
+  <div class="affiliate-card">
+    <img src="https://source.unsplash.com/400x200/?flight">
+    <div>
+      <h4>Lowest Flight Fares</h4>
+      <p>Compare & book cheap flights via Skyscanner</p>
+      <a href="https://www.skyscanner.co.in?affiliate_id=your_aff_id" target="_blank">Check Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- Sponsored Listings -->
+<div class="sponsored-wrap">
+  <h2 style="color:#FFB347;">🎖️ Sponsored Listings</h2>
+  <div class="sponsored-card">
+    <img src="https://source.unsplash.com/400x200/?resort">
+    <div>
+      <h4>Eco Retreat Goa</h4>
+      <p>Cottages starting ₹2999/night with private beach.</p>
+      <a href="https://ecoretreatgoa.com" target="_blank">Visit</a>
+    </div>
+  </div>
+  <div class="sponsored-card">
+    <img src="https://source.unsplash.com/400x200/?cab">
+    <div>
+      <h4>WanderCab Rentals</h4>
+      <p>Self-drive cars starting ₹1500/day across India.</p>
+      <a href="https://wandercabrentals.com" target="_blank">Book Ride</a>
+    </div>
+  </div>
+</div>
+
+<!-- Donations -->
+<div class="donate-wrap">
+  <h3>❤️ Support WanderMap</h3>
+  <p>If you love our travel guides, you can buy me a coffee ☕</p>
+  <a href="https://www.buymeacoffee.com/yourusername" target="_blank">Buy Me a Coffee</a>
+</div>
+
 <footer>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632"
-     crossorigin="anonymous"></script>  &copy; 2025 WanderMap | Created & Managed by Manik Rao | Travel Better 🌏
+  &copy; 2025 WanderMap | Created by Manik Rao | Travel Better 🌏
 </footer>
 
 </body>
