@@ -2,32 +2,77 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>WanderMap Dark — Route & Weather</title>
+  <title>WanderMap — Explore Routes & Weather</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    html, body { height: 100%; margin: 0; padding: 0; background: #111; color: #eee; }
-    #map { height: 100%; }
+    html, body { margin:0; padding:0; height:100%; font-family:'Segoe UI',sans-serif; background:#111; color:#eee; }
+    nav {
+      position: fixed; top:0; left:0; width:100%;
+      background: rgba(0,0,0,0.7); padding: 12px; text-align:center; z-index: 999;
+    }
+    nav a {
+      color: #fff; margin: 0 15px; text-decoration: none; font-weight: bold;
+    }
+    nav a:hover { color: #FF5E00; }
+    .hero-container {
+      width:100%; height:300px; overflow:hidden;
+      position:relative; top: 48px;
+    }
+    .hero-container video {
+      width:100%; height:300px; object-fit:cover;
+    }
+    .hero-overlay {
+      position:absolute; top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.35); display:flex; align-items:center;
+      justify-content:center; color:#fff; font-size:32px; font-weight:bold;
+    }
+    #map { height: calc(100% - 420px); margin-top: 370px; }
     #panel {
-      position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
-      z-index: 5; background: #222; color: #fff; padding: 10px; border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.5); display: flex; gap: 8px;
+      position:absolute; top: 320px; left:50%; transform:translateX(-50%);
+      z-index:5; background:#222; padding:8px; border-radius:6px;
+      display:flex; flex-wrap:wrap; gap:8px;
     }
     #panel input, #panel button {
-      padding: 8px; border: 1px solid #555; border-radius: 4px;
-      background: #333; color: #fff;
+      padding:8px; border:1px solid #555; border-radius:4px;
+      background:#333; color:#fff;
     }
     #modeBtns button {
-      padding: 8px 12px; margin: 0 2px; border: none;
-      background: #FF5E00; color: #fff; border-radius: 4px; cursor: pointer;
+      padding:8px 12px; margin:0 2px; border:none;
+      background:#FF5E00; color:#fff; border-radius:4px; cursor:pointer;
     }
     #output {
-      position: absolute; bottom: 20px; left: 20px;
-      background: rgba(30,30,30,0.95); color: #fff;
-      padding: 10px; border-radius: 6px; font-family: sans-serif;
+      position:absolute; bottom:10px; left:10px;
+      background: rgba(30,30,30,0.95); color:#fff;
+      padding:10px; border-radius:6px; font-size:14px;
     }
+    .social-share {
+      position:fixed; top:50%; left:0; transform:translateY(-50%);
+      background: rgba(0,0,0,0.7); border-radius:0 5px 5px 0;
+      padding:8px 4px; z-index:999;
+    }
+    .social-share a {
+      display:block; color:#fff; font-size:22px; margin:12px 6px;
+      text-decoration:none;
+    }
+    .social-share a:hover { color:#FF5E00; }
   </style>
 </head>
 <body>
+
+<nav>
+  <a href="index.html">🏠 Home</a>
+  <a href="map.html">🗺️ Map</a>
+  <a href="blog.html">📝 Blog</a>
+  <a href="gallery.html">🖼️ Gallery</a>
+  <a href="contact.html">📞 Contact</a>
+</nav>
+
+<div class="hero-container">
+  <video autoplay muted loop playsinline>
+    <source src="https://cdn.coverr.co/videos/coverr-mountain-scenery-9165/1080p.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay">Explore India with WanderMap 🗺️</div>
+</div>
 
 <div id="panel">
   <input id="from" placeholder="From">
@@ -44,29 +89,34 @@
 <div id="map"></div>
 <div id="output"></div>
 
+<div class="social-share">
+  <a href="https://api.whatsapp.com/send?text=Check%20WanderMap!%20https://wandermap.in" target="_blank">💬</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://wandermap.in" target="_blank">📘</a>
+  <a href="https://twitter.com/intent/tweet?text=Check%20WanderMap!%20https://wandermap.in" target="_blank">🐦</a>
+  <a href="mailto:?subject=WanderMap&body=Explore%20on%20https://wandermap.in">✉️</a>
+</div>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiM_R3u7K9pIm9vrg7-XVz-AR2WLeRC-k&libraries=places"></script>
 <script>
 let map, directionsService, directionsRenderer, travelMode = 'DRIVING';
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: {lat: 22.9734, lng: 78.6569}, zoom: 5,
-    styles: [ { elementType: 'geometry', stylers: [{color: '#1d2c4d'}] },
-      { elementType: 'labels.text.stroke', stylers: [{color: '#1a3646'}] },
-      { elementType: 'labels.text.fill', stylers: [{color: '#8ec3b9'}] },
-      { featureType: 'water', stylers: [{color: '#17263c'}] }]
+    center: {lat:22.9734, lng:78.6569}, zoom:5,
+    styles:[{elementType:'geometry',stylers:[{color:'#1d2c4d'}]},
+      {elementType:'labels.text.stroke',stylers:[{color:'#1a3646'}]},
+      {elementType:'labels.text.fill',stylers:[{color:'#8ec3b9'}]},
+      {featureType:'water',stylers:[{color:'#17263c'}]}]
   });
 
   directionsService = new google.maps.DirectionsService();
   directionsRenderer = new google.maps.DirectionsRenderer({ map });
 
-  const fromInput = new google.maps.places.Autocomplete(document.getElementById("from"));
-  const toInput = new google.maps.places.Autocomplete(document.getElementById("to"));
+  new google.maps.places.Autocomplete(document.getElementById("from"));
+  new google.maps.places.Autocomplete(document.getElementById("to"));
 }
 
-function setMode(mode) {
-  travelMode = mode;
-}
+function setMode(mode) { travelMode = mode; }
 
 function calcRoute() {
   const from = document.getElementById("from").value;
@@ -91,18 +141,18 @@ function calcRoute() {
 
 function fetchWeather(city) {
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=02913f6d96135db7a1f6cdbfca5a1792&units=metric`)
-  .then(res => res.json())
-  .then(data => {
-    const temp = data.main.temp;
-    const desc = data.weather[0].description;
+  .then(res=>res.json())
+  .then(data=>{
+    const t = data.main.temp;
+    const d = data.weather[0].description;
     const icon = data.weather[0].icon;
     document.getElementById("output").innerHTML +=
-      `<br><strong>${city}:</strong> ${temp}°C, ${desc}
+      `<br><strong>${city}:</strong> ${t}°C, ${d}
        <img src="https://openweathermap.org/img/wn/${icon}.png">`;
-  }).catch(()=>{ document.getElementById("output").innerHTML += "<br>Weather unavailable."; });
+  }).catch(()=>{document.getElementById("output").innerHTML+="<br>Weather unavailable.";});
 }
 
-window.onload = initMap;
+window.onload=initMap;
 </script>
 
 </body>
