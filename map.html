@@ -1,149 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>WanderMap — Google Maps Travel Routes</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>WanderMap — Full Google Maps Route</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; background: #f0f8ff; }
-    h1 { text-align: center; margin: 20px 0; color: #007B8F; }
-    nav {
-      background: rgba(0,0,0,0.6); padding: 12px; text-align: center; position: fixed; top: 0; width: 100%; z-index: 999;
+    html, body { height: 100%; margin: 0; padding: 0; }
+    #map { height: 100%; }
+    #panel {
+      position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+      z-index: 5; background: #fff; padding: 10px; border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3); display: flex; gap: 8px;
     }
-    nav a { color: #fff; margin: 0 15px; text-decoration: none; font-weight: bold; }
-    .hero-container { position: relative; width: 100%; height: 300px; overflow: hidden; }
-    .hero-container video { width: 100%; height: 300px; object-fit: cover; }
-    .hero-overlay {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.35); display: flex; align-items: center;
-      justify-content: center; color: #fff; font-size: 32px; font-weight: bold;
+    #panel input, #panel button {
+      padding: 8px; border: 1px solid #ccc; border-radius: 4px;
+      font-size: 14px;
     }
-    #map { height: 450px; margin: 20px; border-radius: 10px; }
-    input, select, button { padding: 10px; margin: 5px; border-radius: 5px; }
-    button { background: #FF5E00; color: #fff; border: none; }
-    #output, #weatherInfo, #funFact { text-align: center; margin: 10px auto; }
-    #topBtn {
-      display: none; position: fixed; bottom: 20px; right: 20px;
-      background: #FF5E00; color: white; border: none; padding: 12px 16px;
-      border-radius: 50%; cursor: pointer; font-size: 18px;
+    #modeBtns button {
+      padding: 8px 12px; margin: 0 2px; border: none;
+      background: #FF5E00; color: #fff; border-radius: 4px; cursor: pointer;
+    }
+    #output {
+      position: absolute; bottom: 20px; left: 20px;
+      background: rgba(255,255,255,0.9); padding: 10px;
+      border-radius: 6px; box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      font-family: sans-serif; font-size: 14px;
     }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="#">Home</a>
-  <a href="#">Map</a>
-  <a href="#">Blog</a>
-  <a href="#">Contact</a>
-</nav>
-
-<div class="hero-container">
-  <video autoplay muted loop>
-    <source src="https://cdn.coverr.co/videos/coverr-mountain-scenery-9165/1080p.mp4" type="video/mp4">
-  </video>
-  <div class="hero-overlay">Explore India with WanderMap 🗺️</div>
+<div id="panel">
+  <input id="from" placeholder="From">
+  <input id="to" placeholder="To">
+  <div id="modeBtns">
+    <button onclick="setMode('DRIVING')">🚗</button>
+    <button onclick="setMode('WALKING')">🚶</button>
+    <button onclick="setMode('BICYCLING')">🚴</button>
+    <button onclick="setMode('TRANSIT')">🚆</button>
+  </div>
+  <button onclick="calcRoute()">Route</button>
 </div>
 
-<h1>📍 WanderMap — Google Travel Routes</h1>
-
-<div style="text-align:center;">
-  <input id="fromPlace" placeholder="From">
-  <input id="toPlace" placeholder="To">
-  <select id="mode">
-    <option value="driving">Driving</option>
-    <option value="walking">Walking</option>
-    <option value="bicycling">Bicycling</option>
-    <option value="transit">Transit</option>
-  </select>
-  <select id="transitMode">
-    <option value="">Any Transit</option>
-    <option value="bus">Bus</option>
-    <option value="train">Train</option>
-  </select>
-  <button onclick="calcRoute()">Show Route</button>
-</div>
-
-<div id="output"></div>
-<div id="weatherInfo"></div>
-<div id="funFact"></div>
 <div id="map"></div>
-
-<button id="topBtn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">⬆️</button>
+<div id="output"></div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiM_R3u7K9pIm9vrg7-XVz-AR2WLeRC-k&libraries=places"></script>
 <script>
-  let map, directionsService, directionsRenderer;
+  let map, directionsService, directionsRenderer, travelMode = 'DRIVING';
+
   function initMap() {
-    map = new google.maps.Map(document.getElementById("map"), { center: {lat: 20.5937, lng: 78.9629}, zoom: 5 });
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: {lat: 21.1458, lng: 79.0882}, zoom: 5
+    });
+
     directionsService = new google.maps.DirectionsService();
-    directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
+    directionsRenderer = new google.maps.DirectionsRenderer({ map });
+
+    const fromInput = new google.maps.places.Autocomplete(document.getElementById("from"));
+    const toInput = new google.maps.places.Autocomplete(document.getElementById("to"));
   }
 
-  window.onload = initMap;
+  function setMode(mode) {
+    travelMode = mode;
+  }
 
   function calcRoute() {
-    const from = document.getElementById("fromPlace").value;
-    const to = document.getElementById("toPlace").value;
-    const mode = document.getElementById("mode").value;
-    const transitPref = document.getElementById("transitMode").value;
-
-    if (!from || !to) { alert("Please enter both places!"); return; }
+    const from = document.getElementById("from").value;
+    const to = document.getElementById("to").value;
+    if (!from || !to) { alert("Please enter both places."); return; }
 
     const request = {
-      origin: from,
-      destination: to,
-      travelMode: mode.toUpperCase(),
+      origin: from, destination: to, travelMode
     };
-
-    if (mode === 'transit' && transitPref) {
-      request.transitOptions = { modes: [transitPref.toUpperCase()] };
-    }
 
     directionsService.route(request, (result, status) => {
       if (status === 'OK') {
         directionsRenderer.setDirections(result);
         const leg = result.routes[0].legs[0];
-        document.getElementById("output").innerHTML = `<h3>Distance: ${(leg.distance.text)}</h3><h3>Duration: ${(leg.duration.text)}</h3>`;
+        document.getElementById("output").innerHTML =
+          `<strong>Distance:</strong> ${leg.distance.text}<br>
+           <strong>Duration:</strong> ${leg.duration.text}`;
         fetchWeather(to);
       } else {
-        alert("Route not found.");
+        alert("Route failed: " + status);
       }
     });
   }
 
   function fetchWeather(city) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=02913f6d96135db7a1f6cdbfca5a1792&units=metric`)
-    .then(response => response.json())
+    .then(res => res.json())
     .then(data => {
       const temp = data.main.temp;
       const desc = data.weather[0].description;
       const icon = data.weather[0].icon;
-      document.getElementById("weatherInfo").innerHTML = `<img src="https://openweathermap.org/img/wn/${icon}@2x.png"><br>${city}: ${temp}°C, ${desc}`;
+      document.getElementById("output").innerHTML +=
+        `<br><strong>${city}:</strong> ${temp}°C, ${desc} <img src="https://openweathermap.org/img/wn/${icon}@2x.png">`;
     })
-    .catch(() => { document.getElementById("weatherInfo").innerText = "Weather unavailable."; });
+    .catch(() => {
+      document.getElementById("output").innerHTML += "<br>Weather unavailable.";
+    });
   }
 
-  const facts = [
-    "India has the world’s highest cricket ground at Chail, Himachal Pradesh.",
-    "The Himalayas are still rising every year.",
-    "There's a floating post office on Dal Lake, Srinagar.",
-    "Cherrapunji received 1,041 mm of rain in one day.",
-    "You can find snow in the Sahara Desert."
-  ];
-
-  function showFact() {
-    const fact = facts[Math.floor(Math.random() * facts.length)];
-    document.getElementById("funFact").innerText = `💡 Fun Fact: ${fact}`;
-  }
-
-  showFact();
-  setInterval(showFact, 10000);
-
-  window.onscroll = () => {
-    document.getElementById("topBtn").style.display =
-      (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) ? "block" : "none";
-  };
+  window.onload = initMap;
 </script>
+
 </body>
 </html>
