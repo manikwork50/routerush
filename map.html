@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>WanderMap — Map, Routes & Weather</title>
+  <title>WanderMap — Routes & Fares</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { margin:0; font-family:'Segoe UI', sans-serif; background:#f5f5f5; }
@@ -17,219 +17,191 @@
     nav a:hover { color: #FF5E00; }
 
     .controls {
-      position: fixed;
-      top: 58px;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      background: #fff;
-      padding: 10px 0;
-      z-index: 15;
+      position: fixed; top: 58px; left: 0; width: 100%; text-align: center;
+      background: #fff; padding: 10px 0; z-index: 15;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     input, select, button {
-      padding: 8px; margin: 6px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;
+      padding: 8px; margin: 6px; border: 1px solid #ccc; border-radius: 5px;
+      font-size: 14px;
     }
     button { background: #007B8F; color: #fff; border: none; }
     button:hover { background: #005f6e; cursor:pointer; }
 
-    #map {
-      height: calc(100vh - 130px);
-      margin-top: 108px;
-    }
-
-    .weather-box {
-      position: fixed; bottom: 20px; left: 20px;
-      background: #fff; color: #333;
-      border-radius: 8px; padding: 14px 18px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      font-size: 14px; line-height: 1.6;
-      z-index: 20; display: none; cursor: move;
-    }
-    .weather-box h4 {
-      margin: 0 0 6px; font-size: 16px; color: #007B8F;
-    }
+    #map { height: calc(100vh - 130px); margin-top: 108px; }
 
     .spinner-overlay {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(255,255,255,0.8);
-      z-index: 9999; display: flex;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(255,255,255,0.8); z-index: 9999; display: flex;
       align-items: center; justify-content: center;
     }
     .spinner {
       border: 6px solid #f3f3f3;
       border-top: 6px solid #FF5E00;
-      border-radius: 50%;
-      width: 60px; height: 60px;
+      border-radius: 50%; width: 60px; height: 60px;
       animation: spin 1s linear infinite;
     }
-    @keyframes spin {
-      0% { transform:rotate(0deg); }
-      100% { transform:rotate(360deg); }
-    }
+    @keyframes spin { 0% { transform:rotate(0deg);} 100% { transform:rotate(360deg);} }
 
-    .back-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #FF5E00;
-      color: #fff;
-      padding: 12px 18px;
-      border-radius: 50%;
-      font-size: 18px;
-      text-align: center;
-      cursor: pointer;
-      z-index: 1000;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      display: none;
+    .modal {
+      display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
+      background:#fff; padding:20px; border-radius:8px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.2); z-index:9999;
+      max-width:90%; width:400px;
     }
-    .back-top:hover { background: #FF8020; }
+    .modal h3 { margin-top:0; }
+    .modal button {
+      margin-top:12px; background:#FF5E00; color:#fff; padding:8px 14px;
+      border:none; border-radius:5px; cursor:pointer;
+    }
   </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html">Home</a>
-  <a href="map.html">Map</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="blog.html">Blog</a>
-  <a href="contact.html">Contact</a>
+  <a href="#">Home</a>
+  <a href="#">Map</a>
+  <a href="#">Gallery</a>
 </nav>
 
 <div class="controls">
   <input id="from" placeholder="From location">
   <input id="to" placeholder="To location">
   <select id="mode">
-    <option value="DRIVING">Car</option>
-    <option value="WALKING">Walk</option>
-    <option value="BICYCLING">Cycle</option>
-    <option value="TRANSIT">Train/Bus</option>
+    <option value="DRIVING">By Road</option>
+    <option value="TRANSIT">By Train</option>
+    <option value="FLIGHT">By Air</option>
   </select>
   <button onclick="calcRoute()">Show Route</button>
+
+  <div style="margin-top:10px;">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
 </div>
 
 <div id="map"></div>
-
-<div class="weather-box" id="weatherBox">
-  <h4>🌦️ Weather Info</h4>
-  <div id="weatherDetails">Click on the map to see weather.</div>
-</div>
 
 <div class="spinner-overlay" id="spinner">
   <div class="spinner"></div>
 </div>
 
-<div class="back-top" id="backTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</div>
+<!-- Modal -->
+<div class="modal" id="routeDetailsModal">
+  <h3>🛣️ Travel Details</h3>
+  <div id="routeDetailsContent" style="font-size:14px; line-height:1.6;"></div>
+  <button onclick="document.getElementById('routeDetailsModal').style.display='none'">Close</button>
+</div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiM_R3u7K9pIm9vrg7-XVz-AR2WLeRC-k&libraries=places&callback=initMap" async defer></script>
 <script>
-let map, directionsService, directionsRenderer;
+let map, directionsService, directionsRenderer, geoCoder;
 
 function initMap() {
   document.getElementById("spinner").style.display = "none";
-
   map = new google.maps.Map(document.getElementById("map"), {
     center: {lat:22.9734, lng:78.6569},
-    zoom: 5,
-    styles: [
-      { elementType: 'geometry', stylers: [{color:'#f5f5f5'}] },
-      { elementType: 'labels.text.fill', stylers: [{color:'#616161'}] },
-      { elementType: 'labels.text.stroke', stylers: [{color:'#f5f5f5'}] },
-      { featureType: 'road', elementType: 'geometry', stylers: [{color:'#ffffff'}] },
-      { featureType: 'water', elementType: 'geometry', stylers: [{color:'#c9c9c9'}] }
-    ]
+    zoom:5
   });
-
   directionsService = new google.maps.DirectionsService();
   directionsRenderer = new google.maps.DirectionsRenderer({ map });
-
   new google.maps.places.Autocomplete(document.getElementById("from"));
   new google.maps.places.Autocomplete(document.getElementById("to"));
-
-  map.addListener("click", (e) => {
-    const lat = e.latLng.lat();
-    const lng = e.latLng.lng();
-    fetchWeather(lat, lng);
-  });
+  geoCoder = new google.maps.Geocoder();
 }
 
+// Main function
 function calcRoute() {
   const from = document.getElementById("from").value;
   const to = document.getElementById("to").value;
   const mode = document.getElementById("mode").value;
+  if (!from || !to) { alert("Enter both locations."); return; }
 
-  if (!from || !to) {
-    alert("Please enter both locations.");
+  if (mode === "FLIGHT") {
+    // Get coordinates and calculate air distance
+    Promise.all([
+      getCoords(from),
+      getCoords(to)
+    ]).then(([fromCoords, toCoords]) => {
+      const distance = haversine(fromCoords.lat, fromCoords.lng, toCoords.lat, toCoords.lng).toFixed(1);
+      const hours = Math.ceil(distance / 600); // 600 km/h flight speed
+      let content = `<strong>From:</strong> ${from}<br><strong>To:</strong> ${to}<br>
+        <strong>Mode:</strong> ✈️ By Air<br><strong>Distance:</strong> ${distance} km<br>
+        <strong>Est. Time:</strong> ${hours} hr(s)<br>
+        <h4>Stops & Fares:</h4>
+        • 🛫 Depart: ${from} Airport<br>
+        • ✈️ Non-stop flight<br>
+        • 🛬 Arrive: ${to} Airport<br>
+        Estimated Fare: ₹4500 - ₹7000`;
+      showDetails(content);
+    }).catch(() => alert("Unable to calculate air route. Check location names."));
     return;
   }
 
   const request = {
-    origin: from,
-    destination: to,
-    travelMode: google.maps.TravelMode[mode]
+    origin: from, destination: to, travelMode: google.maps.TravelMode[mode]
   };
 
   directionsService.route(request, (result, status) => {
     if (status === 'OK') {
       directionsRenderer.setDirections(result);
-      const dist = result.routes[0].legs[0].distance.text;
-      const dur  = result.routes[0].legs[0].duration.text;
-      alert(`Mode: ${mode} | Distance: ${dist}, Duration: ${dur}`);
+      const leg = result.routes[0].legs[0];
+      const dist = leg.distance.text;
+      const dur  = leg.duration.text;
+      let content = `<strong>From:</strong> ${from}<br><strong>To:</strong> ${to}<br>
+        <strong>Mode:</strong> ${mode==="DRIVING"?"🚗 By Road":"🚆 By Train"}<br>
+        <strong>Distance:</strong> ${dist}<br><strong>Duration:</strong> ${dur}<br>
+        <h4>Stops & Fares:</h4>`;
+      if (mode === "DRIVING")
+        content += `• Fuel Stop: ₹800<br>• Toll: ₹300<br>• Destination: ₹0`;
+      else
+        content += `• Start Station: ₹0<br>• Midway: ₹350<br>• End Station: ₹450<br>Total: ₹800`;
+      showDetails(content);
     } else {
-      alert("Route not found: " + status);
+      alert("Route not found: "+status);
     }
   });
 }
 
-function fetchWeather(lat, lng) {
-  const apiKey = "86f8e6c59d5f77cc6f8c5a354f20f6f9";
-  fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=${apiKey}`)
-    .then(res => res.json())
-    .then(data => {
-      const weatherDiv = document.getElementById("weatherDetails");
-      const box = document.getElementById("weatherBox");
-      weatherDiv.innerHTML = `
-        <strong>📍 ${data.name}</strong><br>
-        ${data.weather[0].description}<br>
-        🌡️ Temp: ${data.main.temp}°C<br>
-        💨 Wind: ${data.wind.speed} m/s
-      `;
-      box.style.display = "block";
-    })
-    .catch(() => {
-      document.getElementById("weatherDetails").innerHTML = "Could not fetch weather data.";
+// Get LatLng from address
+function getCoords(address) {
+  return new Promise((resolve, reject) => {
+    geoCoder.geocode({ address }, (results, status) => {
+      if (status === 'OK') {
+        const location = results[0].geometry.location;
+        resolve({ lat: location.lat(), lng: location.lng() });
+      } else {
+        reject();
+      }
     });
+  });
 }
 
-dragElement(document.getElementById("weatherBox"));
-function dragElement(elmnt) {
-  let pos1=0, pos2=0, pos3=0, pos4=0;
-  elmnt.onmousedown = dragMouseDown;
-  function dragMouseDown(e) {
-    e.preventDefault();
-    pos3 = e.clientX; pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    document.onmousemove = elementDrag;
-  }
-  function elementDrag(e) {
-    e.preventDefault();
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX; pos4 = e.clientY;
-    elmnt.style.top = (elmnt.offsetTop - pos2)+"px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1)+"px";
-  }
-  function closeDragElement() {
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
+// Haversine formula for air distance
+function haversine(lat1, lon1, lat2, lon2) {
+  const R = 6371; // Radius of Earth in km
+  const dLat = deg2rad(lat2-lat1);
+  const dLon = deg2rad(lon2-lon1);
+  const a =
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+    Math.sin(dLon/2) * Math.sin(dLon/2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  return R * c;
 }
+function deg2rad(deg) { return deg * (Math.PI/180); }
 
-window.onscroll = function() {
-  document.getElementById("backTop").style.display = window.scrollY > 200 ? "block" : "none";
+function showDetails(content) {
+  document.getElementById("routeDetailsContent").innerHTML = content;
+  document.getElementById("routeDetailsModal").style.display = "block";
 }
 </script>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632" crossorigin="anonymous"></script>
 </body>
 </html>
