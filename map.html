@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>WanderMap — Smart Travel Map</title>
+  <title>WanderMap — Route & Weather</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { margin:0; font-family:'Segoe UI', sans-serif; background:#f5f5f5; }
@@ -15,18 +15,18 @@
       color: #333; margin: 0 18px; text-decoration: none; font-weight: bold;
     }
     nav a:hover { color: #FF5E00; }
-    #map { height: 90vh; margin-top: 70px; }
+    #map { height: 85vh; margin-top: 120px; }
     .controls {
-      text-align:center; margin:10px;
+      text-align:center; margin:15px;
     }
     input, select, button {
-      padding:8px; margin:5px; border:1px solid #ccc; border-radius:5px;
-      font-size:14px;
+      padding: 8px; margin: 6px; border: 1px solid #ccc; border-radius: 5px;
+      font-size: 14px;
     }
     button {
-      background: #007B8F; color: #fff; border:none;
+      background: #007B8F; color: #fff; border: none;
     }
-    button:hover { background:#005f6e; cursor:pointer; }
+    button:hover { background: #005f6e; cursor:pointer; }
   </style>
 </head>
 <body>
@@ -76,7 +76,7 @@ function initMap() {
   new google.maps.places.Autocomplete(document.getElementById("from"));
   new google.maps.places.Autocomplete(document.getElementById("to"));
 
-  // Click map for weather
+  // Click anywhere on map to show weather
   map.addListener("click", (e) => {
     const lat = e.latLng.lat();
     const lng = e.latLng.lng();
@@ -89,7 +89,10 @@ function calcRoute() {
   const to = document.getElementById("to").value;
   const mode = document.getElementById("mode").value;
 
-  if (!from || !to) { alert("Please enter both locations."); return; }
+  if (!from || !to) {
+    alert("Please enter both locations.");
+    return;
+  }
 
   const request = {
     origin: from,
@@ -109,15 +112,15 @@ function calcRoute() {
   });
 }
 
-// OpenWeather API call
+// Fetch and display weather on click
 function fetchWeather(lat, lng) {
-  const apiKey = "86f8e6c59d5f77cc6f8c5a354f20f6f9"; // replace with your OpenWeather API key
+  const apiKey = "86f8e6c59d5f77cc6f8c5a354f20f6f9"; // replace if needed
   fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=${apiKey}`)
-  .then(res => res.json())
-  .then(data => {
-    alert(`🌦️ ${data.name}: ${data.weather[0].main}, ${data.main.temp}°C`);
-  })
-  .catch(() => alert("Couldn't fetch weather."));
+    .then(res => res.json())
+    .then(data => {
+      alert(`🌦️ ${data.name}: ${data.weather[0].main}, ${data.main.temp}°C`);
+    })
+    .catch(() => alert("Could not fetch weather data."));
 }
 
 window.initMap = initMap;
