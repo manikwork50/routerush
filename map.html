@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>WanderMap</title>
+  <title>WanderMap — Map & Travel Guide</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
   <link rel="stylesheet" href="https://unpkg.com/awesomplete/awesomplete.css">
-  <script src="https://unpkg.com/lottie-web/build/player/lottie.min.js"></script>
   <style>
     body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; background: #f0f8ff; overflow-x: hidden; }
+    h1 { text-align: center; margin: 20px 0; color: #007B8F; }
     nav {
       background: rgba(0,0,0,0.6); padding: 12px; text-align: center; position: absolute; top: 0; width: 100%; z-index: 10;
     }
@@ -16,11 +16,13 @@
     .hero-container { position: relative; width: 100%; height: 300px; overflow: hidden; }
     .hero-container video { width: 100%; height: 300px; object-fit: cover; }
     .hero-overlay {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.35);
-      display: flex; align-items: center; justify-content: center; color: #fff; font-size: 32px; font-weight: bold;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.35);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 32px; font-weight: bold;
     }
     #map { height: 450px; margin: 20px; border-radius: 10px; }
-    input, button {
+    input, select, button {
       padding: 10px; margin: 5px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;
     }
     button { background: #FF5E00; color: #fff; border: none; }
@@ -33,33 +35,10 @@
     footer {
       background: #007B8F; color: #fff; text-align: center; padding: 12px; margin-top: 30px;
     }
-    #topBtn {
-      display: none; position: fixed; bottom: 20px; right: 20px; z-index: 999;
-      font-size: 18px; border: none; background: #FF5E00; color: white;
-      padding: 12px 16px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    }
-    #topBtn:hover { background: #e04d00; }
-    #loaderContainer {
-      position: fixed; width: 100%; height: 100%; background: #007B8F; z-index: 9999;
-      top: 0; left: 0; display: flex; align-items: center; justify-content: center;
-    }
-    .social-share {
-      position: fixed; top: 50%; left: 0; transform: translateY(-50%);
-      background: rgba(0,0,0,0.7); border-radius: 0 5px 5px 0; padding: 8px 4px; z-index: 999;
-    }
-    .social-share a {
-      display: block; color: #fff; font-size: 24px; text-align: center;
-      margin: 10px 6px; text-decoration: none;
-    }
-    .social-share a:hover { color: #FF5E00; }
   </style>
 </head>
 <body>
 
-<!-- Loader -->
-<div id="loaderContainer"><div id="loader" style="width:120px; height:120px;"></div></div>
-
-<!-- Hero Video Banner -->
 <div class="hero-container">
   <video autoplay muted loop playsinline>
     <source src="https://cdn.coverr.co/videos/coverr-mountain-scenery-9165/1080p.mp4" type="video/mp4">
@@ -67,27 +46,24 @@
   <div class="hero-overlay">Explore India with WanderMap 🗺️</div>
 </div>
 
-<!-- Navigation -->
 <nav>
-  <a href="#">Home</a>
-  <a href="#map">Map</a>
-  <a href="#">Gallery</a>
-  <a href="#">Blog</a>
-  <a href="#">Contact</a>
+  <a href="index.html">Home</a>
+  <a href="map.html">Map</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
 </nav>
 
-<!-- Social Share Bar -->
-<div class="social-share">
-  <a href="https://api.whatsapp.com/send?text=Check%20out%20WanderMap!%20https://wandermap.in" target="_blank">💬</a>
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https://wandermap.in" target="_blank">📘</a>
-  <a href="https://twitter.com/intent/tweet?text=Check%20out%20WanderMap!%20https://wandermap.in" target="_blank">🐦</a>
-  <a href="mailto:?subject=WanderMap&body=Explore%20with%20WanderMap:%20https://wandermap.in">✉️</a>
-</div>
+<h1>📍 WanderMap — Map & Distance Finder</h1>
 
-<!-- Map + Route Section -->
-<div style="text-align:center; margin-top:10px;">
+<div style="text-align:center;">
   <input id="fromPlace" placeholder="From" class="awesomplete">
   <input id="toPlace" placeholder="To" class="awesomplete">
+  <select id="travelMode">
+    <option value="driving">🚗 Car</option>
+    <option value="walking">🚶 Walk</option>
+    <option value="cycling">🚴 Cycle</option>
+  </select>
   <button onclick="showRoute()">Show Route</button>
 </div>
 
@@ -100,67 +76,104 @@
   <p id="weatherInfo">Weather will appear after routing.</p>
 </div>
 
-<footer>© 2025 WanderMap.in | Designed by Manik Rao</footer>
-<button id="topBtn" title="Go to top">⬆️</button>
+<footer>
+  © 2025 WanderMap.in | Designed by Manik Rao
+</footer>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="https://unpkg.com/awesomplete/awesomplete.min.js"></script>
 <script>
-  // Lottie Loader
-  lottie.loadAnimation({
-    container: document.getElementById('loader'),
-    renderer: 'svg',
-    loop: true,
-    autoplay: true,
-    path: 'https://lottie.host/2c0b4df2-85cf-46ab-adee-3c5568f68b03/VHuvIXLTPt.json'
-  });
-  window.onload = () => document.getElementById('loaderContainer').style.display = 'none';
-
-  // Map Setup
   const map = L.map('map').setView([20, 78], 5);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(map);
   let routeLayer;
 
   const fromInput = document.getElementById("fromPlace");
   const toInput = document.getElementById("toPlace");
-  new Awesomplete(fromInput); new Awesomplete(toInput);
+  new Awesomplete(fromInput);
+  new Awesomplete(toInput);
+
+  function fetchSuggestions(input) {
+    input.addEventListener("input", () => {
+      if (input.value.length < 3) return;
+      fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(input.value)}`)
+        .then(res => res.json())
+        .then(data => {
+          const list = data.map(item => item.display_name);
+          input.awesomplete.list = list;
+        });
+    });
+  }
+  fetchSuggestions(fromInput);
+  fetchSuggestions(toInput);
 
   function showRoute() {
     const from = fromInput.value, to = toInput.value;
+    const mode = document.getElementById("travelMode").value;
     if (!from || !to) return alert("Enter both places");
 
     Promise.all([
-      fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${from}`).then(r => r.json()),
-      fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${to}`).then(r => r.json())
-    ]).then(([f, t]) => {
-      if (!f[0] || !t[0]) return alert("Places not found");
-      const fCoords = [f[0].lat, f[0].lon], tCoords = [t[0].lat, t[0].lon];
-      fetch(`https://router.project-osrm.org/route/v1/driving/${fCoords[1]},${fCoords[0]};${tCoords[1]},${tCoords[0]}?overview=full&geometries=geojson`)
-      .then(r => r.json()).then(d => {
-        if (d.code !== 'Ok') return alert("Route not found");
-        const route = d.routes[0];
-        document.getElementById("output").innerText = `Distance: ${(route.distance/1000).toFixed(2)} km | Time: ${(route.duration/60).toFixed(0)} mins`;
-        if (routeLayer) map.removeLayer(routeLayer);
-        routeLayer = L.geoJSON(route.geometry, {color:'blue'}).addTo(map);
-        map.fitBounds(routeLayer.getBounds());
-      });
+      fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(from)}`).then(r => r.json()),
+      fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(to)}`).then(r => r.json())
+    ]).then(([fromData, toData]) => {
+      if (!fromData[0] || !toData[0]) return alert("Places not found.");
+      const fromCoords = [fromData[0].lat, fromData[0].lon];
+      const toCoords = [toData[0].lat, toData[0].lon];
+
+      fetch(`https://router.project-osrm.org/route/v1/${mode}/${fromCoords[1]},${fromCoords[0]};${toCoords[1]},${toCoords[0]}?overview=full&geometries=geojson`)
+        .then(r => r.json())
+        .then(routeData => {
+          if (routeData.code !== 'Ok') return alert("Route not found.");
+          const route = routeData.routes[0];
+          const distance = (route.distance / 1000).toFixed(2);
+          const durationMins = Math.round(route.duration / 60);
+          const hours = Math.floor(durationMins / 60);
+          const mins = durationMins % 60;
+          const durationText = hours > 0 ? `${hours} hr ${mins} min` : `${mins} min`;
+
+          document.getElementById("output").innerText = `Distance: ${distance} km | Duration: ${durationText}`;
+
+          if (routeLayer) map.removeLayer(routeLayer);
+          routeLayer = L.geoJSON(route.geometry, { color: 'blue' }).addTo(map);
+          map.fitBounds(L.geoJSON(route.geometry).getBounds());
+
+          fetchWeather(toCoords[0], toCoords[1]);
+        });
     });
   }
 
-  // Fun Facts
-  const facts = [...Array(50)].map((_,i)=>`Fun Fact #${i+1}: India is incredible!`);
-  function showRandomFact() {a
-    const fact = facts[Math.floor(Math.random() * facts.length)];
-    document.getElementById("funFact").innerText = `💡 ${fact}`;
+  function fetchWeather(lat, lon) {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=02913f6d96135db7a1f6cdbfca5a1792&units=metric`)
+      .then(response => response.json())
+      .then(data => {
+        const temp = data.main.temp;
+        const desc = data.weather[0].description;
+        const icon = data.weather[0].icon;
+        document.getElementById("weatherInfo").innerHTML = `
+          <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="Weather Icon"><br>
+          <strong>${data.name}</strong>: ${temp}°C, ${desc}
+        `;
+      })
+      .catch(() => {
+        document.getElementById("weatherInfo").innerText = "Weather unavailable.";
+      });
   }
+
+  const facts = [
+    "India has the world’s highest cricket ground at Chail, Himachal Pradesh.",
+    "The Amazon rainforest produces 20% of the world's oxygen supply.",
+    "Mawsynram in India is the wettest place on Earth.",
+    "Antarctica is the driest, windiest, and coldest continent.",
+    "The Himalayas are still rising."
+  ];
+
+  function showRandomFact() {
+    const fact = facts[Math.floor(Math.random() * facts.length)];
+    document.getElementById("funFact").innerText = `💡 Fun Fact: ${fact}`;
+  }
+
   showRandomFact();
   setInterval(showRandomFact, 10000);
-
-  // Back to Top button
-  window.onscroll = () => {
-    document.getElementById("topBtn").style.display = window.scrollY > 300 ? 'block' : 'none';
-  };
-  document.getElementById("topBtn").onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 </script>
+
 </body>
 </html>
