@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>WanderMap Gallery</title>
+  <title>WanderMap — Dynamic Gallery</title>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
@@ -36,9 +36,7 @@
       font-weight: bold;
       transition: color 0.3s;
     }
-    nav a:hover {
-      color: #FFB347;
-    }
+    nav a:hover { color: #FFB347; }
     .gallery {
       max-width: 1200px;
       margin: 60px auto;
@@ -83,18 +81,36 @@
   <a href="contact.html">Contact</a>
 </nav>
 
-<div class="gallery">
-  <img src="img/nature-home-bg.jpg" alt="Travel Image">
-  <img src="img/Taj Mahal_blog.jpg" alt="Travel Image">
-  <img src="img/jaipur_fort.jpg" alt="Travel Image">
-  <img src="img/varanasi_ghat.jpg" alt="Travel Image">
-  <img src="img/amritsar_golden_temple.jpg" alt="Travel Image">
-  <img src="img/mysore.jpg" alt="Travel Image">
-</div>
+<div class="gallery" id="gallery"></div>
 
 <footer>
   &copy; 2025 WanderMap | Created & Managed by Manik Rao | Travel Better 🌏
 </footer>
+
+<script>
+  // 📸 Dynamic image array (just add new image paths to this array)
+  const images = [
+    'img/nature-home-bg.jpg',
+    'img/Taj Mahal_blog.jpg',
+    'img/jaipur_fort.jpg',
+    'img/varanasi_ghat.jpg',
+    'img/amritsar_golden_temple.jpg',
+    'img/mysore.jpg',
+    'img/rishikesh_rafting.jpg',
+    'img/goa_beach.jpg',
+    'img/ladakh_pass.jpg'
+  ];
+
+  const gallery = document.getElementById("gallery");
+
+  // Render images dynamically
+  images.forEach(src => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = "Travel Image";
+    gallery.appendChild(img);
+  });
+</script>
 
 </body>
 </html>
