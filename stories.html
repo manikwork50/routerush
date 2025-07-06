@@ -1,169 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>WanderMap — Share Your Travel Story</title>
+  <title>Submit Your Travel Story</title>
   <style>
-    body {
-      margin:0;
-      font-family:'Segoe UI', sans-serif;
-      background: url('img/ocean-bg.jpg') no-repeat center center/cover;
-      color:#fff;
-      overflow-x: hidden;
-    }
-    nav {
-      background: rgba(0,0,0,0.7);
-      padding: 16px;
-      text-align: center;
-    }
-    nav a {
-      color: #fff;
-      margin: 0 18px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover { color: #FFB347; }
-
-    .container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 20px;
-      animation: fadeIn 2s ease;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #FFEB99;
-    }
-
-    form {
-      background: rgba(0,0,0,0.65);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-      max-width: 500px;
-      margin: 0 auto 60px;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 6px;
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      background: #FF5E00;
-      border: none;
-      color: #fff;
-      font-size: 16px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    button:hover { background: #FF8020; }
-
-    .story-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .story-card {
-      background: rgba(0,0,0,0.6);
-      padding: 16px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      transition: transform 0.3s;
-    }
-    .story-card:hover {
-      transform: scale(1.03);
-    }
-    .story-card img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-
-    @keyframes fadeIn {
-      from { opacity:0; }
-      to { opacity:1; }
-    }
+    body { font-family: 'Segoe UI', sans-serif; background: #e0f7fa; text-align: center; padding: 30px; }
+    input, textarea { padding: 10px; margin: 10px; width: 300px; }
+    button { padding: 12px 20px; background: #00796b; color: #fff; border: none; }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="map.html">Map</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="stories.html">Stories</a>
-  <a href="signup.html">Sign Up</a>
-</nav>
+<h2>📸 Submit Your Travel Story</h2>
 
-<div class="container">
+<form id="storyForm">
+  <input type="text" name="name" placeholder="Your Name" required><br>
+  <textarea name="story" placeholder="Your Story" rows="5" required></textarea><br>
+  <input type="file" id="imageUpload" accept="image/*" required><br>
+  <button type="submit">Submit Story</button>
+</form>
 
-  <h2>📝 Share Your Travel Story</h2>
-
-  <form id="storyForm">
-    <input type="text" id="name" placeholder="Your Name" required>
-    <input type="email" id="email" placeholder="Email Address" required>
-    <input type="text" id="image" placeholder="Image URL (public link)" required>
-    <textarea id="story" placeholder="Your Travel Story" rows="5" required></textarea>
-    <button type="submit">Submit for Approval</button>
-  </form>
-
-  <br>
-
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-8124807245840632"
-       data-ad-slot="1234567890"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632"
-     crossorigin="anonymous"></script>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-
-  <h2>📸 Featured Stories</h2>
-
-  <div class="story-gallery" id="storyGallery">
-    <!-- Approved stories appear here -->
-  </div>
-
-</div>
+<div id="response"></div>
 
 <script>
-// Example approved stories
-const stories = [
-  { name: "Ananya", image:"img/story1.jpg", text:"Watching sunrise at Varanasi Ghat was unforgettable!" },
-  { name: "Rahul", image:"img/story2.jpg", text:"Trekking the Himalayas made me feel truly alive." }
-];
+const form = document.getElementById('storyForm');
 
-function loadStories() {
-  const gallery = document.getElementById("storyGallery");
-  gallery.innerHTML = "";
-  stories.forEach(s => {
-    const card = document.createElement("div");
-    card.className = "story-card";
-    card.innerHTML = `<img src="${s.image}" alt="Story Image">
-                      <p><strong>${s.name}</strong></p>
-                      <p>${s.text}</p>`;
-    gallery.appendChild(card);
+form.onsubmit = async function(e) {
+  e.preventDefault();
+  
+  const file = document.getElementById('imageUpload').files[0];
+  const data = new FormData();
+  data.append('file', file);
+  data.append('upload_preset', 'YOUR_UPLOAD_PRESET');  // Replace this with your Cloudinary unsigned upload preset
+
+  // Upload image to Cloudinary
+  const cloudinaryRes = await fetch('https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/image/upload', {
+    method: 'POST',
+    body: data
+  });
+  const imgData = await cloudinaryRes.json();
+
+  // Now, send story details + image URL to your Google Apps Script web app (or Google Form)
+  fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: form.name.value,
+      story: form.story.value,
+      image: imgData.secure_url
+    })
+  }).then(() => {
+    document.getElementById('response').innerHTML = "✅ Story Submitted Successfully!";
+    form.reset();
+  }).catch(() => {
+    document.getElementById('response').innerHTML = "❌ Submission failed.";
   });
 }
-
-loadStories();
-
-// Handle form submission
-document.getElementById("storyForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-  alert("Thank you! Your story is submitted for approval.");
-  this.reset();
-});
 </script>
 
 </body>
