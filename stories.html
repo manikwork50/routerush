@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WanderMap — Share Your Travel Story</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family:'Segoe UI', sans-serif;
+      background: url('img/ocean-bg.jpg') no-repeat center center fixed;
+      background-size:cover;
+      color: #333;
+      overflow-x:hidden;
+    }
+    nav {
+      background: rgba(255,255,255,0.9);
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top:0;
+      z-index: 10;
+    }
+    nav a {
+      color: #333;
+      margin: 0 18px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover { color: #FF5E00; }
+
+    .container {
+      max-width: 800px;
+      background: rgba(255,255,255,0.9);
+      margin: 30px auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      animation: fadeIn 2s ease;
+    }
+
+    h1 {
+      text-align:center;
+      color: #007B8F;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 14px 0 6px;
+      font-weight: bold;
+    }
+
+    input, textarea, button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    button {
+      background: #FF5E00;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover { background: #FF8020; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform:translateY(20px); }
+      to { opacity: 1; transform:translateY(0); }
+    }
+
+    footer {
+      background: rgba(255,255,255,0.9);
+      color: #333;
+      text-align: center;
+      padding: 14px;
+      margin-top: 30px;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="map.html">Map</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="stories.html">Stories</a>
+  <a href="signup.html">Sign Up</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<div class="container">
+  <h1>📸 Share Your Travel Story</h1>
+
+  <form id="storyForm">
+    <label>Your Name</label>
+    <input type="text" required>
+
+    <label>Email (for approval contact)</label>
+    <input type="email" required>
+
+    <label>Story Title</label>
+    <input type="text" required>
+
+    <label>Your Story</label>
+    <textarea rows="5" required></textarea>
+
+    <label>Upload Images (max 3)</label>
+    <input type="file" accept="image/*" multiple>
+
+    <button type="submit">Submit Story for Approval</button>
+  </form>
+
+  <p style="font-size:13px;color:#777;margin-top:10px;">Note: Stories will be reviewed by WanderMap team before publishing.</p>
+</div>
+
+<footer>
+  &copy; 2025 WanderMap | Created & Managed by Manik Rao | Travel Better 🌏
+</footer>
+
+<script>
+  document.getElementById('storyForm').onsubmit = function(e){
+    e.preventDefault();
+    alert("Your travel story has been submitted and will be reviewed shortly.");
+    this.reset();
+  }
+</script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632" crossorigin="anonymous"></script>
+<ins class="adsbygoogle" style="display:block;text-align:center;margin:20px 0;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+</body>
+</html>
