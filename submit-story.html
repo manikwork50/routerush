@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Share Your Travel Story — WanderMap</title>
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+      font-family:'Segoe UI', sans-serif;
+      background: url('https://source.unsplash.com/1600x900/?ocean,beach') no-repeat center center fixed;
+      background-size: cover;
+      color:#fff;
+      overflow-x: hidden;
+      animation: fadeIn 2s ease;
+    }
+    nav {
+      background: rgba(0,0,0,0.6);
+      padding: 16px;
+      text-align: center;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #FFB347;
+    }
+    .container {
+      max-width: 600px;
+      margin: 60px auto;
+      background: rgba(0,0,0,0.5);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    }
+    h2 {text-align:center; margin-bottom:20px;}
+    input, textarea {
+      width:100%;
+      padding: 12px;
+      margin-bottom: 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    input[type="file"] {
+      padding: 6px;
+      background: #fff;
+      color: #000;
+    }
+    button {
+      background: #FF7E5F;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {background: #e75b39;}
+    #preview {
+      margin-top: 14px;
+      max-height: 220px;
+      border-radius: 8px;
+    }
+    footer {
+      text-align:center;
+      padding:20px;
+      background: rgba(0,0,0,0.7);
+      margin-top: 40px;
+    }
+    @keyframes fadeIn {from {opacity:0;} to {opacity:1;}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="map.html">Map</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="stories.html">Stories</a>
+  <a href="signup.html">Sign Up</a>
+</nav>
+
+<div class="container">
+  <h2>📸 Share Your Travel Story</h2>
+  <form id="uploadForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="email" id="email" placeholder="Your Email" required>
+    <textarea id="story" rows="5" placeholder="Write your travel experience..." required></textarea>
+    <input type="file" id="image" accept="image/*" required>
+    <img id="preview" style="display:none;" alt="Image Preview">
+    <button type="submit">Submit Story</button>
+  </form>
+</div>
+
+<div style="margin:20px auto; max-width:600px;">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-8124807245840632"
+       data-ad-slot="1234567890"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  &copy; 2025 WanderMap | Created by Manik Rao | Explore More 🌊
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"></script>
+<script>
+document.getElementById("image").onchange = function(evt) {
+  const [file] = this.files;
+  if (file) {
+    const preview = document.getElementById("preview");
+    preview.src = URL.createObjectURL(file);
+    preview.style.display = "block";
+  }
+};
+
+document.getElementById("uploadForm").onsubmit = async function(e) {
+  e.preventDefault();
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const story = document.getElementById("story").value;
+  const imageFile = document.getElementById("image").files[0];
+
+  if (!imageFile) { alert("Please select an image."); return; }
+
+  const formData = new FormData();
+  formData.append("file", imageFile);
+  formData.append("upload_preset", "wander_upload");
+
+  try {
+    const cloudinaryRes = await axios.post("https://api.cloudinary.com/v1_1/dyozyqrqn/image/upload", formData);
+    const imageUrl = cloudinaryRes.data.secure_url;
+
+    // Here, store the {name, email, story, imageUrl} in your backend/database for approval
+    alert("✅ Story submitted successfully! Awaiting admin approval.");
+
+  } catch (error) {
+    alert("Upload failed.");
+    console.error(error);
+  }
+};
+</script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632" crossorigin="anonymous"></script>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+</body>
+</html>
