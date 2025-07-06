@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WanderMap — Admin Approvals</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; margin:0; padding:20px; background: #e0f7fa; }
+    nav {
+      background: #006064; padding: 16px;
+      color: #fff; text-align: center;
+    }
+    nav a {
+      color: #fff; margin: 0 16px;
+      text-decoration: none; font-weight: bold;
+    }
+    h1 { text-align: center; color: #004d40; margin:20px 0; }
+
+    .card {
+      background: #fff; padding: 20px; margin: 20px auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      border-radius: 8px; max-width: 500px;
+    }
+    .card img {
+      max-width: 100%; border-radius: 8px; margin-bottom: 12px;
+    }
+    .btn {
+      padding: 8px 14px; border:none; border-radius:4px;
+      margin-right:10px; cursor:pointer;
+      font-weight: bold;
+    }
+    .approve { background: #4caf50; color: #fff; }
+    .reject  { background: #f44336; color: #fff; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="map.html">Map</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="post_story.html">Post Story</a>
+  <a href="admin.html">Admin Panel</a>
+</nav>
+
+<h1>📝 Story Approval Panel</h1>
+
+<div id="submissions"></div>
+
+<script>
+// Demo submission data — replace this with dynamic fetch from your Cloudinary upload log or backend API
+const submissions = [
+  {
+    name: "Ananya Singh",
+    image: "https://res.cloudinary.com/dyozyqrqn/image/upload/v1720000000/sample1.jpg",
+    story: "A breathtaking sunrise trek to Kalsubai peak!"
+  },
+  {
+    name: "Rohan Mehra",
+    image: "https://res.cloudinary.com/dyozyqrqn/image/upload/v1720000000/sample2.jpg",
+    story: "Peaceful boat ride in Varanasi Ghat — must visit once."
+  }
+];
+
+// Load cards dynamically
+const container = document.getElementById("submissions");
+submissions.forEach((item, index) => {
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+    <h3>👤 ${item.name}</h3>
+    <img src="${item.image}" alt="User Story Image">
+    <p>${item.story}</p>
+    <button class="btn approve" onclick="approve(${index})">Approve</button>
+    <button class="btn reject" onclick="reject(${index})">Reject</button>
+  `;
+  container.appendChild(card);
+});
+
+// Approve/Reject actions
+function approve(index) {
+  alert(`Approved: ${submissions[index].name}'s story ✅`);
+  // Here you can add code to move data to your public gallery page or save it in Cloud/Google Sheet
+}
+
+function reject(index) {
+  alert(`Rejected: ${submissions[index].name}'s story ❌`);
+  // Optional: remove card or log rejection
+}
+</script>
+
+</body>
+</html>
