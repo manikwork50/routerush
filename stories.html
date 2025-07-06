@@ -3,84 +3,94 @@
 <head>
   <meta charset="UTF-8">
   <title>WanderMap — Share Your Travel Story</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
     body {
+      margin:0;
       font-family:'Segoe UI', sans-serif;
-      background: url('img/ocean-bg.jpg') no-repeat center center fixed;
-      background-size:cover;
-      color: #333;
-      overflow-x:hidden;
+      background: url('img/ocean-bg.jpg') no-repeat center center/cover;
+      color:#fff;
+      overflow-x: hidden;
     }
     nav {
-      background: rgba(255,255,255,0.9);
+      background: rgba(0,0,0,0.7);
       padding: 16px;
       text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      position: sticky;
-      top:0;
-      z-index: 10;
     }
     nav a {
-      color: #333;
+      color: #fff;
       margin: 0 18px;
       text-decoration: none;
       font-weight: bold;
     }
-    nav a:hover { color: #FF5E00; }
+    nav a:hover { color: #FFB347; }
 
     .container {
-      max-width: 800px;
-      background: rgba(255,255,255,0.9);
-      margin: 30px auto;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
       animation: fadeIn 2s ease;
     }
 
-    h1 {
-      text-align:center;
-      color: #007B8F;
+    h2 {
+      text-align: center;
       margin-bottom: 20px;
+      color: #FFEB99;
     }
 
-    label {
-      display: block;
-      margin: 14px 0 6px;
-      font-weight: bold;
+    form {
+      background: rgba(0,0,0,0.65);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      max-width: 500px;
+      margin: 0 auto 60px;
     }
 
-    input, textarea, button {
+    input, textarea {
       width: 100%;
       padding: 12px;
-      margin-bottom: 12px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-    button {
-      background: #FF5E00;
-      color: #fff;
+      margin: 10px 0;
       border: none;
+      border-radius: 6px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #FF5E00;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 6px;
       cursor: pointer;
-      transition: background 0.3s;
     }
     button:hover { background: #FF8020; }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform:translateY(20px); }
-      to { opacity: 1; transform:translateY(0); }
+    .story-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
     }
 
-    footer {
-      background: rgba(255,255,255,0.9);
-      color: #333;
-      text-align: center;
-      padding: 14px;
-      margin-top: 30px;
-      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+    .story-card {
+      background: rgba(0,0,0,0.6);
+      padding: 16px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
+    }
+    .story-card:hover {
+      transform: scale(1.03);
+    }
+    .story-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity:0; }
+      to { opacity:1; }
     }
   </style>
 </head>
@@ -92,49 +102,69 @@
   <a href="gallery.html">Gallery</a>
   <a href="stories.html">Stories</a>
   <a href="signup.html">Sign Up</a>
-  <a href="contact.html">Contact</a>
 </nav>
 
 <div class="container">
-  <h1>📸 Share Your Travel Story</h1>
+
+  <h2>📝 Share Your Travel Story</h2>
 
   <form id="storyForm">
-    <label>Your Name</label>
-    <input type="text" required>
-
-    <label>Email (for approval contact)</label>
-    <input type="email" required>
-
-    <label>Story Title</label>
-    <input type="text" required>
-
-    <label>Your Story</label>
-    <textarea rows="5" required></textarea>
-
-    <label>Upload Images (max 3)</label>
-    <input type="file" accept="image/*" multiple>
-
-    <button type="submit">Submit Story for Approval</button>
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="email" id="email" placeholder="Email Address" required>
+    <input type="text" id="image" placeholder="Image URL (public link)" required>
+    <textarea id="story" placeholder="Your Travel Story" rows="5" required></textarea>
+    <button type="submit">Submit for Approval</button>
   </form>
 
-  <p style="font-size:13px;color:#777;margin-top:10px;">Note: Stories will be reviewed by WanderMap team before publishing.</p>
+  <br>
+
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-8124807245840632"
+       data-ad-slot="1234567890"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632"
+     crossorigin="anonymous"></script>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  <h2>📸 Featured Stories</h2>
+
+  <div class="story-gallery" id="storyGallery">
+    <!-- Approved stories appear here -->
+  </div>
+
 </div>
 
-<footer>
-  &copy; 2025 WanderMap | Created & Managed by Manik Rao | Travel Better 🌏
-</footer>
-
 <script>
-  document.getElementById('storyForm').onsubmit = function(e){
-    e.preventDefault();
-    alert("Your travel story has been submitted and will be reviewed shortly.");
-    this.reset();
-  }
-</script>
+// Example approved stories
+const stories = [
+  { name: "Ananya", image:"img/story1.jpg", text:"Watching sunrise at Varanasi Ghat was unforgettable!" },
+  { name: "Rahul", image:"img/story2.jpg", text:"Trekking the Himalayas made me feel truly alive." }
+];
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632" crossorigin="anonymous"></script>
-<ins class="adsbygoogle" style="display:block;text-align:center;margin:20px 0;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+function loadStories() {
+  const gallery = document.getElementById("storyGallery");
+  gallery.innerHTML = "";
+  stories.forEach(s => {
+    const card = document.createElement("div");
+    card.className = "story-card";
+    card.innerHTML = `<img src="${s.image}" alt="Story Image">
+                      <p><strong>${s.name}</strong></p>
+                      <p>${s.text}</p>`;
+    gallery.appendChild(card);
+  });
+}
+
+loadStories();
+
+// Handle form submission
+document.getElementById("storyForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  alert("Thank you! Your story is submitted for approval.");
+  this.reset();
+});
+</script>
 
 </body>
 </html>
