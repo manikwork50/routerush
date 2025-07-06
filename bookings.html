@@ -2,115 +2,99 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Book Travel Online | WanderMap Deals</title>
+  <title>WanderMap — Travel Bookings & Deals</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Compare and book the best hotels, trains, buses, flights, and travel gear from trusted partners. WanderMap travel deals.">
-  <meta name="keywords" content="Book hotels, train tickets, bus booking, cheap flights India, travel deals, Amazon camping gear">
+  <meta name="description" content="Book your bus, train, hotel and buy travel gear at WanderMap. Compare fares, find best deals and travel smarter.">
+  <meta name="keywords" content="bus booking, train tickets, hotel booking, camping gear, travel deals India">
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * {margin:0; padding:0; box-sizing:border-box;}
     body {
-      font-family:'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://source.unsplash.com/1600x900/?forest') no-repeat center center fixed;
+      background-size: cover;
       color: #fff;
-      background: #000;
-    }
-    .bg-image {
-      position: fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      object-fit:cover;
-      z-index:-2;
     }
     .overlay {
       position: fixed;
       top:0; left:0;
       width:100%; height:100%;
-      background: rgba(0,0,0,0.5);
-      z-index:-1;
+      background: rgba(0,0,0,0.6);
+      z-index: -1;
     }
     nav {
+      background: rgba(0,0,0,0.75);
       padding: 16px;
       text-align: center;
-      background: rgba(0,0,0,0.7);
     }
     nav a {
-      color:#fff;
-      margin: 0 14px;
-      text-decoration:none;
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
       font-weight: bold;
       transition: color 0.3s;
     }
-    nav a:hover { color: #FFD700; }
+    nav a:hover { color: #FFB347; }
     h1 {
-      text-align:center;
-      margin:50px 0 20px;
-      font-size:2.6em;
-      color: #FFD700;
+      text-align: center;
+      margin: 30px 0;
+      color: #FFB347;
+      font-size: 2.8em;
     }
-    .card-grid {
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap:20px;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 20px;
+      padding: 20px;
       max-width: 1200px;
-      margin:30px auto;
-      padding: 0 16px;
+      margin: auto;
     }
     .card {
       background: rgba(255,255,255,0.1);
       border-radius: 12px;
       overflow: hidden;
-      box-shadow:0 4px 12px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.5);
       transition: transform 0.4s ease;
     }
     .card:hover { transform: scale(1.04); }
     .card img {
-      width:100%;
-      height:180px;
-      object-fit:cover;
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
     }
-    .card-content {
-      padding:14px;
+    .card div {
+      padding: 14px;
     }
-    .card-content h3 {
-      margin:0 0 8px;
-      color:#FFD700;
-      font-size:1.2em;
+    .card h3 {
+      margin-bottom: 8px;
+      color: #FFB347;
     }
-    .card-content p {
-      color:#ddd;
-      font-size: 0.95em;
-      line-height:1.4;
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 18px;
+      background: #FF5E00;
+      color: #fff;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s;
     }
-    .card-content a {
-      display:inline-block;
-      margin-top:10px;
-      padding:8px 16px;
-      background: #FFD700;
-      color:#000;
-      text-decoration:none;
-      border-radius:20px;
-      font-weight:bold;
-    }
-    .ad-container {
-      text-align:center;
-      margin: 30px auto;
-      padding: 10px;
-    }
+    .card a:hover { background: #FFB347; }
     footer {
-      background: rgba(0,0,0,0.85);
-      text-align:center;
-      padding:14px;
-      color:#ccc;
+      text-align: center;
+      background: rgba(0,0,0,0.8);
+      padding: 14px;
       margin-top: 40px;
+      font-size: 14px;
     }
-    @keyframes fadeIn {
-      from{opacity:0;} to{opacity:1;}
+    .ad-wrap {
+      margin: 40px auto;
+      max-width: 1000px;
+      text-align: center;
     }
-    .card, nav, footer { animation: fadeIn 1.5s ease; }
   </style>
 </head>
 <body>
 
-<img src="https://source.unsplash.com/1600x900/?dense,forest" class="bg-image" alt="Background">
 <div class="overlay"></div>
 
 <nav>
@@ -118,14 +102,18 @@
   <a href="map.html">Map</a>
   <a href="gallery.html">Gallery</a>
   <a href="bookings.html">Bookings</a>
+  <a href="blog.html">Blog</a>
+  <a href="submit-story.html">Submit Story</a>
   <a href="stories.html">Stories</a>
   <a href="contact.html">Contact</a>
 </nav>
 
-<h1>🌿 Book Your Travel Essentials</h1>
+<h1>Travel Bookings & Top Deals ✈️🏕️</h1>
 
-<div class="ad-container">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632" crossorigin="anonymous"></script>
+<div class="ad-wrap">
+  <!-- AdSense Ad Unit -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632"
+     crossorigin="anonymous"></script>
   <ins class="adsbygoogle"
        style="display:block; text-align:center;"
        data-ad-client="ca-pub-8124807245840632"
@@ -135,57 +123,39 @@
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
-<div class="card-grid">
-
+<div class="grid">
   <div class="card">
-    <img src="https://static.booking.com/images/banner_hero.jpg" alt="Hotels">
-    <div class="card-content">
-      <h3>Book Hotels</h3>
-      <p>Up to 50% off on top stays worldwide via Booking.com.</p>
-      <a href="https://www.booking.com/?aid=your_affiliate_id" target="_blank">Book Now</a>
+    <img src="https://logos-world.net/wp-content/uploads/2020/11/Redbus-Logo.png" alt="Bus Booking">
+    <div>
+      <h3>Redbus - Book Buses</h3>
+      <a href="https://www.redbus.in" target="_blank">Book Now</a>
     </div>
   </div>
-
   <div class="card">
-    <img src="https://cdn.redbus.in/Images/rdc/rdc-rbus-home-banner.png" alt="Bus Booking">
-    <div class="card-content">
-      <h3>Bus Tickets</h3>
-      <p>Lowest fares on 1000+ routes across India with Redbus.</p>
-      <a href="https://www.redbus.in?aff_id=your_affiliate_id" target="_blank">Book Bus</a>
+    <img src="https://cdn.confirmtkt.com/images/ct-logo-white.svg" alt="Train Booking">
+    <div>
+      <h3>ConfirmTkt - Train Tickets</h3>
+      <a href="https://www.confirmtkt.com" target="_blank">Book Train</a>
     </div>
   </div>
-
   <div class="card">
-    <img src="https://images.ctfassets.net/gxwgulxyxupy/1ZnauD1ynjUTyVdJN9WewC/69fa6d9b40d15342cda3f3c7458a2e5b/flight-reservation.jpg" alt="Flights">
-    <div class="card-content">
-      <h3>Cheap Flights</h3>
-      <p>Compare and book flights with Skyscanner for best deals.</p>
-      <a href="https://www.skyscanner.co.in?affiliate_id=your_affiliate_id" target="_blank">Check Flights</a>
+    <img src="https://seeklogo.com/images/B/booking-com-logo-26FAF24E36-seeklogo.com.png" alt="Hotels">
+    <div>
+      <h3>Hotels via Booking.com</h3>
+      <a href="https://www.booking.com" target="_blank">Find Hotels</a>
     </div>
   </div>
-
   <div class="card">
-    <img src="https://images.moneycontrol.com/static-mcnews/2023/03/IRCTC-train-booking.jpg" alt="Train Tickets">
-    <div class="card-content">
-      <h3>IRCTC Train Booking</h3>
-      <p>Live availability & confirm ticket options via ConfirmTkt.</p>
-      <a href="https://www.confirmtkt.com/rbooking?referrer=your_affiliate_id" target="_blank">Book Train</a>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Travel Gear">
+    <div>
+      <h3>Travel Gear & Camping</h3>
+      <a href="https://www.amazon.in/s?k=camping+gear" target="_blank">Shop Now</a>
     </div>
   </div>
-
-  <div class="card">
-    <img src="https://m.media-amazon.com/images/I/91iQnzmObBL._AC_SL1500_.jpg" alt="Camping Gear">
-    <div class="card-content">
-      <h3>Camping Essentials</h3>
-      <p>Buy waterproof tents, trekking bags and survival kits.</p>
-      <a href="https://amzn.to/your_affiliate_link" target="_blank">Shop Now</a>
-    </div>
-  </div>
-
 </div>
 
 <footer>
-  &copy; 2025 WanderMap | Created by Manik Rao | Travel Better 🌏
+  &copy; 2025 WanderMap | Created by Manik Rao | Travel Smarter 🌏
 </footer>
 
 </body>
