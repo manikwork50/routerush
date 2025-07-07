@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Top 20 Places in Rajasthan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: sans-serif; background: #f7f7f7; margin:0; padding:20px; }
+    h1 { text-align:center; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-top:30px; }
+    .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
+    .card img { width: 100%; border-radius: 6px; }
+    .card h2 { margin: 10px 0 5px; }
+    .card p { font-size: 14px; color: #555; margin: 5px 0; }
+  </style>
+</head>
+<body>
+
+<h1>🏰 Top 20 Places to Visit in Rajasthan</h1>
+
+<div class="grid">
+  <div class="card">
+    <img src="https://source.unsplash.com/600x400/?jaipur" alt="Jaipur">
+    <h2>Jaipur</h2>
+    <p><strong>History:</strong> Founded in 1727 by Maharaja Sawai Jai Singh II.</p>
+    <p><strong>Famous for:</strong> Amber Fort, City Palace, Hawa Mahal, gem markets.</p>
+    <p><strong>Food:</strong> Dal Baati Churma, Laal Maas.</p>
+    <p><strong>Craft:</strong> Blue Pottery, Bandhej textiles.</p>
+    <p><strong>Nearest Airport:</strong> Jaipur Airport (12 km)</p>
+    <p><strong>Nearest Railway Station:</strong> Jaipur Railway Station (5 km)</p>
+    <p><strong>Nearest Bus Stand:</strong> Sindhi Camp Bus Stand (3 km)</p>
+  </div>
+
+  <!-- Repeat for 19 more places -->
+
+</div>
+
+</body>
+</html>
