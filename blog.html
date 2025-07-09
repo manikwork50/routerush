@@ -5,12 +5,42 @@
   <title>Explore India's States & Union Territories</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { margin: 0; padding: 20px; font-family: 'Arial', sans-serif; background: #f4f4f4; }
-    h1 { text-align: center; margin-bottom: 30px; color: #333; }
+    body { margin: 0; font-family: 'Arial', sans-serif; background: #f4f4f4; color: #333; }
+    nav {
+      background: #333;
+      padding: 12px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: #fff;
+      margin-right: 20px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    nav a:hover { text-decoration: underline; }
+    .hero {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/d/d5/India_Gate_Delhi.jpg') no-repeat center center/cover;
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-shadow: 2px 2px 6px #000;
+    }
+    .hero h1 { font-size: 48px; margin: 0; }
+    h2 {
+      text-align: center;
+      margin: 50px 0 20px;
+      font-size: 32px;
+      color: #222;
+    }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
+      padding: 30px;
     }
     .card {
       background: #fff;
@@ -19,7 +49,7 @@
       box-shadow: 0 4px 14px rgba(0,0,0,0.15);
       transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
-      animation: fadeInUp 0.7s ease forwards;
+      animation: fadeInUp 0.8s ease forwards;
     }
     .card:hover {
       transform: translateY(-8px);
@@ -60,10 +90,24 @@
 </head>
 <body>
 
-<h1>Explore India's States & Union Territories</h1>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="map.html">Map</a>
+  <a href="blog.html">Blog</a>
+  <a href="bookings.html">Bookings</a>
+  <a href="submit-story.html">Submit Story</a>
+  <a href="stories.html">Stories</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<div class="hero">
+  <h1>Explore India</h1>
+</div>
+
+<h2>States of India</h2>
 
 <div class="grid">
-
   <div class="card" onclick="location.href='andhra-pradesh.html'">
     <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Vijayawada_skyline.jpg" alt="Andhra Pradesh">
     <div class="card-content">
@@ -71,584 +115,553 @@
       <p><strong>Capital:</strong> Amaravati</p>
       <p><strong>Official Language:</strong> Telugu</p>
       <p><strong>Population:</strong> 49.6 million (2021)</p>
-      <p><strong>History:</strong> Ancient land of Mauryas, Satavahanas, and Vijayanagara rulers. Modern state formed post-independence.</p>
+      <p><strong>History:</strong> Ancient land of Mauryas, Satavahanas, and Vijayanagara rulers.</p>
       <ul>
-        <li>Second longest Indian coastline (974 km)</li>
-        <li>Home to Tirupati — world's richest temple</li>
-        <li>Known for spicy cuisine and handicrafts</li>
+        <li>Second longest Indian coastline</li>
+        <li>Home to Tirupati temple</li>
+        <li>Famous for spicy cuisine</li>
       </ul>
     </div>
   </div>
 
-  <div class="card" onclick="location.href='andhra-pradesh.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Vijayawada_skyline.jpg" alt="Andhra Pradesh">
-  <div class="card-content">
-    <h2>Andhra Pradesh</h2>
-    <p><strong>Capital:</strong> Amaravati</p>
-    <p><strong>Official Language:</strong> Telugu</p>
-    <p><strong>Population:</strong> 49.6 million (2021)</p>
-    <p><strong>History:</strong> Ancient land of Mauryas, Satavahanas, and Vijayanagara rulers.</p>
-    <ul>
-      <li>Second longest Indian coastline</li>
-      <li>Tirupati — world’s richest temple</li>
-      <li>Famous for spicy cuisine</li>
-    </ul>
+  <div class="card" onclick="location.href='arunachal-pradesh.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/TawangMonasteryArunachalPradeshIndia.jpg" alt="Arunachal Pradesh">
+    <div class="card-content">
+      <h2>Arunachal Pradesh</h2>
+      <p><strong>Capital:</strong> Itanagar</p>
+      <p><strong>Official Languages:</strong> English, Nyishi, Adi</p>
+      <p><strong>Population:</strong> 1.6 million (2021)</p>
+      <p><strong>History:</strong> Historic land of Monpa and Adi tribes.</p>
+      <ul>
+        <li>Tawang Monastery</li>
+        <li>Land of the rising sun</li>
+        <li>Dense Himalayan forests</li>
+      </ul>
+    </div>
   </div>
-</div>
 
-<div class="card" onclick="location.href='arunachal-pradesh.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/TawangMonasteryArunachalPradeshIndia.jpg" alt="Arunachal Pradesh">
-  <div class="card-content">
-    <h2>Arunachal Pradesh</h2>
-    <p><strong>Capital:</strong> Itanagar</p>
-    <p><strong>Official Languages:</strong> English, Nyishi, Adi</p>
-    <p><strong>Population:</strong> 1.6 million (2021)</p>
-    <p><strong>History:</strong> Historic region of the Monpa, Adi and tribal communities.</p>
-    <ul>
-      <li>Home to Tawang Monastery</li>
-      <li>Land of the rising sun</li>
-      <li>Dense Himalayan forests</li>
-    </ul>
+  <div class="card" onclick="location.href='assam.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Kamakhya_Temple_view.jpg" alt="Assam">
+    <div class="card-content">
+      <h2>Assam</h2>
+      <p><strong>Capital:</strong> Dispur</p>
+      <p><strong>Official Language:</strong> Assamese</p>
+      <p><strong>Population:</strong> 36 million (2021)</p>
+      <p><strong>History:</strong> Ancient land of Ahoms and tea plantations.</p>
+      <ul>
+        <li>Majuli island</li>
+        <li>Assam tea & silk</li>
+        <li>Kaziranga rhinos</li>
+      </ul>
+    </div>
   </div>
-</div>
 
-<div class="card" onclick="location.href='assam.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Kamakhya_Temple_view.jpg" alt="Assam">
-  <div class="card-content">
-    <h2>Assam</h2>
-    <p><strong>Capital:</strong> Dispur</p>
-    <p><strong>Official Language:</strong> Assamese</p>
-    <p><strong>Population:</strong> 36 million (2021)</p>
-    <p><strong>History:</strong> Ancient land of Ahoms, Kamarupa kingdom and tea plantations.</p>
-    <ul>
-      <li>World’s largest river island: Majuli</li>
-      <li>Famous for Assam tea & silk</li>
-      <li>Home to Kaziranga rhinos</li>
-    </ul>
+  <div class="card" onclick="location.href='bihar.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Mahabodhi_Temple_Bodh_Gaya.jpg" alt="Bihar">
+    <div class="card-content">
+      <h2>Bihar</h2>
+      <p><strong>Capital:</strong> Patna</p>
+      <p><strong>Official Languages:</strong> Hindi, Urdu</p>
+      <p><strong>Population:</strong> 124 million (2021)</p>
+      <p><strong>History:</strong> Birthplace of Buddhism and Jainism.</p>
+      <ul>
+        <li>Mahabodhi Temple</li>
+        <li>Nalanda university ruins</li>
+        <li>Rich cultural heritage</li>
+      </ul>
+    </div>
   </div>
-</div>
 
-<div class="card" onclick="location.href='bihar.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Mahabodhi_Temple_Bodh_Gaya.jpg" alt="Bihar">
-  <div class="card-content">
-    <h2>Bihar</h2>
-    <p><strong>Capital:</strong> Patna</p>
-    <p><strong>Official Languages:</strong> Hindi, Urdu</p>
-    <p><strong>Population:</strong> 124 million (2021)</p>
-    <p><strong>History:</strong> Birthplace of Buddhism and Jainism. Ancient kingdoms of Magadh and Mauryas.</p>
-    <ul>
-      <li>Mahabodhi Temple, Bodh Gaya</li>
-      <li>Nalanda ancient university</li>
-      <li>Rich cultural heritage</li>
-    </ul>
+  <div class="card" onclick="location.href='chhattisgarh.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Chitrakote_Falls.jpg" alt="Chhattisgarh">
+    <div class="card-content">
+      <h2>Chhattisgarh</h2>
+      <p><strong>Capital:</strong> Raipur</p>
+      <p><strong>Official Language:</strong> Hindi</p>
+      <p><strong>Population:</strong> 30 million (2021)</p>
+      <p><strong>History:</strong> Land of waterfalls and tribal culture.</p>
+      <ul>
+        <li>Chitrakote Falls</li>
+        <li>Kanger Valley Park</li>
+        <li>Mineral-rich region</li>
+      </ul>
+    </div>
   </div>
-</div>
-<div class="card" onclick="location.href='chhattisgarh.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Chitrakote_Falls.jpg" alt="Chhattisgarh">
-  <div class="card-content">
-    <h2>Chhattisgarh</h2>
-    <p><strong>Capital:</strong> Raipur</p>
-    <p><strong>Official Language:</strong> Hindi</p>
-    <p><strong>Population:</strong> 30 million (2021)</p>
-    <p><strong>History:</strong> Known for tribal cultures, ancient temples and dense forests.</p>
-    <ul>
-      <li>Chitrakote Falls — India's Niagara</li>
-      <li>Home to Kanger Valley National Park</li>
-      <li>Rich mineral resources</li>
-    </ul>
+  <div class="card" onclick="location.href='goa.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Baga_Beach%2C_Goa.jpg" alt="Goa">
+    <div class="card-content">
+      <h2>Goa</h2>
+      <p><strong>Capital:</strong> Panaji</p>
+      <p><strong>Official Languages:</strong> Konkani, Marathi</p>
+      <p><strong>Population:</strong> 1.6 million (2021)</p>
+      <p><strong>History:</strong> Former Portuguese colony famous for beaches and churches.</p>
+      <ul>
+        <li>Baga & Calangute beaches</li>
+        <li>Basilica of Bom Jesus</li>
+        <li>Nightlife & seafood</li>
+      </ul>
+    </div>
   </div>
-</div>
 
-<div class="card" onclick="location.href='goa.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Baga_Beach%2C_Goa.jpg" alt="Goa">
-  <div class="card-content">
-    <h2>Goa</h2>
-    <p><strong>Capital:</strong> Panaji</p>
-    <p><strong>Official Languages:</strong> Konkani, Marathi</p>
-    <p><strong>Population:</strong> 1.6 million (2021)</p>
-    <p><strong>History:</strong> Former Portuguese colony, known for its beaches and churches.</p>
-    <ul>
-      <li>Famous Baga and Calangute beaches</li>
-      <li>Historic Basilica of Bom Jesus</li>
-      <li>Popular nightlife and seafood</li>
-    </ul>
+  <div class="card" onclick="location.href='gujarat.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Somnath_temple.jpg" alt="Gujarat">
+    <div class="card-content">
+      <h2>Gujarat</h2>
+      <p><strong>Capital:</strong> Gandhinagar</p>
+      <p><strong>Official Language:</strong> Gujarati</p>
+      <p><strong>Population:</strong> 69 million (2021)</p>
+      <p><strong>History:</strong> Birthplace of Mahatma Gandhi and Indus Valley heritage.</p>
+      <ul>
+        <li>Statue of Unity</li>
+        <li>Gir Lion Sanctuary</li>
+        <li>Somnath Temple</li>
+      </ul>
+    </div>
   </div>
-</div>
+  <div class="card" onclick="location.href='haryana.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Kurukshetra_Sunset.jpg" alt="Haryana">
+    <div class="card-content">
+      <h2>Haryana</h2>
+      <p><strong>Capital:</strong> Chandigarh</p>
+      <p><strong>Official Languages:</strong> Hindi, Punjabi</p>
+      <p><strong>Population:</strong> 29 million (2021)</p>
+      <p><strong>History:</strong> Land of Mahabharata’s Kurukshetra battle.</p>
+      <ul>
+        <li>Known as India's milk bowl</li>
+        <li>Modern cities like Gurugram</li>
+        <li>Rich sports heritage</li>
+      </ul>
+    </div>
+  </div>
 
-<div class="card" onclick="location.href='gujarat.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Somnath_temple.jpg" alt="Gujarat">
-  <div class="card-content">
-    <h2>Gujarat</h2>
-    <p><strong>Capital:</strong> Gandhinagar</p>
-    <p><strong>Official Language:</strong> Gujarati</p>
-    <p><strong>Population:</strong> 69 million (2021)</p>
-    <p><strong>History:</strong> Birthplace of Mahatma Gandhi. Rich Indus Valley civilization sites.</p>
-    <ul>
-      <li>Statue of Unity — world's tallest</li>
-      <li>Gir National Park — Asiatic lions</li>
-      <li>Historic Somnath Temple</li>
-    </ul>
+  <div class="card" onclick="location.href='himachal-pradesh.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Shimla_scenic.jpg" alt="Himachal Pradesh">
+    <div class="card-content">
+      <h2>Himachal Pradesh</h2>
+      <p><strong>Capital:</strong> Shimla & Dharamshala</p>
+      <p><strong>Official Language:</strong> Hindi</p>
+      <p><strong>Population:</strong> 7.4 million (2021)</p>
+      <p><strong>History:</strong> Famous for British-era towns and Himalayan scenery.</p>
+      <ul>
+        <li>Shimla, Manali hill stations</li>
+        <li>Dharamshala (Dalai Lama’s home)</li>
+        <li>Trekking and snow sports</li>
+      </ul>
+    </div>
   </div>
-</div>
+  <div class="card" onclick="location.href='jharkhand.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Hundru_Falls.jpg" alt="Jharkhand">
+    <div class="card-content">
+      <h2>Jharkhand</h2>
+      <p><strong>Capital:</strong> Ranchi</p>
+      <p><strong>Official Language:</strong> Hindi</p>
+      <p><strong>Population:</strong> 39 million (2021)</p>
+      <p><strong>History:</strong> Land of mineral wealth and tribal heritage.</p>
+      <ul>
+        <li>Hundru Falls</li>
+        <li>Betla National Park</li>
+        <li>Major coal and mineral hub</li>
+      </ul>
+    </div>
+  </div>
 
-<div class="card" onclick="location.href='haryana.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Kurukshetra_Sunset.jpg" alt="Haryana">
-  <div class="card-content">
-    <h2>Haryana</h2>
-    <p><strong>Capital:</strong> Chandigarh</p>
-    <p><strong>Official Languages:</strong> Hindi, Punjabi</p>
-    <p><strong>Population:</strong> 29 million (2021)</p>
-    <p><strong>History:</strong> Historic land of the Mahabharata war at Kurukshetra.</p>
-    <ul>
-      <li>Known as India's milk bowl</li>
-      <li>Industrial cities like Gurugram</li>
-      <li>Rich sports heritage</li>
-    </ul>
+  <div class="card" onclick="location.href='karnataka.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Mysore_Palace_Front_View.jpg" alt="Karnataka">
+    <div class="card-content">
+      <h2>Karnataka</h2>
+      <p><strong>Capital:</strong> Bengaluru</p>
+      <p><strong>Official Language:</strong> Kannada</p>
+      <p><strong>Population:</strong> 68 million (2021)</p>
+      <p><strong>History:</strong> Ancient Chalukya, Hoysala, and Vijayanagara dynasties.</p>
+      <ul>
+        <li>Mysore Palace</li>
+        <li>Hampi ruins</li>
+        <li>India's IT capital Bengaluru</li>
+      </ul>
+    </div>
   </div>
-</div>
+  <div class="card" onclick="location.href='kerala.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Alleppey_boathouse.jpg" alt="Kerala">
+    <div class="card-content">
+      <h2>Kerala</h2>
+      <p><strong>Capital:</strong> Thiruvananthapuram</p>
+      <p><strong>Official Language:</strong> Malayalam</p>
+      <p><strong>Population:</strong> 36 million (2021)</p>
+      <p><strong>History:</strong> Ancient spice trade region known for cultural harmony.</p>
+      <ul>
+        <li>Alleppey backwaters</li>
+        <li>Ayurvedic wellness tourism</li>
+        <li>Highest literacy rate in India</li>
+      </ul>
+    </div>
+  </div>
 
-<div class="card" onclick="location.href='himachal-pradesh.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Shimla_scenic.jpg" alt="Himachal Pradesh">
-  <div class="card-content">
-    <h2>Himachal Pradesh</h2>
-    <p><strong>Capital:</strong> Shimla & Dharamshala</p>
-    <p><strong>Official Language:</strong> Hindi</p>
-    <p><strong>Population:</strong> 7.4 million (2021)</p>
-    <p><strong>History:</strong> Hill state famous for British-era towns and Himalayan beauty.</p>
-    <ul>
-      <li>Scenic Shimla, Manali</li>
-      <li>Dharamshala — Dalai Lama’s home</li>
-      <li>Skiing, trekking paradise</li>
-    </ul>
+  <div class="card" onclick="location.href='madhya-pradesh.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Khajuraho_temples.jpg" alt="Madhya Pradesh">
+    <div class="card-content">
+      <h2>Madhya Pradesh</h2>
+      <p><strong>Capital:</strong> Bhopal</p>
+      <p><strong>Official Language:</strong> Hindi</p>
+      <p><strong>Population:</strong> 84 million (2021)</p>
+      <p><strong>History:</strong> Known for ancient dynasties and stunning heritage.</p>
+      <ul>
+        <li>Khajuraho temples</li>
+        <li>Kanha, Bandhavgarh parks</li>
+        <li>Historic Gwalior fort</li>
+      </ul>
+    </div>
   </div>
-</div>
-<div class="card" onclick="location.href='jharkhand.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Hundru_Falls.jpg" alt="Jharkhand">
-  <div class="card-content">
-    <h2>Jharkhand</h2>
-    <p><strong>Capital:</strong> Ranchi</p>
-    <p><strong>Official Language:</strong> Hindi</p>
-    <p><strong>Population:</strong> 39 million (2021)</p>
-    <p><strong>History:</strong> Land of forests and mineral wealth. Carved out of Bihar in 2000.</p>
-    <ul>
-      <li>Hundru Falls, Betla National Park</li>
-      <li>Rich tribal culture</li>
-      <li>Major coal and mineral hub</li>
-    </ul>
+  <div class="card" onclick="location.href='maharashtra.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Gateway_of_India_Mumbai.jpg" alt="Maharashtra">
+    <div class="card-content">
+      <h2>Maharashtra</h2>
+      <p><strong>Capital:</strong> Mumbai</p>
+      <p><strong>Official Language:</strong> Marathi</p>
+      <p><strong>Population:</strong> 124 million (2021)</p>
+      <p><strong>History:</strong> Seat of the Maratha empire, British Bombay Presidency hub.</p>
+      <ul>
+        <li>Gateway of India, Ajanta caves</li>
+        <li>India's financial capital</li>
+        <li>Bollywood movie industry</li>
+      </ul>
+    </div>
   </div>
-</div>
 
-<div class="card" onclick="location.href='karnataka.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Mysore_Palace_Front_View.jpg" alt="Karnataka">
-  <div class="card-content">
-    <h2>Karnataka</h2>
-    <p><strong>Capital:</strong> Bengaluru</p>
-    <p><strong>Official Language:</strong> Kannada</p>
-    <p><strong>Population:</strong> 68 million (2021)</p>
-    <p><strong>History:</strong> Once home to the Vijayanagara and Chalukya dynasties.</p>
-    <ul>
-      <li>Mysore Palace, Hampi ruins</li>
-      <li>India's tech capital — Bengaluru</li>
-      <li>Coffee plantations in Coorg</li>
-    </ul>
+  <div class="card" onclick="location.href='manipur.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Loktak_Lake_manipur.jpg" alt="Manipur">
+    <div class="card-content">
+      <h2>Manipur</h2>
+      <p><strong>Capital:</strong> Imphal</p>
+      <p><strong>Official Language:</strong> Meitei (Manipuri)</p>
+      <p><strong>Population:</strong> 3.2 million (2021)</p>
+      <p><strong>History:</strong> Ancient kingdom with rich martial arts and dance heritage.</p>
+      <ul>
+        <li>Loktak Lake (floating islands)</li>
+        <li>Sangai deer sanctuary</li>
+        <li>Kangla Fort</li>
+      </ul>
+    </div>
   </div>
-</div>
+  <div class="card" onclick="location.href='meghalaya.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Nohkalikai_Falls_Cherrapunjee.jpg" alt="Meghalaya">
+    <div class="card-content">
+      <h2>Meghalaya</h2>
+      <p><strong>Capital:</strong> Shillong</p>
+      <p><strong>Official Language:</strong> English</p>
+      <p><strong>Population:</strong> 3.4 million (2021)</p>
+      <p><strong>History:</strong> 'Abode of Clouds' with ancient Khasi-Garo-Jaintia tribal heritage.</p>
+      <ul>
+        <li>Living root bridges</li>
+        <li>Nohkalikai Falls</li>
+        <li>Wettest place on Earth</li>
+      </ul>
+    </div>
+  </div>
 
-<div class="card" onclick="location.href='kerala.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Alleppey_boathouse.jpg" alt="Kerala">
-  <div class="card-content">
-    <h2>Kerala</h2>
-    <p><strong>Capital:</strong> Thiruvananthapuram</p>
-    <p><strong>Official Language:</strong> Malayalam</p>
-    <p><strong>Population:</strong> 36 million (2021)</p>
-    <p><strong>History:</strong> Known for ancient spice trade and cultural harmony.</p>
-    <ul>
-      <li>Alleppey backwaters</li>
-      <li>Ayurveda and wellness tourism</li>
-      <li>Highest literacy rate in India</li>
-    </ul>
+  <div class="card" onclick="location.href='mizoram.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Aizawl_City_View.jpg" alt="Mizoram">
+    <div class="card-content">
+      <h2>Mizoram</h2>
+      <p><strong>Capital:</strong> Aizawl</p>
+      <p><strong>Official Language:</strong> Mizo, English</p>
+      <p><strong>Population:</strong> 1.2 million (2021)</p>
+      <p><strong>History:</strong> Hill state known for vibrant tribal culture and landscapes.</p>
+      <ul>
+        <li>Durtlang Hills view points</li>
+        <li>Serchhip waterfalls</li>
+        <li>Thenzawl golf resort</li>
+      </ul>
+    </div>
   </div>
-</div>
+  <div class="card" onclick="location.href='nagaland.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Kohima_Cathedral.jpg" alt="Nagaland">
+    <div class="card-content">
+      <h2>Nagaland</h2>
+      <p><strong>Capital:</strong> Kohima</p>
+      <p><strong>Official Language:</strong> English</p>
+      <p><strong>Population:</strong> 2.1 million (2021)</p>
+      <p><strong>History:</strong> Home of Naga tribes and historic WWII battle of Kohima.</p>
+      <ul>
+        <li>Hornbill cultural festival</li>
+        <li>Dzukou Valley treks</li>
+        <li>Kohima War Cemetery</li>
+      </ul>
+    </div>
+  </div>
 
-<div class="card" onclick="location.href='madhya-pradesh.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Khajuraho_temples.jpg" alt="Madhya Pradesh">
-  <div class="card-content">
-    <h2>Madhya Pradesh</h2>
-    <p><strong>Capital:</strong> Bhopal</p>
-    <p><strong>Official Language:</strong> Hindi</p>
-    <p><strong>Population:</strong> 84 million (2021)</p>
-    <p><strong>History:</strong> Central Indian region with ancient dynasties like Mauryas and Mughals.</p>
-    <ul>
-      <li>Khajuraho temples (UNESCO)</li>
-      <li>Wildlife parks like Kanha</li>
-      <li>Historic Gwalior fort</li>
-    </ul>
+  <div class="card" onclick="location.href='odisha.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Konark_Temple.jpg" alt="Odisha">
+    <div class="card-content">
+      <h2>Odisha</h2>
+      <p><strong>Capital:</strong> Bhubaneswar</p>
+      <p><strong>Official Language:</strong> Odia</p>
+      <p><strong>Population:</strong> 46 million (2021)</p>
+      <p><strong>History:</strong> Ancient Kalinga kingdom, Ashoka’s conquest, and Puri Jagannath temple.</p>
+      <ul>
+        <li>Konark Sun Temple</li>
+        <li>Puri Rath Yatra</li>
+        <li>Chilika Lake flamingos</li>
+      </ul>
+    </div>
   </div>
-</div>
+  <div class="card" onclick="location.href='punjab.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Golden_Temple_Amritsar.jpg" alt="Punjab">
+    <div class="card-content">
+      <h2>Punjab</h2>
+      <p><strong>Capital:</strong> Chandigarh</p>
+      <p><strong>Official Language:</strong> Punjabi</p>
+      <p><strong>Population:</strong> 30 million (2021)</p>
+      <p><strong>History:</strong> Ancient land of the Indus Valley and Sikhism's birthplace.</p>
+      <ul>
+        <li>Golden Temple, Amritsar</li>
+        <li>Wagah Border ceremony</li>
+        <li>Bhangra, tandoori cuisine</li>
+      </ul>
+    </div>
+  </div>
 
-<div class="card" onclick="location.href='maharashtra.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Gateway_of_India_Mumbai.jpg" alt="Maharashtra">
-  <div class="card-content">
-    <h2>Maharashtra</h2>
-    <p><strong>Capital:</strong> Mumbai</p>
-    <p><strong>Official Language:</strong> Marathi</p>
-    <p><strong>Population:</strong> 124 million (2021)</p>
-    <p><strong>History:</strong> Seat of Maratha empire. British Bombay Presidency hub.</p>
-    <ul>
-      <li>Gateway of India, Ajanta caves</li>
-      <li>India's financial capital</li>
-      <li>Bollywood movie industry</li>
-    </ul>
+  <div class="card" onclick="location.href='rajasthan.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Hawa_Mahal_2011.jpg" alt="Rajasthan">
+    <div class="card-content">
+      <h2>Rajasthan</h2>
+      <p><strong>Capital:</strong> Jaipur</p>
+      <p><strong>Official Language:</strong> Hindi</p>
+      <p><strong>Population:</strong> 82 million (2021)</p>
+      <p><strong>History:</strong> Land of kings with deserts, forts, and palaces.</p>
+      <ul>
+        <li>Hawa Mahal, Jaipur</li>
+        <li>Jaisalmer Fort, Thar desert</li>
+        <li>Udaipur lakes and palaces</li>
+      </ul>
+    </div>
   </div>
-</div>
-<div class="card" onclick="location.href='manipur.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Loktak_Lake_manipur.jpg" alt="Manipur">
-  <div class="card-content">
-    <h2>Manipur</h2>
-    <p><strong>Capital:</strong> Imphal</p>
-    <p><strong>Official Language:</strong> Meitei (Manipuri)</p>
-    <p><strong>Population:</strong> 3.2 million (2021)</p>
-    <p><strong>History:</strong> Ancient kingdom with rich tribal heritage and martial arts culture.</p>
-    <ul>
-      <li>Loktak Lake — floating islands</li>
-      <li>Kangla Fort, Sangai deer</li>
-      <li>Famous for Manipuri dance</li>
-    </ul>
+  <div class="card" onclick="location.href='sikkim.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Tsomgo_Lake_Sikkim.jpg" alt="Sikkim">
+    <div class="card-content">
+      <h2>Sikkim</h2>
+      <p><strong>Capital:</strong> Gangtok</p>
+      <p><strong>Official Languages:</strong> Nepali, English</p>
+      <p><strong>Population:</strong> 0.7 million (2021)</p>
+      <p><strong>History:</strong> Himalayan kingdom merged into India in 1975. Known for monasteries and Kanchenjunga.</p>
+      <ul>
+        <li>Tsomgo Lake, Nathula Pass</li>
+        <li>Rumtek Monastery</li>
+        <li>Organic farming pioneer</li>
+      </ul>
+    </div>
   </div>
-</div>
 
-<div class="card" onclick="location.href='meghalaya.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Nohkalikai_Falls_Cherrapunjee.jpg" alt="Meghalaya">
-  <div class="card-content">
-    <h2>Meghalaya</h2>
-    <p><strong>Capital:</strong> Shillong</p>
-    <p><strong>Official Language:</strong> English</p>
-    <p><strong>Population:</strong> 3.4 million (2021)</p>
-    <p><strong>History:</strong> Known as the 'Abode of Clouds' with ancient Khasi-Garo-Jaintia tribes.</p>
-    <ul>
-      <li>Living root bridges</li>
-      <li>Nohkalikai Falls</li>
-      <li>World’s highest rainfall zones</li>
-    </ul>
+  <div class="card" onclick="location.href='tamil-nadu.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Meenakshi_Amman_Temple_Madurai.jpg" alt="Tamil Nadu">
+    <div class="card-content">
+      <h2>Tamil Nadu</h2>
+      <p><strong>Capital:</strong> Chennai</p>
+      <p><strong>Official Language:</strong> Tamil</p>
+      <p><strong>Population:</strong> 78 million (2021)</p>
+      <p><strong>History:</strong> Ancient Dravidian land with Chola, Chera, and Pandya dynasties.</p>
+      <ul>
+        <li>Meenakshi Temple</li>
+        <li>Mahabalipuram sculptures</li>
+        <li>Classical music, Bharatanatyam</li>
+      </ul>
+    </div>
   </div>
-</div>
+  <div class="card" onclick="location.href='telangana.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Charminar_Hyderabad_India.jpg" alt="Telangana">
+    <div class="card-content">
+      <h2>Telangana</h2>
+      <p><strong>Capital:</strong> Hyderabad</p>
+      <p><strong>Official Languages:</strong> Telugu, Urdu</p>
+      <p><strong>Population:</strong> 39 million (2021)</p>
+      <p><strong>History:</strong> Formed in 2014, land of Nizams and Qutb Shahi dynasties.</p>
+      <ul>
+        <li>Charminar, Golconda Fort</li>
+        <li>Hyderabadi biryani</li>
+        <li>Cyberabad IT hub</li>
+      </ul>
+    </div>
+  </div>
 
-<div class="card" onclick="location.href='mizoram.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Aizawl_City_View.jpg" alt="Mizoram">
-  <div class="card-content">
-    <h2>Mizoram</h2>
-    <p><strong>Capital:</strong> Aizawl</p>
-    <p><strong>Official Language:</strong> Mizo, English</p>
-    <p><strong>Population:</strong> 1.2 million (2021)</p>
-    <p><strong>History:</strong> Hilly region with rich tribal heritage, joined India in 1972.</p>
-    <ul>
-      <li>Durtlang Hills view points</li>
-      <li>Serchhip waterfalls</li>
-      <li>Thenzawl golf resort</li>
-    </ul>
+  <div class="card" onclick="location.href='tripura.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/Neermahal_Palace.jpg" alt="Tripura">
+    <div class="card-content">
+      <h2>Tripura</h2>
+      <p><strong>Capital:</strong> Agartala</p>
+      <p><strong>Official Languages:</strong> Bengali, Kokborok, English</p>
+      <p><strong>Population:</strong> 4 million (2021)</p>
+      <p><strong>History:</strong> Former princely state merged in 1949, known for tribal culture.</p>
+      <ul>
+        <li>Neermahal Water Palace</li>
+        <li>Tripura Sundari Temple</li>
+        <li>Bamboo forests</li>
+      </ul>
+    </div>
   </div>
-</div>
+  <div class="card" onclick="location.href='uttar-pradesh.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Taj_Mahal_2012.jpg" alt="Uttar Pradesh">
+    <div class="card-content">
+      <h2>Uttar Pradesh</h2>
+      <p><strong>Capital:</strong> Lucknow</p>
+      <p><strong>Official Languages:</strong> Hindi, Urdu</p>
+      <p><strong>Population:</strong> 243 million (2021)</p>
+      <p><strong>History:</strong> India's heartland, ancient centers of Hindu, Buddhist, and Mughal history.</p>
+      <ul>
+        <li>Taj Mahal, Varanasi Ghats</li>
+        <li>Kumbh Mela fair</li>
+        <li>Mughlai cuisine, classical arts</li>
+      </ul>
+    </div>
+  </div>
 
-<div class="card" onclick="location.href='nagaland.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Kohima_Cathedral.jpg" alt="Nagaland">
-  <div class="card-content">
-    <h2>Nagaland</h2>
-    <p><strong>Capital:</strong> Kohima</p>
-    <p><strong>Official Language:</strong> English</p>
-    <p><strong>Population:</strong> 2.1 million (2021)</p>
-    <p><strong>History:</strong> Home of Naga tribes and WWII battle of Kohima fame.</p>
-    <ul>
-      <li>Hornbill cultural festival</li>
-      <li>Dzukou Valley treks</li>
-      <li>Kohima War Cemetery</li>
-    </ul>
+  <div class="card" onclick="location.href='uttarakhand.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Kedarnath_Temple.jpg" alt="Uttarakhand">
+    <div class="card-content">
+      <h2>Uttarakhand</h2>
+      <p><strong>Capital:</strong> Dehradun</p>
+      <p><strong>Official Languages:</strong> Hindi, Sanskrit</p>
+      <p><strong>Population:</strong> 11 million (2021)</p>
+      <p><strong>History:</strong> Himalayan state of sacred rivers, Char Dham, and yoga retreats.</p>
+      <ul>
+        <li>Kedarnath, Badrinath temples</li>
+        <li>Valley of Flowers park</li>
+        <li>Jim Corbett National Park</li>
+      </ul>
+    </div>
   </div>
-</div>
-
-<div class="card" onclick="location.href='odisha.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Konark_Temple.jpg" alt="Odisha">
-  <div class="card-content">
-    <h2>Odisha</h2>
-    <p><strong>Capital:</strong> Bhubaneswar</p>
-    <p><strong>Official Language:</strong> Odia</p>
-    <p><strong>Population:</strong> 46 million (2021)</p>
-    <p><strong>History:</strong> Land of ancient Kalinga, Ashoka’s historic conquest, and Puri Jagannath.</p>
-    <ul>
-      <li>Konark Sun Temple</li>
-      <li>Puri Rath Yatra</li>
-      <li>Chilika Lake flamingos</li>
-    </ul>
+  <div class="card" onclick="location.href='west-bengal.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Victoria_Memorial_Kolkata.jpg" alt="West Bengal">
+    <div class="card-content">
+      <h2>West Bengal</h2>
+      <p><strong>Capital:</strong> Kolkata</p>
+      <p><strong>Official Languages:</strong> Bengali, English</p>
+      <p><strong>Population:</strong> 100 million (2021)</p>
+      <p><strong>History:</strong> Cultural hub of India, home to Tagore, colonial Kolkata, and Bengal Renaissance.</p>
+      <ul>
+        <li>Victoria Memorial, Sundarbans</li>
+        <li>Durga Puja festival</li>
+        <li>Misti Doi, Sandesh sweets</li>
+      </ul>
+    </div>
   </div>
-</div>
-<div class="card" onclick="location.href='punjab.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Golden_Temple_Amritsar.jpg" alt="Punjab">
-  <div class="card-content">
-    <h2>Punjab</h2>
-    <p><strong>Capital:</strong> Chandigarh</p>
-    <p><strong>Official Language:</strong> Punjabi</p>
-    <p><strong>Population:</strong> 30 million (2021)</p>
-    <p><strong>History:</strong> Ancient land of Indus Valley civilization and Sikhism’s birthplace.</p>
-    <ul>
-      <li>Golden Temple, Amritsar</li>
-      <li>Famous for bhangra dance & food</li>
-      <li>Wagah Border ceremony</li>
-    </ul>
-  </div>
-</div>
-
-<div class="card" onclick="location.href='rajasthan.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Hawa_Mahal_2011.jpg" alt="Rajasthan">
-  <div class="card-content">
-    <h2>Rajasthan</h2>
-    <p><strong>Capital:</strong> Jaipur</p>
-    <p><strong>Official Language:</strong> Hindi</p>
-    <p><strong>Population:</strong> 82 million (2021)</p>
-    <p><strong>History:</strong> Known as the Land of Kings with forts, palaces and desert landscapes.</p>
-    <ul>
-      <li>Jaipur’s Hawa Mahal</li>
-      <li>Thar Desert, Jaisalmer fort</li>
-      <li>Udaipur lakes and palaces</li>
-    </ul>
-  </div>
-</div>
-
-<div class="card" onclick="location.href='sikkim.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Tsomgo_Lake_Sikkim.jpg" alt="Sikkim">
-  <div class="card-content">
-    <h2>Sikkim</h2>
-    <p><strong>Capital:</strong> Gangtok</p>
-    <p><strong>Official Languages:</strong> Nepali, English</p>
-    <p><strong>Population:</strong> 0.7 million (2021)</p>
-    <p><strong>History:</strong> Himalayan kingdom merged into India in 1975. Known for monasteries and Kanchenjunga.</p>
-    <ul>
-      <li>Tsomgo Lake, Nathula Pass</li>
-      <li>Rumtek Monastery</li>
-      <li>Organic farming pioneer</li>
-    </ul>
-  </div>
-</div>
-
-<div class="card" onclick="location.href='tamil-nadu.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Meenakshi_Amman_Temple_Madurai.jpg" alt="Tamil Nadu">
-  <div class="card-content">
-    <h2>Tamil Nadu</h2>
-    <p><strong>Capital:</strong> Chennai</p>
-    <p><strong>Official Language:</strong> Tamil</p>
-    <p><strong>Population:</strong> 78 million (2021)</p>
-    <p><strong>History:</strong> Ancient Dravidian land with Chola, Chera and Pandya dynasties.</p>
-    <ul>
-      <li>Meenakshi Amman Temple</li>
-      <li>UNESCO Mahabalipuram sculptures</li>
-      <li>Classical music and Bharatanatyam</li>
-    </ul>
-  </div>
-</div>
-
-<div class="card" onclick="location.href='telangana.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Charminar_Hyderabad_India.jpg" alt="Telangana">
-  <div class="card-content">
-    <h2>Telangana</h2>
-    <p><strong>Capital:</strong> Hyderabad</p>
-    <p><strong>Official Languages:</strong> Telugu, Urdu</p>
-    <p><strong>Population:</strong> 39 million (2021)</p>
-    <p><strong>History:</strong> Carved out of Andhra Pradesh in 2014. Known for the Qutb Shahi and Nizam legacies.</p>
-    <ul>
-      <li>Charminar, Golconda Fort</li>
-      <li>Hyderabadi biryani fame</li>
-      <li>IT corridor — Cyberabad</li>
-    </ul>
-  </div>
-</div>
-<div class="card" onclick="location.href='tripura.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/Neermahal_Palace.jpg" alt="Tripura">
-  <div class="card-content">
-    <h2>Tripura</h2>
-    <p><strong>Capital:</strong> Agartala</p>
-    <p><strong>Official Languages:</strong> Bengali, Kokborok, English</p>
-    <p><strong>Population:</strong> 4 million (2021)</p>
-    <p><strong>History:</strong> Former princely state merged into India in 1949, famous for tribal diversity.</p>
-    <ul>
-      <li>Neermahal Water Palace</li>
-      <li>Tripura Sundari temple</li>
-      <li>Dense bamboo forests</li>
-    </ul>
-  </div>
-</div>
-
-<div class="card" onclick="location.href='uttar-pradesh.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Taj_Mahal_2012.jpg" alt="Uttar Pradesh">
-  <div class="card-content">
-    <h2>Uttar Pradesh</h2>
-    <p><strong>Capital:</strong> Lucknow</p>
-    <p><strong>Official Languages:</strong> Hindi, Urdu</p>
-    <p><strong>Population:</strong> 243 million (2021)</p>
-    <p><strong>History:</strong> Heartland of Indian civilization, Ramayana, Mahabharata, Mughal & British eras.</p>
-    <ul>
-      <li>Taj Mahal, Varanasi Ghats</li>
-      <li>Kumbh Mela — world’s largest fair</li>
-      <li>Rich cuisine and classical arts</li>
-    </ul>
-  </div>
-</div>
-
-<div class="card" onclick="location.href='uttarakhand.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Kedarnath_Temple.jpg" alt="Uttarakhand">
-  <div class="card-content">
-    <h2>Uttarakhand</h2>
-    <p><strong>Capital:</strong> Dehradun</p>
-    <p><strong>Official Languages:</strong> Hindi, Sanskrit</p>
-    <p><strong>Population:</strong> 11 million (2021)</p>
-    <p><strong>History:</strong> Himalayan state known for sacred temples, yoga hubs, and spiritual retreats.</p>
-    <ul>
-      <li>Char Dham pilgrimage</li>
-      <li>Valley of Flowers</li>
-      <li>Jim Corbett National Park</li>
-    </ul>
-  </div>
-</div>
-
-<div class="card" onclick="location.href='west-bengal.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Victoria_Memorial_Kolkata.jpg" alt="West Bengal">
-  <div class="card-content">
-    <h2>West Bengal</h2>
-    <p><strong>Capital:</strong> Kolkata</p>
-    <p><strong>Official Languages:</strong> Bengali, English</p>
-    <p><strong>Population:</strong> 100 million (2021)</p>
-    <p><strong>History:</strong> Cultural capital of India, home to Tagore, Howrah Bridge and colonial Kolkata.</p>
-    <ul>
-      <li>Victoria Memorial, Sundarbans</li>
-      <li>Durga Puja festival</li>
-      <li>Misti Doi, Sandesh sweets</li>
-    </ul>
-  </div>
-</div>
 <h1 style="margin-top:50px; text-align:center;">Union Territories of India</h1>
 
 <div class="grid">
 
-<div class="card" onclick="location.href='andaman-nicobar.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Radhanagar_beach_Havelock.jpg" alt="Andaman and Nicobar Islands">
-  <div class="card-content">
-    <h2>Andaman & Nicobar Islands</h2>
-    <p><strong>Capital:</strong> Port Blair</p>
-    <p><strong>Official Language:</strong> Hindi, English</p>
-    <p><strong>Population:</strong> 0.4 million (2021)</p>
-    <ul>
-      <li>Radhanagar beach</li>
-      <li>Cellular Jail, scuba diving</li>
-      <li>Coral reefs and islands</li>
-    </ul>
+  <div class="card" onclick="location.href='andaman-nicobar.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Radhanagar_beach_Havelock.jpg" alt="Andaman and Nicobar Islands">
+    <div class="card-content">
+      <h2>Andaman & Nicobar Islands</h2>
+      <p><strong>Capital:</strong> Port Blair</p>
+      <p><strong>Official Languages:</strong> Hindi, English</p>
+      <p><strong>Population:</strong> 0.4 million (2021)</p>
+      <ul>
+        <li>Radhanagar Beach</li>
+        <li>Cellular Jail, scuba diving</li>
+        <li>Coral reefs and islands</li>
+      </ul>
+    </div>
   </div>
-</div>
 
-<div class="card" onclick="location.href='chandigarh.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Sukhna_Lake_Chandigarh.jpg" alt="Chandigarh">
-  <div class="card-content">
-    <h2>Chandigarh</h2>
-    <p><strong>Capital:</strong> Chandigarh (shared with Punjab, Haryana)</p>
-    <p><strong>Official Language:</strong> Hindi</p>
-    <p><strong>Population:</strong> 1.1 million (2021)</p>
-    <ul>
-      <li>Rock Garden</li>
-      <li>Sukhna Lake</li>
-      <li>Modern planned city</li>
-    </ul>
+  <div class="card" onclick="location.href='chandigarh.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Sukhna_Lake_Chandigarh.jpg" alt="Chandigarh">
+    <div class="card-content">
+      <h2>Chandigarh</h2>
+      <p><strong>Capital:</strong> Chandigarh (shared with Punjab, Haryana)</p>
+      <p><strong>Official Language:</strong> Hindi</p>
+      <p><strong>Population:</strong> 1.1 million (2021)</p>
+      <ul>
+        <li>Rock Garden</li>
+        <li>Sukhna Lake</li>
+        <li>Modern planned city</li>
+      </ul>
+    </div>
   </div>
-</div>
-
-<div class="card" onclick="location.href='dadra-nagar-haveli.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Dudhni_Lake_Silvassa.jpg" alt="Dadra and Nagar Haveli & Daman and Diu">
-  <div class="card-content">
-    <h2>Dadra, Nagar Haveli & Daman Diu</h2>
-    <p><strong>Capital:</strong> Daman</p>
-    <p><strong>Official Language:</strong> Gujarati, Hindi</p>
-    <p><strong>Population:</strong> 0.8 million (2021)</p>
-    <ul>
-      <li>Dudhni Lake</li>
-      <li>Portuguese churches</li>
-      <li>Pristine beaches</li>
-    </ul>
+  <div class="card" onclick="location.href='dadra-nagar-haveli.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Dudhni_Lake_Silvassa.jpg" alt="Dadra and Nagar Haveli & Daman and Diu">
+    <div class="card-content">
+      <h2>Dadra, Nagar Haveli & Daman Diu</h2>
+      <p><strong>Capital:</strong> Daman</p>
+      <p><strong>Official Languages:</strong> Gujarati, Hindi</p>
+      <p><strong>Population:</strong> 0.8 million (2021)</p>
+      <ul>
+        <li>Dudhni Lake</li>
+        <li>Portuguese churches</li>
+        <li>Pristine beaches</li>
+      </ul>
+    </div>
   </div>
-</div>
 
-<div class="card" onclick="location.href='delhi.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/India_Gate_in_New_Delhi_03-2016_img3.jpg" alt="Delhi">
-  <div class="card-content">
-    <h2>Delhi (NCT)</h2>
-    <p><strong>Capital:</strong> New Delhi</p>
-    <p><strong>Official Languages:</strong> Hindi, English</p>
-    <p><strong>Population:</strong> 32 million (2021)</p>
-    <ul>
-      <li>India Gate, Red Fort</li>
-      <li>Qutub Minar, Lotus Temple</li>
-      <li>Mughal heritage & bazaars</li>
-    </ul>
+  <div class="card" onclick="location.href='delhi.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/India_Gate_in_New_Delhi_03-2016_img3.jpg" alt="Delhi">
+    <div class="card-content">
+      <h2>Delhi (NCT)</h2>
+      <p><strong>Capital:</strong> New Delhi</p>
+      <p><strong>Official Languages:</strong> Hindi, English</p>
+      <p><strong>Population:</strong> 32 million (2021)</p>
+      <ul>
+        <li>India Gate, Red Fort</li>
+        <li>Qutub Minar, Lotus Temple</li>
+        <li>Historic bazaars & Mughal legacy</li>
+      </ul>
+    </div>
   </div>
-</div>
-
-<div class="card" onclick="location.href='jammu-kashmir.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Dal_Lake_Kashmir.jpg" alt="Jammu & Kashmir">
-  <div class="card-content">
-    <h2>Jammu & Kashmir</h2>
-    <p><strong>Capital:</strong> Srinagar (summer), Jammu (winter)</p>
-    <p><strong>Official Languages:</strong> Kashmiri, Urdu, Hindi</p>
-    <p><strong>Population:</strong> 13.6 million (2021)</p>
-    <ul>
-      <li>Dal Lake houseboats</li>
-      <li>Gulmarg skiing</li>
-      <li>Mughal gardens</li>
-    </ul>
+  <div class="card" onclick="location.href='jammu-kashmir.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Dal_Lake_Kashmir.jpg" alt="Jammu & Kashmir">
+    <div class="card-content">
+      <h2>Jammu & Kashmir</h2>
+      <p><strong>Capital:</strong> Srinagar (summer), Jammu (winter)</p>
+      <p><strong>Official Languages:</strong> Kashmiri, Urdu, Hindi</p>
+      <p><strong>Population:</strong> 13.6 million (2021)</p>
+      <ul>
+        <li>Dal Lake houseboats</li>
+        <li>Gulmarg skiing</li>
+        <li>Mughal gardens</li>
+      </ul>
+    </div>
   </div>
-</div>
 
-<div class="card" onclick="location.href='ladakh.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Lamayuru_Monastery_Ladakh.jpg" alt="Ladakh">
-  <div class="card-content">
-    <h2>Ladakh</h2>
-    <p><strong>Capital:</strong> Leh</p>
-    <p><strong>Official Languages:</strong> Ladakhi, Hindi, English</p>
-    <p><strong>Population:</strong> 0.3 million (2021)</p>
-    <ul>
-      <li>Pangong Lake, Nubra Valley</li>
-      <li>Buddhist monasteries</li>
-      <li>Adventure treks</li>
-    </ul>
+  <div class="card" onclick="location.href='ladakh.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Lamayuru_Monastery_Ladakh.jpg" alt="Ladakh">
+    <div class="card-content">
+      <h2>Ladakh</h2>
+      <p><strong>Capital:</strong> Leh</p>
+      <p><strong>Official Languages:</strong> Ladakhi, Hindi, English</p>
+      <p><strong>Population:</strong> 0.3 million (2021)</p>
+      <ul>
+        <li>Pangong Lake, Nubra Valley</li>
+        <li>Buddhist monasteries</li>
+        <li>Adventure treks</li>
+      </ul>
+    </div>
   </div>
-</div>
-
-<div class="card" onclick="location.href='lakshadweep.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Kavaratti_Lakshadweep.jpg" alt="Lakshadweep">
-  <div class="card-content">
-    <h2>Lakshadweep</h2>
-    <p><strong>Capital:</strong> Kavaratti</p>
-    <p><strong>Official Language:</strong> Malayalam, English</p>
-    <p><strong>Population:</strong> 64,000 (2021)</p>
-    <ul>
-      <li>Coral islands & lagoons</li>
-      <li>Marine life & snorkeling</li>
-      <li>Islamic cultural heritage</li>
-    </ul>
+  <div class="card" onclick="location.href='lakshadweep.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Kavaratti_Lakshadweep.jpg" alt="Lakshadweep">
+    <div class="card-content">
+      <h2>Lakshadweep</h2>
+      <p><strong>Capital:</strong> Kavaratti</p>
+      <p><strong>Official Languages:</strong> Malayalam, English</p>
+      <p><strong>Population:</strong> 64,000 (2021)</p>
+      <ul>
+        <li>Coral islands & lagoons</li>
+        <li>Marine life & snorkeling</li>
+        <li>Islamic cultural heritage</li>
+      </ul>
+    </div>
   </div>
-</div>
 
-<div class="card" onclick="location.href='puducherry.html'">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Pondicherry_Promenade.jpg" alt="Puducherry">
-  <div class="card-content">
-    <h2>Puducherry</h2>
-    <p><strong>Capital:</strong> Puducherry</p>
-    <p><strong>Official Languages:</strong> Tamil, English, French</p>
-    <p><strong>Population:</strong> 1.5 million (2021)</p>
-    <ul>
-      <li>French colonial heritage</li>
-      <li>Serene seaside promenade</li>
-      <li>Aurobindo Ashram</li>
-    </ul>
+  <div class="card" onclick="location.href='puducherry.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Pondicherry_Promenade.jpg" alt="Puducherry">
+    <div class="card-content">
+      <h2>Puducherry</h2>
+      <p><strong>Capital:</strong> Puducherry</p>
+      <p><strong>Official Languages:</strong> Tamil, English, French</p>
+      <p><strong>Population:</strong> 1.5 million (2021)</p>
+      <ul>
+        <li>French colonial heritage</li>
+        <li>Serene seaside promenade</li>
+        <li>Aurobindo Ashram</li>
+      </ul>
+    </div>
   </div>
-</div>
 
-</div> <!-- close UT grid -->
-
-</div>
-
-</body>
-</html>
+</div> <!-- closing final UT grid -->
