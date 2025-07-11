@@ -543,125 +543,227 @@
       </ul>
     </div>
   </div>
-<h1 style="margin-top:50px; text-align:center;">Union Territories of India</h1>
+<meta charset="UTF-8">
+  <title>Union Territories of India</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('img/ut-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
 
-<div class="grid">
+    h1 {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 48px;
+      color: #fff;
+      text-shadow: 2px 2px 5px #000;
+    }
 
-  <div class="card" onclick="location.href='andaman-nicobar.html'">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Radhanagar_beach_Havelock.jpg" alt="Andaman and Nicobar Islands">
-    <div class="card-content">
-      <h2>Andaman & Nicobar Islands</h2>
-      <p><strong>Capital:</strong> Port Blair</p>
-      <p><strong>Official Languages:</strong> Hindi, English</p>
-      <p><strong>Population:</strong> 0.4 million (2021)</p>
-      <ul>
-        <li>Radhanagar Beach</li>
-        <li>Cellular Jail, scuba diving</li>
-        <li>Coral reefs and islands</li>
-      </ul>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      padding: 50px;
+      max-width: 1400px;
+      margin: auto;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h2 {
+      margin-top: 0;
+      color: #ffd700;
+    }
+
+    .card-content p, .card-content ul {
+      color: #ddd;
+      font-size: 15px;
+    }
+
+    .card-content ul {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 10px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #ddd;
+      margin-top: 50px;
+    }
+
+    footer a {
+      color: #ffd700;
+      text-decoration: none;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Union Territories of India</h1>
+
+  <div class="grid">
+    <div class="card" onclick="location.href='andaman-nicobar.html'">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Radhanagar_beach_Havelock.jpg" alt="Andaman and Nicobar Islands">
+      <div class="card-content">
+        <h2>Andaman & Nicobar Islands</h2>
+        <p><strong>Capital:</strong> Port Blair</p>
+        <p><strong>Official Languages:</strong> Hindi, English</p>
+        <p><strong>Population:</strong> 0.4 million (2021)</p>
+        <ul>
+          <li>Radhanagar Beach</li>
+          <li>Cellular Jail, scuba diving</li>
+          <li>Coral reefs and islands</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" onclick="location.href='chandigarh.html'">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Sukhna_Lake_Chandigarh.jpg" alt="Chandigarh">
+      <div class="card-content">
+        <h2>Chandigarh</h2>
+        <p><strong>Capital:</strong> Chandigarh (shared with Punjab, Haryana)</p>
+        <p><strong>Official Language:</strong> Hindi</p>
+        <p><strong>Population:</strong> 1.1 million (2021)</p>
+        <ul>
+          <li>Rock Garden</li>
+          <li>Sukhna Lake</li>
+          <li>Modern planned city</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" onclick="location.href='dadra-nagar-haveli.html'">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Dudhni_Lake_Silvassa.jpg" alt="Dadra and Nagar Haveli & Daman and Diu">
+      <div class="card-content">
+        <h2>Dadra, Nagar Haveli & Daman Diu</h2>
+        <p><strong>Capital:</strong> Daman</p>
+        <p><strong>Official Languages:</strong> Gujarati, Hindi</p>
+        <p><strong>Population:</strong> 0.8 million (2021)</p>
+        <ul>
+          <li>Dudhni Lake</li>
+          <li>Portuguese churches</li>
+          <li>Pristine beaches</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" onclick="location.href='delhi.html'">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/India_Gate_in_New_Delhi_03-2016_img3.jpg" alt="Delhi">
+      <div class="card-content">
+        <h2>Delhi (NCT)</h2>
+        <p><strong>Capital:</strong> New Delhi</p>
+        <p><strong>Official Languages:</strong> Hindi, English</p>
+        <p><strong>Population:</strong> 32 million (2021)</p>
+        <ul>
+          <li>India Gate, Red Fort</li>
+          <li>Qutub Minar, Lotus Temple</li>
+          <li>Historic bazaars & Mughal legacy</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" onclick="location.href='jammu-kashmir.html'">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Dal_Lake_Kashmir.jpg" alt="Jammu & Kashmir">
+      <div class="card-content">
+        <h2>Jammu & Kashmir</h2>
+        <p><strong>Capital:</strong> Srinagar (summer), Jammu (winter)</p>
+        <p><strong>Official Languages:</strong> Kashmiri, Urdu, Hindi</p>
+        <p><strong>Population:</strong> 13.6 million (2021)</p>
+        <ul>
+          <li>Dal Lake houseboats</li>
+          <li>Gulmarg skiing</li>
+          <li>Mughal gardens</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" onclick="location.href='ladakh.html'">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Lamayuru_Monastery_Ladakh.jpg" alt="Ladakh">
+      <div class="card-content">
+        <h2>Ladakh</h2>
+        <p><strong>Capital:</strong> Leh</p>
+        <p><strong>Official Languages:</strong> Ladakhi, Hindi, English</p>
+        <p><strong>Population:</strong> 0.3 million (2021)</p>
+        <ul>
+          <li>Pangong Lake, Nubra Valley</li>
+          <li>Buddhist monasteries</li>
+          <li>Adventure treks</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" onclick="location.href='lakshadweep.html'">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Kavaratti_Lakshadweep.jpg" alt="Lakshadweep">
+      <div class="card-content">
+        <h2>Lakshadweep</h2>
+        <p><strong>Capital:</strong> Kavaratti</p>
+        <p><strong>Official Languages:</strong> Malayalam, English</p>
+        <p><strong>Population:</strong> 64,000 (2021)</p>
+        <ul>
+          <li>Coral islands & lagoons</li>
+          <li>Marine life & snorkeling</li>
+          <li>Islamic cultural heritage</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" onclick="location.href='puducherry.html'">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Pondicherry_Promenade.jpg" alt="Puducherry">
+      <div class="card-content">
+        <h2>Puducherry</h2>
+        <p><strong>Capital:</strong> Puducherry</p>
+        <p><strong>Official Languages:</strong> Tamil, English, French</p>
+        <p><strong>Population:</strong> 1.5 million (2021)</p>
+        <ul>
+          <li>French colonial heritage</li>
+          <li>Seaside promenade</li>
+          <li>Aurobindo Ashram</li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <div class="card" onclick="location.href='chandigarh.html'">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Sukhna_Lake_Chandigarh.jpg" alt="Chandigarh">
-    <div class="card-content">
-      <h2>Chandigarh</h2>
-      <p><strong>Capital:</strong> Chandigarh (shared with Punjab, Haryana)</p>
-      <p><strong>Official Language:</strong> Hindi</p>
-      <p><strong>Population:</strong> 1.1 million (2021)</p>
-      <ul>
-        <li>Rock Garden</li>
-        <li>Sukhna Lake</li>
-        <li>Modern planned city</li>
-      </ul>
-    </div>
-  </div>
-  <div class="card" onclick="location.href='dadra-nagar-haveli.html'">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Dudhni_Lake_Silvassa.jpg" alt="Dadra and Nagar Haveli & Daman and Diu">
-    <div class="card-content">
-      <h2>Dadra, Nagar Haveli & Daman Diu</h2>
-      <p><strong>Capital:</strong> Daman</p>
-      <p><strong>Official Languages:</strong> Gujarati, Hindi</p>
-      <p><strong>Population:</strong> 0.8 million (2021)</p>
-      <ul>
-        <li>Dudhni Lake</li>
-        <li>Portuguese churches</li>
-        <li>Pristine beaches</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="card" onclick="location.href='delhi.html'">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/India_Gate_in_New_Delhi_03-2016_img3.jpg" alt="Delhi">
-    <div class="card-content">
-      <h2>Delhi (NCT)</h2>
-      <p><strong>Capital:</strong> New Delhi</p>
-      <p><strong>Official Languages:</strong> Hindi, English</p>
-      <p><strong>Population:</strong> 32 million (2021)</p>
-      <ul>
-        <li>India Gate, Red Fort</li>
-        <li>Qutub Minar, Lotus Temple</li>
-        <li>Historic bazaars & Mughal legacy</li>
-      </ul>
-    </div>
-  </div>
-  <div class="card" onclick="location.href='jammu-kashmir.html'">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Dal_Lake_Kashmir.jpg" alt="Jammu & Kashmir">
-    <div class="card-content">
-      <h2>Jammu & Kashmir</h2>
-      <p><strong>Capital:</strong> Srinagar (summer), Jammu (winter)</p>
-      <p><strong>Official Languages:</strong> Kashmiri, Urdu, Hindi</p>
-      <p><strong>Population:</strong> 13.6 million (2021)</p>
-      <ul>
-        <li>Dal Lake houseboats</li>
-        <li>Gulmarg skiing</li>
-        <li>Mughal gardens</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="card" onclick="location.href='ladakh.html'">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Lamayuru_Monastery_Ladakh.jpg" alt="Ladakh">
-    <div class="card-content">
-      <h2>Ladakh</h2>
-      <p><strong>Capital:</strong> Leh</p>
-      <p><strong>Official Languages:</strong> Ladakhi, Hindi, English</p>
-      <p><strong>Population:</strong> 0.3 million (2021)</p>
-      <ul>
-        <li>Pangong Lake, Nubra Valley</li>
-        <li>Buddhist monasteries</li>
-        <li>Adventure treks</li>
-      </ul>
-    </div>
-  </div>
-  <div class="card" onclick="location.href='lakshadweep.html'">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Kavaratti_Lakshadweep.jpg" alt="Lakshadweep">
-    <div class="card-content">
-      <h2>Lakshadweep</h2>
-      <p><strong>Capital:</strong> Kavaratti</p>
-      <p><strong>Official Languages:</strong> Malayalam, English</p>
-      <p><strong>Population:</strong> 64,000 (2021)</p>
-      <ul>
-        <li>Coral islands & lagoons</li>
-        <li>Marine life & snorkeling</li>
-        <li>Islamic cultural heritage</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="card" onclick="location.href='puducherry.html'">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Pondicherry_Promenade.jpg" alt="Puducherry">
-    <div class="card-content">
-      <h2>Puducherry</h2>
-      <p><strong>Capital:</strong> Puducherry</p>
-      <p><strong>Official Languages:</strong> Tamil, English, French</p>
-      <p><strong>Population:</strong> 1.5 million (2021)</p>
-      <ul>
-        <li>French colonial heritage</li>
-        <li>Serene seaside promenade</li>
-        <li>Aurobindo Ashram</li>
-      </ul>
-    </div>
-  </div>
-
-</div> <!-- closing final UT grid -->
+  <footer>
+    <p>&copy; 2025 Mike's Travel India. All Rights Reserved.</p>
+    <p>Designed by <a href="mailto:yourmail@example.com">Mike</a></p>
+  </footer>
