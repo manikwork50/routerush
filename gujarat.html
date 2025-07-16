@@ -1,39 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Top 20 Places in Rajasthan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gujarat - WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: sans-serif; background: #f7f7f7; margin:0; padding:20px; }
-    h1 { text-align:center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-top:30px; }
-    .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    .card img { width: 100%; border-radius: 6px; }
-    .card h2 { margin: 10px 0 5px; }
-    .card p { font-size: 14px; color: #555; margin: 5px 0; }
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/9/9f/Gujarat_Collage.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(3px);
+    }
   </style>
 </head>
 <body>
 
-<h1>🏰 Top 20 Places to Visit in Rajasthan</h1>
+  <!-- Navigation -->
+  <nav>
+    <div><a href="index.html">🏠 WanderMap</a></div>
+    <div>
+      <a href="states.html">States</a>
+      <a href="union_territories.html">UTs</a>
+      <a href="blog.html">Blog</a>
+      <a href="submit-gem.html">Submit a Gem</a>
+      <a href="login.html">Admin</a>
+    </div>
+  </nav>
 
-<div class="grid">
-  <div class="card">
-    <img src="https://source.unsplash.com/600x400/?jaipur" alt="Jaipur">
-    <h2>Jaipur</h2>
-    <p><strong>History:</strong> Founded in 1727 by Maharaja Sawai Jai Singh II.</p>
-    <p><strong>Famous for:</strong> Amber Fort, City Palace, Hawa Mahal, gem markets.</p>
-    <p><strong>Food:</strong> Dal Baati Churma, Laal Maas.</p>
-    <p><strong>Craft:</strong> Blue Pottery, Bandhej textiles.</p>
-    <p><strong>Nearest Airport:</strong> Jaipur Airport (12 km)</p>
-    <p><strong>Nearest Railway Station:</strong> Jaipur Railway Station (5 km)</p>
-    <p><strong>Nearest Bus Stand:</strong> Sindhi Camp Bus Stand (3 km)</p>
-  </div>
+  <!-- State Info -->
+  <header class="state-header">
+    <h1>Gujarat</h1>
+    <div class="state-info">
+      <p><strong>Capital:</strong> Gandhinagar</p>
+      <p><strong>Population:</strong> ~70 million (2023 est.)</p>
+      <p><strong>Official Language:</strong> Gujarati</p>
+      <p><strong>History:</strong> Gujarat, known for its vibrant culture, ancient Indus Valley sites, and industrial development, was home to Mahatma Gandhi. It boasts incredible temples, wildlife, and unique salt desert landscapes like the Rann of Kutch.</p>
+    </div>
+  </header>
 
-  <!-- Repeat for 19 more places -->
+  <!-- Top 10 Places -->
+  <section class="places-grid">
 
-</div>
+    <!-- Rann of Kutch -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/White_Rann_Kutch.jpg" alt="Rann of Kutch">
+      <div class="card-content">
+        <h3>Rann of Kutch</h3>
+        <p><strong>Location:</strong> Kutch District</p>
+        <p><strong>Famous for:</strong> Salt desert, Rann Utsav festival</p>
+        <p><strong>How to reach:</strong> Bhuj (80 km); well connected by train/air</p>
+      </div>
+    </div>
+
+    <!-- Gir National Park -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/Gir_Lion.jpg" alt="Gir National Park">
+      <div class="card-content">
+        <h3>Gir National Park</h3>
+        <p><strong>Location:</strong> Junagadh District</p>
+        <p><strong>Famous for:</strong> Asiatic lions, wildlife safaris</p>
+        <p><strong>How to reach:</strong> Nearest rail: Veraval (42 km); road from Junagadh</p>
+      </div>
+    </div>
+
+    <!-- Somnath Temple -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Somnath_Temple.jpg" alt="Somnath Temple">
+      <div class="card-content">
+        <h3>Somnath Temple</h3>
+        <p><strong>Location:</strong> Prabhas Patan, Gir Somnath</p>
+        <p><strong>Famous for:</strong> One of 12 Jyotirlingas of Shiva</p>
+        <p><strong>How to reach:</strong> Veraval Railway Station (7 km)</p>
+      </div>
+    </div>
+
+    <!-- Statue of Unity -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Statue_of_Unity_near_Narmada_Dam.jpg" alt="Statue of Unity">
+      <div class="card-content">
+        <h3>Statue of Unity</h3>
+        <p><strong>Location:</strong> Kevadiya, Narmada District</p>
+        <p><strong>Famous for:</strong> World's tallest statue (Sardar Patel)</p>
+        <p><strong>How to reach:</strong> Nearest city: Vadodara (90 km); by train/bus</p>
+      </div>
+    </div>
+
+    <!-- Dwarkadhish Temple -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Dwarkadhish_Temple_Gujarat.jpg" alt="Dwarka Temple">
+      <div class="card-content">
+        <h3>Dwarkadhish Temple</h3>
+        <p><strong>Location:</strong> Dwarka</p>
+        <p><strong>Famous for:</strong> One of the Char Dham pilgrimage sites</p>
+        <p><strong>How to reach:</strong> Dwarka Railway Station; well connected</p>
+      </div>
+    </div>
+
+    <!-- Saputara Hill Station -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Saputara_Hill_Station.jpg" alt="Saputara">
+      <div class="card-content">
+        <h3>Saputara</h3>
+        <p><strong>Location:</strong> Dang District</p>
+        <p><strong>Famous for:</strong> Gujarat's only hill station, lake & gardens</p>
+        <p><strong>How to reach:</strong> Nearest rail: Waghai (50 km); road from Surat (160 km)</p>
+      </div>
+    </div>
+
+    <!-- Lothal -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Lothal_Dockyard.jpg" alt="Lothal">
+      <div class="card-content">
+        <h3>Lothal</h3>
+        <p><strong>Location:</strong> Ahmedabad District</p>
+        <p><strong>Famous for:</strong> Indus Valley ruins, dockyard</p>
+        <p><strong>How to reach:</strong> 78 km from Ahmedabad via road</p>
+      </div>
+    </div>
+
+    <!-- Champaner-Pavagadh -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Champaner_Mosque.jpg" alt="Champaner-Pavagadh">
+      <div class="card-content">
+        <h3>Champaner-Pavagadh</h3>
+        <p><strong>Location:</strong> Panchmahal District</p>
+        <p><strong>Famous for:</strong> UNESCO World Heritage city ruins</p>
+        <p><strong>How to reach:</strong> 50 km from Vadodara by road</p>
+      </div>
+    </div>
+
+    <!-- Rani ki Vav -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Rani_ki_Vav_Gujarat.jpg" alt="Rani ki Vav">
+      <div class="card-content">
+        <h3>Rani ki Vav</h3>
+        <p><strong>Location:</strong> Patan</p>
+        <p><strong>Famous for:</strong> Stepwell architecture, UNESCO heritage site</p>
+        <p><strong>How to reach:</strong> 125 km from Ahmedabad by road/train</p>
+      </div>
+    </div>
+
+    <!-- Girnar Hills -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Girnar_hill_temple.jpg" alt="Girnar Hills">
+      <div class="card-content">
+        <h3>Girnar Hills</h3>
+        <p><strong>Location:</strong> Junagadh</p>
+        <p><strong>Famous for:</strong> Jain temples, trekking, ropeway</p>
+        <p><strong>How to reach:</strong> Junagadh city by train/road</p>
+      </div>
+    </div>
+
+  </section>
 
 </body>
 </html>
