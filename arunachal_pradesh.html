@@ -1,39 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Top 20 Places in Rajasthan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arunachal Pradesh - WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: sans-serif; background: #f7f7f7; margin:0; padding:20px; }
-    h1 { text-align:center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-top:30px; }
-    .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    .card img { width: 100%; border-radius: 6px; }
-    .card h2 { margin: 10px 0 5px; }
-    .card p { font-size: 14px; color: #555; margin: 5px 0; }
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/f/f8/Arunachal_collage.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(3px);
+    }
   </style>
 </head>
 <body>
 
-<h1>🏰 Top 20 Places to Visit in Rajasthan</h1>
+  <!-- Navigation -->
+  <nav>
+    <div><a href="index.html">🏠 WanderMap</a></div>
+    <div>
+      <a href="states.html">States</a>
+      <a href="union_territories.html">UTs</a>
+      <a href="blog.html">Blog</a>
+      <a href="submit-gem.html">Submit a Gem</a>
+      <a href="login.html">Admin</a>
+    </div>
+  </nav>
 
-<div class="grid">
-  <div class="card">
-    <img src="https://source.unsplash.com/600x400/?jaipur" alt="Jaipur">
-    <h2>Jaipur</h2>
-    <p><strong>History:</strong> Founded in 1727 by Maharaja Sawai Jai Singh II.</p>
-    <p><strong>Famous for:</strong> Amber Fort, City Palace, Hawa Mahal, gem markets.</p>
-    <p><strong>Food:</strong> Dal Baati Churma, Laal Maas.</p>
-    <p><strong>Craft:</strong> Blue Pottery, Bandhej textiles.</p>
-    <p><strong>Nearest Airport:</strong> Jaipur Airport (12 km)</p>
-    <p><strong>Nearest Railway Station:</strong> Jaipur Railway Station (5 km)</p>
-    <p><strong>Nearest Bus Stand:</strong> Sindhi Camp Bus Stand (3 km)</p>
-  </div>
+  <!-- State Info -->
+  <header class="state-header">
+    <h1>Arunachal Pradesh</h1>
+    <div class="state-info">
+      <p><strong>Capital:</strong> Itanagar</p>
+      <p><strong>Population:</strong> ~1.6 million (2023 est.)</p>
+      <p><strong>Official Language:</strong> English</p>
+      <p><strong>History:</strong> Arunachal Pradesh, the "Land of the Rising Sun," became a full-fledged state in 1987. Known for its tribal culture, natural beauty, and unexplored Himalayan terrain, it shares international borders with Bhutan, China, and Myanmar.</p>
+    </div>
+  </header>
 
-  <!-- Repeat for 19 more places -->
+  <!-- Top 10 Places -->
+  <section class="places-grid">
 
-</div>
+    <!-- Tawang Monastery -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Tawang_Monastery_Arunachal.jpg" alt="Tawang Monastery">
+      <div class="card-content">
+        <h3>Tawang Monastery</h3>
+        <p><strong>Location:</strong> Tawang</p>
+        <p><strong>Famous for:</strong> Largest monastery in India, Buddhist heritage</p>
+        <p><strong>How to reach:</strong> Tezpur Airport (330 km); shared taxis/buses from Guwahati via Bomdila</p>
+      </div>
+    </div>
+
+    <!-- Sela Pass -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Sela_Pass_Arunachal.jpg" alt="Sela Pass">
+      <div class="card-content">
+        <h3>Sela Pass</h3>
+        <p><strong>Location:</strong> Tawang-Bomdila route</p>
+        <p><strong>Famous for:</strong> High-altitude mountain pass and lake</p>
+        <p><strong>How to reach:</strong> Drive from Tezpur or Bomdila; winter snow travel requires chains</p>
+      </div>
+    </div>
+
+    <!-- Ziro Valley -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Ziro_Valley.jpg" alt="Ziro Valley">
+      <div class="card-content">
+        <h3>Ziro Valley</h3>
+        <p><strong>Location:</strong> Lower Subansiri District</p>
+        <p><strong>Famous for:</strong> Pine-covered hills, Apatani tribe, Ziro Music Festival</p>
+        <p><strong>How to reach:</strong> Nearest railhead – Naharlagun (100 km); then shared taxi</p>
+      </div>
+    </div>
+
+    <!-- Namdapha National Park -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Namdapha_National_Park.jpg" alt="Namdapha National Park">
+      <div class="card-content">
+        <h3>Namdapha National Park</h3>
+        <p><strong>Location:</strong> Changlang District</p>
+        <p><strong>Famous for:</strong> Rare species – snow leopard, red panda, four big cats</p>
+        <p><strong>How to reach:</strong> Dibrugarh Airport (160 km) → Miao by road</p>
+      </div>
+    </div>
+
+    <!-- Bomdila Monastery -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Bomdila_Monastery.jpg" alt="Bomdila Monastery">
+      <div class="card-content">
+        <h3>Bomdila Monastery</h3>
+        <p><strong>Location:</strong> West Kameng</p>
+        <p><strong>Famous for:</strong> Tranquil Buddhist monastery and views of Himalayas</p>
+        <p><strong>How to reach:</strong> Nearest major town: Tezpur (160 km); by road</p>
+      </div>
+    </div>
+
+    <!-- Mechuka -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Mechuka_valley.jpg" alt="Mechuka Valley">
+      <div class="card-content">
+        <h3>Mechuka Valley</h3>
+        <p><strong>Location:</strong> Shi-Yomi District</p>
+        <p><strong>Famous for:</strong> Untouched valley, Monpa tribe, adventure tourism</p>
+        <p><strong>How to reach:</strong> 500+ km road trip from Dibrugarh or Aalo</p>
+      </div>
+    </div>
+
+    <!-- Dirang -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Dirang_Arunachal.jpg" alt="Dirang">
+      <div class="card-content">
+        <h3>Dirang</h3>
+        <p><strong>Location:</strong> West Kameng</p>
+        <p><strong>Famous for:</strong> Hot springs, monastery, gateway to Tawang</p>
+        <p><strong>How to reach:</strong> On Bomdila–Tawang route; buses and taxis</p>
+      </div>
+    </div>
+
+    <!-- Itanagar -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Itanagar_fort.jpg" alt="Itanagar">
+      <div class="card-content">
+        <h3>Itanagar</h3>
+        <p><strong>Location:</strong> State Capital</p>
+        <p><strong>Famous for:</strong> Ita Fort, Gompa, museums, local markets</p>
+        <p><strong>How to reach:</strong> Rail link to Naharlagun; Itanagar Airport opened in 2022</p>
+      </div>
+    </div>
+
+    <!-- Pasighat -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Pasighat_view.jpg" alt="Pasighat">
+      <div class="card-content">
+        <h3>Pasighat</h3>
+        <p><strong>Location:</strong> East Siang</p>
+        <p><strong>Famous for:</strong> Brahmaputra riverfront, eco-tourism, angling</p>
+        <p><strong>How to reach:</strong> 150 km from Dibrugarh; regular shared cabs</p>
+      </div>
+    </div>
+
+    <!-- Parshuram Kund -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Parshuram_Kund.jpg" alt="Parshuram Kund">
+      <div class="card-content">
+        <h3>Parshuram Kund</h3>
+        <p><strong>Location:</strong> Lohit District</p>
+        <p><strong>Famous for:</strong> Pilgrimage site, bathing festival in January</p>
+        <p><strong>How to reach:</strong> Nearest airport: Dibrugarh (220 km); buses/cabs to Tezu and then to Kund</p>
+      </div>
+    </div>
+
+  </section>
 
 </body>
 </html>
