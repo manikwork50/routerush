@@ -1,39 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Top 20 Places in Rajasthan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Himachal Pradesh - WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: sans-serif; background: #f7f7f7; margin:0; padding:20px; }
-    h1 { text-align:center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-top:30px; }
-    .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    .card img { width: 100%; border-radius: 6px; }
-    .card h2 { margin: 10px 0 5px; }
-    .card p { font-size: 14px; color: #555; margin: 5px 0; }
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/6/64/Himachal_Collage.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(3px);
+    }
   </style>
 </head>
 <body>
 
-<h1>🏰 Top 20 Places to Visit in Rajasthan</h1>
+  <!-- Navigation -->
+  <nav>
+    <div><a href="index.html">🏠 WanderMap</a></div>
+    <div>
+      <a href="states.html">States</a>
+      <a href="union_territories.html">UTs</a>
+      <a href="blog.html">Blog</a>
+      <a href="submit-gem.html">Submit a Gem</a>
+      <a href="login.html">Admin</a>
+    </div>
+  </nav>
 
-<div class="grid">
-  <div class="card">
-    <img src="https://source.unsplash.com/600x400/?jaipur" alt="Jaipur">
-    <h2>Jaipur</h2>
-    <p><strong>History:</strong> Founded in 1727 by Maharaja Sawai Jai Singh II.</p>
-    <p><strong>Famous for:</strong> Amber Fort, City Palace, Hawa Mahal, gem markets.</p>
-    <p><strong>Food:</strong> Dal Baati Churma, Laal Maas.</p>
-    <p><strong>Craft:</strong> Blue Pottery, Bandhej textiles.</p>
-    <p><strong>Nearest Airport:</strong> Jaipur Airport (12 km)</p>
-    <p><strong>Nearest Railway Station:</strong> Jaipur Railway Station (5 km)</p>
-    <p><strong>Nearest Bus Stand:</strong> Sindhi Camp Bus Stand (3 km)</p>
-  </div>
+  <!-- State Info -->
+  <header class="state-header">
+    <h1>Himachal Pradesh</h1>
+    <div class="state-info">
+      <p><strong>Capital:</strong> Shimla (Summer), Dharamshala (Winter)</p>
+      <p><strong>Population:</strong> ~7.4 million (2023 est.)</p>
+      <p><strong>Official Language:</strong> Hindi</p>
+      <p><strong>History:</strong> Nestled in the western Himalayas, Himachal Pradesh is known for its scenic beauty, colonial-era towns, spiritual destinations, and adventure sports. It became a full-fledged state of India in 1971.</p>
+    </div>
+  </header>
 
-  <!-- Repeat for 19 more places -->
+  <!-- Top 10 Places -->
+  <section class="places-grid">
 
-</div>
+    <!-- Shimla -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Shimla_Ridge.jpg" alt="Shimla">
+      <div class="card-content">
+        <h3>Shimla</h3>
+        <p><strong>Location:</strong> Shimla District</p>
+        <p><strong>Famous for:</strong> Colonial charm, Ridge, Mall Road</p>
+        <p><strong>How to reach:</strong> Kalka-Shimla toy train; airport at Jubbarhatti (22 km)</p>
+      </div>
+    </div>
+
+    <!-- Manali -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Manali_Himachal_Pradesh.jpg" alt="Manali">
+      <div class="card-content">
+        <h3>Manali</h3>
+        <p><strong>Location:</strong> Kullu Valley</p>
+        <p><strong>Famous for:</strong> Snow peaks, adventure sports, Hadimba Temple</p>
+        <p><strong>How to reach:</strong> Bhuntar Airport (50 km), road from Delhi/Chandigarh</p>
+      </div>
+    </div>
+
+    <!-- Dharamshala -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Dharamshala_Temple.jpg" alt="Dharamshala">
+      <div class="card-content">
+        <h3>Dharamshala</h3>
+        <p><strong>Location:</strong> Kangra District</p>
+        <p><strong>Famous for:</strong> Dalai Lama’s residence, Tibetan culture</p>
+        <p><strong>How to reach:</strong> Gaggal Airport (13 km), road/train from Pathankot</p>
+      </div>
+    </div>
+
+    <!-- Spiti Valley -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Ki_Gompa_Spiti.jpg" alt="Spiti Valley">
+      <div class="card-content">
+        <h3>Spiti Valley</h3>
+        <p><strong>Location:</strong> Lahaul & Spiti</p>
+        <p><strong>Famous for:</strong> Remote desert mountains, monasteries</p>
+        <p><strong>How to reach:</strong> Via Manali (seasonal roads), no rail nearby</p>
+      </div>
+    </div>
+
+    <!-- Kullu -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Kullu_Valley.jpg" alt="Kullu">
+      <div class="card-content">
+        <h3>Kullu</h3>
+        <p><strong>Location:</strong> Kullu District</p>
+        <p><strong>Famous for:</strong> Dussehra festival, riverside town</p>
+        <p><strong>How to reach:</strong> Bhuntar Airport, buses from Manali</p>
+      </div>
+    </div>
+
+    <!-- Dalhousie -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Dalhousie_Himachal.jpg" alt="Dalhousie">
+      <div class="card-content">
+        <h3>Dalhousie</h3>
+        <p><strong>Location:</strong> Chamba District</p>
+        <p><strong>Famous for:</strong> Colonial architecture, pine forests</p>
+        <p><strong>How to reach:</strong> Nearest rail: Pathankot (80 km); road to Chamba</p>
+      </div>
+    </div>
+
+    <!-- Kasol -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Kasol.jpg" alt="Kasol">
+      <div class="card-content">
+        <h3>Kasol</h3>
+        <p><strong>Location:</strong> Parvati Valley, Kullu</p>
+        <p><strong>Famous for:</strong> Hippie hub, trekking, Israeli cafés</p>
+        <p><strong>How to reach:</strong> By road from Bhuntar or Kullu</p>
+      </div>
+    </div>
+
+    <!-- Kinnaur -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Kinnaur_Himachal.jpg" alt="Kinnaur">
+      <div class="card-content">
+        <h3>Kinnaur</h3>
+        <p><strong>Location:</strong> Kinnaur District</p>
+        <p><strong>Famous for:</strong> Apple orchards, Sangla Valley, Kalpa</p>
+        <p><strong>How to reach:</strong> Via Shimla – Reckong Peo road</p>
+      </div>
+    </div>
+
+    <!-- Tirthan Valley -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Tirthan_Valley.jpg" alt="Tirthan Valley">
+      <div class="card-content">
+        <h3>Tirthan Valley</h3>
+        <p><strong>Location:</strong> Great Himalayan National Park buffer zone</p>
+        <p><strong>Famous for:</strong> Peaceful riverside camping & trout fishing</p>
+        <p><strong>How to reach:</strong> 8 hrs from Chandigarh via Aut Tunnel</p>
+      </div>
+    </div>
+
+    <!-- Chail -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Chail_Palace.jpg" alt="Chail Palace">
+      <div class="card-content">
+        <h3>Chail</h3>
+        <p><strong>Location:</strong> Near Shimla</p>
+        <p><strong>Famous for:</strong> Chail Palace, highest cricket ground</p>
+        <p><strong>How to reach:</strong> 45 km from Shimla by road</p>
+      </div>
+    </div>
+
+  </section>
 
 </body>
 </html>
