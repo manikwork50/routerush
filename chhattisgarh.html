@@ -1,39 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Top 20 Places in Rajasthan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chhattisgarh - WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: sans-serif; background: #f7f7f7; margin:0; padding:20px; }
-    h1 { text-align:center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-top:30px; }
-    .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    .card img { width: 100%; border-radius: 6px; }
-    .card h2 { margin: 10px 0 5px; }
-    .card p { font-size: 14px; color: #555; margin: 5px 0; }
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/e/e2/Chhattisgarh_collage.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(3px);
+    }
   </style>
 </head>
 <body>
 
-<h1>🏰 Top 20 Places to Visit in Rajasthan</h1>
+  <!-- Navigation -->
+  <nav>
+    <div><a href="index.html">🏠 WanderMap</a></div>
+    <div>
+      <a href="states.html">States</a>
+      <a href="union_territories.html">UTs</a>
+      <a href="blog.html">Blog</a>
+      <a href="submit-gem.html">Submit a Gem</a>
+      <a href="login.html">Admin</a>
+    </div>
+  </nav>
 
-<div class="grid">
-  <div class="card">
-    <img src="https://source.unsplash.com/600x400/?jaipur" alt="Jaipur">
-    <h2>Jaipur</h2>
-    <p><strong>History:</strong> Founded in 1727 by Maharaja Sawai Jai Singh II.</p>
-    <p><strong>Famous for:</strong> Amber Fort, City Palace, Hawa Mahal, gem markets.</p>
-    <p><strong>Food:</strong> Dal Baati Churma, Laal Maas.</p>
-    <p><strong>Craft:</strong> Blue Pottery, Bandhej textiles.</p>
-    <p><strong>Nearest Airport:</strong> Jaipur Airport (12 km)</p>
-    <p><strong>Nearest Railway Station:</strong> Jaipur Railway Station (5 km)</p>
-    <p><strong>Nearest Bus Stand:</strong> Sindhi Camp Bus Stand (3 km)</p>
-  </div>
+  <!-- State Info -->
+  <header class="state-header">
+    <h1>Chhattisgarh</h1>
+    <div class="state-info">
+      <p><strong>Capital:</strong> Raipur</p>
+      <p><strong>Population:</strong> ~30 million (2023 est.)</p>
+      <p><strong>Official Language:</strong> Hindi, Chhattisgarhi</p>
+      <p><strong>History:</strong> Carved out of Madhya Pradesh in 2000, Chhattisgarh is a mineral-rich state with dense forests, tribal culture, and scenic waterfalls. It holds archaeological and natural wonders, along with ancient temples and forts.</p>
+    </div>
+  </header>
 
-  <!-- Repeat for 19 more places -->
+  <!-- Top 10 Places -->
+  <section class="places-grid">
 
-</div>
+    <!-- Chitrakote Falls -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Chitrakote_falls.jpg" alt="Chitrakote Falls">
+      <div class="card-content">
+        <h3>Chitrakote Falls</h3>
+        <p><strong>Location:</strong> Bastar District</p>
+        <p><strong>Famous for:</strong> "Niagara of India", wide horseshoe-shaped fall</p>
+        <p><strong>How to reach:</strong> Jagdalpur (40 km); Jagdalpur connected by rail & bus</p>
+      </div>
+    </div>
+
+    <!-- Barnawapara Wildlife Sanctuary -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Barnawapara_Wildlife.jpg" alt="Barnawapara Sanctuary">
+      <div class="card-content">
+        <h3>Barnawapara Sanctuary</h3>
+        <p><strong>Location:</strong> Mahasamund District</p>
+        <p><strong>Famous for:</strong> Leopards, bison, sloth bears, eco-tourism</p>
+        <p><strong>How to reach:</strong> 100 km from Raipur by road</p>
+      </div>
+    </div>
+
+    <!-- Bhoramdeo Temple -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Bhoramdeo_Temple.jpg" alt="Bhoramdeo Temple">
+      <div class="card-content">
+        <h3>Bhoramdeo Temple</h3>
+        <p><strong>Location:</strong> Kabirdham District</p>
+        <p><strong>Famous for:</strong> Khajuraho-style temple, 11th century architecture</p>
+        <p><strong>How to reach:</strong> 135 km from Raipur via Kawardha</p>
+      </div>
+    </div>
+
+    <!-- Tirathgarh Falls -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Tirathgarh_Waterfalls.jpg" alt="Tirathgarh Falls">
+      <div class="card-content">
+        <h3>Tirathgarh Falls</h3>
+        <p><strong>Location:</strong> Kanger Valley National Park</p>
+        <p><strong>Famous for:</strong> Tiered white waterfalls in lush forest</p>
+        <p><strong>How to reach:</strong> 38 km from Jagdalpur by road</p>
+      </div>
+    </div>
+
+    <!-- Kanger Valley National Park -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Kanger_Ghati_Caves.jpg" alt="Kanger Valley Park">
+      <div class="card-content">
+        <h3>Kanger Valley National Park</h3>
+        <p><strong>Location:</strong> Bastar</p>
+        <p><strong>Famous for:</strong> Limestone caves, wildlife, tribal forests</p>
+        <p><strong>How to reach:</strong> Access from Jagdalpur by road</p>
+      </div>
+    </div>
+
+    <!-- Danteshwari Temple -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Danteshwari_Temple.jpg" alt="Danteshwari Temple">
+      <div class="card-content">
+        <h3>Danteshwari Temple</h3>
+        <p><strong>Location:</strong> Dantewada</p>
+        <p><strong>Famous for:</strong> One of the 52 Shakti Peethas</p>
+        <p><strong>How to reach:</strong> Nearest major town: Jagdalpur (80 km); by road</p>
+      </div>
+    </div>
+
+    <!-- Rajim -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Rajim_Temple.jpg" alt="Rajim">
+      <div class="card-content">
+        <h3>Rajim</h3>
+        <p><strong>Location:</strong> Raipur District</p>
+        <p><strong>Famous for:</strong> Triveni Sangam, ancient temples, Rajim Kumbh</p>
+        <p><strong>How to reach:</strong> 45 km from Raipur; buses and taxis available</p>
+      </div>
+    </div>
+
+    <!-- Sirpur -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Sirpur_Buddha_Vihara.jpg" alt="Sirpur">
+      <div class="card-content">
+        <h3>Sirpur</h3>
+        <p><strong>Location:</strong> Mahasamund District</p>
+        <p><strong>Famous for:</strong> Buddhist monasteries, archaeological ruins</p>
+        <p><strong>How to reach:</strong> 78 km from Raipur via NH6</p>
+      </div>
+    </div>
+
+    <!-- Malhar -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Malhar_Temple.jpg" alt="Malhar">
+      <div class="card-content">
+        <h3>Malhar</h3>
+        <p><strong>Location:</strong> Bilaspur District</p>
+        <p><strong>Famous for:</strong> Ancient temple ruins, Pataleshwar temple</p>
+        <p><strong>How to reach:</strong> 40 km from Bilaspur; local buses available</p>
+      </div>
+    </div>
+
+    <!-- Maitri Bagh Zoo & Garden -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Maitri_Bagh_Bhilai.jpg" alt="Maitri Bagh Bhilai">
+      <div class="card-content">
+        <h3>Maitri Bagh</h3>
+        <p><strong>Location:</strong> Bhilai</p>
+        <p><strong>Famous for:</strong> Zoo, musical fountain, Japanese-style garden</p>
+        <p><strong>How to reach:</strong> Within Bhilai city; 30 km from Raipur</p>
+      </div>
+    </div>
+
+  </section>
 
 </body>
 </html>
