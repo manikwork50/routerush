@@ -1,39 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Top 20 Places in Rajasthan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Madhya Pradesh - WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: sans-serif; background: #f7f7f7; margin:0; padding:20px; }
-    h1 { text-align:center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-top:30px; }
-    .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    .card img { width: 100%; border-radius: 6px; }
-    .card h2 { margin: 10px 0 5px; }
-    .card p { font-size: 14px; color: #555; margin: 5px 0; }
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/0/04/Madhya_Pradesh_Collage.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(2.5px);
+    }
   </style>
 </head>
 <body>
 
-<h1>🏰 Top 20 Places to Visit in Rajasthan</h1>
+  <!-- Navigation -->
+  <nav>
+    <div><a href="index.html">🏠 WanderMap</a></div>
+    <div>
+      <a href="states.html">States</a>
+      <a href="union_territories.html">UTs</a>
+      <a href="blog.html">Blog</a>
+      <a href="submit-gem.html">Submit a Gem</a>
+      <a href="login.html">Admin</a>
+    </div>
+  </nav>
 
-<div class="grid">
-  <div class="card">
-    <img src="https://source.unsplash.com/600x400/?jaipur" alt="Jaipur">
-    <h2>Jaipur</h2>
-    <p><strong>History:</strong> Founded in 1727 by Maharaja Sawai Jai Singh II.</p>
-    <p><strong>Famous for:</strong> Amber Fort, City Palace, Hawa Mahal, gem markets.</p>
-    <p><strong>Food:</strong> Dal Baati Churma, Laal Maas.</p>
-    <p><strong>Craft:</strong> Blue Pottery, Bandhej textiles.</p>
-    <p><strong>Nearest Airport:</strong> Jaipur Airport (12 km)</p>
-    <p><strong>Nearest Railway Station:</strong> Jaipur Railway Station (5 km)</p>
-    <p><strong>Nearest Bus Stand:</strong> Sindhi Camp Bus Stand (3 km)</p>
-  </div>
+  <!-- State Information -->
+  <header class="state-header">
+    <h1>Madhya Pradesh</h1>
+    <div class="state-info">
+      <p><strong>Capital:</strong> Bhopal</p>
+      <p><strong>Population:</strong> ~85 million (2023 est.)</p>
+      <p><strong>Official Language:</strong> Hindi</p>
+      <p><strong>History:</strong> Known as the "Heart of India", Madhya Pradesh is home to a wealth of historical monuments, tiger reserves, tribal culture, and ancient temples. The state was formed in 1956 and holds cultural and geographical significance in India.</p>
+    </div>
+  </header>
 
-  <!-- Repeat for 19 more places -->
+  <!-- Top 10 Places in Madhya Pradesh -->
+  <section class="places-grid">
 
-</div>
+    <!-- Khajuraho Temples -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Khajuraho_Temple.jpg" alt="Khajuraho">
+      <div class="card-content">
+        <h3>Khajuraho Temples</h3>
+        <p><strong>Location:</strong> Chhatarpur District</p>
+        <p><strong>Famous for:</strong> Erotic sculptures and UNESCO heritage temples</p>
+        <p><strong>How to reach:</strong> Khajuraho Airport, Khajuraho Railway Station</p>
+      </div>
+    </div>
+
+    <!-- Bandhavgarh National Park -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Bandhavgarh_Tiger.jpg" alt="Bandhavgarh">
+      <div class="card-content">
+        <h3>Bandhavgarh National Park</h3>
+        <p><strong>Location:</strong> Umaria District</p>
+        <p><strong>Famous for:</strong> Tiger sightings, wildlife safari</p>
+        <p><strong>How to reach:</strong> Umaria Railway Station (35 km), Jabalpur Airport</p>
+      </div>
+    </div>
+
+    <!-- Sanchi Stupa -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Sanchi_Stupa.jpg" alt="Sanchi Stupa">
+      <div class="card-content">
+        <h3>Sanchi Stupa</h3>
+        <p><strong>Location:</strong> Raisen District</p>
+        <p><strong>Famous for:</strong> Buddhist stupas and Ashoka’s legacy</p>
+        <p><strong>How to reach:</strong> 46 km from Bhopal by road/train</p>
+      </div>
+    </div>
+
+    <!-- Bhimbetka Rock Shelters -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Bhimbetka_Shelters.jpg" alt="Bhimbetka">
+      <div class="card-content">
+        <h3>Bhimbetka Rock Shelters</h3>
+        <p><strong>Location:</strong> Near Bhopal</p>
+        <p><strong>Famous for:</strong> Prehistoric cave paintings</p>
+        <p><strong>How to reach:</strong> 45 km from Bhopal by road</p>
+      </div>
+    </div>
+
+    <!-- Ujjain -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Mahakaleshwar_Ujjain.jpg" alt="Ujjain">
+      <div class="card-content">
+        <h3>Ujjain</h3>
+        <p><strong>Location:</strong> Ujjain District</p>
+        <p><strong>Famous for:</strong> Mahakaleshwar Jyotirlinga, Kumbh Mela</p>
+        <p><strong>How to reach:</strong> Ujjain Railway Station, Indore Airport (55 km)</p>
+      </div>
+    </div>
+
+    <!-- Kanha National Park -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Kanha_Tiger.jpg" alt="Kanha">
+      <div class="card-content">
+        <h3>Kanha National Park</h3>
+        <p><strong>Location:</strong> Mandla District</p>
+        <p><strong>Famous for:</strong> Tigers, barasingha, jungle safari</p>
+        <p><strong>How to reach:</strong> Jabalpur (160 km), Gondia Railway Station</p>
+      </div>
+    </div>
+
+    <!-- Orchha -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Orchha_Forts.jpg" alt="Orchha">
+      <div class="card-content">
+        <h3>Orchha</h3>
+        <p><strong>Location:</strong> Niwari District</p>
+        <p><strong>Famous for:</strong> Cenotaphs, palaces, river view</p>
+        <p><strong>How to reach:</strong> Jhansi Railway Station (16 km)</p>
+      </div>
+    </div>
+
+    <!-- Pachmarhi -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Pachmarhi_Hills.jpg" alt="Pachmarhi">
+      <div class="card-content">
+        <h3>Pachmarhi</h3>
+        <p><strong>Location:</strong> Hoshangabad District</p>
+        <p><strong>Famous for:</strong> Hill station, waterfalls, caves</p>
+        <p><strong>How to reach:</strong> Pipariya Railway Station (54 km), road to Pachmarhi</p>
+      </div>
+    </div>
+
+    <!-- Gwalior Fort -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Gwalior_Fort.jpg" alt="Gwalior Fort">
+      <div class="card-content">
+        <h3>Gwalior Fort</h3>
+        <p><strong>Location:</strong> Gwalior City</p>
+        <p><strong>Famous for:</strong> Historical fort and panoramic city view</p>
+        <p><strong>How to reach:</strong> Gwalior Railway Station, nearby airport</p>
+      </div>
+    </div>
+
+    <!-- Bhedaghat Marble Rocks -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Bhedaghat_Jabalpur.jpg" alt="Bhedaghat">
+      <div class="card-content">
+        <h3>Bhedaghat</h3>
+        <p><strong>Location:</strong> Jabalpur District</p>
+        <p><strong>Famous for:</strong> Boat ride between marble cliffs</p>
+        <p><strong>How to reach:</strong> Jabalpur Railway Station, local taxis</p>
+      </div>
+    </div>
+
+  </section>
 
 </body>
 </html>
