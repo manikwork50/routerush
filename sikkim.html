@@ -1,39 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Top 20 Places in Rajasthan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sikkim - WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: sans-serif; background: #f7f7f7; margin:0; padding:20px; }
-    h1 { text-align:center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-top:30px; }
-    .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    .card img { width: 100%; border-radius: 6px; }
-    .card h2 { margin: 10px 0 5px; }
-    .card p { font-size: 14px; color: #555; margin: 5px 0; }
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/5/5f/Sikkim_Collage.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(3px);
+    }
   </style>
 </head>
 <body>
 
-<h1>🏰 Top 20 Places to Visit in Rajasthan</h1>
+  <!-- Navigation -->
+  <nav>
+    <div><a href="index.html">🏠 WanderMap</a></div>
+    <div>
+      <a href="states.html">States</a>
+      <a href="union_territories.html">UTs</a>
+      <a href="blog.html">Blog</a>
+      <a href="submit-gem.html">Submit a Gem</a>
+      <a href="login.html">Admin</a>
+    </div>
+  </nav>
 
-<div class="grid">
-  <div class="card">
-    <img src="https://source.unsplash.com/600x400/?jaipur" alt="Jaipur">
-    <h2>Jaipur</h2>
-    <p><strong>History:</strong> Founded in 1727 by Maharaja Sawai Jai Singh II.</p>
-    <p><strong>Famous for:</strong> Amber Fort, City Palace, Hawa Mahal, gem markets.</p>
-    <p><strong>Food:</strong> Dal Baati Churma, Laal Maas.</p>
-    <p><strong>Craft:</strong> Blue Pottery, Bandhej textiles.</p>
-    <p><strong>Nearest Airport:</strong> Jaipur Airport (12 km)</p>
-    <p><strong>Nearest Railway Station:</strong> Jaipur Railway Station (5 km)</p>
-    <p><strong>Nearest Bus Stand:</strong> Sindhi Camp Bus Stand (3 km)</p>
-  </div>
+  <!-- Sikkim Info -->
+  <header class="state-header">
+    <h1>Sikkim</h1>
+    <div class="state-info">
+      <p><strong>Capital:</strong> Gangtok</p>
+      <p><strong>Population:</strong> ~700,000 (2023 est.)</p>
+      <p><strong>Official Languages:</strong> Nepali, Bhutia, Lepcha, English</p>
+      <p><strong>History:</strong> Sikkim, a Himalayan state, was an independent kingdom until it joined India in 1975. Known for its Buddhist monasteries, alpine scenery, snow-capped mountains, and rich biodiversity, Sikkim is also India’s first fully organic state.</p>
+    </div>
+  </header>
 
-  <!-- Repeat for 19 more places -->
+  <!-- Top 10 Places in Sikkim -->
+  <section class="places-grid">
 
-</div>
+    <!-- Tsomgo Lake -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Tsomgo_Lake.jpg" alt="Tsomgo Lake">
+      <div class="card-content">
+        <h3>Tsomgo Lake</h3>
+        <p><strong>Location:</strong> 40 km from Gangtok</p>
+        <p><strong>Famous for:</strong> Glacial lake, snow views, yak rides</p>
+        <p><strong>How to reach:</strong> Hire a cab from Gangtok (permit required)</p>
+      </div>
+    </div>
+
+    <!-- Nathula Pass -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Nathula_pass.jpg" alt="Nathula Pass">
+      <div class="card-content">
+        <h3>Nathula Pass</h3>
+        <p><strong>Location:</strong> Indo-China border</p>
+        <p><strong>Famous for:</strong> Historic trade route, Indo-China border</p>
+        <p><strong>How to reach:</strong> 55 km from Gangtok with permit</p>
+      </div>
+    </div>
+
+    <!-- Rumtek Monastery -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Rumtek_Monastery_Sikkim.jpg" alt="Rumtek Monastery">
+      <div class="card-content">
+        <h3>Rumtek Monastery</h3>
+        <p><strong>Location:</strong> 23 km from Gangtok</p>
+        <p><strong>Famous for:</strong> Tibetan Buddhism, architecture</p>
+        <p><strong>How to reach:</strong> Taxi from Gangtok</p>
+      </div>
+    </div>
+
+    <!-- Yumthang Valley -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Yumthang_Valley.jpg" alt="Yumthang Valley">
+      <div class="card-content">
+        <h3>Yumthang Valley</h3>
+        <p><strong>Location:</strong> North Sikkim</p>
+        <p><strong>Famous for:</strong> Valley of flowers, hot springs, snow</p>
+        <p><strong>How to reach:</strong> Via Lachung (from Gangtok)</p>
+      </div>
+    </div>
+
+    <!-- Gurudongmar Lake -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Gurudongmar_Lake.jpg" alt="Gurudongmar Lake">
+      <div class="card-content">
+        <h3>Gurudongmar Lake</h3>
+        <p><strong>Location:</strong> 17,800 ft, North Sikkim</p>
+        <p><strong>Famous for:</strong> High-altitude sacred lake</p>
+        <p><strong>How to reach:</strong> Via Lachen by road (permit needed)</p>
+      </div>
+    </div>
+
+    <!-- Pelling -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Pelling_Viewpoint_Sikkim.jpg" alt="Pelling">
+      <div class="card-content">
+        <h3>Pelling</h3>
+        <p><strong>Location:</strong> West Sikkim</p>
+        <p><strong>Famous for:</strong> Kanchenjunga views, monasteries</p>
+        <p><strong>How to reach:</strong> 131 km from Gangtok</p>
+      </div>
+    </div>
+
+    <!-- Zuluk Loop -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Zuluk_Loops_Sikkim.jpg" alt="Zuluk Loop">
+      <div class="card-content">
+        <h3>Zuluk Loop</h3>
+        <p><strong>Location:</strong> East Sikkim</p>
+        <p><strong>Famous for:</strong> Hairpin roads, scenic Himalayan drive</p>
+        <p><strong>How to reach:</strong> Permit required, from Gangtok</p>
+      </div>
+    </div>
+
+    <!-- Kanchenjunga National Park -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Kanchenjunga_from_Goecha_La.jpg" alt="Kanchenjunga National Park">
+      <div class="card-content">
+        <h3>Kanchenjunga National Park</h3>
+        <p><strong>Location:</strong> West Sikkim</p>
+        <p><strong>Famous for:</strong> UNESCO site, trekking, biodiversity</p>
+        <p><strong>How to reach:</strong> Permit required, via Yuksom</p>
+      </div>
+    </div>
+
+    <!-- Tashi View Point -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Tashi_View_Point_Gangtok.jpg" alt="Tashi View Point">
+      <div class="card-content">
+        <h3>Tashi View Point</h3>
+        <p><strong>Location:</strong> Near Gangtok</p>
+        <p><strong>Famous for:</strong> Panoramic view of Kanchenjunga</p>
+        <p><strong>How to reach:</strong> 8 km from Gangtok city</p>
+      </div>
+    </div>
+
+    <!-- Namchi Chardham -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Namchi_Chardham_Sikkim.jpg" alt="Namchi Chardham">
+      <div class="card-content">
+        <h3>Namchi Chardham</h3>
+        <p><strong>Location:</strong> South Sikkim</p>
+        <p><strong>Famous for:</strong> Pilgrimage replica site of four dhams</p>
+        <p><strong>How to reach:</strong> 80 km from Gangtok</p>
+      </div>
+    </div>
+
+  </section>
 
 </body>
 </html>
