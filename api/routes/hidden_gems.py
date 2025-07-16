@@ -1,29 +1,82 @@
-from flask import Blueprint, request, jsonify
-from api.models import db, HiddenGem
+<script>
+  const gemsList = document.getElementById('gemsList');
+  const filterInput = document.getElementById('filterState');
+  let allGems = [];
 
-hidden_gems_bp = Blueprint('hidden_gems', __name__)
+  async function fetchGems() {
+    try {
+      const res = await fetch('/api/hidden-gems/all');
+      const data = await res.json();
+      allGems = data;
+      renderGems(data);
+    } catch (err) {
+      gemsList.innerHTML = "❌ Error loading gems.";
+      console.error(err);
+    }
+  }
 
-@hidden_gems_bp.route('/api/hidden-gems/<state>', methods=['GET'])
-def get_hidden_gems(state):
-    gems = HiddenGem.query.filter_by(state=state.title()).all()
-    return jsonify([gem.serialize() for gem in gems])
+  function renderGems(gems) {
+    if (gems.length === 0) {
+      gemsList.innerHTML = "⚠️ No hidden gems found.";
+      return;
+    }
 
-@hidden_gems_bp.route('/api/hidden-gems', methods=['POST'])
-def submit_hidden_gem():
-    data = request.get_json()
-    
-    required_fields = ['state', 'name', 'description', 'submitted_by']
-    if not all(field in data for field in required_fields):
-        return jsonify({"error": "Missing required fields"}), 400
+    gemsList.innerHTML = "";
+    gems.forEach(gem => {
+      const div = document.createElement("div");
+      div.classList.add("gem");
 
-    gem = HiddenGem(
-        state=data['state'].title(),
-        name=data['name'],
-        description=data['description'],
-        image_url=data.get('image_url', ''),
-        submitted_by=data['submitted_by']
-    )
-    db.session.add(gem)
-    db.session.commit()
-    return jsonify({"status": "success", "id": gem.id}), 201
+      div.innerHTML = `
+        <h3>${gem.name} (${gem.state}) ${gem.approved ? '✅' : '🕒'}</h3>
+        <p>${gem.description}</p>
+        ${gem.image_url ? `<img src="${gem.image_url}" width="100" />` : ""}
+        <small>Submitted by: ${gem.submitted_by}</small>
+        <br/>
+        ${!gem.approved ? `<button onclick="approveGem(${gem.id})">✅ Approve</button>` : ""}
+        <button onclick="deleteGem(${gem.id})">🗑️ Delete</button>
+      `;
 
+      gemsList.appendChild(div);
+    });
+  }
+
+  async function approveGem(id) {
+    try {
+      const res = await fetch(`/api/hidden-gems/approve/${id}`, {
+        method: 'POST'
+      });
+      if (res.ok) {
+        fetchGems();
+      } else {
+        alert('❌ Failed to approve');
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async function deleteGem(id) {
+    if (!confirm("Are you sure you want to delete this gem?")) return;
+
+    try {
+      const res = await fetch(`/api/hidden-gems/delete/${id}`, {
+        method: 'DELETE'
+      });
+      if (res.ok) {
+        fetchGems();
+      } else {
+        alert('❌ Failed to delete');
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  filterInput.addEventListener("input", () => {
+    const keyword = filterInput.value.trim().toLowerCase();
+    const filtered = allGems.filter(g => g.state.toLowerCase().includes(keyword));
+    renderGems(filtered);
+  });
+
+  fetchGems();
+</script>
