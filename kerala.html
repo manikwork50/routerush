@@ -1,39 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Top 20 Places in Rajasthan</title>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kerala - WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: sans-serif; background: #f7f7f7; margin:0; padding:20px; }
-    h1 { text-align:center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-top:30px; }
-    .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    .card img { width: 100%; border-radius: 6px; }
-    .card h2 { margin: 10px 0 5px; }
-    .card p { font-size: 14px; color: #555; margin: 5px 0; }
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/b/b7/Kerala_Background_Collage.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(2px);
+    }
   </style>
 </head>
 <body>
 
-<h1>🏰 Top 20 Places to Visit in Rajasthan</h1>
+  <!-- Navigation -->
+  <nav>
+    <div><a href="index.html">🏠 WanderMap</a></div>
+    <div>
+      <a href="states.html">States</a>
+      <a href="union_territories.html">UTs</a>
+      <a href="blog.html">Blog</a>
+      <a href="submit-gem.html">Submit a Gem</a>
+      <a href="login.html">Admin</a>
+    </div>
+  </nav>
 
-<div class="grid">
-  <div class="card">
-    <img src="https://source.unsplash.com/600x400/?jaipur" alt="Jaipur">
-    <h2>Jaipur</h2>
-    <p><strong>History:</strong> Founded in 1727 by Maharaja Sawai Jai Singh II.</p>
-    <p><strong>Famous for:</strong> Amber Fort, City Palace, Hawa Mahal, gem markets.</p>
-    <p><strong>Food:</strong> Dal Baati Churma, Laal Maas.</p>
-    <p><strong>Craft:</strong> Blue Pottery, Bandhej textiles.</p>
-    <p><strong>Nearest Airport:</strong> Jaipur Airport (12 km)</p>
-    <p><strong>Nearest Railway Station:</strong> Jaipur Railway Station (5 km)</p>
-    <p><strong>Nearest Bus Stand:</strong> Sindhi Camp Bus Stand (3 km)</p>
-  </div>
+  <!-- Kerala Info -->
+  <header class="state-header">
+    <h1>Kerala</h1>
+    <div class="state-info">
+      <p><strong>Capital:</strong> Thiruvananthapuram</p>
+      <p><strong>Population:</strong> ~35 million (2023 est.)</p>
+      <p><strong>Official Language:</strong> Malayalam</p>
+      <p><strong>History:</strong> Known as "God's Own Country", Kerala is famous for its palm-lined beaches, backwaters, spices, classical arts, Ayurveda, and literacy. It was formed in 1956 on linguistic grounds.</p>
+    </div>
+  </header>
 
-  <!-- Repeat for 19 more places -->
+  <!-- Top 10 Tourist Places -->
+  <section class="places-grid">
 
-</div>
+    <!-- Munnar -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Munnar_tea_gardens.jpg" alt="Munnar">
+      <div class="card-content">
+        <h3>Munnar</h3>
+        <p><strong>Location:</strong> Idukki district</p>
+        <p><strong>Famous for:</strong> Tea plantations, scenic hills</p>
+        <p><strong>How to reach:</strong> Cochin Airport (110 km), Aluva Railway (100 km)</p>
+      </div>
+    </div>
+
+    <!-- Alleppey -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Alleppey_backwaters.jpg" alt="Alleppey">
+      <div class="card-content">
+        <h3>Alleppey (Alappuzha)</h3>
+        <p><strong>Location:</strong> Alappuzha district</p>
+        <p><strong>Famous for:</strong> Backwaters, houseboat cruises</p>
+        <p><strong>How to reach:</strong> Rail to Alappuzha, Cochin Airport (75 km)</p>
+      </div>
+    </div>
+
+    <!-- Wayanad -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Wayanad_Kerala.jpg" alt="Wayanad">
+      <div class="card-content">
+        <h3>Wayanad</h3>
+        <p><strong>Location:</strong> Wayanad district</p>
+        <p><strong>Famous for:</strong> Forests, waterfalls, wildlife</p>
+        <p><strong>How to reach:</strong> Road from Calicut (86 km); no direct rail</p>
+      </div>
+    </div>
+
+    <!-- Thekkady -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Thekkady_Boat.jpg" alt="Thekkady">
+      <div class="card-content">
+        <h3>Thekkady</h3>
+        <p><strong>Location:</strong> Idukki district</p>
+        <p><strong>Famous for:</strong> Periyar Tiger Reserve, lake cruise</p>
+        <p><strong>How to reach:</strong> 150 km from Kochi by road</p>
+      </div>
+    </div>
+
+    <!-- Kochi -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Cochin_Chinese_Net.jpg" alt="Kochi">
+      <div class="card-content">
+        <h3>Kochi</h3>
+        <p><strong>Location:</strong> Ernakulam district</p>
+        <p><strong>Famous for:</strong> Fort Kochi, Chinese fishing nets</p>
+        <p><strong>How to reach:</strong> Cochin International Airport, Ernakulam Junction</p>
+      </div>
+    </div>
+
+    <!-- Varkala -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Varkala_Beach_Kerala.jpg" alt="Varkala">
+      <div class="card-content">
+        <h3>Varkala</h3>
+        <p><strong>Location:</strong> Thiruvananthapuram</p>
+        <p><strong>Famous for:</strong> Cliffside beach, clean waters</p>
+        <p><strong>How to reach:</strong> Varkala Railway Station; 40 km from Trivandrum</p>
+      </div>
+    </div>
+
+    <!-- Kovalam -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Kovalam_Lighthouse_Beach.jpg" alt="Kovalam">
+      <div class="card-content">
+        <h3>Kovalam</h3>
+        <p><strong>Location:</strong> Near Thiruvananthapuram</p>
+        <p><strong>Famous for:</strong> Lighthouse Beach, surfing</p>
+        <p><strong>How to reach:</strong> 15 km from Trivandrum by road</p>
+      </div>
+    </div>
+
+    <!-- Bekal Fort -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Bekal_Fort_Kerala.jpg" alt="Bekal Fort">
+      <div class="card-content">
+        <h3>Bekal Fort</h3>
+        <p><strong>Location:</strong> Kasaragod district</p>
+        <p><strong>Famous for:</strong> Sea-facing historic fort</p>
+        <p><strong>How to reach:</strong> Bekal Fort Railway Station nearby</p>
+      </div>
+    </div>
+
+    <!-- Athirappilly Falls -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Athirappilly_Falls_Wide_View.jpg" alt="Athirappilly">
+      <div class="card-content">
+        <h3>Athirappilly Falls</h3>
+        <p><strong>Location:</strong> Thrissur district</p>
+        <p><strong>Famous for:</strong> Largest waterfall in Kerala</p>
+        <p><strong>How to reach:</strong> 55 km from Kochi by road</p>
+      </div>
+    </div>
+
+    <!-- Silent Valley -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Silent_Valley_National_Park.jpg" alt="Silent Valley">
+      <div class="card-content">
+        <h3>Silent Valley</h3>
+        <p><strong>Location:</strong> Palakkad district</p>
+        <p><strong>Famous for:</strong> Evergreen rainforests, rare wildlife</p>
+        <p><strong>How to reach:</strong> Road from Mannarkkad (40 km)</p>
+      </div>
+    </div>
+
+  </section>
 
 </body>
 </html>
