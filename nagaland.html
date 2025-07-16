@@ -1,39 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Top 20 Places in Rajasthan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nagaland - WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: sans-serif; background: #f7f7f7; margin:0; padding:20px; }
-    h1 { text-align:center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-top:30px; }
-    .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    .card img { width: 100%; border-radius: 6px; }
-    .card h2 { margin: 10px 0 5px; }
-    .card p { font-size: 14px; color: #555; margin: 5px 0; }
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/b/be/Nagaland_Collage.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(3px);
+    }
   </style>
 </head>
 <body>
 
-<h1>🏰 Top 20 Places to Visit in Rajasthan</h1>
+  <!-- Navigation -->
+  <nav>
+    <div><a href="index.html">🏠 WanderMap</a></div>
+    <div>
+      <a href="states.html">States</a>
+      <a href="union_territories.html">UTs</a>
+      <a href="blog.html">Blog</a>
+      <a href="submit-gem.html">Submit a Gem</a>
+      <a href="login.html">Admin</a>
+    </div>
+  </nav>
 
-<div class="grid">
-  <div class="card">
-    <img src="https://source.unsplash.com/600x400/?jaipur" alt="Jaipur">
-    <h2>Jaipur</h2>
-    <p><strong>History:</strong> Founded in 1727 by Maharaja Sawai Jai Singh II.</p>
-    <p><strong>Famous for:</strong> Amber Fort, City Palace, Hawa Mahal, gem markets.</p>
-    <p><strong>Food:</strong> Dal Baati Churma, Laal Maas.</p>
-    <p><strong>Craft:</strong> Blue Pottery, Bandhej textiles.</p>
-    <p><strong>Nearest Airport:</strong> Jaipur Airport (12 km)</p>
-    <p><strong>Nearest Railway Station:</strong> Jaipur Railway Station (5 km)</p>
-    <p><strong>Nearest Bus Stand:</strong> Sindhi Camp Bus Stand (3 km)</p>
-  </div>
+  <!-- Nagaland Info -->
+  <header class="state-header">
+    <h1>Nagaland</h1>
+    <div class="state-info">
+      <p><strong>Capital:</strong> Kohima</p>
+      <p><strong>Population:</strong> ~2.2 million (2023 est.)</p>
+      <p><strong>Official Languages:</strong> English (widely used), Nagamese, various tribal languages</p>
+      <p><strong>History:</strong> Nagaland became the 16th state of India in 1963. Known for its vibrant tribal culture, traditional festivals like Hornbill, and lush hills, Nagaland is one of the most culturally rich states in India. Over 16 major tribes inhabit this state.</p>
+    </div>
+  </header>
 
-  <!-- Repeat for 19 more places -->
+  <!-- Top 10 Places in Nagaland -->
+  <section class="places-grid">
 
-</div>
+    <!-- Kohima War Cemetery -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Kohima_War_Cemetery.jpg" alt="Kohima War Cemetery">
+      <div class="card-content">
+        <h3>Kohima War Cemetery</h3>
+        <p><strong>Location:</strong> Kohima</p>
+        <p><strong>Famous for:</strong> WWII memorial, peaceful gardens</p>
+        <p><strong>How to reach:</strong> 1 km from Kohima center</p>
+      </div>
+    </div>
+
+    <!-- Dzükou Valley -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/Dzukou_Valley.jpg" alt="Dzukou Valley">
+      <div class="card-content">
+        <h3>Dzükou Valley</h3>
+        <p><strong>Location:</strong> Border of Nagaland & Manipur</p>
+        <p><strong>Famous for:</strong> Trekking, lilies, panoramic views</p>
+        <p><strong>How to reach:</strong> Trek from Viswema or Zakhama near Kohima</p>
+      </div>
+    </div>
+
+    <!-- Hornbill Festival Grounds -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Hornbill_Festival_Nagaland.jpg" alt="Hornbill Festival">
+      <div class="card-content">
+        <h3>Hornbill Festival (Kisama)</h3>
+        <p><strong>Location:</strong> Kisama Heritage Village</p>
+        <p><strong>Famous for:</strong> Tribal festival, dance, crafts</p>
+        <p><strong>How to reach:</strong> 12 km from Kohima by taxi</p>
+      </div>
+    </div>
+
+    <!-- Japfu Peak -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Japfu_Peak_Nagaland.jpg" alt="Japfu Peak">
+      <div class="card-content">
+        <h3>Japfu Peak</h3>
+        <p><strong>Location:</strong> South of Kohima</p>
+        <p><strong>Famous for:</strong> Trekking, tallest Rhododendron tree</p>
+        <p><strong>How to reach:</strong> Trek from Kigwema or Viswema village</p>
+      </div>
+    </div>
+
+    <!-- Mokokchung -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Mokokchung_Town.jpg" alt="Mokokchung">
+      <div class="card-content">
+        <h3>Mokokchung</h3>
+        <p><strong>Location:</strong> Central Nagaland</p>
+        <p><strong>Famous for:</strong> Ao tribal culture, scenic town</p>
+        <p><strong>How to reach:</strong> 160 km from Kohima by road</p>
+      </div>
+    </div>
+
+    <!-- Tuophema Village -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Tuophema_Village_Huts.jpg" alt="Tuophema Village">
+      <div class="card-content">
+        <h3>Tuophema Village</h3>
+        <p><strong>Location:</strong> 40 km from Kohima</p>
+        <p><strong>Famous for:</strong> Cultural village, homestays</p>
+        <p><strong>How to reach:</strong> Taxi or private cab from Kohima</p>
+      </div>
+    </div>
+
+    <!-- Longwa Village -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Longwa_Village_Nagaland.jpg" alt="Longwa Village">
+      <div class="card-content">
+        <h3>Longwa Village</h3>
+        <p><strong>Location:</strong> Mon District, Indo-Myanmar border</p>
+        <p><strong>Famous for:</strong> Konyak tribes, headhunting history</p>
+        <p><strong>How to reach:</strong> 42 km from Mon town</p>
+      </div>
+    </div>
+
+    <!-- Mon District -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Konyak_tribesman.jpg" alt="Mon Nagaland">
+      <div class="card-content">
+        <h3>Mon District</h3>
+        <p><strong>Location:</strong> Northeast Nagaland</p>
+        <p><strong>Famous for:</strong> Konyak tribe tattoos, traditional homes</p>
+        <p><strong>How to reach:</strong> Reach via Sonari or Sivasagar in Assam</p>
+      </div>
+    </div>
+
+    <!-- Khonoma Green Village -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Khonoma_Nagaland.jpg" alt="Khonoma Village">
+      <div class="card-content">
+        <h3>Khonoma Village</h3>
+        <p><strong>Location:</strong> 20 km from Kohima</p>
+        <p><strong>Famous for:</strong> India's first green village, eco-tourism</p>
+        <p><strong>How to reach:</strong> Taxi from Kohima</p>
+      </div>
+    </div>
+
+    <!-- Ntangki National Park -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Ntangki_National_Park.jpg" alt="Ntangki Park">
+      <div class="card-content">
+        <h3>Ntangki National Park</h3>
+        <p><strong>Location:</strong> Peren District</p>
+        <p><strong>Famous for:</strong> Rare wildlife and dense forest</p>
+        <p><strong>How to reach:</strong> About 35 km from Dimapur by road</p>
+      </div>
+    </div>
+
+  </section>
 
 </body>
 </html>
