@@ -1,39 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Top 20 Places in Rajasthan</title>
+  <meta charset="UTF- />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karnataka - WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: sans-serif; background: #f7f7f7; margin:0; padding:20px; }
-    h1 { text-align:center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-top:30px; }
-    .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    .card img { width: 100%; border-radius: 6px; }
-    .card h2 { margin: 10px 0 5px; }
-    .card p { font-size: 14px; color: #555; margin: 5px 0; }
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/e/e2/Karnataka_Collage.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(3px);
+    }
   </style>
 </head>
 <body>
 
-<h1>🏰 Top 20 Places to Visit in Rajasthan</h1>
+  <!-- Navigation -->
+  <nav>
+    <div><a href="index.html">🏠 WanderMap</a></div>
+    <div>
+      <a href="states.html">States</a>
+      <a href="union_territories.html">UTs</a>
+      <a href="blog.html">Blog</a>
+      <a href="submit-gem.html">Submit a Gem</a>
+      <a href="login.html">Admin</a>
+    </div>
+  </nav>
 
-<div class="grid">
-  <div class="card">
-    <img src="https://source.unsplash.com/600x400/?jaipur" alt="Jaipur">
-    <h2>Jaipur</h2>
-    <p><strong>History:</strong> Founded in 1727 by Maharaja Sawai Jai Singh II.</p>
-    <p><strong>Famous for:</strong> Amber Fort, City Palace, Hawa Mahal, gem markets.</p>
-    <p><strong>Food:</strong> Dal Baati Churma, Laal Maas.</p>
-    <p><strong>Craft:</strong> Blue Pottery, Bandhej textiles.</p>
-    <p><strong>Nearest Airport:</strong> Jaipur Airport (12 km)</p>
-    <p><strong>Nearest Railway Station:</strong> Jaipur Railway Station (5 km)</p>
-    <p><strong>Nearest Bus Stand:</strong> Sindhi Camp Bus Stand (3 km)</p>
-  </div>
+  <!-- State Info -->
+  <header class="state-header">
+    <h1>Karnataka</h1>
+    <div class="state-info">
+      <p><strong>Capital:</strong> Bengaluru</p>
+      <p><strong>Population:</strong> ~68 million (2023 est.)</p>
+      <p><strong>Official Language:</strong> Kannada</p>
+      <p><strong>History:</strong> Karnataka, known for its rich heritage of the Vijayanagara Empire and diverse landscapes from beaches to coffee hills, is one of India’s most advanced states with a tech hub in Bengaluru.</p>
+    </div>
+  </header>
 
-  <!-- Repeat for 19 more places -->
+  <!-- Top 10 Places -->
+  <section class="places-grid">
 
-</div>
+    <!-- Bengaluru -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Vidhana_Soudha_Bangalore.jpg" alt="Bengaluru">
+      <div class="card-content">
+        <h3>Bengaluru</h3>
+        <p><strong>Location:</strong> Bangalore Urban</p>
+        <p><strong>Famous for:</strong> IT hub, gardens, nightlife</p>
+        <p><strong>How to reach:</strong> Kempegowda Intl. Airport, Bengaluru City Railway Station</p>
+      </div>
+    </div>
+
+    <!-- Mysore -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Mysore_Palace_India.jpg" alt="Mysore">
+      <div class="card-content">
+        <h3>Mysore</h3>
+        <p><strong>Location:</strong> Mysuru District</p>
+        <p><strong>Famous for:</strong> Mysore Palace, Dussehra Festival</p>
+        <p><strong>How to reach:</strong> Mysuru Junction, road from Bengaluru (150 km)</p>
+      </div>
+    </div>
+
+    <!-- Hampi -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Hampi_Karnataka.jpg" alt="Hampi">
+      <div class="card-content">
+        <h3>Hampi</h3>
+        <p><strong>Location:</strong> Vijayanagara District</p>
+        <p><strong>Famous for:</strong> Ruins of Vijayanagara Empire</p>
+        <p><strong>How to reach:</strong> Train to Hospet; road to Hampi (13 km)</p>
+      </div>
+    </div>
+
+    <!-- Coorg -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Coorg_Coffee_Plantation.jpg" alt="Coorg">
+      <div class="card-content">
+        <h3>Coorg</h3>
+        <p><strong>Location:</strong> Kodagu District</p>
+        <p><strong>Famous for:</strong> Coffee estates, hills, waterfalls</p>
+        <p><strong>How to reach:</strong> Road from Mysore (115 km); no rail/air</p>
+      </div>
+    </div>
+
+    <!-- Gokarna -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Gokarna_beach_Karnataka.jpg" alt="Gokarna">
+      <div class="card-content">
+        <h3>Gokarna</h3>
+        <p><strong>Location:</strong> Uttara Kannada</p>
+        <p><strong>Famous for:</strong> Pilgrimage & secluded beaches</p>
+        <p><strong>How to reach:</strong> Ankola Railway (20 km); road from Goa or Karwar</p>
+      </div>
+    </div>
+
+    <!-- Badami -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Badami_Cave_Temple.jpg" alt="Badami">
+      <div class="card-content">
+        <h3>Badami</h3>
+        <p><strong>Location:</strong> Bagalkot District</p>
+        <p><strong>Famous for:</strong> Cave temples & Chalukya architecture</p>
+        <p><strong>How to reach:</strong> Badami Railway Station or by road from Hubli</p>
+      </div>
+    </div>
+
+    <!-- Chikmagalur -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Chikmagalur_mountain_range.jpg" alt="Chikmagalur">
+      <div class="card-content">
+        <h3>Chikmagalur</h3>
+        <p><strong>Location:</strong> Western Ghats</p>
+        <p><strong>Famous for:</strong> Coffee plantations, Mullayanagiri peak</p>
+        <p><strong>How to reach:</strong> Road from Bengaluru (245 km)</p>
+      </div>
+    </div>
+
+    <!-- Jog Falls -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Jog_Falls_Shivamogga.jpg" alt="Jog Falls">
+      <div class="card-content">
+        <h3>Jog Falls</h3>
+        <p><strong>Location:</strong> Shivamogga District</p>
+        <p><strong>Famous for:</strong> Highest waterfall in Karnataka</p>
+        <p><strong>How to reach:</strong> Road from Sagara or Hubli; nearest rail Talguppa</p>
+      </div>
+    </div>
+
+    <!-- Belur & Halebidu -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Belur_Chennakesava_temple.jpg" alt="Belur Temple">
+      <div class="card-content">
+        <h3>Belur & Halebidu</h3>
+        <p><strong>Location:</strong> Hassan District</p>
+        <p><strong>Famous for:</strong> Hoysala temples, intricate stone carvings</p>
+        <p><strong>How to reach:</strong> Road/train from Hassan or Bengaluru</p>
+      </div>
+    </div>
+
+    <!-- Kabini Wildlife Sanctuary -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Kabini_elephants.jpg" alt="Kabini">
+      <div class="card-content">
+        <h3>Kabini Wildlife Sanctuary</h3>
+        <p><strong>Location:</strong> Mysuru District</p>
+        <p><strong>Famous for:</strong> Safaris, elephants, tiger sightings</p>
+        <p><strong>How to reach:</strong> Road from Mysore (~80 km)</p>
+      </div>
+    </div>
+
+  </section>
 
 </body>
 </html>
