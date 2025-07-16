@@ -1,39 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Top 20 Places in Rajasthan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Odisha - WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: sans-serif; background: #f7f7f7; margin:0; padding:20px; }
-    h1 { text-align:center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-top:30px; }
-    .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    .card img { width: 100%; border-radius: 6px; }
-    .card h2 { margin: 10px 0 5px; }
-    .card p { font-size: 14px; color: #555; margin: 5px 0; }
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/1/1e/Odisha_Collage.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(3px);
+    }
   </style>
 </head>
 <body>
 
-<h1>🏰 Top 20 Places to Visit in Rajasthan</h1>
+  <!-- Navigation -->
+  <nav>
+    <div><a href="index.html">🏠 WanderMap</a></div>
+    <div>
+      <a href="states.html">States</a>
+      <a href="union_territories.html">UTs</a>
+      <a href="blog.html">Blog</a>
+      <a href="submit-gem.html">Submit a Gem</a>
+      <a href="login.html">Admin</a>
+    </div>
+  </nav>
 
-<div class="grid">
-  <div class="card">
-    <img src="https://source.unsplash.com/600x400/?jaipur" alt="Jaipur">
-    <h2>Jaipur</h2>
-    <p><strong>History:</strong> Founded in 1727 by Maharaja Sawai Jai Singh II.</p>
-    <p><strong>Famous for:</strong> Amber Fort, City Palace, Hawa Mahal, gem markets.</p>
-    <p><strong>Food:</strong> Dal Baati Churma, Laal Maas.</p>
-    <p><strong>Craft:</strong> Blue Pottery, Bandhej textiles.</p>
-    <p><strong>Nearest Airport:</strong> Jaipur Airport (12 km)</p>
-    <p><strong>Nearest Railway Station:</strong> Jaipur Railway Station (5 km)</p>
-    <p><strong>Nearest Bus Stand:</strong> Sindhi Camp Bus Stand (3 km)</p>
-  </div>
+  <!-- Odisha Info -->
+  <header class="state-header">
+    <h1>Odisha</h1>
+    <div class="state-info">
+      <p><strong>Capital:</strong> Bhubaneswar</p>
+      <p><strong>Population:</strong> ~46 million (2023 est.)</p>
+      <p><strong>Official Language:</strong> Odia</p>
+      <p><strong>History:</strong> Odisha, located on India’s eastern coast, is known for its ancient temples, tribal culture, classical dance Odissi, and beautiful beaches. The Kalinga War, fought here, changed Emperor Ashoka's life and Indian history.</p>
+    </div>
+  </header>
 
-  <!-- Repeat for 19 more places -->
+  <!-- Top 10 Tourist Places -->
+  <section class="places-grid">
 
-</div>
+    <!-- Konark Sun Temple -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Konark_Sun_Temple_Front_View.jpg" alt="Konark Sun Temple">
+      <div class="card-content">
+        <h3>Konark Sun Temple</h3>
+        <p><strong>Location:</strong> Konark</p>
+        <p><strong>Famous for:</strong> 13th-century Sun Temple (UNESCO site)</p>
+        <p><strong>How to reach:</strong> 60 km from Bhubaneswar by road</p>
+      </div>
+    </div>
+
+    <!-- Puri Jagannath Temple -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Jagannath_Temple_Puri.jpg" alt="Puri Temple">
+      <div class="card-content">
+        <h3>Jagannath Temple, Puri</h3>
+        <p><strong>Location:</strong> Puri</p>
+        <p><strong>Famous for:</strong> Rath Yatra, major Hindu temple</p>
+        <p><strong>How to reach:</strong> Puri Railway Station</p>
+      </div>
+    </div>
+
+    <!-- Chilika Lake -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Chilika_Lake_Satellite.jpg" alt="Chilika Lake">
+      <div class="card-content">
+        <h3>Chilika Lake</h3>
+        <p><strong>Location:</strong> Spans Khordha, Ganjam, and Puri</p>
+        <p><strong>Famous for:</strong> Largest brackish water lake, bird sanctuary</p>
+        <p><strong>How to reach:</strong> Barkul or Satapada by road</p>
+      </div>
+    </div>
+
+    <!-- Bhubaneswar Temples -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Lingaraj_Temple_Bhubaneshwar.jpg" alt="Lingaraj Temple">
+      <div class="card-content">
+        <h3>Bhubaneswar Temples</h3>
+        <p><strong>Location:</strong> Bhubaneswar</p>
+        <p><strong>Famous for:</strong> Lingaraj Temple, Mukteswara, ancient heritage</p>
+        <p><strong>How to reach:</strong> Bhubaneswar Airport & Railway Station</p>
+      </div>
+    </div>
+
+    <!-- Dhauli Hills -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Dhauli_Shanti_Stupa.jpg" alt="Dhauli Shanti Stupa">
+      <div class="card-content">
+        <h3>Dhauli Hills</h3>
+        <p><strong>Location:</strong> Near Bhubaneswar</p>
+        <p><strong>Famous for:</strong> Ashokan edicts, Peace Pagoda</p>
+        <p><strong>How to reach:</strong> 8 km from Bhubaneswar by road</p>
+      </div>
+    </div>
+
+    <!-- Simlipal National Park -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Barehipani_Waterfall_Simlipal.jpg" alt="Simlipal">
+      <div class="card-content">
+        <h3>Simlipal National Park</h3>
+        <p><strong>Location:</strong> Mayurbhanj district</p>
+        <p><strong>Famous for:</strong> Tigers, elephants, waterfalls</p>
+        <p><strong>How to reach:</strong> Baripada Railway Station</p>
+      </div>
+    </div>
+
+    <!-- Udayagiri and Khandagiri Caves -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Udayagiri_Caves.jpg" alt="Udayagiri Caves">
+      <div class="card-content">
+        <h3>Udayagiri & Khandagiri</h3>
+        <p><strong>Location:</strong> Bhubaneswar outskirts</p>
+        <p><strong>Famous for:</strong> Ancient Jain rock-cut caves</p>
+        <p><strong>How to reach:</strong> Auto or cab from Bhubaneswar</p>
+      </div>
+    </div>
+
+    <!-- Gopalpur Beach -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Gopalpur-on-sea.jpg" alt="Gopalpur">
+      <div class="card-content">
+        <h3>Gopalpur Beach</h3>
+        <p><strong>Location:</strong> Ganjam district</p>
+        <p><strong>Famous for:</strong> Peaceful sea beach, scenic sunrise</p>
+        <p><strong>How to reach:</strong> Berhampur Railway Station (16 km)</p>
+      </div>
+    </div>
+
+    <!-- Hirakud Dam -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Hirakud_Dam_Odisha.jpg" alt="Hirakud Dam">
+      <div class="card-content">
+        <h3>Hirakud Dam</h3>
+        <p><strong>Location:</strong> Sambalpur</p>
+        <p><strong>Famous for:</strong> One of world’s longest dams</p>
+        <p><strong>How to reach:</strong> Sambalpur Railway Station</p>
+      </div>
+    </div>
+
+    <!-- Raghurajpur Heritage Village -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Raghurajpur_Pattachitra.jpg" alt="Raghurajpur Art">
+      <div class="card-content">
+        <h3>Raghurajpur Village</h3>
+        <p><strong>Location:</strong> Near Puri</p>
+        <p><strong>Famous for:</strong> Pattachitra art & crafts</p>
+        <p><strong>How to reach:</strong> 10 km from Puri by auto/cab</p>
+      </div>
+    </div>
+
+  </section>
 
 </body>
 </html>
