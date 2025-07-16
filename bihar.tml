@@ -1,39 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Top 20 Places in Rajasthan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bihar - WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: sans-serif; background: #f7f7f7; margin:0; padding:20px; }
-    h1 { text-align:center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-top:30px; }
-    .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    .card img { width: 100%; border-radius: 6px; }
-    .card h2 { margin: 10px 0 5px; }
-    .card p { font-size: 14px; color: #555; margin: 5px 0; }
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/e/e1/Bihar_collage.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(3px);
+    }
   </style>
 </head>
 <body>
 
-<h1>🏰 Top 20 Places to Visit in Rajasthan</h1>
+  <!-- Navigation -->
+  <nav>
+    <div><a href="index.html">🏠 WanderMap</a></div>
+    <div>
+      <a href="states.html">States</a>
+      <a href="union_territories.html">UTs</a>
+      <a href="blog.html">Blog</a>
+      <a href="submit-gem.html">Submit a Gem</a>
+      <a href="login.html">Admin</a>
+    </div>
+  </nav>
 
-<div class="grid">
-  <div class="card">
-    <img src="https://source.unsplash.com/600x400/?jaipur" alt="Jaipur">
-    <h2>Jaipur</h2>
-    <p><strong>History:</strong> Founded in 1727 by Maharaja Sawai Jai Singh II.</p>
-    <p><strong>Famous for:</strong> Amber Fort, City Palace, Hawa Mahal, gem markets.</p>
-    <p><strong>Food:</strong> Dal Baati Churma, Laal Maas.</p>
-    <p><strong>Craft:</strong> Blue Pottery, Bandhej textiles.</p>
-    <p><strong>Nearest Airport:</strong> Jaipur Airport (12 km)</p>
-    <p><strong>Nearest Railway Station:</strong> Jaipur Railway Station (5 km)</p>
-    <p><strong>Nearest Bus Stand:</strong> Sindhi Camp Bus Stand (3 km)</p>
-  </div>
+  <!-- State Info -->
+  <header class="state-header">
+    <h1>Bihar</h1>
+    <div class="state-info">
+      <p><strong>Capital:</strong> Patna</p>
+      <p><strong>Population:</strong> ~124 million (2023 est.)</p>
+      <p><strong>Official Language:</strong> Hindi</p>
+      <p><strong>History:</strong> Bihar is one of the oldest inhabited places in the world. It was the center of the ancient Magadha Empire, home to scholars like Chanakya and rulers like Ashoka. It's also a key site for Buddhism and Jainism, with Bodh Gaya being the place where Buddha attained enlightenment.</p>
+    </div>
+  </header>
 
-  <!-- Repeat for 19 more places -->
+  <!-- Top 10 Places -->
+  <section class="places-grid">
 
-</div>
+    <!-- Bodh Gaya -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/Mahabodhi_Temple_India.jpg" alt="Bodh Gaya">
+      <div class="card-content">
+        <h3>Bodh Gaya</h3>
+        <p><strong>Location:</strong> Gaya District</p>
+        <p><strong>Famous for:</strong> Mahabodhi Temple, site of Buddha’s enlightenment</p>
+        <p><strong>How to reach:</strong> Gaya Airport (12 km), Gaya Railway Station (14 km)</p>
+      </div>
+    </div>
+
+    <!-- Nalanda -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Nalanda_Ruins.jpg" alt="Nalanda">
+      <div class="card-content">
+        <h3>Nalanda</h3>
+        <p><strong>Location:</strong> Nalanda District</p>
+        <p><strong>Famous for:</strong> Ancient Nalanda University ruins</p>
+        <p><strong>How to reach:</strong> 90 km from Patna; road and bus service available</p>
+      </div>
+    </div>
+
+    <!-- Rajgir -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Rajgir_Hot_Spring.jpg" alt="Rajgir">
+      <div class="card-content">
+        <h3>Rajgir</h3>
+        <p><strong>Location:</strong> Nalanda District</p>
+        <p><strong>Famous for:</strong> Buddhist and Jain heritage, hot springs, Venuvana</p>
+        <p><strong>How to reach:</strong> 100 km from Patna; buses and taxis available</p>
+      </div>
+    </div>
+
+    <!-- Patna Sahib -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Takht_Sri_Patna_Sahib.jpg" alt="Patna Sahib">
+      <div class="card-content">
+        <h3>Takht Sri Patna Sahib</h3>
+        <p><strong>Location:</strong> Patna</p>
+        <p><strong>Famous for:</strong> Birthplace of Guru Gobind Singh</p>
+        <p><strong>How to reach:</strong> Within Patna; accessible by road, rail, airport</p>
+      </div>
+    </div>
+
+    <!-- Vaishali -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Vaishali_Stupa.jpg" alt="Vaishali">
+      <div class="card-content">
+        <h3>Vaishali</h3>
+        <p><strong>Location:</strong> Vaishali District</p>
+        <p><strong>Famous for:</strong> Ancient republic, Buddha’s last sermon</p>
+        <p><strong>How to reach:</strong> 35 km from Patna by road</p>
+      </div>
+    </div>
+
+    <!-- Vikramshila Ruins -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Vikramshila_university.jpg" alt="Vikramshila Ruins">
+      <div class="card-content">
+        <h3>Vikramshila University</h3>
+        <p><strong>Location:</strong> Bhagalpur District</p>
+        <p><strong>Famous for:</strong> Ancient center of learning like Nalanda</p>
+        <p><strong>How to reach:</strong> Nearest rail: Bhagalpur (50 km), then taxi</p>
+      </div>
+    </div>
+
+    <!-- Barabar Caves -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Barabar_Caves.jpg" alt="Barabar Caves">
+      <div class="card-content">
+        <h3>Barabar Caves</h3>
+        <p><strong>Location:</strong> Jehanabad District</p>
+        <p><strong>Famous for:</strong> Oldest rock-cut caves in India, Mauryan era</p>
+        <p><strong>How to reach:</strong> 40 km from Gaya; by road or taxi</p>
+      </div>
+    </div>
+
+    <!-- Kesaria Stupa -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Kesaria_stupa_Bihar.jpg" alt="Kesaria Stupa">
+      <div class="card-content">
+        <h3>Kesaria Stupa</h3>
+        <p><strong>Location:</strong> East Champaran</p>
+        <p><strong>Famous for:</strong> Tallest stupa in India</p>
+        <p><strong>How to reach:</strong> 110 km from Patna via Muzaffarpur</p>
+      </div>
+    </div>
+
+    <!-- Bhagalpur -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Bhagalpur_Silk.jpg" alt="Bhagalpur">
+      <div class="card-content">
+        <h3>Bhagalpur</h3>
+        <p><strong>Location:</strong> Eastern Bihar</p>
+        <p><strong>Famous for:</strong> Tussar silk, Vikramshila, Ganga dolphin</p>
+        <p><strong>How to reach:</strong> Well connected by rail; nearest airport: Patna</p>
+      </div>
+    </div>
+
+    <!-- Maner Sharif -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Maner_Sharif_Bihar.jpg" alt="Maner Sharif">
+      <div class="card-content">
+        <h3>Maner Sharif</h3>
+        <p><strong>Location:</strong> Near Patna</p>
+        <p><strong>Famous for:</strong> Sufi shrines, Indo-Islamic architecture</p>
+        <p><strong>How to reach:</strong> 30 km from Patna; autos/taxis available</p>
+      </div>
+    </div>
+
+  </section>
 
 </body>
 </html>
