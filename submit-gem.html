@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submit a Hidden Gem | WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('img/nature-contact-bg.jpg') no-repeat center center/cover;
+      color: #222;
+      padding: 20px;
+    }
+    .form-container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #007bff;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .message {
+      margin-top: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Submit a Hidden Gem</h1>
+    <form id="gemForm">
+      <label for="state">State Name:</label>
+      <input type="text" id="state" name="state" required />
+
+      <label for="name">Place Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" rows="5" required></textarea>
+
+      <label for="image_url">Image URL (optional):</label>
+      <input type="url" id="image_url" name="image_url" />
+
+      <label for="submitted_by">Your Name:</label>
+      <input type="text" id="submitted_by" name="submitted_by" required />
+
+      <button type="submit">Submit</button>
+
+      <div class="message" id="message"></div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('gemForm');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = {
+        state: form.state.value.trim(),
+        name: form.name.value.trim(),
+        description: form.description.value.trim(),
+        image_url: form.image_url.value.trim(),
+        submitted_by: form.submitted_by.value.trim()
+      };
+
+      const response = await fetch('/api/hidden-gems', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+      
+      if (response.ok) {
+        message.style.color = 'green';
+        message.textContent = '✅ Hidden Gem submitted successfully!';
+        form.reset();
+      } else {
+        message.style.color = 'red';
+        message.textContent = '❌ Failed to submit. ' + (result.error || '');
+      }
+    });
+  </script>
+</body>
+</html>
