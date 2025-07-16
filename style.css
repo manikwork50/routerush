@@ -1,11 +1,160 @@
-body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #f0f9f9; color: #00303f; }
-header, footer { background: #007B8F; color: #fff; padding: 15px; text-align: center; }
-nav a { color: #fff; margin: 0 10px; text-decoration: none; }
-.hero video { width: 100%; height: 90vh; object-fit: cover; }
-.hero-text { position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-align: center; }
-.hero-text h1 { font-size: 3.5em; text-shadow: 2px 2px #000; }
-.btn { background: #ffd166; padding: 12px 24px; text-decoration: none; color: #00303f; border-radius: 5px; font-weight: bold; }
-.btn:hover { background: #f9c74f; }
-footer a { color: #f0f0f0; margin: 0 8px; text-decoration: none; }
-#map { height: 500px; margin: 20px; border-radius: 10px; }
-.loader { position:fixed; top:0; left:0; width:100%; height:100%; background:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; z-index:99; }
+/* === Global Styles (for homepage, blog, general pages) === */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f9f9;
+  color: #00303f;
+}
+
+header, footer {
+  background: #007B8F;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+}
+
+nav a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.hero video {
+  width: 100%;
+  height: 90vh;
+  object-fit: cover;
+}
+
+.hero-text {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+}
+
+.hero-text h1 {
+  font-size: 3.5em;
+  text-shadow: 2px 2px #000;
+}
+
+.btn {
+  background: #ffd166;
+  padding: 12px 24px;
+  text-decoration: none;
+  color: #00303f;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #f9c74f;
+}
+
+footer a {
+  color: #f0f0f0;
+  margin: 0 8px;
+  text-decoration: none;
+}
+
+#map {
+  height: 500px;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  z-index: 99;
+}
+
+
+/* === State Pages Specific Styling (e.g. andhra_pradesh.html) === */
+
+.state-header {
+  padding: 40px 30px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
+
+.state-header h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.state-info p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #f0f0f0;
+}
+
+.places-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.card {
+  background-color: #fff;
+  color: #00303f;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.card-content p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+
+/* === Responsive === */
+
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 2em;
+  }
+
+  .state-header h1 {
+    font-size: 32px;
+  }
+
+  .state-info p {
+    font-size: 16px;
+  }
+}
