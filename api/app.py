@@ -1,8 +1,10 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+
 from api.models import db
 from api.routes.hidden_gems import hidden_gems_bp
-from api.routes.emergency import emergency_bp  # <-- add this
+from api.routes.emergency import emergency_bp
+from api.routes.planner import planner_bp  # ✅ Added
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
@@ -10,9 +12,10 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 
-# Register route blueprints
+# ✅ Register all blueprints
 app.register_blueprint(hidden_gems_bp)
 app.register_blueprint(emergency_bp)
+app.register_blueprint(planner_bp)
 
 @app.route('/')
 def home():
