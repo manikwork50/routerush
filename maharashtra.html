@@ -1,39 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Top 20 Places in Rajasthan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maharashtra - WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: sans-serif; background: #f7f7f7; margin:0; padding:20px; }
-    h1 { text-align:center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-top:30px; }
-    .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    .card img { width: 100%; border-radius: 6px; }
-    .card h2 { margin: 10px 0 5px; }
-    .card p { font-size: 14px; color: #555; margin: 5px 0; }
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/5/5e/Maharashtra_Collage_BG.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(3px);
+    }
   </style>
 </head>
 <body>
 
-<h1>🏰 Top 20 Places to Visit in Rajasthan</h1>
+  <!-- Navigation -->
+  <nav>
+    <div><a href="index.html">🏠 WanderMap</a></div>
+    <div>
+      <a href="states.html">States</a>
+      <a href="union_territories.html">UTs</a>
+      <a href="blog.html">Blog</a>
+      <a href="submit-gem.html">Submit a Gem</a>
+      <a href="login.html">Admin</a>
+    </div>
+  </nav>
 
-<div class="grid">
-  <div class="card">
-    <img src="https://source.unsplash.com/600x400/?jaipur" alt="Jaipur">
-    <h2>Jaipur</h2>
-    <p><strong>History:</strong> Founded in 1727 by Maharaja Sawai Jai Singh II.</p>
-    <p><strong>Famous for:</strong> Amber Fort, City Palace, Hawa Mahal, gem markets.</p>
-    <p><strong>Food:</strong> Dal Baati Churma, Laal Maas.</p>
-    <p><strong>Craft:</strong> Blue Pottery, Bandhej textiles.</p>
-    <p><strong>Nearest Airport:</strong> Jaipur Airport (12 km)</p>
-    <p><strong>Nearest Railway Station:</strong> Jaipur Railway Station (5 km)</p>
-    <p><strong>Nearest Bus Stand:</strong> Sindhi Camp Bus Stand (3 km)</p>
-  </div>
+  <!-- State Details -->
+  <header class="state-header">
+    <h1>Maharashtra</h1>
+    <div class="state-info">
+      <p><strong>Capital:</strong> Mumbai (Executive), Nagpur (Winter)</p>
+      <p><strong>Population:</strong> ~125 million (2023 est.)</p>
+      <p><strong>Official Language:</strong> Marathi</p>
+      <p><strong>History:</strong> Maharashtra, the land of Marathas and Shivaji, is India's second most populous state known for its rich history, Bollywood, coastal beauty, and UNESCO heritage sites.</p>
+    </div>
+  </header>
 
-  <!-- Repeat for 19 more places -->
+  <!-- Top 10 Places -->
+  <section class="places-grid">
 
-</div>
+    <!-- Mumbai -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Gateway_of_India_Mumbai.jpg" alt="Mumbai">
+      <div class="card-content">
+        <h3>Mumbai</h3>
+        <p><strong>Location:</strong> Mumbai district</p>
+        <p><strong>Famous for:</strong> Bollywood, Gateway of India, Marine Drive</p>
+        <p><strong>How to reach:</strong> Chhatrapati Shivaji Airport, Mumbai CST Station</p>
+      </div>
+    </div>
+
+    <!-- Ajanta Caves -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Ajanta_Caves.jpg" alt="Ajanta">
+      <div class="card-content">
+        <h3>Ajanta Caves</h3>
+        <p><strong>Location:</strong> Aurangabad district</p>
+        <p><strong>Famous for:</strong> Buddhist rock-cut caves and paintings</p>
+        <p><strong>How to reach:</strong> Jalgaon/Aurangabad Railway Station</p>
+      </div>
+    </div>
+
+    <!-- Pune -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Shaniwar_Wada.jpg" alt="Pune">
+      <div class="card-content">
+        <h3>Pune</h3>
+        <p><strong>Location:</strong> Pune district</p>
+        <p><strong>Famous for:</strong> Education hub, Shaniwar Wada, culture</p>
+        <p><strong>How to reach:</strong> Pune Airport, Pune Railway Station</p>
+      </div>
+    </div>
+
+    <!-- Mahabaleshwar -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Mahabaleshwar_view_point.jpg" alt="Mahabaleshwar">
+      <div class="card-content">
+        <h3>Mahabaleshwar</h3>
+        <p><strong>Location:</strong> Satara district</p>
+        <p><strong>Famous for:</strong> Strawberry farms, viewpoints, hills</p>
+        <p><strong>How to reach:</strong> Pune (120 km), Satara Railway Station</p>
+      </div>
+    </div>
+
+    <!-- Lonavala -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Lonavala_Waterfalls.jpg" alt="Lonavala">
+      <div class="card-content">
+        <h3>Lonavala</h3>
+        <p><strong>Location:</strong> Pune district</p>
+        <p><strong>Famous for:</strong> Monsoon getaways, forts, waterfalls</p>
+        <p><strong>How to reach:</strong> Lonavala Railway Station, road from Pune/Mumbai</p>
+      </div>
+    </div>
+
+    <!-- Elephanta Caves -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Elephanta_Caves.jpg" alt="Elephanta Caves">
+      <div class="card-content">
+        <h3>Elephanta Caves</h3>
+        <p><strong>Location:</strong> Elephanta Island, Mumbai Harbour</p>
+        <p><strong>Famous for:</strong> Hindu rock-cut cave temples</p>
+        <p><strong>How to reach:</strong> Ferry from Gateway of India</p>
+      </div>
+    </div>
+
+    <!-- Shirdi -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Shirdi_Sai_Baba_Samadhi.jpg" alt="Shirdi">
+      <div class="card-content">
+        <h3>Shirdi</h3>
+        <p><strong>Location:</strong> Ahmednagar district</p>
+        <p><strong>Famous for:</strong> Sai Baba Temple pilgrimage</p>
+        <p><strong>How to reach:</strong> Sainagar Shirdi Railway Station, Shirdi Airport</p>
+      </div>
+    </div>
+
+    <!-- Tadoba National Park -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Tadoba_Tiger.jpg" alt="Tadoba">
+      <div class="card-content">
+        <h3>Tadoba National Park</h3>
+        <p><strong>Location:</strong> Chandrapur district</p>
+        <p><strong>Famous for:</strong> Tiger reserve, wildlife safaris</p>
+        <p><strong>How to reach:</strong> Chandrapur Railway Station, Nagpur (150 km)</p>
+      </div>
+    </div>
+
+    <!-- Nashik -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Kumbh_Mela_Nashik.jpg" alt="Nashik">
+      <div class="card-content">
+        <h3>Nashik</h3>
+        <p><strong>Location:</strong> Nashik district</p>
+        <p><strong>Famous for:</strong> Vineyards, Kumbh Mela, temples</p>
+        <p><strong>How to reach:</strong> Nashik Road Railway Station</p>
+      </div>
+    </div>
+
+    <!-- Rajmachi Fort -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Rajmachi_Fort.jpg" alt="Rajmachi">
+      <div class="card-content">
+        <h3>Rajmachi Fort</h3>
+        <p><strong>Location:</strong> Near Lonavala</p>
+        <p><strong>Famous for:</strong> Trekking and fort ruins</p>
+        <p><strong>How to reach:</strong> Trek from Lonavala (16 km)</p>
+      </div>
+    </div>
+
+  </section>
 
 </body>
 </html>
