@@ -1,39 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Top 20 Places in Rajasthan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>West Bengal - WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: sans-serif; background: #f7f7f7; margin:0; padding:20px; }
-    h1 { text-align:center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-top:30px; }
-    .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    .card img { width: 100%; border-radius: 6px; }
-    .card h2 { margin: 10px 0 5px; }
-    .card p { font-size: 14px; color: #555; margin: 5px 0; }
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/e/e3/West_Bengal_Collage.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(3px);
+    }
   </style>
 </head>
 <body>
 
-<h1>🏰 Top 20 Places to Visit in Rajasthan</h1>
+  <!-- Navigation -->
+  <nav>
+    <div><a href="index.html">🏠 WanderMap</a></div>
+    <div>
+      <a href="states.html">States</a>
+      <a href="union_territories.html">UTs</a>
+      <a href="blog.html">Blog</a>
+      <a href="submit-gem.html">Submit a Gem</a>
+      <a href="login.html">Admin</a>
+    </div>
+  </nav>
 
-<div class="grid">
-  <div class="card">
-    <img src="https://source.unsplash.com/600x400/?jaipur" alt="Jaipur">
-    <h2>Jaipur</h2>
-    <p><strong>History:</strong> Founded in 1727 by Maharaja Sawai Jai Singh II.</p>
-    <p><strong>Famous for:</strong> Amber Fort, City Palace, Hawa Mahal, gem markets.</p>
-    <p><strong>Food:</strong> Dal Baati Churma, Laal Maas.</p>
-    <p><strong>Craft:</strong> Blue Pottery, Bandhej textiles.</p>
-    <p><strong>Nearest Airport:</strong> Jaipur Airport (12 km)</p>
-    <p><strong>Nearest Railway Station:</strong> Jaipur Railway Station (5 km)</p>
-    <p><strong>Nearest Bus Stand:</strong> Sindhi Camp Bus Stand (3 km)</p>
-  </div>
+  <!-- West Bengal Info -->
+  <header class="state-header">
+    <h1>West Bengal</h1>
+    <div class="state-info">
+      <p><strong>Capital:</strong> Kolkata</p>
+      <p><strong>Population:</strong> ~97 million (2023 est.)</p>
+      <p><strong>Official Language:</strong> Bengali</p>
+      <p><strong>History:</strong> West Bengal, rich in colonial and cultural heritage, was the capital of British India until 1911. Known for its literary legacy, art, classical music, and Durga Puja, it’s a vibrant blend of tradition and modernity.</p>
+    </div>
+  </header>
 
-  <!-- Repeat for 19 more places -->
+  <!-- Top 10 Tourist Places -->
+  <section class="places-grid">
 
-</div>
+    <!-- Victoria Memorial -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Victoria_Memorial_Kolkata.jpg" alt="Victoria Memorial">
+      <div class="card-content">
+        <h3>Victoria Memorial</h3>
+        <p><strong>Location:</strong> Kolkata</p>
+        <p><strong>Famous for:</strong> Colonial architecture and museum</p>
+        <p><strong>How to reach:</strong> Kolkata Metro or Sealdah/Howrah Railway Station</p>
+      </div>
+    </div>
+
+    <!-- Sundarbans -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Sundarbans_Mangrove.jpg" alt="Sundarbans">
+      <div class="card-content">
+        <h3>Sundarbans</h3>
+        <p><strong>Location:</strong> South 24 Parganas</p>
+        <p><strong>Famous for:</strong> Mangroves, Royal Bengal Tigers</p>
+        <p><strong>How to reach:</strong> Canning station + boat service</p>
+      </div>
+    </div>
+
+    <!-- Darjeeling -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Darjeeling_Tea_Gardens.jpg" alt="Darjeeling">
+      <div class="card-content">
+        <h3>Darjeeling</h3>
+        <p><strong>Location:</strong> Darjeeling District</p>
+        <p><strong>Famous for:</strong> Tea gardens, Kanchenjunga views, toy train</p>
+        <p><strong>How to reach:</strong> New Jalpaiguri (NJP) + Toy Train</p>
+      </div>
+    </div>
+
+    <!-- Kalimpong -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Kalimpong_landscape.jpg" alt="Kalimpong">
+      <div class="card-content">
+        <h3>Kalimpong</h3>
+        <p><strong>Location:</strong> Eastern Himalayas</p>
+        <p><strong>Famous for:</strong> Monasteries, orchids, peaceful retreats</p>
+        <p><strong>How to reach:</strong> Shared taxi from Siliguri or NJP</p>
+      </div>
+    </div>
+
+    <!-- Howrah Bridge -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Howrah_Bridge_Night.jpg" alt="Howrah Bridge">
+      <div class="card-content">
+        <h3>Howrah Bridge</h3>
+        <p><strong>Location:</strong> Kolkata</p>
+        <p><strong>Famous for:</strong> Iconic cantilever bridge over Hooghly</p>
+        <p><strong>How to reach:</strong> Near Howrah Station</p>
+      </div>
+    </div>
+
+    <!-- Bishnupur -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Bishnupur_Terracotta_Temple.jpg" alt="Bishnupur Temple">
+      <div class="card-content">
+        <h3>Bishnupur</h3>
+        <p><strong>Location:</strong> Bankura district</p>
+        <p><strong>Famous for:</strong> Terracotta temples and Baluchari sarees</p>
+        <p><strong>How to reach:</strong> Bishnupur Railway Station</p>
+      </div>
+    </div>
+
+    <!-- Digha Beach -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Digha_Sea_Beach.jpg" alt="Digha">
+      <div class="card-content">
+        <h3>Digha Beach</h3>
+        <p><strong>Location:</strong> Purba Medinipur</p>
+        <p><strong>Famous for:</strong> Seaside resort, family holidays</p>
+        <p><strong>How to reach:</strong> Digha Railway Station or road from Kolkata</p>
+      </div>
+    </div>
+
+    <!-- Rabindra Sarobar -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Rabindra_Sarobar.jpg" alt="Rabindra Sarobar">
+      <div class="card-content">
+        <h3>Rabindra Sarobar</h3>
+        <p><strong>Location:</strong> Kolkata</p>
+        <p><strong>Famous for:</strong> Peaceful lake and park area</p>
+        <p><strong>How to reach:</strong> Rabindra Sarobar Metro Station</p>
+      </div>
+    </div>
+
+    <!-- Science City -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Science_City_Kolkata.jpg" alt="Science City">
+      <div class="card-content">
+        <h3>Science City</h3>
+        <p><strong>Location:</strong> Kolkata</p>
+        <p><strong>Famous for:</strong> Interactive science museum and exhibits</p>
+        <p><strong>How to reach:</strong> Bus or cab from any part of the city</p>
+      </div>
+    </div>
+
+    <!-- Belur Math -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Belur_Math.jpg" alt="Belur Math">
+      <div class="card-content">
+        <h3>Belur Math</h3>
+        <p><strong>Location:</strong> Howrah</p>
+        <p><strong>Famous for:</strong> Headquarters of Ramakrishna Mission</p>
+        <p><strong>How to reach:</strong> Local train to Belur Station</p>
+      </div>
+    </div>
+
+  </section>
 
 </body>
 </html>
