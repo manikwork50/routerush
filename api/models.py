@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_login import UserMixin
 db = SQLAlchemy()
 
 class HiddenGem(db.Model):
@@ -19,7 +19,17 @@ class HiddenGem(db.Model):
             'image_url': self.image_url,
             'submitted_by': self.submitted_by
         }
+# ----------------------------------------
+# 🔐 Admin User for Flask-Login (In-Memory)
+# ----------------------------------------
+class AdminUser(UserMixin):
+    def __init__(self, id):
+        self.id = id
 
+# Hardcoded Admin Credentials (username: password)
+ADMIN_CREDENTIALS = {
+    "manik": "manik123"   # ✅ Change to secure values
+}
 class EmergencyContact(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     state = db.Column(db.String(100), nullable=False)
