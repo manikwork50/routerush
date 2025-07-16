@@ -1,39 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Top 20 Places in Rajasthan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Punjab - WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: sans-serif; background: #f7f7f7; margin:0; padding:20px; }
-    h1 { text-align:center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-top:30px; }
-    .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    .card img { width: 100%; border-radius: 6px; }
-    .card h2 { margin: 10px 0 5px; }
-    .card p { font-size: 14px; color: #555; margin: 5px 0; }
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/f/f9/Punjab_Collage.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(3px);
+    }
   </style>
 </head>
 <body>
 
-<h1>🏰 Top 20 Places to Visit in Rajasthan</h1>
+  <!-- Navigation -->
+  <nav>
+    <div><a href="index.html">🏠 WanderMap</a></div>
+    <div>
+      <a href="states.html">States</a>
+      <a href="union_territories.html">UTs</a>
+      <a href="blog.html">Blog</a>
+      <a href="submit-gem.html">Submit a Gem</a>
+      <a href="login.html">Admin</a>
+    </div>
+  </nav>
 
-<div class="grid">
-  <div class="card">
-    <img src="https://source.unsplash.com/600x400/?jaipur" alt="Jaipur">
-    <h2>Jaipur</h2>
-    <p><strong>History:</strong> Founded in 1727 by Maharaja Sawai Jai Singh II.</p>
-    <p><strong>Famous for:</strong> Amber Fort, City Palace, Hawa Mahal, gem markets.</p>
-    <p><strong>Food:</strong> Dal Baati Churma, Laal Maas.</p>
-    <p><strong>Craft:</strong> Blue Pottery, Bandhej textiles.</p>
-    <p><strong>Nearest Airport:</strong> Jaipur Airport (12 km)</p>
-    <p><strong>Nearest Railway Station:</strong> Jaipur Railway Station (5 km)</p>
-    <p><strong>Nearest Bus Stand:</strong> Sindhi Camp Bus Stand (3 km)</p>
-  </div>
+  <!-- Punjab Info -->
+  <header class="state-header">
+    <h1>Punjab</h1>
+    <div class="state-info">
+      <p><strong>Capital:</strong> Chandigarh</p>
+      <p><strong>Population:</strong> ~30 million (2023 est.)</p>
+      <p><strong>Official Language:</strong> Punjabi</p>
+      <p><strong>History:</strong> Punjab, meaning "Land of Five Rivers", is known for its rich Sikh heritage, vibrant culture, fertile fields, and historic landmarks. It's a key agricultural hub and the birthplace of the Sikh faith.</p>
+    </div>
+  </header>
 
-  <!-- Repeat for 19 more places -->
+  <!-- Top 10 Tourist Places -->
+  <section class="places-grid">
 
-</div>
+    <!-- Golden Temple -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Golden_Temple_in_Amritsar.jpg" alt="Golden Temple">
+      <div class="card-content">
+        <h3>Golden Temple</h3>
+        <p><strong>Location:</strong> Amritsar</p>
+        <p><strong>Famous for:</strong> Holiest Sikh shrine with a gold-covered sanctum</p>
+        <p><strong>How to reach:</strong> Amritsar Airport or Amritsar Railway Station</p>
+      </div>
+    </div>
+
+    <!-- Jallianwala Bagh -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Jallianwala_Bagh_Memorial.jpg" alt="Jallianwala Bagh">
+      <div class="card-content">
+        <h3>Jallianwala Bagh</h3>
+        <p><strong>Location:</strong> Amritsar</p>
+        <p><strong>Famous for:</strong> Memorial to 1919 massacre</p>
+        <p><strong>How to reach:</strong> Near Golden Temple, same city access</p>
+      </div>
+    </div>
+
+    <!-- Wagah Border -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Wagah_Border_Ceremony.jpg" alt="Wagah Border">
+      <div class="card-content">
+        <h3>Wagah Border</h3>
+        <p><strong>Location:</strong> Near Amritsar</p>
+        <p><strong>Famous for:</strong> India-Pakistan daily retreat parade</p>
+        <p><strong>How to reach:</strong> 30 km from Amritsar by taxi/bus</p>
+      </div>
+    </div>
+
+    <!-- Anandpur Sahib -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Takht_Sri_Keshgarh_Sahib.jpg" alt="Anandpur Sahib">
+      <div class="card-content">
+        <h3>Anandpur Sahib</h3>
+        <p><strong>Location:</strong> Rupnagar district</p>
+        <p><strong>Famous for:</strong> Birthplace of Khalsa, major Sikh pilgrimage</p>
+        <p><strong>How to reach:</strong> Nangal Railway Station nearby</p>
+      </div>
+    </div>
+
+    <!-- Patiala Qila Mubarak -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Patiala_Qila_Mubarak.jpg" alt="Qila Mubarak">
+      <div class="card-content">
+        <h3>Qila Mubarak</h3>
+        <p><strong>Location:</strong> Patiala</p>
+        <p><strong>Famous for:</strong> 18th-century royal fort and palace</p>
+        <p><strong>How to reach:</strong> Patiala Railway Station, by road</p>
+      </div>
+    </div>
+
+    <!-- Virasat-e-Khalsa -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Virasat-e-Khalsa.jpg" alt="Virasat-e-Khalsa">
+      <div class="card-content">
+        <h3>Virasat-e-Khalsa</h3>
+        <p><strong>Location:</strong> Anandpur Sahib</p>
+        <p><strong>Famous for:</strong> Sikh heritage museum</p>
+        <p><strong>How to reach:</strong> 80 km from Chandigarh by road</p>
+      </div>
+    </div>
+
+    <!-- Ludhiana Museum -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Ludhiana_Museum_Punjab.jpg" alt="Ludhiana Museum">
+      <div class="card-content">
+        <h3>Ludhiana Museum</h3>
+        <p><strong>Location:</strong> Ludhiana</p>
+        <p><strong>Famous for:</strong> Culture, history, and folk art of Punjab</p>
+        <p><strong>How to reach:</strong> Ludhiana Railway Station</p>
+      </div>
+    </div>
+
+    <!-- Ropar Wetland -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Ropar_Wetlands.jpg" alt="Ropar Wetland">
+      <div class="card-content">
+        <h3>Ropar Wetland</h3>
+        <p><strong>Location:</strong> Rupnagar</p>
+        <p><strong>Famous for:</strong> Birdwatching, biodiversity</p>
+        <p><strong>How to reach:</strong> Road/train to Ropar (Rupnagar)</p>
+      </div>
+    </div>
+
+    <!-- Bathinda Fort -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Qila_Mubarak_Bathinda.jpg" alt="Bathinda Fort">
+      <div class="card-content">
+        <h3>Bathinda Fort</h3>
+        <p><strong>Location:</strong> Bathinda</p>
+        <p><strong>Famous for:</strong> Historic 1900-year-old fort</p>
+        <p><strong>How to reach:</strong> Bathinda Railway Station</p>
+      </div>
+    </div>
+
+    <!-- Harike Wetland -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Harike_Barrage_and_Wetland.jpg" alt="Harike Wetland">
+      <div class="card-content">
+        <h3>Harike Wetland</h3>
+        <p><strong>Location:</strong> Tarn Taran district</p>
+        <p><strong>Famous for:</strong> Migratory birds, nature reserve</p>
+        <p><strong>How to reach:</strong> 60 km from Amritsar by road</p>
+      </div>
+    </div>
+
+  </section>
 
 </body>
 </html>
