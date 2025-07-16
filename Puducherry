@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Puducherry - WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/d/db/Pondicherry_collage.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(3px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div><a href="index.html">🏠 WanderMap</a></div>
+    <div>
+      <a href="states.html">States</a>
+      <a href="union_territories.html">UTs</a>
+      <a href="blog.html">Blog</a>
+      <a href="submit-gem.html">Submit a Gem</a>
+      <a href="login.html">Admin</a>
+    </div>
+  </nav>
+
+  <!-- Puducherry Info -->
+  <header class="state-header">
+    <h1>Puducherry</h1>
+    <div class="state-info">
+      <p><strong>Capital:</strong> Puducherry</p>
+      <p><strong>Population:</strong> ~1.6 million (2023 est.)</p>
+      <p><strong>Official Languages:</strong> Tamil, French, Telugu, Malayalam, English</p>
+      <p><strong>History:</strong> Puducherry (formerly Pondicherry) was a French colonial settlement until 1954. Its streets still reflect French architecture, culture, and language. It’s a peaceful coastal territory known for Auroville, beaches, spiritual centers, and vibrant street life.</p>
+    </div>
+  </header>
+
+  <!-- Top 10 Places in Puducherry -->
+  <section class="places-grid">
+
+    <!-- Promenade Beach -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Promenade_Beach_Puducherry.jpg" alt="Promenade Beach">
+      <div class="card-content">
+        <h3>Promenade Beach</h3>
+        <p><strong>Location:</strong> White Town</p>
+        <p><strong>Famous for:</strong> Seaside stroll, French War Memorial</p>
+        <p><strong>How to reach:</strong> Auto or walk from city center</p>
+      </div>
+    </div>
+
+    <!-- Auroville -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Auroville_Matrimandir.jpg" alt="Auroville">
+      <div class="card-content">
+        <h3>Auroville</h3>
+        <p><strong>Location:</strong> 12 km from Puducherry</p>
+        <p><strong>Famous for:</strong> Matrimandir, spiritual community</p>
+        <p><strong>How to reach:</strong> Bus or cab</p>
+      </div>
+    </div>
+
+    <!-- Paradise Beach -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Paradise_Beach_Puducherry.jpg" alt="Paradise Beach">
+      <div class="card-content">
+        <h3>Paradise Beach</h3>
+        <p><strong>Location:</strong> Chunnambar</p>
+        <p><strong>Famous for:</strong> Golden sand, boat rides</p>
+        <p><strong>How to reach:</strong> Ferry from Chunnambar Boat House</p>
+      </div>
+    </div>
+
+    <!-- Sri Aurobindo Ashram -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Sri_Aurobindo_Ashram_Puducherry.jpg" alt="Sri Aurobindo Ashram">
+      <div class="card-content">
+        <h3>Sri Aurobindo Ashram</h3>
+        <p><strong>Location:</strong> White Town</p>
+        <p><strong>Famous for:</strong> Meditation, peace</p>
+        <p><strong>How to reach:</strong> Easily walkable in French Quarter</p>
+      </div>
+    </div>
+
+    <!-- French War Memorial -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/French_War_Memorial_Puducherry.jpg" alt="French War Memorial">
+      <div class="card-content">
+        <h3>French War Memorial</h3>
+        <p><strong>Location:</strong> Goubert Avenue</p>
+        <p><strong>Famous for:</strong> Tribute to soldiers of WWI</p>
+        <p><strong>How to reach:</strong> 10-minute walk from Promenade</p>
+      </div>
+    </div>
+
+    <!-- Serenity Beach -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Serenity_Beach_Puducherry.jpg" alt="Serenity Beach">
+      <div class="card-content">
+        <h3>Serenity Beach</h3>
+        <p><strong>Location:</strong> East Coast Road (ECR)</p>
+        <p><strong>Famous for:</strong> Surfing, quiet sunsets</p>
+        <p><strong>How to reach:</strong> 10 km from city center</p>
+      </div>
+    </div>
+
+    <!-- Botanical Garden -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Botanical_Garden_Pondicherry.jpg" alt="Botanical Garden">
+      <div class="card-content">
+        <h3>Botanical Garden</h3>
+        <p><strong>Location:</strong> Near Puducherry Railway Station</p>
+        <p><strong>Famous for:</strong> French layout, rare species</p>
+        <p><strong>How to reach:</strong> Walkable from bus stand</p>
+      </div>
+    </div>
+
+    <!-- Manakula Vinayagar Temple -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Manakula_Vinayagar_Temple_Puducherry.jpg" alt="Manakula Vinayagar Temple">
+      <div class="card-content">
+        <h3>Manakula Vinayagar Temple</h3>
+        <p><strong>Location:</strong> Near Ashram</p>
+        <p><strong>Famous for:</strong> Lord Ganesha, golden chariot</p>
+        <p><strong>How to reach:</strong> Walking distance from French Colony</p>
+      </div>
+    </div>
+
+    <!-- Puducherry Museum -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Puducherry_Museum.jpg" alt="Puducherry Museum">
+      <div class="card-content">
+        <h3>Puducherry Museum</h3>
+        <p><strong>Location:</strong> St Louis Street</p>
+        <p><strong>Famous for:</strong> Colonial artifacts, sculptures</p>
+        <p><strong>How to reach:</strong> Close to Bharathi Park</p>
+      </div>
+    </div>
+
+    <!-- Bharathi Park -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Bharathi_Park_Puducherry.jpg" alt="Bharathi Park">
+      <div class="card-content">
+        <h3>Bharathi Park</h3>
+        <p><strong>Location:</strong> White Town</p>
+        <p><strong>Famous for:</strong> Aayi Mandapam monument, relaxation</p>
+        <p><strong>How to reach:</strong> Central location, walkable</p>
+      </div>
+    </div>
+
+  </section>
+
+</body>
+</html>
