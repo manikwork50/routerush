@@ -1,39 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Top 20 Places in Rajasthan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Telangana - WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: sans-serif; background: #f7f7f7; margin:0; padding:20px; }
-    h1 { text-align:center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-top:30px; }
-    .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    .card img { width: 100%; border-radius: 6px; }
-    .card h2 { margin: 10px 0 5px; }
-    .card p { font-size: 14px; color: #555; margin: 5px 0; }
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/4/4f/Telangana_collage.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(3px);
+    }
   </style>
 </head>
 <body>
 
-<h1>🏰 Top 20 Places to Visit in Rajasthan</h1>
+  <!-- Navigation -->
+  <nav>
+    <div><a href="index.html">🏠 WanderMap</a></div>
+    <div>
+      <a href="states.html">States</a>
+      <a href="union_territories.html">UTs</a>
+      <a href="blog.html">Blog</a>
+      <a href="submit-gem.html">Submit a Gem</a>
+      <a href="login.html">Admin</a>
+    </div>
+  </nav>
 
-<div class="grid">
-  <div class="card">
-    <img src="https://source.unsplash.com/600x400/?jaipur" alt="Jaipur">
-    <h2>Jaipur</h2>
-    <p><strong>History:</strong> Founded in 1727 by Maharaja Sawai Jai Singh II.</p>
-    <p><strong>Famous for:</strong> Amber Fort, City Palace, Hawa Mahal, gem markets.</p>
-    <p><strong>Food:</strong> Dal Baati Churma, Laal Maas.</p>
-    <p><strong>Craft:</strong> Blue Pottery, Bandhej textiles.</p>
-    <p><strong>Nearest Airport:</strong> Jaipur Airport (12 km)</p>
-    <p><strong>Nearest Railway Station:</strong> Jaipur Railway Station (5 km)</p>
-    <p><strong>Nearest Bus Stand:</strong> Sindhi Camp Bus Stand (3 km)</p>
-  </div>
+  <!-- Telangana Info -->
+  <header class="state-header">
+    <h1>Telangana</h1>
+    <div class="state-info">
+      <p><strong>Capital:</strong> Hyderabad</p>
+      <p><strong>Population:</strong> ~38 million (2023 est.)</p>
+      <p><strong>Official Language:</strong> Telugu</p>
+      <p><strong>History:</strong> Telangana, India's youngest state formed in 2014, has a rich legacy of the Kakatiya, Qutb Shahi, and Nizam dynasties. The region is known for its unique blend of South and Deccan cultures, rich history, architecture, and spicy cuisine.</p>
+    </div>
+  </header>
 
-  <!-- Repeat for 19 more places -->
+  <!-- Top 10 Tourist Places -->
+  <section class="places-grid">
 
-</div>
+    <!-- Charminar -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/13/Charminar_Hyderabad.jpg" alt="Charminar">
+      <div class="card-content">
+        <h3>Charminar</h3>
+        <p><strong>Location:</strong> Hyderabad</p>
+        <p><strong>Famous for:</strong> Historical Islamic architecture, iconic monument</p>
+        <p><strong>How to reach:</strong> Near Nampally Railway Station or Hyderabad Metro</p>
+      </div>
+    </div>
+
+    <!-- Golconda Fort -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Golconda_Fort.jpg" alt="Golconda Fort">
+      <div class="card-content">
+        <h3>Golconda Fort</h3>
+        <p><strong>Location:</strong> Hyderabad outskirts</p>
+        <p><strong>Famous for:</strong> Fort acoustics, light & sound show</p>
+        <p><strong>How to reach:</strong> 11 km from Hyderabad, local transport</p>
+      </div>
+    </div>
+
+    <!-- Ramoji Film City -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Ramoji_Film_City_Hyderabad.jpg" alt="Ramoji Film City">
+      <div class="card-content">
+        <h3>Ramoji Film City</h3>
+        <p><strong>Location:</strong> Near Hayathnagar, Hyderabad</p>
+        <p><strong>Famous for:</strong> World’s largest film studio complex</p>
+        <p><strong>How to reach:</strong> 30 km from Hyderabad by bus/cab</p>
+      </div>
+    </div>
+
+    <!-- Hussain Sagar Lake -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Hussain_Sagar_Lake.jpg" alt="Hussain Sagar">
+      <div class="card-content">
+        <h3>Hussain Sagar Lake</h3>
+        <p><strong>Location:</strong> Hyderabad</p>
+        <p><strong>Famous for:</strong> Buddha statue, boating, Tank Bund</p>
+        <p><strong>How to reach:</strong> Necklace Road / Lakdikapul Metro</p>
+      </div>
+    </div>
+
+    <!-- Warangal Fort -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Warangal_Fort_Gateway.jpg" alt="Warangal Fort">
+      <div class="card-content">
+        <h3>Warangal Fort</h3>
+        <p><strong>Location:</strong> Warangal</p>
+        <p><strong>Famous for:</strong> Kakatiya dynasty ruins and temples</p>
+        <p><strong>How to reach:</strong> Warangal Railway Station</p>
+      </div>
+    </div>
+
+    <!-- Thousand Pillar Temple -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Thousand_Pillar_Temple_Warangal.jpg" alt="Thousand Pillar Temple">
+      <div class="card-content">
+        <h3>Thousand Pillar Temple</h3>
+        <p><strong>Location:</strong> Hanamkonda, Warangal</p>
+        <p><strong>Famous for:</strong> Intricate pillars, star-shaped architecture</p>
+        <p><strong>How to reach:</strong> Auto from Warangal city center</p>
+      </div>
+    </div>
+
+    <!-- Bhongir Fort -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Bhongir_Fort.jpg" alt="Bhongir Fort">
+      <div class="card-content">
+        <h3>Bhongir Fort</h3>
+        <p><strong>Location:</strong> Yadadri Bhuvanagiri District</p>
+        <p><strong>Famous for:</strong> Trekking fort on a monolithic rock</p>
+        <p><strong>How to reach:</strong> Bhongir Railway Station</p>
+      </div>
+    </div>
+
+    <!-- Yadagirigutta Temple -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Yadadri_Temple.jpg" alt="Yadagirigutta Temple">
+      <div class="card-content">
+        <h3>Yadagirigutta Temple</h3>
+        <p><strong>Location:</strong> Yadadri</p>
+        <p><strong>Famous for:</strong> Newly developed Narasimha Swamy temple</p>
+        <p><strong>How to reach:</strong> 60 km from Hyderabad, via train/bus</p>
+      </div>
+    </div>
+
+    <!-- Nagarjuna Sagar Dam -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Nagarjuna_Sagar_Dam.jpg" alt="Nagarjuna Sagar">
+      <div class="card-content">
+        <h3>Nagarjuna Sagar</h3>
+        <p><strong>Location:</strong> Nalgonda District</p>
+        <p><strong>Famous for:</strong> Massive dam, waterfalls, island museum</p>
+        <p><strong>How to reach:</strong> 165 km from Hyderabad by bus/cab</p>
+      </div>
+    </div>
+
+    <!-- KBR National Park -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/KBR_National_Park.jpg" alt="KBR Park">
+      <div class="card-content">
+        <h3>KBR National Park</h3>
+        <p><strong>Location:</strong> Jubilee Hills, Hyderabad</p>
+        <p><strong>Famous for:</strong> Urban forest with peacocks and walking trails</p>
+        <p><strong>How to reach:</strong> Easily accessible from any part of Hyderabad</p>
+      </div>
+    </div>
+
+  </section>
 
 </body>
 </html>
