@@ -1,39 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Top 20 Places in Rajasthan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assam - WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: sans-serif; background: #f7f7f7; margin:0; padding:20px; }
-    h1 { text-align:center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-top:30px; }
-    .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    .card img { width: 100%; border-radius: 6px; }
-    .card h2 { margin: 10px 0 5px; }
-    .card p { font-size: 14px; color: #555; margin: 5px 0; }
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/d/d4/Assam_Collage.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(3px);
+    }
   </style>
 </head>
 <body>
 
-<h1>🏰 Top 20 Places to Visit in Rajasthan</h1>
+  <!-- Navigation -->
+  <nav>
+    <div><a href="index.html">🏠 WanderMap</a></div>
+    <div>
+      <a href="states.html">States</a>
+      <a href="union_territories.html">UTs</a>
+      <a href="blog.html">Blog</a>
+      <a href="submit-gem.html">Submit a Gem</a>
+      <a href="login.html">Admin</a>
+    </div>
+  </nav>
 
-<div class="grid">
-  <div class="card">
-    <img src="https://source.unsplash.com/600x400/?jaipur" alt="Jaipur">
-    <h2>Jaipur</h2>
-    <p><strong>History:</strong> Founded in 1727 by Maharaja Sawai Jai Singh II.</p>
-    <p><strong>Famous for:</strong> Amber Fort, City Palace, Hawa Mahal, gem markets.</p>
-    <p><strong>Food:</strong> Dal Baati Churma, Laal Maas.</p>
-    <p><strong>Craft:</strong> Blue Pottery, Bandhej textiles.</p>
-    <p><strong>Nearest Airport:</strong> Jaipur Airport (12 km)</p>
-    <p><strong>Nearest Railway Station:</strong> Jaipur Railway Station (5 km)</p>
-    <p><strong>Nearest Bus Stand:</strong> Sindhi Camp Bus Stand (3 km)</p>
-  </div>
+  <!-- State Info -->
+  <header class="state-header">
+    <h1>Assam</h1>
+    <div class="state-info">
+      <p><strong>Capital:</strong> Dispur</p>
+      <p><strong>Population:</strong> ~36 million (2023 est.)</p>
+      <p><strong>Official Language:</strong> Assamese</p>
+      <p><strong>History:</strong> Assam, known for its tea, silk, and biodiversity, is a key northeastern state of India. With rich tribal culture, wildlife sanctuaries, and temples, it has historically been the gateway to the Northeast. It’s home to the mighty Brahmaputra River and ancient Kamakhya Temple.</p>
+    </div>
+  </header>
 
-  <!-- Repeat for 19 more places -->
+  <!-- Top 10 Places -->
+  <section class="places-grid">
 
-</div>
+    <!-- Kaziranga National Park -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Kaziranga_rhino.jpg" alt="Kaziranga National Park">
+      <div class="card-content">
+        <h3>Kaziranga National Park</h3>
+        <p><strong>Location:</strong> Golaghat & Nagaon districts</p>
+        <p><strong>Famous for:</strong> One-horned rhinoceroses, tigers, elephants</p>
+        <p><strong>How to reach:</strong> Nearest airport: Jorhat (97 km); by road from Guwahati</p>
+      </div>
+    </div>
+
+    <!-- Majuli Island -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Majuli_Island_Assam.jpg" alt="Majuli Island">
+      <div class="card-content">
+        <h3>Majuli Island</h3>
+        <p><strong>Location:</strong> Brahmaputra River</p>
+        <p><strong>Famous for:</strong> World's largest river island, satras, tribal culture</p>
+        <p><strong>How to reach:</strong> Ferry from Neemati Ghat near Jorhat</p>
+      </div>
+    </div>
+
+    <!-- Kamakhya Temple -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Kamakhya_Temple_Guwahati.jpg" alt="Kamakhya Temple">
+      <div class="card-content">
+        <h3>Kamakhya Temple</h3>
+        <p><strong>Location:</strong> Nilachal Hill, Guwahati</p>
+        <p><strong>Famous for:</strong> Powerful Shakti Peeth, Ambubachi Mela</p>
+        <p><strong>How to reach:</strong> 6 km from Guwahati Railway Station</p>
+      </div>
+    </div>
+
+    <!-- Sivasagar -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Sivasagar_Tank_Assam.jpg" alt="Sivasagar">
+      <div class="card-content">
+        <h3>Sivasagar</h3>
+        <p><strong>Location:</strong> Eastern Assam</p>
+        <p><strong>Famous for:</strong> Ahom monuments, Sivadol Temple, tanks</p>
+        <p><strong>How to reach:</strong> Nearest airport: Jorhat (75 km); rail from Guwahati</p>
+      </div>
+    </div>
+
+    <!-- Manas National Park -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Manas_tiger_reserve.jpg" alt="Manas National Park">
+      <div class="card-content">
+        <h3>Manas National Park</h3>
+        <p><strong>Location:</strong> Western Assam (Barpeta)</p>
+        <p><strong>Famous for:</strong> UNESCO site, tigers, elephants, golden langur</p>
+        <p><strong>How to reach:</strong> Nearest rail: Barpeta Road (22 km); Guwahati by road</p>
+      </div>
+    </div>
+
+    <!-- Haflong -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Haflong_Hill.jpg" alt="Haflong">
+      <div class="card-content">
+        <h3>Haflong</h3>
+        <p><strong>Location:</strong> Dima Hasao district</p>
+        <p><strong>Famous for:</strong> Only hill station of Assam, scenic views</p>
+        <p><strong>How to reach:</strong> Connected by rail from Lumding; buses from Silchar</p>
+      </div>
+    </div>
+
+    <!-- Tezpur -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Agnigarh_Tezpur.jpg" alt="Tezpur">
+      <div class="card-content">
+        <h3>Tezpur</h3>
+        <p><strong>Location:</strong> Sonitpur District</p>
+        <p><strong>Famous for:</strong> Mythology, Agnigarh Fort, cultural town</p>
+        <p><strong>How to reach:</strong> Road/train from Guwahati (180 km)</p>
+      </div>
+    </div>
+
+    <!-- Dipor Bil -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Dipor_Bil_Guwahati.jpg" alt="Dipor Bil">
+      <div class="card-content">
+        <h3>Dipor Bil</h3>
+        <p><strong>Location:</strong> Guwahati outskirts</p>
+        <p><strong>Famous for:</strong> Wetland, birdwatching, sunset views</p>
+        <p><strong>How to reach:</strong> 13 km from Guwahati Railway Station</p>
+      </div>
+    </div>
+
+    <!-- Hoollongapar Gibbon Sanctuary -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Hoolock_gibbon_Assam.jpg" alt="Gibbon Sanctuary">
+      <div class="card-content">
+        <h3>Hoollongapar Gibbon Sanctuary</h3>
+        <p><strong>Location:</strong> Jorhat District</p>
+        <p><strong>Famous for:</strong> India's only gibbon sanctuary</p>
+        <p><strong>How to reach:</strong> Jorhat (20 km); easy by auto/rickshaw</p>
+      </div>
+    </div>
+
+    <!-- Digboi Oil Town -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Digboi_refinery_Assam.jpg" alt="Digboi">
+      <div class="card-content">
+        <h3>Digboi</h3>
+        <p><strong>Location:</strong> Tinsukia District</p>
+        <p><strong>Famous for:</strong> Asia's oldest oil refinery, golf course, WWII cemetery</p>
+        <p><strong>How to reach:</strong> Nearest airport: Dibrugarh (70 km); by train to Tinsukia</p>
+      </div>
+    </div>
+
+  </section>
 
 </body>
 </html>
