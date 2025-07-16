@@ -1,39 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Top 20 Places in Rajasthan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jharkhand - WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: sans-serif; background: #f7f7f7; margin:0; padding:20px; }
-    h1 { text-align:center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-top:30px; }
-    .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    .card img { width: 100%; border-radius: 6px; }
-    .card h2 { margin: 10px 0 5px; }
-    .card p { font-size: 14px; color: #555; margin: 5px 0; }
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/6/67/Jharkhand_Collage.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(3px);
+    }
   </style>
 </head>
 <body>
 
-<h1>🏰 Top 20 Places to Visit in Rajasthan</h1>
+  <!-- Navigation -->
+  <nav>
+    <div><a href="index.html">🏠 WanderMap</a></div>
+    <div>
+      <a href="states.html">States</a>
+      <a href="union_territories.html">UTs</a>
+      <a href="blog.html">Blog</a>
+      <a href="submit-gem.html">Submit a Gem</a>
+      <a href="login.html">Admin</a>
+    </div>
+  </nav>
 
-<div class="grid">
-  <div class="card">
-    <img src="https://source.unsplash.com/600x400/?jaipur" alt="Jaipur">
-    <h2>Jaipur</h2>
-    <p><strong>History:</strong> Founded in 1727 by Maharaja Sawai Jai Singh II.</p>
-    <p><strong>Famous for:</strong> Amber Fort, City Palace, Hawa Mahal, gem markets.</p>
-    <p><strong>Food:</strong> Dal Baati Churma, Laal Maas.</p>
-    <p><strong>Craft:</strong> Blue Pottery, Bandhej textiles.</p>
-    <p><strong>Nearest Airport:</strong> Jaipur Airport (12 km)</p>
-    <p><strong>Nearest Railway Station:</strong> Jaipur Railway Station (5 km)</p>
-    <p><strong>Nearest Bus Stand:</strong> Sindhi Camp Bus Stand (3 km)</p>
-  </div>
+  <!-- State Info -->
+  <header class="state-header">
+    <h1>Jharkhand</h1>
+    <div class="state-info">
+      <p><strong>Capital:</strong> Ranchi</p>
+      <p><strong>Population:</strong> ~39 million (2023 est.)</p>
+      <p><strong>Official Language:</strong> Hindi</p>
+      <p><strong>History:</strong> Jharkhand was carved out of Bihar in 2000. Known for its forests, waterfalls, rich tribal culture, and mineral wealth, it is a blend of natural beauty and heritage.</p>
+    </div>
+  </header>
 
-  <!-- Repeat for 19 more places -->
+  <!-- Top 10 Places -->
+  <section class="places-grid">
 
-</div>
+    <!-- Hundru Falls -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Hundru_Falls_Ranchi.jpg" alt="Hundru Falls">
+      <div class="card-content">
+        <h3>Hundru Falls</h3>
+        <p><strong>Location:</strong> Ranchi District</p>
+        <p><strong>Famous for:</strong> One of the highest waterfalls in Jharkhand</p>
+        <p><strong>How to reach:</strong> 45 km from Ranchi; accessible by road</p>
+      </div>
+    </div>
+
+    <!-- Dassam Falls -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Dassam_Falls.jpg" alt="Dassam Falls">
+      <div class="card-content">
+        <h3>Dassam Falls</h3>
+        <p><strong>Location:</strong> Near Taimara village</p>
+        <p><strong>Famous for:</strong> 10-stream waterfall, scenic spot</p>
+        <p><strong>How to reach:</strong> 34 km from Ranchi on NH-33</p>
+      </div>
+    </div>
+
+    <!-- Netarhat -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Netarhat_Sunrise_Point.jpg" alt="Netarhat">
+      <div class="card-content">
+        <h3>Netarhat</h3>
+        <p><strong>Location:</strong> Latehar District</p>
+        <p><strong>Famous for:</strong> Hill station, sunrise & sunset views</p>
+        <p><strong>How to reach:</strong> 156 km from Ranchi by road</p>
+      </div>
+    </div>
+
+    <!-- Betla National Park -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Betla_National_Park.jpg" alt="Betla National Park">
+      <div class="card-content">
+        <h3>Betla National Park</h3>
+        <p><strong>Location:</strong> Palamu District</p>
+        <p><strong>Famous for:</strong> Wildlife safari, elephants, tigers</p>
+        <p><strong>How to reach:</strong> Daltonganj (25 km); connected by train/road</p>
+      </div>
+    </div>
+
+    <!-- Patratu Valley -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Patratu_Valley.jpg" alt="Patratu Valley">
+      <div class="card-content">
+        <h3>Patratu Valley</h3>
+        <p><strong>Location:</strong> Ramgarh District</p>
+        <p><strong>Famous for:</strong> Scenic road curves and lake</p>
+        <p><strong>How to reach:</strong> 40 km from Ranchi via road</p>
+      </div>
+    </div>
+
+    <!-- Rajrappa Temple -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Rajrappa_Temple_Jharkhand.jpg" alt="Rajrappa Temple">
+      <div class="card-content">
+        <h3>Rajrappa Temple</h3>
+        <p><strong>Location:</strong> Ramgarh</p>
+        <p><strong>Famous for:</strong> Chhinnamasta Temple and river confluence</p>
+        <p><strong>How to reach:</strong> 65 km from Ranchi; buses/taxis available</p>
+      </div>
+    </div>
+
+    <!-- Jagannath Temple, Ranchi -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Jagannath_Temple_Ranchi.jpg" alt="Jagannath Temple Ranchi">
+      <div class="card-content">
+        <h3>Jagannath Temple</h3>
+        <p><strong>Location:</strong> Ranchi</p>
+        <p><strong>Famous for:</strong> 17th-century temple similar to Puri</p>
+        <p><strong>How to reach:</strong> 10 km from Ranchi city center</p>
+      </div>
+    </div>
+
+    <!-- McCluskieganj -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/McCluskieganj_Ranchi.jpg" alt="McCluskieganj">
+      <div class="card-content">
+        <h3>McCluskieganj</h3>
+        <p><strong>Location:</strong> Ranchi District</p>
+        <p><strong>Famous for:</strong> Colonial-era Anglo-Indian town</p>
+        <p><strong>How to reach:</strong> 65 km from Ranchi by road</p>
+      </div>
+    </div>
+
+    <!-- Deoghar (Baidyanath Dham) -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Baidyanath_Dham.jpg" alt="Baidyanath Dham">
+      <div class="card-content">
+        <h3>Baidyanath Dham</h3>
+        <p><strong>Location:</strong> Deoghar</p>
+        <p><strong>Famous for:</strong> One of the 12 Jyotirlingas of Lord Shiva</p>
+        <p><strong>How to reach:</strong> Jasidih Railway Station (7 km)</p>
+      </div>
+    </div>
+
+    <!-- Parasnath Hills -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Parasnath_Hill.jpg" alt="Parasnath">
+      <div class="card-content">
+        <h3>Parasnath Hills</h3>
+        <p><strong>Location:</strong> Giridih District</p>
+        <p><strong>Famous for:</strong> Jain pilgrimage site with temples</p>
+        <p><strong>How to reach:</strong> Rail to Parasnath Station; trek to summit</p>
+      </div>
+    </div>
+
+  </section>
 
 </body>
 </html>
