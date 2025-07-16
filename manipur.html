@@ -1,39 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Top 20 Places in Rajasthan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manipur - WanderMap</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: sans-serif; background: #f7f7f7; margin:0; padding:20px; }
-    h1 { text-align:center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-top:30px; }
-    .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    .card img { width: 100%; border-radius: 6px; }
-    .card h2 { margin: 10px 0 5px; }
-    .card p { font-size: 14px; color: #555; margin: 5px 0; }
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/8/83/Manipur_Collage.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(3px);
+    }
   </style>
 </head>
 <body>
 
-<h1>🏰 Top 20 Places to Visit in Rajasthan</h1>
+  <!-- Navigation -->
+  <nav>
+    <div><a href="index.html">🏠 WanderMap</a></div>
+    <div>
+      <a href="states.html">States</a>
+      <a href="union_territories.html">UTs</a>
+      <a href="blog.html">Blog</a>
+      <a href="submit-gem.html">Submit a Gem</a>
+      <a href="login.html">Admin</a>
+    </div>
+  </nav>
 
-<div class="grid">
-  <div class="card">
-    <img src="https://source.unsplash.com/600x400/?jaipur" alt="Jaipur">
-    <h2>Jaipur</h2>
-    <p><strong>History:</strong> Founded in 1727 by Maharaja Sawai Jai Singh II.</p>
-    <p><strong>Famous for:</strong> Amber Fort, City Palace, Hawa Mahal, gem markets.</p>
-    <p><strong>Food:</strong> Dal Baati Churma, Laal Maas.</p>
-    <p><strong>Craft:</strong> Blue Pottery, Bandhej textiles.</p>
-    <p><strong>Nearest Airport:</strong> Jaipur Airport (12 km)</p>
-    <p><strong>Nearest Railway Station:</strong> Jaipur Railway Station (5 km)</p>
-    <p><strong>Nearest Bus Stand:</strong> Sindhi Camp Bus Stand (3 km)</p>
-  </div>
+  <!-- Manipur Info -->
+  <header class="state-header">
+    <h1>Manipur</h1>
+    <div class="state-info">
+      <p><strong>Capital:</strong> Imphal</p>
+      <p><strong>Population:</strong> ~3.1 million (2023 est.)</p>
+      <p><strong>Official Languages:</strong> Meitei (Manipuri), English</p>
+      <p><strong>History:</strong> Manipur, known as the "Jewel of India", joined the Indian Union in 1949 and became a state in 1972. Rich in tribal and classical culture, dance, and natural beauty, it is the birthplace of Manipuri dance and the game of modern polo.</p>
+    </div>
+  </header>
 
-  <!-- Repeat for 19 more places -->
+  <!-- Top 10 Places in Manipur -->
+  <section class="places-grid">
 
-</div>
+    <!-- Loktak Lake -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Loktak_Lake.jpg" alt="Loktak Lake">
+      <div class="card-content">
+        <h3>Loktak Lake</h3>
+        <p><strong>Location:</strong> Moirang, 48 km from Imphal</p>
+        <p><strong>Famous for:</strong> Floating phumdis, Keibul Lamjao National Park</p>
+        <p><strong>How to reach:</strong> By road from Imphal</p>
+      </div>
+    </div>
+
+    <!-- Kangla Fort -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Kangla_Fort_Imphal.jpg" alt="Kangla Fort">
+      <div class="card-content">
+        <h3>Kangla Fort</h3>
+        <p><strong>Location:</strong> Imphal</p>
+        <p><strong>Famous for:</strong> Ancient Meitei royal palace, sacred heritage</p>
+        <p><strong>How to reach:</strong> Within city, accessible by auto or cab</p>
+      </div>
+    </div>
+
+    <!-- INA Memorial, Moirang -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/INA_Museum_Moirang.jpg" alt="INA Memorial">
+      <div class="card-content">
+        <h3>INA Memorial</h3>
+        <p><strong>Location:</strong> Moirang</p>
+        <p><strong>Famous for:</strong> Netaji Subhas Chandra Bose's Indian National Army HQ</p>
+        <p><strong>How to reach:</strong> 45 km from Imphal by road</p>
+      </div>
+    </div>
+
+    <!-- Keibul Lamjao National Park -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Keibul_Lamjao_Park.jpg" alt="Keibul Lamjao">
+      <div class="card-content">
+        <h3>Keibul Lamjao National Park</h3>
+        <p><strong>Location:</strong> On Loktak Lake</p>
+        <p><strong>Famous for:</strong> World’s only floating national park, Sangai deer</p>
+        <p><strong>How to reach:</strong> Moirang > Boat to park</p>
+      </div>
+    </div>
+
+    <!-- Shri Govindajee Temple -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Shree_Govindajee_Temple_Manipur.jpg" alt="Shree Govindajee Temple">
+      <div class="card-content">
+        <h3>Shree Govindajee Temple</h3>
+        <p><strong>Location:</strong> Imphal</p>
+        <p><strong>Famous for:</strong> Vaishnavite temple, cultural epicenter</p>
+        <p><strong>How to reach:</strong> Near Kangla Fort in Imphal</p>
+      </div>
+    </div>
+
+    <!-- Imphal War Cemetery -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/Imphal_War_Cemetery.jpg" alt="Imphal War Cemetery">
+      <div class="card-content">
+        <h3>Imphal War Cemetery</h3>
+        <p><strong>Location:</strong> Imphal</p>
+        <p><strong>Famous for:</strong> WWII cemetery maintained by CWGC</p>
+        <p><strong>How to reach:</strong> Within Imphal, easily accessible</p>
+      </div>
+    </div>
+
+    <!-- Andro Village -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Andro_Village_Manipur.jpg" alt="Andro Village">
+      <div class="card-content">
+        <h3>Andro Village</h3>
+        <p><strong>Location:</strong> 27 km from Imphal</p>
+        <p><strong>Famous for:</strong> Pottery, tribal crafts, heritage museum</p>
+        <p><strong>How to reach:</strong> Local cab from Imphal</p>
+      </div>
+    </div>
+
+    <!-- Khongjom War Memorial -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/Khongjom_War_Memorial.jpg" alt="Khongjom">
+      <div class="card-content">
+        <h3>Khongjom War Memorial</h3>
+        <p><strong>Location:</strong> 36 km from Imphal</p>
+        <p><strong>Famous for:</strong> Battle of Anglo-Manipuri War site</p>
+        <p><strong>How to reach:</strong> Bus or taxi from Imphal</p>
+      </div>
+    </div>
+
+    <!-- Tharon Cave -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Tharon_Cave_Manipur.jpg" alt="Tharon Cave">
+      <div class="card-content">
+        <h3>Tharon Cave</h3>
+        <p><strong>Location:</strong> Tamenglong district</p>
+        <p><strong>Famous for:</strong> 5 ancient chambers, pre-historic significance</p>
+        <p><strong>How to reach:</strong> 160 km from Imphal by road</p>
+      </div>
+    </div>
+
+    <!-- Moreh Town -->
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Moreh_Indo-Myanmar_Border.jpg" alt="Moreh">
+      <div class="card-content">
+        <h3>Moreh</h3>
+        <p><strong>Location:</strong> Indo-Myanmar border</p>
+        <p><strong>Famous for:</strong> Border trade, Burmese culture influence</p>
+        <p><strong>How to reach:</strong> 110 km from Imphal by highway</p>
+      </div>
+    </div>
+
+  </section>
 
 </body>
 </html>
