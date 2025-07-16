@@ -4,8 +4,10 @@ from flask_login import LoginManager, login_user, logout_user, login_required, c
 from api.models import db, AdminUser, ADMIN_CREDENTIALS
 from api.routes.hidden_gems import hidden_gems_bp
 from api.routes.planner import planner_bp  # if you've added trip planner API
+from api.routes.emergency import emergency_bp
 
 app = Flask(__name__)
+app.register_blueprint(emergency_bp)
 app.secret_key = 'super-secret-key'  # 🔐 Change this in production
 CORS(app)
 
