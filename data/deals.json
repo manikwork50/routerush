@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Amazon Travel Store",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+    "link": "https://www.amazon.in/travel-store",
+    "description": "Get travel bags, accessories, camping gear, and more at Amazon's travel store."
+  },
+  {
+    "name": "Flipkart Travel Deals",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/0/08/Flipkart_logo.svg",
+    "link": "https://www.flipkart.com/travel",
+    "description": "Exclusive flight and hotel offers with Flipkart Travel."
+  },
+  {
+    "name": "IBIBO (Goibibo) Travel",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/7/78/Goibibo_logo.svg",
+    "link": "https://www.goibibo.com",
+    "description": "Book flights, hotels, and buses at the best prices."
+  },
+  {
+    "name": "Trivago Hotel Search",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Trivago.svg",
+    "link": "https://www.trivago.com",
+    "description": "Compare hotel prices from hundreds of booking sites with Trivago."
+  },
+  {
+    "name": "MakeMyTrip",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/2/23/MakeMyTrip_Logo.svg",
+    "link": "https://www.makemytrip.com",
+    "description": "Flights, hotels, holiday packages, and more for your perfect trip."
+  },
+  {
+    "name": "Booking.com",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Booking.com_logo.svg",
+    "link": "https://www.booking.com",
+    "description": "Find and book accommodations worldwide at Booking.com."
+  },
+  {
+    "name": "Expedia Travel",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/8/89/Expedia_2012_logo.svg",
+    "link": "https://www.expedia.com",
+    "description": "Flights, hotels, cars, and vacation packages with Expedia."
+  }
+]
