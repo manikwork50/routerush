@@ -197,44 +197,98 @@
        data-full-width-responsive="true"></ins>
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
+<style>
+  .grid-wrap {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .affiliate-card, .sponsored-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .affiliate-card img, .sponsored-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  .affiliate-card div, .sponsored-card div {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .affiliate-card h4, .sponsored-card h4 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #333;
+  }
+  .affiliate-card p, .sponsored-card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  .affiliate-card a, .sponsored-card a {
+    background: #FFB347;
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  h2 {
+    margin-bottom: 15px;
+  }
+</style>
 
 <div class="affiliate-wrap">
   <h2 style="color:#FFB347;">🔥 Top Travel Deals</h2>
-  <div class="affiliate-card">
-    <img src="https://source.unsplash.com/400x200/?hotel">
-    <div>
-      <h4>50% Off on Hotels</h4>
-      <script async src="https://tpwgt.com/content?trs=434139&shmarker=648728&locale=en&sustainable=false&deals=false&border_radius=5&plain=true&powered_by=true&promo_id=2693&campaign_id=84" charset="utf-8"></script>
-      <p>Massive discounts on top hotels via Booking.com</p>
-      <a href="https://www.booking.com/?aid=your_aff_id" target="_blank">Book Now</a>
+  <div class="grid-wrap">
+    <div class="affiliate-card">
+      <img src="https://source.unsplash.com/400x200/?hotel" alt="Hotel Deal">
+      <div>
+        <h4>50% Off on Hotels</h4>
+        <p>Massive discounts on top hotels via Booking.com</p>
+        <script async src="https://tpwgt.com/content?trs=434139&shmarker=648728&locale=en&sustainable=false&deals=false&border_radius=5&plain=true&powered_by=true&promo_id=2693&campaign_id=84" charset="utf-8"></script>
+        <a href="https://www.booking.com/?aid=your_aff_id" target="_blank">Book Now</a>
+      </div>
     </div>
-  </div>
-  <div class="affiliate-card">
-    <img src="https://source.unsplash.com/400x200/?flight">
-    <div>
-      <h4>Lowest Flight Fares</h4>
-      <p>city tour</p>
-     <script async src="https://tpwgt.com/content?currency=USD&trs=434139&shmarker=648728&locale=en&category=4&amount=3&powered_by=true&campaign_id=137&promo_id=4497" charset="utf-8"></script>
+    <div class="affiliate-card">
+      <img src="https://source.unsplash.com/400x200/?flight" alt="Flight Deal">
+      <div>
+        <h4>Lowest Flight Fares</h4>
+        <p>City tour special offers</p>
+        <script async src="https://tpwgt.com/content?currency=USD&trs=434139&shmarker=648728&locale=en&category=4&amount=3&powered_by=true&campaign_id=137&promo_id=4497" charset="utf-8"></script>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="sponsored-wrap">
   <h2 style="color:#FFB347;">🎖️ Sponsored Listings</h2>
-  <div class="sponsored-card">
-    <img src="https://source.unsplash.com/400x200/?resort">
-    <div>
-      <h4>Car Rentals</h4>
-      <p>Rent your Car vehicle.</p>
-      <script async src="https://tpwgt.com/content?trs=434139&shmarker=648728&country=india&city=Agra&locale=en&powered_by=true&bg_color=%23fad130&font_color=%23333333&button_color=%2300a200&button_font_color=%23ffffff&button_text=Search&rounded_corners=false&benefits=false&dc_powered_by=false&supplier_logos=false&campaign_id=117&promo_id=3873" charset="utf-8"></script>
+  <div class="grid-wrap">
+    <div class="sponsored-card">
+      <img src="https://source.unsplash.com/400x200/?resort" alt="Car Rental">
+      <div>
+        <h4>Car Rentals</h4>
+        <p>Rent your car or vehicle easily.</p>
+        <script async src="https://tpwgt.com/content?trs=434139&shmarker=648728&country=india&city=Agra&locale=en&powered_by=true&bg_color=%23fad130&font_color=%23333333&button_color=%2300a200&button_font_color=%23ffffff&button_text=Search&rounded_corners=false&benefits=false&dc_powered_by=false&supplier_logos=false&campaign_id=117&promo_id=3873" charset="utf-8"></script>
+      </div>
     </div>
-  </div>
-  <div class="sponsored-card">
-    <img src="https://source.unsplash.com/400x200/?cab">
-    <div>
-      <h4>WanderCab Rentals</h4>
-      <p>Self-drive cars starting ₹1500/day across India.</p>
-      <a href="https://wandercabrentals.com" target="_blank">Book Ride</a>
+    <div class="sponsored-card">
+      <img src="https://source.unsplash.com/400x200/?cab" alt="Cab Rental">
+      <div>
+        <h4>WanderCab Rentals</h4>
+        <p>Self-drive cars starting ₹1500/day across India.</p>
+        <a href="https://wandercabrentals.com" target="_blank">Book Ride</a>
+      </div>
     </div>
   </div>
 </div>
