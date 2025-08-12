@@ -8,6 +8,7 @@
   <meta name="author" content="Manik Rao">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
+
   <style>
     body {
       margin: 0;
@@ -60,16 +61,14 @@
       cursor: pointer;
     }
 
-    /* Map full height adjustment */
     #map {
       position: absolute;
-      top: 118px; /* height of navbar + controls */
-      bottom: 60px; /* space for bottom ad */
+      top: 118px;
+      bottom: 60px;
       left: 0;
       right: 0;
     }
 
-    /* Loading Spinner */
     .spinner-overlay {
       position: fixed;
       top: 0; left: 0;
@@ -89,7 +88,6 @@
     }
     @keyframes spin { 0% { transform:rotate(0deg);} 100% { transform:rotate(360deg);} }
 
-    /* Modal */
     .modal {
       display:none;
       position:fixed;
@@ -114,7 +112,6 @@
       cursor:pointer;
     }
 
-    /* Bottom Ad */
     .bottom-ad {
       position: fixed;
       bottom: 0;
@@ -129,7 +126,7 @@
 </head>
 <body>
 
-<!-- ✅ Navigation Bar -->
+<!-- Navigation -->
 <nav>
   <a href="index.html">Home</a>
   <a href="map.html">Map</a>
@@ -141,7 +138,7 @@
   <a href="contact.html">Contact</a>
 </nav>
 
-<!-- ✅ Route Controls -->
+<!-- Route Controls -->
 <div class="controls">
   <input id="from" placeholder="From location">
   <input id="to" placeholder="To location">
@@ -153,22 +150,22 @@
   <button onclick="calcRoute()">Show Route</button>
 </div>
 
-<!-- ✅ Map -->
+<!-- Map -->
 <div id="map"></div>
 
-<!-- ✅ Loading Spinner -->
+<!-- Loading Spinner -->
 <div class="spinner-overlay" id="spinner">
   <div class="spinner"></div>
 </div>
 
-<!-- ✅ Travel Details Modal -->
+<!-- Travel Details Modal -->
 <div class="modal" id="routeDetailsModal">
   <h3>🛣️ Travel Details</h3>
   <div id="routeDetailsContent" style="font-size:14px; line-height:1.6;"></div>
   <button onclick="document.getElementById('routeDetailsModal').style.display='none'">Close</button>
 </div>
 
-<!-- ✅ Bottom Ad -->
+<!-- Bottom Ad -->
 <div class="bottom-ad">
   <ins class="adsbygoogle"
        style="display:block"
@@ -181,9 +178,17 @@
   </script>
 </div>
 
-<!-- ✅ Google Maps Script -->
+<!-- Google Maps Script -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiM_R3u7K9pIm9vrg7-XVz-AR2WLeRC-k&libraries=places&callback=initMap" async defer></script>
+
 <script>
+// Fare calculation rates
+const rates = {
+  driving: { fuelCostPerKm: 8, tollEstimate: 300 },
+  train: { costPerKm: 1.2 },
+  flight: { costPerKm: 6 }
+};
+
 let map, directionsService, directionsRenderer, geoCoder;
 
 function initMap() {
@@ -206,46 +211,47 @@ function calcRoute() {
   if (!from || !to) { alert("Enter both locations."); return; }
 
   if (mode === "FLIGHT") {
-    Promise.all([
-      getCoords(from),
-      getCoords(to)
-    ]).then(([fromCoords, toCoords]) => {
-      const distance = haversine(fromCoords.lat, fromCoords.lng, toCoords.lat, toCoords.lng).toFixed(1);
-      const hours = Math.ceil(distance / 600);
-      let content = `<strong>From:</strong> ${from}<br><strong>To:</strong> ${to}<br>
-        <strong>Mode:</strong> ✈️ By Air<br><strong>Distance:</strong> ${distance} km<br>
-        <strong>Est. Time:</strong> ${hours} hr(s)<br>
-        <h4>Stops & Fares:</h4>
-        • 🛫 Depart: ${from} Airport<br>
-        • ✈️ Non-stop flight<br>
-        • 🛬 Arrive: ${to} Airport<br>
-        Estimated Fare: ₹4500 - ₹7000`;
+    Promise.all([getCoords(from), getCoords(to)]).then(([fromCoords, toCoords]) => {
+      const distance = haversine(fromCoords.lat, fromCoords.lng, toCoords.lat, toCoords.lng);
+      const fare = (distance * rates.flight.costPerKm).toFixed(0);
+      const content = `
+        <strong>From:</strong> ${from}<br>
+        <strong>To:</strong> ${to}<br>
+        <strong>Mode:</strong> ✈️ By Air<br>
+        <strong>Distance:</strong> ${distance.toFixed(1)} km<br>
+        <strong>Est. Fare:</strong> ₹${fare} (approx)<br>
+        <strong>Est. Time:</strong> ${(distance/600).toFixed(1)} hr
+      `;
       showDetails(content);
-    }).catch(() => alert("Unable to calculate air route. Check location names."));
+    }).catch(() => alert("Unable to calculate air route."));
     return;
   }
 
-  const request = {
-    origin: from, destination: to, travelMode: google.maps.TravelMode[mode]
-  };
-
+  const request = { origin: from, destination: to, travelMode: google.maps.TravelMode[mode] };
   directionsService.route(request, (result, status) => {
     if (status === 'OK') {
       directionsRenderer.setDirections(result);
       const leg = result.routes[0].legs[0];
-      const dist = leg.distance.text;
-      const dur  = leg.duration.text;
-      let content = `<strong>From:</strong> ${from}<br><strong>To:</strong> ${to}<br>
-        <strong>Mode:</strong> ${mode==="DRIVING"?"🚗 By Road":"🚆 By Train"}<br>
-        <strong>Distance:</strong> ${dist}<br><strong>Duration:</strong> ${dur}<br>
-        <h4>Stops & Fares:</h4>`;
-      if (mode === "DRIVING")
-        content += `• Fuel Stop: ₹800<br>• Toll: ₹300<br>• Destination: ₹0`;
-      else
-        content += `• Start Station: ₹0<br>• Midway: ₹350<br>• End Station: ₹450<br>Total: ₹800`;
+      const distanceKm = parseFloat(leg.distance.text.replace(/[^\d.]/g, ''));
+      let fare;
+
+      if (mode === "DRIVING") {
+        fare = (distanceKm * rates.driving.fuelCostPerKm + rates.driving.tollEstimate).toFixed(0);
+      } else if (mode === "TRANSIT") {
+        fare = (distanceKm * rates.train.costPerKm).toFixed(0);
+      }
+
+      const content = `
+        <strong>From:</strong> ${from}<br>
+        <strong>To:</strong> ${to}<br>
+        <strong>Mode:</strong> ${mode==="DRIVING" ? "🚗 By Road" : "🚆 By Train"}<br>
+        <strong>Distance:</strong> ${distanceKm.toFixed(1)} km<br>
+        <strong>Duration:</strong> ${leg.duration.text}<br>
+        <strong>Est. Fare:</strong> ₹${fare}
+      `;
       showDetails(content);
     } else {
-      alert("Route not found: "+status);
+      alert("Route not found: " + status);
     }
   });
 }
@@ -267,13 +273,12 @@ function haversine(lat1, lon1, lat2, lon2) {
   const R = 6371;
   const dLat = deg2rad(lat2-lat1);
   const dLon = deg2rad(lon2-lon1);
-  const a =
-    Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-    Math.sin(dLon/2) * Math.sin(dLon/2);
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-  return R * c;
+  const a = Math.sin(dLat/2)**2 +
+            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+            Math.sin(dLon/2)**2;
+  return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
 }
+
 function deg2rad(deg) { return deg * (Math.PI/180); }
 
 function showDetails(content) {
