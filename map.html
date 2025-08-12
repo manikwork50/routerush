@@ -8,68 +8,122 @@
   <meta name="author" content="Manik Rao">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
-  <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
-  (function () {
-      var script = document.createElement("script");
-      script.async = 1;
-      script.src = 'https://mntzco.com/NDM0MTM5.js?t=434139';
-      document.head.appendChild(script);
-  })();
-</script>
-  <meta charset="UTF-8">
- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632"
-     crossorigin="anonymous"></script>
-  <title>WanderMap — Routes & Fares</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { margin:0; font-family:'Segoe UI', sans-serif; background:#f5f5f5; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+    }
     nav {
-      background: #fff; padding: 14px; text-align: center;
-      position: fixed; top: 0; width: 100%; z-index: 10;
+      background: #fff;
+      padding: 14px;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     nav a {
-      color: #333; margin: 0 18px; text-decoration: none; font-weight: bold;
+      color: #333;
+      margin: 0 18px;
+      text-decoration: none;
+      font-weight: bold;
     }
     nav a:hover { color: #FF5E00; }
 
     .controls {
-      position: fixed; top: 58px; left: 0; width: 100%; text-align: center;
-      background: #fff; padding: 10px 0; z-index: 15;
+      position: fixed;
+      top: 58px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      background: #fff;
+      padding: 10px 0;
+      z-index: 15;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     input, select, button {
-      padding: 8px; margin: 6px; border: 1px solid #ccc; border-radius: 5px;
+      padding: 8px;
+      margin: 6px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
       font-size: 14px;
     }
-    button { background: #007B8F; color: #fff; border: none; }
-    button:hover { background: #005f6e; cursor:pointer; }
+    button {
+      background: #007B8F;
+      color: #fff;
+      border: none;
+    }
+    button:hover {
+      background: #005f6e;
+      cursor: pointer;
+    }
 
-    #map { height: calc(100vh - 130px); margin-top: 108px; }
+    /* Map full height adjustment */
+    #map {
+      position: absolute;
+      top: 118px; /* height of navbar + controls */
+      bottom: 60px; /* space for bottom ad */
+      left: 0;
+      right: 0;
+    }
 
+    /* Loading Spinner */
     .spinner-overlay {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(255,255,255,0.8); z-index: 9999; display: flex;
-      align-items: center; justify-content: center;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255,255,255,0.8);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .spinner {
       border: 6px solid #f3f3f3;
       border-top: 6px solid #FF5E00;
-      border-radius: 50%; width: 60px; height: 60px;
+      border-radius: 50%;
+      width: 60px; height: 60px;
       animation: spin 1s linear infinite;
     }
     @keyframes spin { 0% { transform:rotate(0deg);} 100% { transform:rotate(360deg);} }
 
+    /* Modal */
     .modal {
-      display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
-      background:#fff; padding:20px; border-radius:8px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.2); z-index:9999;
-      max-width:90%; width:400px;
+      display:none;
+      position:fixed;
+      top:50%; left:50%;
+      transform:translate(-50%,-50%);
+      background:#fff;
+      padding:20px;
+      border-radius:8px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.2);
+      z-index:9999;
+      max-width:90%;
+      width:400px;
     }
     .modal h3 { margin-top:0; }
     .modal button {
-      margin-top:12px; background:#FF5E00; color:#fff; padding:8px 14px;
-      border:none; border-radius:5px; cursor:pointer;
+      margin-top:12px;
+      background:#FF5E00;
+      color:#fff;
+      padding:8px 14px;
+      border:none;
+      border-radius:5px;
+      cursor:pointer;
+    }
+
+    /* Bottom Ad */
+    .bottom-ad {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      text-align: center;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+      z-index: 20;
     }
   </style>
 </head>
@@ -97,16 +151,6 @@
     <option value="FLIGHT">By Air</option>
   </select>
   <button onclick="calcRoute()">Show Route</button>
-
-  <div style="margin-top:10px;">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-8124807245840632"
-         data-ad-slot="1234567890"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
 </div>
 
 <!-- ✅ Map -->
@@ -122,6 +166,19 @@
   <h3>🛣️ Travel Details</h3>
   <div id="routeDetailsContent" style="font-size:14px; line-height:1.6;"></div>
   <button onclick="document.getElementById('routeDetailsModal').style.display='none'">Close</button>
+</div>
+
+<!-- ✅ Bottom Ad -->
+<div class="bottom-ad">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-8124807245840632"
+       data-ad-slot="1234567890"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
 
 <!-- ✅ Google Maps Script -->
@@ -225,6 +282,8 @@ function showDetails(content) {
 }
 </script>
 
+<!-- Google AdSense Script -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632" crossorigin="anonymous"></script>
+
 </body>
 </html>
