@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>WanderMap — Explore India</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Discover India’s states & union territories: top places, famous for, how to reach, and distances." />
+  <meta property="og:title" content="WanderMap — Explore India">
+  <meta property="og:description" content="Top places, history, food & crafts, and how to reach.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="/static/styles.css" />
+
+  <!-- Preload font (system default stack is fast; this is optional) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/">WanderMap</a>
+      <a href="/states.html">States</a>
+      <a href="/union-territories.html">Union Territories</a>
+      <a href="/about.html">About</a>
+      <button id="theme-toggle" class="btn ghost" aria-label="Toggle theme">🌓</button>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>Explore India, one state at a time</h1>
+      <p class="sub">Find places with history, what it’s famous for, food/crafts, and ways to reach by train, bus, air.</p>
+      <div id="stats" class="stats">
+        <div class="stat">
+          <div class="stat-num" id="stat-total">0</div>
+          <div class="stat-label">Total visits</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" id="stat-today">0</div>
+          <div class="stat-label">Today</div>
+        </div>
+      </div>
+      <div id="chips" class="chips"></div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div id="root"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>© <span id="year"></span> WanderMap</span>
+      <span>Made for travelers • Fast, simple, beautiful</span>
+    </div>
+  </footer>
+
+  <!-- React + Babel via CDN for quick drop-in -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <!-- Your React app -->
+  <script type="text/babel" src="/static/app.jsx"></script>
+
+  <!-- Small helpers (no build step) -->
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle
+    const themeBtn = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('wm-theme');
+    if (savedTheme) document.documentElement.dataset.theme = savedTheme;
+    themeBtn.addEventListener('click', () => {
+      const next = (document.documentElement.dataset.theme === 'light') ? 'dark' : 'light';
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem('wm-theme', next);
+    });
+
+    // Visit counter (increment on load)
+    fetch('/api/visits/increment', { method: 'POST' })
+      .then(r => r.json())
+      .then(({ total, today }) => {
+        animateCount('stat-total', total);
+        animateCount('stat-today', today);
+      })
+      .catch(console.error);
+
+    function animateCount(id, finalValue) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const start = 0;
+      const duration = 700;
+      const t0 = performance.now();
+      function step(t) {
+        const p = Math.min((t - t0) / duration, 1);
+        const val = Math.floor(start + (finalValue - start) * p);
+        el.textContent = val.toLocaleString();
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    // Featured chips
+    const chipData = ['Backwaters', 'Forts', 'Beaches', 'Himalayas', 'Wildlife', 'Tea Estates', 'Heritage'];
+    const chipWrap = document.getElementById('chips');
+    chipData.forEach(text => {
+      const b = document.createElement('button');
+      b.className = 'chip';
+      b.textContent = text;
+      b.addEventListener('click', () => window.dispatchEvent(new CustomEvent('wm-chip', { detail: text })));
+      chipWrap.appendChild(b);
+    });
+  </script>
+</body>
+</html>
