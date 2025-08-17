@@ -1,38 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Interactive Travel Route Map — WanderMap India</title>
-  <meta name="description" content="Plan your next adventure with our interactive travel route map covering India's most popular destinations, trekking routes, and road trips.">
-  <meta name="keywords" content="India travel map, road trip planner India, route maps India, travel itineraries India, best travel routes India, driving directions India, route calculator India">
-  <meta name="author" content="Manik Rao">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="index, follow">
-
+  <meta name="description" content="Plan your next adventure with our interactive travel route map covering India's most popular destinations, trekking routes, and road trips." />
+  <meta name="keywords" content="India travel map, road trip planner India, route maps India, travel itineraries India, best travel routes India, driving directions India, route calculator India" />
+  <meta name="author" content="Manik Rao" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
   <style>
+    /* Base reset and typography */
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #f5f5f5;
+      color: #222;
     }
     nav {
       background: #fff;
-      padding: 14px;
+      padding: 14px 10px;
       text-align: center;
       position: fixed;
       top: 0;
+      left: 0; right: 0;
       width: 100%;
-      z-index: 10;
+      z-index: 20;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      font-weight: 600;
+      user-select: none;
     }
     nav a {
       color: #333;
-      margin: 0 18px;
+      margin: 0 14px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s;
     }
-    nav a:hover { color: #FF5E00; }
+    nav a:hover, nav a:focus {
+      color: #FF5E00;
+      outline: none;
+    }
 
+    /* Controls */
     .controls {
       position: fixed;
       top: 58px;
@@ -40,78 +50,156 @@
       width: 100%;
       text-align: center;
       background: #fff;
-      padding: 10px 0;
-      z-index: 15;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 12px 10px;
+      z-index: 21;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      user-select: none;
     }
     input, select, button {
-      padding: 8px;
-      margin: 6px;
+      padding: 10px 14px;
       border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 14px;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      min-width: 180px;
+      flex-grow: 1;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: #FF5E00;
+      box-shadow: 0 0 6px #FF5E00aa;
     }
     button {
-      background: #007B8F;
-      color: #fff;
+      min-width: 140px;
+      background: #FF5E00;
+      color: white;
       border: none;
-    }
-    button:hover {
-      background: #005f6e;
+      font-weight: 700;
       cursor: pointer;
+      user-select: none;
+      flex-grow: 0;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+    }
+    button:disabled {
+      background: #c8c8c8;
+      cursor: not-allowed;
+    }
+    button:hover:not(:disabled), button:focus:not(:disabled) {
+      background: #d94a00;
+      outline: none;
     }
 
+    /* Map container */
     #map {
-      position: absolute;
-      top: 118px;
+      position: fixed;
+      top: 110px;
       bottom: 60px;
       left: 0;
       right: 0;
+      border-radius: 0 0 0 0;
+      box-shadow: inset 0 0 30px #0002;
+      transition: filter 0.3s ease;
+      touch-action: pinch-zoom;
+    }
+    #map:hover, #map:focus {
+      filter: drop-shadow(0 0 15px #FF5E00dd);
+      outline: none;
     }
 
+    /* Spinner overlay */
     .spinner-overlay {
       position: fixed;
       top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(255,255,255,0.8);
-      z-index: 9999;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.9);
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 9999;
+      font-size: 1.25rem;
+      color: #FF5E00;
+      user-select: none;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .spinner-overlay.active {
+      opacity: 1;
+      pointer-events: all;
     }
     .spinner {
       border: 6px solid #f3f3f3;
       border-top: 6px solid #FF5E00;
       border-radius: 50%;
-      width: 60px; height: 60px;
+      width: 60px;
+      height: 60px;
       animation: spin 1s linear infinite;
+      margin-right: 15px;
     }
-    @keyframes spin { 0% { transform:rotate(0deg);} 100% { transform:rotate(360deg);} }
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
 
+    /* Modal */
     .modal {
-      display:none;
-      position:fixed;
-      top:50%; left:50%;
-      transform:translate(-50%,-50%);
-      background:#fff;
-      padding:20px;
-      border-radius:8px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.2);
-      z-index:9999;
-      max-width:90%;
-      width:400px;
+      display: none;
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 24px 28px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      z-index: 10000;
+      max-width: 90%;
+      width: 400px;
+      color: #222;
+      font-size: 1rem;
+      line-height: 1.5;
+      user-select: text;
     }
-    .modal h3 { margin-top:0; }
+    .modal.show {
+      display: block;
+      animation: fadeIn 0.3s ease forwards;
+    }
+    .modal h3 {
+      margin-top: 0;
+      color: #FF5E00;
+      font-weight: 700;
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      user-select: none;
+    }
     .modal button {
-      margin-top:12px;
-      background:#FF5E00;
-      color:#fff;
-      padding:8px 14px;
-      border:none;
-      border-radius:5px;
-      cursor:pointer;
+      margin-top: 20px;
+      background: #FF5E00;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      user-select: none;
+    }
+    .modal button:hover, .modal button:focus {
+      background: #cc4a00;
+      outline: none;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -45%) scale(0.95); }
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
     }
 
+    /* Ad container */
     .bottom-ad {
       position: fixed;
       bottom: 0;
@@ -119,176 +207,267 @@
       width: 100%;
       background: #fff;
       text-align: center;
-      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
-      z-index: 20;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+      padding: 8px 0;
+      font-size: 13px;
+      color: #666;
+      user-select: none;
+      z-index: 999;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .controls {
+        flex-direction: column;
+        gap: 12px;
+        padding: 14px;
+      }
+      input, select, button {
+        min-width: 100% !important;
+      }
+      #map {
+        top: 160px;
+        bottom: 100px;
+      }
+      .modal {
+        width: 90%;
+        padding: 18px;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" tabindex="1">Home</a>
+    <a href="map.html" tabindex="2" aria-current="page">Map</a>
+    <a href="blog.html" tabindex="3">Blog</a>
+    <a href="bookings.html" tabindex="4">Bookings</a>
+    <a href="submit-story.html" tabindex="5">Submit Story</a>
+    <a href="stories.html" tabindex="6">Stories</a>
+    <a href="about.html" tabindex="7">About</a>
+    <a href="contact.html" tabindex="8">Contact</a>
+  </nav>
 
-<!-- Navigation -->
-<nav>
-  <a href="index.html">Home</a>
-  <a href="map.html">Map</a>
-  <a href="blog.html">Blog</a>
-  <a href="bookings.html">Bookings</a>
-  <a href="submit-story.html">Submit Story</a>
-  <a href="stories.html">Stories</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-</nav>
+  <!-- Route Controls -->
+  <div class="controls" role="region" aria-label="Route search controls">
+    <input id="from" placeholder="From location" aria-label="From location" autocomplete="off" type="search" />
+    <input id="to" placeholder="To location" aria-label="To location" autocomplete="off" type="search" />
+    <select id="mode" aria-label="Travel mode">
+      <option value="DRIVING">By Road</option>
+      <option value="TRANSIT">By Train</option>
+      <option value="FLIGHT">By Air</option>
+    </select>
+    <button id="routeBtn" onclick="calcRoute()" disabled>Show Route</button>
+  </div>
 
-<!-- Route Controls -->
-<div class="controls">
-  <input id="from" placeholder="From location">
-  <input id="to" placeholder="To location">
-  <select id="mode">
-    <option value="DRIVING">By Road</option>
-    <option value="TRANSIT">By Train</option>
-    <option value="FLIGHT">By Air</option>
-  </select>
-  <button onclick="calcRoute()">Show Route</button>
-</div>
+  <!-- Map -->
+  <div id="map" tabindex="0" aria-label="Interactive travel map"></div>
 
-<!-- Map -->
-<div id="map"></div>
+  <!-- Loading Spinner -->
+  <div class="spinner-overlay" id="spinner" role="alert" aria-live="assertive" aria-busy="true" hidden>
+    <div class="spinner" aria-hidden="true"></div>
+    Calculating route...
+  </div>
 
-<!-- Loading Spinner -->
-<div class="spinner-overlay" id="spinner">
-  <div class="spinner"></div>
-</div>
+  <!-- Travel Details Modal -->
+  <div class="modal" id="routeDetailsModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+    <h3 id="modalTitle">🛣️ Travel Details</h3>
+    <div id="routeDetailsContent"></div>
+    <button onclick="closeModal()" aria-label="Close travel details">Close</button>
+  </div>
 
-<!-- Travel Details Modal -->
-<div class="modal" id="routeDetailsModal">
-  <h3>🛣️ Travel Details</h3>
-  <div id="routeDetailsContent" style="font-size:14px; line-height:1.6;"></div>
-  <button onclick="document.getElementById('routeDetailsModal').style.display='none'">Close</button>
-</div>
+  <!-- Bottom Ad -->
+  <div class="bottom-ad" aria-label="Advertisement">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
 
-<!-- Bottom Ad -->
-<div class="bottom-ad">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-8124807245840632"
-       data-ad-slot="1234567890"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
+  <!-- Google Maps Script -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiM_R3u7K9pIm9vrg7-XVz-AR2WLeRC-k&libraries=places&callback=initMap" async defer></script>
+
   <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-</div>
+    // Fare calculation rates
+    const rates = {
+      driving: { fuelCostPerKm: 8, tollEstimate: 300 },
+      train: { costPerKm: 1.2 },
+      flight: { costPerKm: 6 }
+    };
 
-<!-- Google Maps Script -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiM_R3u7K9pIm9vrg7-XVz-AR2WLeRC-k&libraries=places&callback=initMap" async defer></script>
+    let map, directionsService, directionsRenderer, geoCoder;
 
-<script>
-// Fare calculation rates
-const rates = {
-  driving: { fuelCostPerKm: 8, tollEstimate: 300 },
-  train: { costPerKm: 1.2 },
-  flight: { costPerKm: 6 }
-};
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 22.9734, lng: 78.6569 },
+        zoom: 5,
+        streetViewControl: false,
+        mapTypeControl: false,
+        fullscreenControl: true,
+        zoomControl: true
+      });
+      directionsService = new google.maps.DirectionsService();
+      directionsRenderer = new google.maps.DirectionsRenderer({ map });
 
-let map, directionsService, directionsRenderer, geoCoder;
+      geoCoder = new google.maps.Geocoder();
+      new google.maps.places.Autocomplete(document.getElementById("from"));
+      new google.maps.places.Autocomplete(document.getElementById("to"));
 
-function initMap() {
-  document.getElementById("spinner").style.display = "none";
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: {lat:22.9734, lng:78.6569},
-    zoom:5
-  });
-  directionsService = new google.maps.DirectionsService();
-  directionsRenderer = new google.maps.DirectionsRenderer({ map });
-  new google.maps.places.Autocomplete(document.getElementById("from"));
-  new google.maps.places.Autocomplete(document.getElementById("to"));
-  geoCoder = new google.maps.Geocoder();
-}
+      // Input validation toggle
+      const fromInput = document.getElementById("from");
+      const toInput = document.getElementById("to");
+      const routeBtn = document.getElementById("routeBtn");
+      [fromInput, toInput].forEach(input => {
+        input.addEventListener("input", () => {
+          routeBtn.disabled = !(fromInput.value.trim() && toInput.value.trim());
+        });
+      });
+    }
 
-function calcRoute() {
-  const from = document.getElementById("from").value;
-  const to = document.getElementById("to").value;
-  const mode = document.getElementById("mode").value;
-  if (!from || !to) { alert("Enter both locations."); return; }
+    function showSpinner(show) {
+      const spinner = document.getElementById("spinner");
+      if (show) {
+        spinner.removeAttribute("hidden");
+        spinner.classList.add("active");
+      } else {
+        spinner.setAttribute("hidden", "");
+        spinner.classList.remove("active");
+      }
+    }
 
-  if (mode === "FLIGHT") {
-    Promise.all([getCoords(from), getCoords(to)]).then(([fromCoords, toCoords]) => {
-      const distance = haversine(fromCoords.lat, fromCoords.lng, toCoords.lat, toCoords.lng);
-      const fare = (distance * rates.flight.costPerKm).toFixed(0);
-      const content = `
-        <strong>From:</strong> ${from}<br>
-        <strong>To:</strong> ${to}<br>
-        <strong>Mode:</strong> ✈️ By Air<br>
-        <strong>Distance:</strong> ${distance.toFixed(1)} km<br>
-        <strong>Est. Fare:</strong> ₹${fare} (approx)<br>
-        <strong>Est. Time:</strong> ${(distance/600).toFixed(1)} hr
-      `;
-      showDetails(content);
-    }).catch(() => alert("Unable to calculate air route."));
-    return;
-  }
+    function showDetails(content) {
+      const modal = document.getElementById("routeDetailsModal");
+      document.getElementById("routeDetailsContent").innerHTML = content;
+      modal.classList.add("show");
+      modal.focus();
+    }
 
-  const request = { origin: from, destination: to, travelMode: google.maps.TravelMode[mode] };
-  directionsService.route(request, (result, status) => {
-    if (status === 'OK') {
-      directionsRenderer.setDirections(result);
-      const leg = result.routes[0].legs[0];
-      const distanceKm = parseFloat(leg.distance.text.replace(/[^\d.]/g, ''));
-      let fare;
+    function closeModal() {
+      const modal = document.getElementById("routeDetailsModal");
+      modal.classList.remove("show");
+      // Return focus to Show Route button
+      document.getElementById("routeBtn").focus();
+    }
 
-      if (mode === "DRIVING") {
-        fare = (distanceKm * rates.driving.fuelCostPerKm + rates.driving.tollEstimate).toFixed(0);
-      } else if (mode === "TRANSIT") {
-        fare = (distanceKm * rates.train.costPerKm).toFixed(0);
+    async function getCoords(address) {
+      return new Promise((resolve, reject) => {
+        geoCoder.geocode({ address }, (results, status) => {
+          if (status === 'OK' && results[0]) {
+            const loc = results.geometry.location;
+            resolve({ lat: loc.lat(), lng: loc.lng() });
+          } else {
+            reject(new Error("Address not found: " + address));
+          }
+        });
+      });
+    }
+
+    function deg2rad(deg) {
+      return deg * (Math.PI / 180);
+    }
+
+    function haversine(lat1, lon1, lat2, lon2) {
+      const R = 6371;
+      const dLat = deg2rad(lat2 - lat1);
+      const dLon = deg2rad(lon2 - lon1);
+      const a =
+        Math.sin(dLat / 2) ** 2 +
+        Math.cos(deg2rad(lat1)) *
+          Math.cos(deg2rad(lat2)) *
+          Math.sin(dLon / 2) ** 2;
+
+      return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
+    }
+
+    async function calcRoute() {
+      const from = document.getElementById("from").value.trim();
+      const to = document.getElementById("to").value.trim();
+      const mode = document.getElementById("mode").value;
+
+      if (!from || !to) {
+        alert("Please enter both From and To locations.");
+        return;
       }
 
-      const content = `
-        <strong>From:</strong> ${from}<br>
-        <strong>To:</strong> ${to}<br>
-        <strong>Mode:</strong> ${mode==="DRIVING" ? "🚗 By Road" : "🚆 By Train"}<br>
-        <strong>Distance:</strong> ${distanceKm.toFixed(1)} km<br>
-        <strong>Duration:</strong> ${leg.duration.text}<br>
-        <strong>Est. Fare:</strong> ₹${fare}
-      `;
-      showDetails(content);
-    } else {
-      alert("Route not found: " + status);
-    }
-  });
-}
+      showSpinner(true);
 
-function getCoords(address) {
-  return new Promise((resolve, reject) => {
-    geoCoder.geocode({ address }, (results, status) => {
-      if (status === 'OK') {
-        const location = results[0].geometry.location;
-        resolve({ lat: location.lat(), lng: location.lng() });
-      } else {
-        reject();
+      try {
+        if (mode === "FLIGHT") {
+          // For flight, use haversine formula
+          const [fromCoords, toCoords] = await Promise.all([getCoords(from), getCoords(to)]);
+          const distance = haversine(fromCoords.lat, fromCoords.lng, toCoords.lat, toCoords.lng);
+          const fare = (distance * rates.flight.costPerKm).toFixed(0);
+          const estTime = (distance / 600).toFixed(1);
+
+          directionsRenderer.set('directions', null);
+
+          showDetails(`
+            <strong>From:</strong> ${from}<br>
+            <strong>To:</strong> ${to}<br>
+            <strong>Mode:</strong> ✈️ By Air<br>
+            <strong>Distance:</strong> ${distance.toFixed(1)} km<br>
+            <strong>Estimated Fare:</strong> ₹${fare} (approx)<br>
+            <strong>Estimated Time:</strong> ${estTime} hrs
+          `);
+        } else {
+          // Road or Train routes with Directions Service
+          const request = {
+            origin: from,
+            destination: to,
+            travelMode: google.maps.TravelMode[mode],
+            provideRouteAlternatives: false
+          };
+
+          directionsService.route(request, (result, status) => {
+            showSpinner(false);
+            if (status === 'OK') {
+              directionsRenderer.setDirections(result);
+              const leg = result.routes[0].legs;
+              const distanceKm = parseFloat(leg.distance.text.replace(/[^\d.]/g, ''));
+
+              let fare;
+              if (mode === "DRIVING") {
+                fare = (distanceKm * rates.driving.fuelCostPerKm + rates.driving.tollEstimate).toFixed(0);
+              } else if (mode === "TRANSIT") {
+                fare = (distanceKm * rates.train.costPerKm).toFixed(0);
+              }
+
+              showDetails(`
+                <strong>From:</strong> ${from}<br>
+                <strong>To:</strong> ${to}<br>
+                <strong>Mode:</strong> ${mode === "DRIVING" ? "🚗 By Road" : "🚆 By Train"}<br>
+                <strong>Distance:</strong> ${distanceKm.toFixed(1)} km<br>
+                <strong>Duration:</strong> ${leg.duration.text}<br>
+                <strong>Estimated Fare:</strong> ₹${fare}
+              `);
+            } else {
+              alert('Unable to find a route: ' + status);
+              directionsRenderer.set('directions', null); // clear previous route
+            }
+          });
+          return; // We hide spinner inside callback
+        }
+      } catch (e) {
+        showSpinner(false);
+        alert(e.message || "An error occurred while calculating the route.");
+      } finally {
+        showSpinner(false);
+      }
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+      const modal = document.getElementById('routeDetailsModal');
+      if (e.key === "Escape" && modal.classList.contains("show")) {
+        closeModal();
       }
     });
-  });
-}
+  </script>
 
-function haversine(lat1, lon1, lat2, lon2) {
-  const R = 6371;
-  const dLat = deg2rad(lat2-lat1);
-  const dLon = deg2rad(lon2-lon1);
-  const a = Math.sin(dLat/2)**2 +
-            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-            Math.sin(dLon/2)**2;
-  return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
-}
-
-function deg2rad(deg) { return deg * (Math.PI/180); }
-
-function showDetails(content) {
-  document.getElementById("routeDetailsContent").innerHTML = content;
-  document.getElementById("routeDetailsModal").style.display = "block";
-}
-</script>
-
-<!-- Google AdSense Script -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632" crossorigin="anonymous"></script>
-
+  <!-- Google AdSense Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632" crossorigin="anonymous"></script>
 </body>
 </html>
