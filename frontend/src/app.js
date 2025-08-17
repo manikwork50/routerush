@@ -3,6 +3,19 @@ import axios from 'axios';
 import RouteControls from './components/RouteControls';
 import PopularRoutes from './components/PopularRoutes';
 import DetailsModal from './components/DetailsModal';
+import React from "react";
+import MapPage from "./components/MapPage";
+
+function App() {
+  return (
+    <div className="App">
+      <MapPage />
+    </div>
+  );
+}
+
+export default App;
+
 // import MapView from './components/MapView'; // Uncomment if using google-maps-react
 
 function App() {
