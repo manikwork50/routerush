@@ -4,11 +4,12 @@
   <meta charset="UTF-8" />
   <title>Interactive Travel Route Map — WanderMap India</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
   <style>
     body {
-      margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #f5f5f5;
+      margin: 0;
       color: #222;
     }
     nav {
@@ -19,7 +20,7 @@
       top: 0; left: 0; right: 0;
       width: 100%;
       z-index: 20;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.07);
       font-weight: 600;
       user-select: none;
     }
@@ -27,14 +28,10 @@
       color: #333;
       margin: 0 14px;
       text-decoration: none;
-      font-weight: 600;
       font-size: 1rem;
       transition: color 0.3s;
     }
-    nav a:hover, nav a:focus {
-      color: #FF5E00;
-      outline: none;
-    }
+    nav a:hover, nav a:focus { color: #FF5E00; outline: none; }
     .controls {
       position: fixed;
       top: 58px;
@@ -43,18 +40,11 @@
       background: #fff;
       padding: 12px 10px 4px;
       z-index: 21;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.07);
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 10px;
-      user-select: none;
-    }
-    label {
-      font-weight: bold;
-      display: block;
-      font-size: 0.9rem;
-      margin-bottom: 4px;
       user-select: none;
     }
     .input-group {
@@ -64,180 +54,126 @@
       flex-direction: column;
       align-items: flex-start;
     }
+    label {
+      font-weight: bold;
+      font-size: 0.9rem;
+      margin-bottom: 3px;
+      user-select: none;
+    }
     input, select, button {
       padding: 10px 14px;
       border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 1rem;
-      transition: border-color 0.3s ease;
       width: 100%;
       box-sizing: border-box;
     }
     input:focus, select:focus {
-      outline: none;
       border-color: #FF5E00;
       box-shadow: 0 0 6px #FF5E00aa;
+      outline: none;
     }
     button {
-      min-width: 140px;
-      background: #FF5E00;
+      background: #ff6f31;
       color: white;
       border: none;
       font-weight: 700;
-      cursor: pointer;
-      user-select: none;
-      flex-grow: 0;
+      min-width: 130px;
       border-radius: 6px;
-      transition: background-color 0.3s;
+      cursor: pointer;
+      transition: background 0.2s;
+      user-select: none;
+      margin-top: 2px;
     }
     button:disabled {
       background: #c8c8c8;
       cursor: not-allowed;
     }
     button:hover:not(:disabled), button:focus:not(:disabled) {
-      background: #d94a00;
+      background: #cc4a00;
       outline: none;
     }
     #map {
       position: fixed;
       top: 140px;
-      bottom: 60px;
+      bottom: 0;
       left: 0; right: 0;
       border-radius: 0;
-      box-shadow: inset 0 0 30px #0002;
+      box-shadow: 0 2px 24px #22856622;
       touch-action: pinch-zoom;
+      background: #eaeaea;
       outline: none;
-      background: #eee;
-    }
-    .spinner-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(255, 255, 255, 0.9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      font-size: 1.25rem;
-      color: #FF5E00;
-      user-select: none;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .spinner-overlay.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-    .spinner {
-      border: 6px solid #f3f3f3;
-      border-top: 6px solid #FF5E00;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 1s linear infinite;
-      margin-right: 15px;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg);}
-      100% { transform: rotate(360deg);}
+      min-height: 430px;
     }
     .modal {
       display: none;
       position: fixed;
-      top: 50%; left: 50%;
+      top: 52%;
+      left: 50%;
       transform: translate(-50%, -50%);
       background: #fff;
-      padding: 24px 28px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      padding: 22px 30px;
+      border-radius: 13px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.23);
       z-index: 10000;
-      max-width: 90%;
-      width: 400px;
+      min-width: 270px;
+      max-width: 95vw;
       color: #222;
       font-size: 1rem;
       line-height: 1.5;
       user-select: text;
     }
-    .modal.show {
-      display: block;
-      animation: fadeIn 0.3s ease forwards;
-    }
+    .modal.show { display: block; animation: fadeIn 0.23s ease; }
     .modal h3 {
-      margin-top: 0;
-      color: #FF5E00;
-      font-weight: 700;
-      font-size: 1.6rem;
-      margin-bottom: 12px;
-      user-select: none;
+      margin-top: 0; color: #FF5E00;
+      font-weight: 700; font-size: 1.5rem;
+      margin-bottom: 13px;
     }
     .modal button {
-      margin-top: 20px;
+      margin-top: 18px;
       background: #FF5E00;
       color: white;
-      padding: 10px 20px;
-      border: none;
+      font-weight: 700;
+      font-size: 1.05rem;
       border-radius: 8px;
       width: 100%;
-      font-weight: 700;
       cursor: pointer;
-      transition: background-color 0.3s;
-      user-select: none;
+      padding: 10px 20px;
     }
-    .modal button:hover, .modal button:focus {
-      background: #cc4a00;
-      outline: none;
-    }
+    .modal button:hover { background: #d94a00; outline: none; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     .toast {
       position: fixed;
-      bottom: 80px;
+      bottom: 24px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(0,0,0,0.85);
+      background: #222;
       color: white;
-      padding: 12px 20px;
-      border-radius: 30px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+      padding: 10px 24px;
+      border-radius: 24px;
       z-index: 10500;
       font-size: 1rem;
-      user-select: none;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.4s ease;
+      transition: opacity 0.4s;
     }
-    .toast.show {
-      opacity: 1;
-      pointer-events: all;
-    }
+    .toast.show { opacity: 1; pointer-events: all; }
     @media (max-width: 700px) {
-      .controls {
-        flex-direction: column;
-        gap: 12px;
-        padding: 14px;
-      }
-      .input-group {
-        width: 100% !important;
-      }
-      #map {
-        top: 180px;
-        bottom: 100px;
-      }
-      .modal {
-        width: 90%;
-        padding: 18px;
-      }
+      .controls { flex-direction: column; gap: 10px; padding: 14px; }
+      .input-group { width: 100%!important; }
+      #map { top: 182px; min-height: 270px; }
+      .modal { min-width: 120px; padding: 8px 7vw; }
     }
   </style>
 </head>
 <body>
   <nav>
-    <a href="index.html" tabindex="1">Home</a>
-    <a href="map.html" tabindex="2" aria-current="page">Map</a>
-    <a href="blog.html" tabindex="3">Blog</a>
-    <a href="bookings.html" tabindex="4">Bookings</a>
-    <a href="submit-story.html" tabindex="5">Submit Story</a>
-    <a href="stories.html" tabindex="6">Stories</a>
-    <a href="about.html" tabindex="7">About</a>
-    <a href="contact.html" tabindex="8">Contact</a>
+    <a href="index.html">Home</a>
+    <a href="map.html" aria-current="page">Map</a>
+    <a href="blog.html">Blog</a>
+    <a href="bookings.html">Bookings</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
   </nav>
   <div class="controls" role="region" aria-label="Route search controls">
     <div class="input-group">
@@ -257,40 +193,35 @@
         <option value="FLIGHT">Plane</option>
       </select>
     </div>
-    <button id="routeBtn" onclick="calcRoute()" disabled aria-disabled="true" aria-label="Show route">Show Route</button>
+    <button id="routeBtn" onclick="calcRoute()" disabled aria-label="Show route">Show Route</button>
     <button id="geoBtn" onclick="geoLocate()" style="background:#25D366;" aria-label="Use my current location as From">Use My Location</button>
   </div>
   <div id="map" tabindex="0" aria-label="Interactive travel map"></div>
-  <div class="spinner-overlay" id="spinner" role="alert" aria-live="assertive" aria-busy="true" hidden>
-    <div class="spinner" aria-hidden="true"></div>
-    Calculating route...
-  </div>
   <div class="modal" id="routeDetailsModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
     <h3 id="modalTitle">🛣️ Travel Details</h3>
     <div id="routeDetailsContent"></div>
     <button onclick="closeModal()" aria-label="Close travel details">Close</button>
   </div>
   <div class="toast" id="toast" role="alert" aria-live="polite"></div>
-  <!-- Google Maps Script -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiM_R3u7K9pIm9vrg7-XVz-AR2WLeRC-k&libraries=places&callback=initMap" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7NzB6il5P8g1IkkiA8rfmi_f4tPnVr84&libraries=places&callback=initMap" async defer></script>
   <script>
-    // Per km charges: driving ~₹13/km including fuel and toll, walking ₹0, train sleeper ~₹0.9/km (varies), flight ~₹7/km (averaged)
+    // Accurate by-India rates (2025)
     const rates = {
-      driving: { perKm: 13 },   // Taxicab ~₹13/km
+      driving: { perKm: 13 },
       walking: { perKm: 0 },
-      train: { perKm: 1.0 },    // Sleeper/3AC ~₹1/km
-      flight: { perKm: 7 }      // Economy Air India/similar
+      train: { perKm: 1.0 },
+      flight: { perKm: 7 }
     };
     let map, directionsService, directionsRenderer, geoCoder;
-    function showToast(message, duration = 4000) {
+
+    function showToast(message, duration = 4200) {
       const toast = document.getElementById('toast');
-      toast.textContent = message;
-      toast.classList.add('show');
+      toast.textContent = message, toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), duration);
     }
     function initMap() {
       map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 22.9734, lng: 78.6569 }, // Center India
+        center: { lat: 22.9734, lng: 78.6569 },
         zoom: 5,
         streetViewControl: false,
         mapTypeControl: false,
@@ -302,50 +233,35 @@
       geoCoder = new google.maps.Geocoder();
       new google.maps.places.Autocomplete(document.getElementById("from"));
       new google.maps.places.Autocomplete(document.getElementById("to"));
-      const fromInput = document.getElementById("from");
-      const toInput = document.getElementById("to");
-      const routeBtn = document.getElementById("routeBtn");
-      [fromInput, toInput].forEach(input => {
+      const fromInput = document.getElementById("from"),
+            toInput = document.getElementById("to"),
+            routeBtn = document.getElementById("routeBtn");
+      [fromInput, toInput].forEach(input =>
         input.addEventListener("input", () => {
           const valid = fromInput.value.trim() !== "" && toInput.value.trim() !== "";
           routeBtn.disabled = !valid;
-          routeBtn.setAttribute("aria-disabled", !valid);
-        });
-      });
-      // Restore last search
+        })
+      );
       const lastRoute = localStorage.getItem('lastRoute');
       if(lastRoute) {
         try {
-          const routeData = JSON.parse(lastRoute);
-          if(routeData.from) fromInput.value = routeData.from;
-          if(routeData.to) toInput.value = routeData.to;
-          if(routeData.mode) document.getElementById("mode").value = routeData.mode;
+          const r = JSON.parse(lastRoute);
+          if(r.from) fromInput.value = r.from;
+          if(r.to) toInput.value = r.to;
+          if(r.mode) document.getElementById("mode").value = r.mode;
           const valid = fromInput.value.trim() !== "" && toInput.value.trim() !== "";
           routeBtn.disabled = !valid;
-          routeBtn.setAttribute("aria-disabled", !valid);
         } catch(e) {}
-      }
-    }
-    function showSpinner(show) {
-      const spinner = document.getElementById("spinner");
-      if (show) {
-        spinner.removeAttribute("hidden");
-        spinner.classList.add("active");
-      } else {
-        spinner.setAttribute("hidden", "");
-        spinner.classList.remove("active");
       }
     }
     function showDetails(content) {
       const modal = document.getElementById("routeDetailsModal");
       document.getElementById("routeDetailsContent").innerHTML = content;
-      modal.classList.add("show");
-      modal.focus();
+      modal.classList.add("show"); modal.focus();
     }
     function closeModal() {
       const modal = document.getElementById("routeDetailsModal");
       modal.classList.remove("show");
-      document.getElementById("routeBtn").focus();
     }
     async function getCoords(address) {
       return new Promise((resolve, reject) => {
@@ -353,14 +269,8 @@
           if (status === 'OK' && results[0]) {
             const loc = results.geometry.location;
             resolve({ lat: loc.lat(), lng: loc.lng() });
-          } else if (status === 'OVER_QUERY_LIMIT') {
-            showToast("Google Maps API query limit exceeded. Please try again later.", 6000);
-            reject(new Error("API query limit exceeded"));
-          } else if (status === 'ZERO_RESULTS') {
-            showToast("Location not found: " + address, 5000);
-            reject(new Error("Location not found"));
           } else {
-            showToast("Error getting location data for: " + address, 5000);
+            showToast("Error locating: " + address, 4000);
             reject(new Error("Geocode error"));
           }
         });
@@ -371,8 +281,8 @@
     }
     function haversine(lat1, lon1, lat2, lon2) {
       const R = 6371;
-      const dLat = deg2rad(lat2 - lat1);
-      const dLon = deg2rad(lon2 - lon1);
+      const dLat = deg2rad(lat2 - lat1),
+            dLon = deg2rad(lon2 - lon1);
       const a =
         Math.sin(dLat / 2) ** 2 +
         Math.cos(deg2rad(lat1)) *
@@ -382,65 +292,52 @@
     }
     async function calcRoute() {
       const from = document.getElementById("from").value.trim();
-      const to = document.getElementById("to").value.trim();
+      const to   = document.getElementById("to").value.trim();
       const mode = document.getElementById("mode").value;
-      if (!from || !to) {
-        showToast("Please enter both From and To locations.");
-        return;
-      }
-      showSpinner(true);
+      if (!from || !to) return;
       let price = 0, distance = 0, estTime = 0, detailsHTML = '';
       try {
-        if (mode === "FLIGHT") { // Manual because Google doesn't return flight routes
+        if (mode === "FLIGHT") {
           const [fromCoords, toCoords] = await Promise.all([getCoords(from), getCoords(to)]);
           distance = haversine(fromCoords.lat, fromCoords.lng, toCoords.lat, toCoords.lng);
           price = (distance * rates.flight.perKm).toFixed(0);
-          estTime = (distance / 600).toFixed(1); // Assuming average 600 kmph
+          estTime = (distance / 600).toFixed(1); // hour, 600kmph
           directionsRenderer.set('directions', null);
-          detailsHTML = `
-            <strong>From:</strong> ${from}<br>
+          detailsHTML = `<strong>From:</strong> ${from}<br>
             <strong>To:</strong> ${to}<br>
             <strong>Mode:</strong> ✈️ Plane<br>
             <strong>Distance:</strong> ${distance.toFixed(1)} km<br>
             <strong>Estimated Fare:</strong> ₹${price} (approx, per person)<br>
-            <strong>Estimated Flight Time:</strong> ${estTime} hours
-          `;
+            <strong>Estimated Flight Time:</strong> ${estTime} hr`;
           showDetails(detailsHTML);
         } else if (mode === "TRANSIT") {
-          // By Train
           const request = {
             origin: from,
             destination: to,
             travelMode: google.maps.TravelMode.TRANSIT,
-            transitOptions: { modes: ['TRAIN'] },
-            provideRouteAlternatives: true
+            provideRouteAlternatives: false,
+            transitOptions: { modes: ['TRAIN'] }
           };
           directionsService.route(request, (result, status) => {
-            showSpinner(false);
             if (status === 'OK') {
               directionsRenderer.setDirections(result);
-              const route = result.routes[0];
-              const leg = route.legs;
+              const leg = result.routes[0].legs;
               distance = parseFloat(leg.distance.text.replace(/[^\d.]/g, ''));
               price = (distance * rates.train.perKm).toFixed(0);
-              estTime = leg.duration.text;
-              detailsHTML = `
-                <strong>From:</strong> ${leg.start_address}<br>
+              detailsHTML = `<strong>From:</strong> ${leg.start_address}<br>
                 <strong>To:</strong> ${leg.end_address}<br>
                 <strong>Mode:</strong> 🚆 Train<br>
                 <strong>Distance:</strong> ${distance.toFixed(1)} km<br>
-                <strong>Estimated Fare:</strong> ₹${price} (approx, sleeper/3AC)<br>
-                <strong>Estimated Travel Time:</strong> ${estTime}
-              `;
+                <strong>Estimated Fare:</strong> ₹${price} (sleeper/avg)<br>
+                <strong>Travel Time:</strong> ${leg.duration.text}`;
               showDetails(detailsHTML);
             } else {
-              showToast("No train route found between these locations.");
+              showToast("No train route found between these locations.", 4000);
               directionsRenderer.set('directions', null);
             }
           });
           return;
         } else {
-          // ROAD or WALKING
           let travelMode = google.maps.TravelMode[mode];
           const request = {
             origin: from,
@@ -449,11 +346,9 @@
             provideRouteAlternatives: false
           };
           directionsService.route(request, (result, status) => {
-            showSpinner(false);
             if (status === 'OK') {
               directionsRenderer.setDirections(result);
-              const route = result.routes[0];
-              const leg = route.legs;
+              const leg = result.routes[0].legs;
               distance = parseFloat(leg.distance.text.replace(/[^\d.]/g, ''));
               let priceSymbol, modeLabel;
               if (mode === "WALKING") {
@@ -462,18 +357,15 @@
                 price = (distance * rates.driving.perKm).toFixed(0); modeLabel = "🚗 Road";
                 priceSymbol = `₹${price}`;
               }
-              estTime = leg.duration.text;
-              detailsHTML = `
-                <strong>From:</strong> ${leg.start_address}<br>
+              detailsHTML = `<strong>From:</strong> ${leg.start_address}<br>
                 <strong>To:</strong> ${leg.end_address}<br>
                 <strong>Mode:</strong> ${modeLabel}<br>
                 <strong>Distance:</strong> ${distance.toFixed(1)} km<br>
                 <strong>Estimated Fare:</strong> ${priceSymbol} ${(mode === "WALKING") ? "" : "(approx)"}<br>
-                <strong>Estimated Travel Time:</strong> ${estTime}
-              `;
+                <strong>Travel Time:</strong> ${leg.duration.text}`;
               showDetails(detailsHTML);
             } else {
-              showToast("No route found.");
+              showToast("No route found.", 3800);
               directionsRenderer.set('directions', null);
             }
           });
@@ -481,10 +373,7 @@
         }
       } catch (e) {
         showToast(e.message || "An error occurred while calculating the route.");
-      } finally {
-        showSpinner(false);
       }
-      // Save last
       localStorage.setItem('lastRoute', JSON.stringify({ from, to, mode }));
     }
     function geoLocate() {
@@ -506,15 +395,12 @@
             document.getElementById("from").value = results.formatted_address;
             const valid = document.getElementById("from").value.trim() !== "" && document.getElementById("to").value.trim() !== "";
             document.getElementById("routeBtn").disabled = !valid;
-            document.getElementById("routeBtn").setAttribute("aria-disabled", !valid);
             showToast("Location detected: " + results.formatted_address);
           } catch {
             showToast("Unable to detect address from your location.");
           }
         },
-        () => {
-          showToast("Permission denied or location unavailable.");
-        }
+        () => { showToast("Permission denied or location unavailable."); }
       );
     }
     document.addEventListener('keydown', (e) => {
