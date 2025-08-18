@@ -140,7 +140,10 @@
       animation: spin 1s linear infinite;
       margin-right: 15px;
     }
-    @keyframes spin { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);} }
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
     .modal {
       display: none;
       position: fixed;
@@ -158,7 +161,10 @@
       line-height: 1.5;
       user-select: text;
     }
-    .modal.show { display: block; animation: fadeIn 0.3s ease forwards; }
+    .modal.show {
+      display: block;
+      animation: fadeIn 0.3s ease forwards;
+    }
     .modal h3 {
       margin-top: 0;
       color: #FF5E00;
@@ -180,8 +186,14 @@
       transition: background-color 0.3s;
       user-select: none;
     }
-    .modal button:hover, .modal button:focus { background: #cc4a00; outline: none; }
-    @keyframes fadeIn { from { opacity: 0; transform: translate(-50%, -45%) scale(0.95);} to { opacity: 1; transform: translate(-50%, -50%) scale(1);} }
+    .modal button:hover, .modal button:focus {
+      background: #cc4a00;
+      outline: none;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -45%) scale(0.95); }
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
     .bottom-ad {
       position: fixed;
       bottom: 0;
@@ -213,7 +225,10 @@
       pointer-events: none;
       transition: opacity 0.4s ease;
     }
-    .toast.show { opacity: 1; pointer-events: all; }
+    .toast.show {
+      opacity: 1;
+      pointer-events: all;
+    }
     .suggestion-list {
       width: 100%;
       text-align: center;
@@ -234,13 +249,30 @@
       cursor: pointer;
       transition: background 0.2s;
     }
-    .suggest-btn:hover, .suggest-btn:focus { background: #ffecd8; outline: none; }
+    .suggest-btn:hover, .suggest-btn:focus {
+      background: #ffecd8;
+      outline: none;
+    }
     @media (max-width: 700px) {
-      .controls { flex-direction: column; gap: 12px; padding: 14px; }
-      .input-group { width: 100% !important; }
-      #map { top: 180px; bottom: 100px; }
-      .modal { width: 90%; padding: 18px; }
-      .suggestion-list { top: 142px; }
+      .controls {
+        flex-direction: column;
+        gap: 12px;
+        padding: 14px;
+      }
+      .input-group {
+        width: 100% !important;
+      }
+      #map {
+        top: 180px;
+        bottom: 100px;
+      }
+      .modal {
+        width: 90%;
+        padding: 18px;
+      }
+      .suggestion-list {
+        top: 142px;
+      }
     }
   </style>
 </head>
@@ -255,7 +287,6 @@
     <a href="about.html" tabindex="7">About</a>
     <a href="contact.html" tabindex="8">Contact</a>
   </nav>
-
   <div class="controls" role="region" aria-label="Route search controls">
     <div class="input-group">
       <label for="from">From location</label>
@@ -276,24 +307,18 @@
     <button id="routeBtn" onclick="calcRoute()" disabled aria-disabled="true" aria-label="Show route">Show Route</button>
     <button id="geoBtn" onclick="geoLocate()" style="background:#25D366;" aria-label="Use my current location as From">Use My Location</button>
   </div>
-  
   <div class="suggestion-list" id="placeSuggestions" aria-label="Popular places quick fill"></div>
-
   <div id="map" tabindex="0" aria-label="Interactive travel map"></div>
-
   <div class="spinner-overlay" id="spinner" role="alert" aria-live="assertive" aria-busy="true" hidden>
     <div class="spinner" aria-hidden="true"></div>
     Calculating route...
   </div>
-
   <div class="modal" id="routeDetailsModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
     <h3 id="modalTitle">🛣️ Travel Details</h3>
     <div id="routeDetailsContent"></div>
     <button onclick="closeModal()" aria-label="Close travel details">Close</button>
   </div>
-
   <div class="toast" id="toast" role="alert" aria-live="polite"></div>
-
   <div class="bottom-ad" aria-label="Advertisement">
     <ins class="adsbygoogle"
          style="display:block"
@@ -302,31 +327,25 @@
          data-ad-format="auto"
          data-full-width-responsive="true"></ins>
   </div>
-
   <!-- Google Maps Script -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiM_R3u7K9pIm9vrg7-XVz-AR2WLeRC-k&libraries=places&callback=initMap" async defer></script>
-  
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR-API-KEY&libraries=places&callback=initMap" async defer></script>
   <script>
     const rates = {
       driving: { fuelCostPerKm: 8, tollEstimate: 300 },
       train: { costPerKm: 1.2 },
       flight: { costPerKm: 6 }
     };
-
     const POPULAR_PLACES = [
       "Delhi", "Mumbai", "Goa", "Jaipur", "Agra", "Bangalore",
       "Kolkata", "Chennai", "Manali", "Varanasi"
     ];
-
     let map, directionsService, directionsRenderer, geoCoder, trafficLayer;
-
     function showToast(message, duration = 4000) {
       const toast = document.getElementById('toast');
       toast.textContent = message;
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), duration);
     }
-
     function initMap() {
       map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 22.9734, lng: 78.6569 },
@@ -339,7 +358,6 @@
       directionsService = new google.maps.DirectionsService();
       directionsRenderer = new google.maps.DirectionsRenderer({ map });
       trafficLayer = new google.maps.TrafficLayer();
-
       // Traffic toggle button
       const trafficToggle = document.createElement("button");
       trafficToggle.textContent = "Show Traffic";
@@ -358,7 +376,6 @@
       });
       trafficToggle.setAttribute('aria-pressed', "false");
       map.controls[google.maps.ControlPosition.TOP_RIGHT].push(trafficToggle);
-
       trafficToggle.addEventListener("click", () => {
         if (trafficLayer.getMap()) {
           trafficLayer.setMap(null);
@@ -370,31 +387,19 @@
           trafficToggle.setAttribute('aria-pressed', "true");
         }
       });
-
       geoCoder = new google.maps.Geocoder();
       new google.maps.places.Autocomplete(document.getElementById("from"));
       new google.maps.places.Autocomplete(document.getElementById("to"));
-
       const fromInput = document.getElementById("from");
       const toInput = document.getElementById("to");
       const routeBtn = document.getElementById("routeBtn");
-
-      const updateBtnState = () => {
-        const valid = fromInput.value.trim() !== "" && toInput.value.trim() !== "";
-        routeBtn.disabled = !valid;
-        routeBtn.setAttribute("aria-disabled", String(!valid));
-      };
-
       [fromInput, toInput].forEach(input => {
-        input.addEventListener("input", updateBtnState);
-        input.addEventListener("keydown", (e) => {
-          if (e.key === "Enter") {
-            e.preventDefault();
-            if (!routeBtn.disabled) calcRoute();
-          }
+        input.addEventListener("input", () => {
+          const valid = fromInput.value.trim() !== "" && toInput.value.trim() !== "";
+          routeBtn.disabled = !valid;
+          routeBtn.setAttribute("aria-disabled", !valid);
         });
       });
-
       // Load saved last inputs from offline cache
       const lastRoute = localStorage.getItem('lastRoute');
       if(lastRoute) {
@@ -403,60 +408,55 @@
           if(routeData.from) fromInput.value = routeData.from;
           if(routeData.to) toInput.value = routeData.to;
           if(routeData.mode) document.getElementById("mode").value = routeData.mode;
-          updateBtnState();
+          routeBtn.disabled = !(fromInput.value.trim() && toInput.value.trim());
+          routeBtn.setAttribute("aria-disabled", routeBtn.disabled);
         } catch(e) { console.warn("localStorage read error", e); }
       }
-
       renderPlaceSuggestions();
     }
-
     function renderPlaceSuggestions() {
       const suggestionList = document.getElementById('placeSuggestions');
-      suggestionList.innerHTML = POPULAR_PLACES.map(place =>
-        `<button class="suggest-btn" type="button" tabindex="0" aria-label="Quick fill ${place}" onclick="fillInput('from', '${place}')">${place}</button>`
-      ).join(' ');
+      suggestionList.innerHTML = POPULAR_PLACES.map(place => `
+        <button class="suggest-btn" type="button" tabindex="0" aria-label="Quick fill ${place}" onclick="fillInput('from', '${place}')">${place}</button>
+      `).join('');
     }
-
     function fillInput(inputId, place) {
       const input = document.getElementById(inputId);
       input.value = place;
       input.focus();
-      const routeBtn = document.getElementById("routeBtn");
-      const valid = document.getElementById("from").value.trim() !== "" &&
-                    document.getElementById("to").value.trim() !== "";
-      routeBtn.disabled = !valid;
-      routeBtn.setAttribute("aria-disabled", String(!valid));
+      document.getElementById("routeBtn").disabled = !(
+        document.getElementById("from").value.trim() !== "" &&
+        document.getElementById("to").value.trim() !== ""
+      );
+      document.getElementById("routeBtn").setAttribute("aria-disabled",
+        document.getElementById("routeBtn").disabled);
     }
-
     function showSpinner(show) {
       const spinner = document.getElementById("spinner");
       if (show) {
         spinner.removeAttribute("hidden");
         spinner.classList.add("active");
       } else {
-        spinner.classList.remove("active");
         spinner.setAttribute("hidden", "");
+        spinner.classList.remove("active");
       }
     }
-
     function showDetails(content) {
       const modal = document.getElementById("routeDetailsModal");
       document.getElementById("routeDetailsContent").innerHTML = content;
       modal.classList.add("show");
       modal.focus();
     }
-
     function closeModal() {
       const modal = document.getElementById("routeDetailsModal");
       modal.classList.remove("show");
       document.getElementById("routeBtn").focus();
     }
-
     async function getCoords(address) {
       return new Promise((resolve, reject) => {
         geoCoder.geocode({ address }, (results, status) => {
-          if (status === 'OK' && results && results[0]) {
-            const loc = results[0].geometry.location;     // ✅ fixed: use results[0]
+          if (status === 'OK' && results[0]) {
+            const loc = results.geometry.location;
             resolve({ lat: loc.lat(), lng: loc.lng() });
           } else if (status === 'OVER_QUERY_LIMIT') {
             showToast("Google Maps API query limit exceeded. Please try again later.", 6000);
@@ -466,14 +466,14 @@
             reject(new Error("Location not found"));
           } else {
             showToast("Error getting location data for: " + address, 5000);
-            reject(new Error("Geocode error: " + status));
+            reject(new Error("Geocode error"));
           }
         });
       });
     }
-
-    function deg2rad(deg) { return deg * (Math.PI / 180); }
-
+    function deg2rad(deg) {
+      return deg * (Math.PI / 180);
+    }
     function haversine(lat1, lon1, lat2, lon2) {
       const R = 6371;
       const dLat = deg2rad(lat2 - lat1);
@@ -485,19 +485,15 @@
         Math.sin(dLon / 2) ** 2;
       return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
     }
-
     async function calcRoute() {
       const from = document.getElementById("from").value.trim();
       const to = document.getElementById("to").value.trim();
       const mode = document.getElementById("mode").value;
-
       if (!from || !to) {
         showToast("Please enter both From and To locations.");
         return;
       }
-
       showSpinner(true);
-
       try {
         if (mode === "FLIGHT") {
           const [fromCoords, toCoords] = await Promise.all([getCoords(from), getCoords(to)]);
@@ -520,29 +516,23 @@
             travelMode: google.maps.TravelMode[mode],
             provideRouteAlternatives: true
           };
-
           directionsService.route(request, (result, status) => {
             showSpinner(false);
-            if (status === 'OK' && result && result.routes && result.routes.length) {
+            if (status === 'OK') {
               directionsRenderer.setOptions({ suppressMarkers: false });
               directionsRenderer.setDirections(result);
               window.lastRouteResult = result;
-
               let detailsHtml = result.routes.map((route, idx) => {
-                const leg = route.legs && route.legs[0] ? route.legs[0] : null;
-                const distText = leg && leg.distance ? leg.distance.text : "N/A";
-                const durText = leg && leg.duration ? leg.duration.text : "N/A";
-                const distanceKm = distText === "N/A" ? 0 : parseFloat(distText.replace(/[^\d.]/g, '')) || 0;
-
-                let fare = 0;
+                const leg = route.legs[0];
+                const distanceKm = parseFloat(leg.distance.text.replace(/[^\d.]/g, ''));
+                let fare;
                 if (mode === "DRIVING") fare = (distanceKm * rates.driving.fuelCostPerKm + rates.driving.tollEstimate).toFixed(0);
                 else if (mode === "TRANSIT") fare = (distanceKm * rates.train.costPerKm).toFixed(0);
-
                 return `
                   <div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #eee;">
                     <strong>Route ${idx+1}:</strong><br>
-                    <strong>Distance:</strong> ${distanceKm ? distanceKm.toFixed(1) + ' km' : 'N/A'}<br>
-                    <strong>Duration:</strong> ${durText}<br>
+                    <strong>Distance:</strong> ${distanceKm.toFixed(1)} km<br>
+                    <strong>Duration:</strong> ${leg.duration.text}<br>
                     <strong>Estimated Fare:</strong> ₹${fare}<br>
                     <button onclick="displayRouteOption(${idx})" style="margin-top:6px;padding:6px 14px;background:#FF5E00;color:white;border:none;border-radius:6px;cursor:pointer;">Show on Map</button>
                   </div>
@@ -559,25 +549,23 @@
               directionsRenderer.set('directions', null);
             }
           });
-          return; // spinner handled in callback
+          return;
         }
       } catch (e) {
-        showToast(e && e.message ? e.message : "An error occurred while calculating the route.");
+        showSpinner(false);
+        showToast(e.message || "An error occurred while calculating the route.");
       } finally {
         showSpinner(false);
       }
-
       // Cache last inputs for offline use
       localStorage.setItem('lastRoute', JSON.stringify({ from, to, mode }));
     }
-
     window.displayRouteOption = function(index) {
       if (!window.lastRouteResult) return;
       directionsRenderer.setDirections(window.lastRouteResult);
       directionsRenderer.setRouteIndex(index);
       closeModal();
     };
-
     function geoLocate() {
       if (!navigator.geolocation) {
         showToast("Geolocation is not supported by your browser.");
@@ -590,17 +578,15 @@
           try {
             const results = await new Promise((resolve, reject) => {
               geoCoder.geocode({ location: latlng }, (res, status) => {
-                if (status === 'OK' && res && res[0]) resolve(res);
+                if (status === 'OK' && res[0]) resolve(res);
                 else reject(status);
               });
             });
-            const addr = results[0].formatted_address; // ✅ fixed: use first result
-            document.getElementById("from").value = addr;
-            const routeBtn = document.getElementById("routeBtn");
-            routeBtn.disabled = !(document.getElementById("from").value.trim() && document.getElementById("to").value.trim());
-            routeBtn.setAttribute("aria-disabled", String(routeBtn.disabled));
-            showToast("Location detected: " + addr);
-          } catch (err) {
+            document.getElementById("from").value = results.formatted_address;
+            document.getElementById("routeBtn").disabled = false;
+            document.getElementById("routeBtn").setAttribute("aria-disabled", false);
+            showToast("Location detected: " + results.formatted_address);
+          } catch {
             showToast("Unable to detect address from your location.");
           }
         },
@@ -609,7 +595,6 @@
         }
       );
     }
-
     // Close modal on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === "Escape") {
@@ -618,7 +603,6 @@
       }
     });
   </script>
-
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632" crossorigin="anonymous"></script>
 </body>
