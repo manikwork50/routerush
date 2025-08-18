@@ -229,30 +229,6 @@
       opacity: 1;
       pointer-events: all;
     }
-    .suggestion-list {
-      width: 100%;
-      text-align: center;
-      margin: 0 0 8px 0;
-      user-select: none;
-      position: fixed;
-      top: 112px;
-      z-index: 22;
-    }
-    .suggest-btn {
-      background: #ececec;
-      border: 1px solid #ff5e00;
-      color: #FF5E00;
-      margin: 2px 4px;
-      padding: 7px 14px;
-      font-size: 0.95em;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .suggest-btn:hover, .suggest-btn:focus {
-      background: #ffecd8;
-      outline: none;
-    }
     @media (max-width: 700px) {
       .controls {
         flex-direction: column;
@@ -269,9 +245,6 @@
       .modal {
         width: 90%;
         padding: 18px;
-      }
-      .suggestion-list {
-        top: 142px;
       }
     }
   </style>
@@ -307,7 +280,7 @@
     <button id="routeBtn" onclick="calcRoute()" disabled aria-disabled="true" aria-label="Show route">Show Route</button>
     <button id="geoBtn" onclick="geoLocate()" style="background:#25D366;" aria-label="Use my current location as From">Use My Location</button>
   </div>
-  <div class="suggestion-list" id="placeSuggestions" aria-label="Popular places quick fill"></div>
+
   <div id="map" tabindex="0" aria-label="Interactive travel map"></div>
   <div class="spinner-overlay" id="spinner" role="alert" aria-live="assertive" aria-busy="true" hidden>
     <div class="spinner" aria-hidden="true"></div>
@@ -335,10 +308,6 @@
       train: { costPerKm: 1.2 },
       flight: { costPerKm: 6 }
     };
-    const POPULAR_PLACES = [
-      "Delhi", "Mumbai", "Goa", "Jaipur", "Agra", "Bangalore",
-      "Kolkata", "Chennai", "Manali", "Varanasi"
-    ];
     let map, directionsService, directionsRenderer, geoCoder, trafficLayer;
     function showToast(message, duration = 4000) {
       const toast = document.getElementById('toast');
@@ -358,7 +327,6 @@
       directionsService = new google.maps.DirectionsService();
       directionsRenderer = new google.maps.DirectionsRenderer({ map });
       trafficLayer = new google.maps.TrafficLayer();
-      // Traffic toggle button
       const trafficToggle = document.createElement("button");
       trafficToggle.textContent = "Show Traffic";
       Object.assign(trafficToggle.style, {
@@ -408,28 +376,11 @@
           if(routeData.from) fromInput.value = routeData.from;
           if(routeData.to) toInput.value = routeData.to;
           if(routeData.mode) document.getElementById("mode").value = routeData.mode;
-          routeBtn.disabled = !(fromInput.value.trim() && toInput.value.trim());
-          routeBtn.setAttribute("aria-disabled", routeBtn.disabled);
+          const valid = fromInput.value.trim() !== "" && toInput.value.trim() !== "";
+          routeBtn.disabled = !valid;
+          routeBtn.setAttribute("aria-disabled", !valid);
         } catch(e) { console.warn("localStorage read error", e); }
       }
-      renderPlaceSuggestions();
-    }
-    function renderPlaceSuggestions() {
-      const suggestionList = document.getElementById('placeSuggestions');
-      suggestionList.innerHTML = POPULAR_PLACES.map(place => `
-        <button class="suggest-btn" type="button" tabindex="0" aria-label="Quick fill ${place}" onclick="fillInput('from', '${place}')">${place}</button>
-      `).join('');
-    }
-    function fillInput(inputId, place) {
-      const input = document.getElementById(inputId);
-      input.value = place;
-      input.focus();
-      document.getElementById("routeBtn").disabled = !(
-        document.getElementById("from").value.trim() !== "" &&
-        document.getElementById("to").value.trim() !== ""
-      );
-      document.getElementById("routeBtn").setAttribute("aria-disabled",
-        document.getElementById("routeBtn").disabled);
     }
     function showSpinner(show) {
       const spinner = document.getElementById("spinner");
@@ -557,7 +508,6 @@
       } finally {
         showSpinner(false);
       }
-      // Cache last inputs for offline use
       localStorage.setItem('lastRoute', JSON.stringify({ from, to, mode }));
     }
     window.displayRouteOption = function(index) {
@@ -583,9 +533,10 @@
               });
             });
             document.getElementById("from").value = results.formatted_address;
-            document.getElementById("routeBtn").disabled = false;
-            document.getElementById("routeBtn").setAttribute("aria-disabled", false);
-            showToast("Location detected: " + results.formatted_address);
+            const valid = document.getElementById("from").value.trim() !== "" && document.getElementById("to").value.trim() !== "";
+            document.getElementById("routeBtn").disabled = !valid;
+            document.getElementById("routeBtn").setAttribute("aria-disabled", !valid);
+            showToast("Location detected: " + results[0].formatted_address);
           } catch {
             showToast("Unable to detect address from your location.");
           }
@@ -595,7 +546,6 @@
         }
       );
     }
-    // Close modal on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === "Escape") {
         const modal = document.getElementById('routeDetailsModal');
