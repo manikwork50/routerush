@@ -2,336 +2,633 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>WanderMap: Interactive Indian Route Map + Weather</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interactive Travel Route Map — WanderMap India</title>
+  <meta name="description" content="Plan your next adventure with our interactive travel route map covering India's most popular destinations, trekking routes, and road trips." />
+  <meta name="keywords" content="India travel map, road trip planner India, route maps India, travel itineraries India, best travel routes India, driving directions India, route calculator India" />
+  <meta name="author" content="Manik Rao" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
   <style>
-    :root { --accent: #FF5E00; --main-bg: #f5f5f5; }
+    :root{
+      --brand:#FF5E00;
+      --brand-dark:#d94a00;
+      --text:#222;
+      --bg:#f5f5f5;
+      --card:#fff;
+      --muted:#666;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body {
+      margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--main-bg); color: #222;
-      margin: 0; height: 100vh; overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
     }
-    nav { background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-      height: 52px; padding: 0 24px; display: flex; align-items: center;
-      gap: 19px; position: fixed; left: 0; right: 0; top: 0; z-index: 100;
+
+    /* ====== NAVBAR (fixed, centered content) ====== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,.08);
     }
-    nav a { color: #222;text-decoration: none;font-weight:600;font-size:1rem;transition:color 0.2s;
-      margin-right:5px; border-radius:7px;padding:7px 9px;}
-    nav a.active, nav a:focus, nav a:hover {color:var(--accent);background: #fffbe9;}
-    .map-main { display: flex; flex-direction: row; height: 100vh;
-      margin-top: 52px; background: var(--main-bg);}
-    #sidebar { width: 410px; background: #fff;
-      box-shadow: 2px 0 24px #eccfbc6c, 0 2px 17px #eee;
-      z-index: 90; padding: 23px 22px 14px 24px; min-width: 240px;
-      max-width: 98vw; transform: translateX(-440px); opacity: .18;
-      transition: transform .39s cubic-bezier(.73,.03,.29,1.07),opacity .23s cubic-bezier(.37,.45,.78,.95);
-      position: relative; border-radius: 0 16px 16px 0; height:100vh;overflow-y:auto;}
-    #sidebar.show {transform:translateX(0);opacity:1;box-shadow:2px 0 24px #ff9c602c,0 0 0;}
-    .controls {display: flex; flex-direction: column; gap: 11px; background: #fff;
-      border-radius: 14px; padding: 16px 17px 12px 13px; margin-bottom:17px;
-      box-shadow: 0 0px 14px #53230008; border:1px solid #faf3ee;
-      animation:fadein .78s cubic-bezier(.23,1,.32,1);}
-    @keyframes fadein {from{opacity:0;transform:translateY(-18px);}to{opacity:1;transform:none;}}
-    label {font-weight:600;font-size:1.00rem;margin-bottom:1px;color:#444;}
-    .input-row { display: flex; gap: 10px; align-items: flex-end; margin-bottom:2px;}
-    .input-group {flex:1 1 90px;}
-    input, select {border:1.5px solid #ccc;border-radius:7px;padding:9px 14px;font-size:1rem;width:100%;margin-top:2px;box-sizing:border-box;transition:.14s;}
-    input:focus, select:focus {border-color:var(--accent); outline:none;box-shadow: 0 0 9px #ff76001a;}
-    .controls button {
-      background:var(--accent);color:#fff;font-weight:700;font-size:1.06rem;
-      border:none;border-radius:9px;cursor:pointer;padding:10px 0;
-      margin-top:7px;transition:background .18s,transform .18s;box-shadow:0 1.5px 7px #ffd9b8b9;letter-spacing:0.01em;outline:none;
+    .nav-inner{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center; /* center the nav items */
+      gap: 18px;
+      flex-wrap: wrap;
+      user-select: none;
     }
-    .controls button:active { background: #db4b00; transform: scale(.97);}
-    .controls button:disabled { background: #ddd; color: #999; cursor: not-allowed;}
-    .geo-btn { background: #25D366 !important; color: #fff !important; margin-top: 0 !important;}
-    #map { flex-grow: 1; height: 100%; min-width: 0; background: #e8ebf4;}
-    .show-hide-btn {
-      background:#fff3eb; color:var(--accent);
-      border:1px solid #ffe9d2;border-radius:9px;font-weight:600;
-      padding:8px 10px; cursor:pointer; font-size:1rem;margin-bottom:7px;
-      margin-top: 2px; box-shadow:0 1px 7px 0 #ffdcbc81; transition:.2s;
+    nav a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 8px 10px;
+      border-radius: 8px;
+      transition: color .2s, background .2s, transform .08s ease;
     }
-    .show-hide-btn:active { background: #ffe3c7;}
-    .nothing { text-align: center; font-size:1.07rem;margin-top:15px;color:#888;}
-    .route-title {font-size:1.19rem;font-weight:700;color:var(--accent);margin-bottom:2px;}
-    #route-summary {margin-top:11px;font-size:1.07rem;color:#7e4d00;}
-    .step-list {list-style:none;padding:0 0 0 6px;}
-    .step-list li {
-      padding:2.5px 0 3.5px 3px; font-size:.98rem;color:#333;
-      border-left:2.3px solid #ffe6d8; margin-bottom:1.3px;animation:fadein .3s;}
-    .infotag, .costtag {
-      display:inline-block;background:#ffead8;color:#ba5515;font-weight:700;
-      border-radius:8px;font-size:.97em;padding:2px 9px 3px 9px;margin-right:7px;
-      margin-bottom:0;margin-top:5px;
+    nav a:hover, nav a:focus {
+      color: var(--brand);
+      outline: none;
+      background: #fff3ea;
     }
-    .costtag { background:#d6f0e6; color:#008c57;}
-    .time-display {font-size:1.19rem;font-weight:bold;letter-spacing:0.01em;color:#004d80;margin:8px 0 5px 0;display:flex;align-items:center;gap:6px;}
-    .distance-display {font-size:1.11rem;color:#666;margin-bottom:4px;}
-    .route-mode {font-size:1.07rem;font-weight:600;color:#0a4d0a;margin-bottom:5px;}
-    .weather {border-radius:11px;padding: 3px 0 9px 9px;margin-bottom:6px;background:#eaf3fa;}
-    .weatherloc {font-size:.97em;font-weight:600;margin-bottom:2px;}
-    .weathericon {vertical-align:middle;margin-right:6px;filter: drop-shadow(0 0 7px #dcf6ffaf);}
-    .weather-main {font-size:1.05em;background:#fafcff;padding:3px 12px 5px 6px;border-radius:7px;display:inline-block;margin-right:5px;}
-    .weather .bigger {font-size:1.19em;}
-    .weather .smaller {font-size:.96em;color:#368;}
-    @media (max-width: 900px) {
-      .map-main { flex-direction: column; }
-      #sidebar { width: 96vw; min-width: 0; max-width:none; padding:7vw 3vw 3vw 2vw; position:absolute;z-index:95;}
-      #sidebar { height:auto; max-height:68vh;}
+    nav a[aria-current="page"]{
+      color:#fff;
+      background: var(--brand);
     }
-    @media (max-width: 710px){
-      nav{font-size:.94rem;}
-      .controls { padding:12px 6vw 10px 4vw;}
-      #sidebar { padding:2vw 1vw;}
+
+    /* ====== CONTROLS ====== */
+    .controls {
+      position: fixed;
+      top: 58px;          /* sits beneath nav */
+      left: 0; right: 0;
+      z-index: 90;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,.08);
+      padding: 12px 10px 6px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 12px;
+      user-select: none;
+    }
+    label {
+      font-weight: 700;
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+      user-select: none;
+    }
+    .input-group {
+      min-width: 220px;
+      flex: 1 1 240px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--brand);
+      box-shadow: 0 0 0 3px #ff5e0022;
+    }
+    button {
+      min-width: 160px;
+      background: var(--brand);
+      color: #fff;
+      border: none;
+      font-weight: 800;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+    button:disabled { background:#cfcfcf; cursor:not-allowed; }
+    button:hover:not(:disabled), button:focus:not(:disabled) { background: var(--brand-dark); }
+
+    /* Popular suggestions ribbon just under controls */
+    .suggestion-list {
+      position: fixed;
+      top: 114px;        /* under controls */
+      left: 0; right: 0;
+      z-index: 85;
+      width: 100%;
+      text-align: center;
+      padding: 2px 6px 0;
+      background: transparent;
+      user-select: none;
+    }
+    .suggest-btn {
+      background: #f1f1f1;
+      border: 1px solid var(--brand);
+      color: var(--brand);
+      margin: 2px 4px;
+      padding: 7px 14px;
+      font-size: 0.95em;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .suggest-btn:hover, .suggest-btn:focus { background: #ffecd8; outline: none; }
+
+    /* ====== MAP AREA ====== */
+    #map {
+      position: fixed;
+      top: 150px;        /* below suggestions */
+      bottom: 60px;      /* leave space for bottom ad */
+      left: 0; right: 0;
+      border-radius: 0;
+      box-shadow: inset 0 0 30px #0001;
+      touch-action: pinch-zoom;
+      outline: none;
+    }
+
+    /* ====== MODALS/TOAST/SPINNER/AD ====== */
+    .spinner-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      font-size: 1.1rem;
+      color: var(--brand);
+      user-select: none;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .25s ease;
+    }
+    .spinner-overlay.active{ opacity:1; pointer-events: all; }
+    .spinner {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid var(--brand);
+      border-radius: 50%;
+      width: 56px; height: 56px;
+      animation: spin 1s linear infinite;
+      margin-right: 14px;
+    }
+    @keyframes spin { 0%{transform:rotate(0)} 100%{transform:rotate(360deg)} }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 22px 26px;
+      border-radius: 12px;
+      box-shadow: 0 12px 32px rgba(0,0,0,.18);
+      z-index: 10000;
+      max-width: 92%;
+      width: 420px;
+      color: var(--text);
+      line-height: 1.5;
+      user-select: text;
+    }
+    .modal.show { display:block; animation:fadeIn .25s ease forwards; }
+    @keyframes fadeIn { from{opacity:0; transform:translate(-50%,-46%) scale(.98)} to{opacity:1; transform:translate(-50%,-50%) scale(1)} }
+    .modal h3{ margin:0 0 10px; color:var(--brand); font-size:1.4rem; }
+    .modal button{
+      margin-top: 14px;
+      width: 100%;
+      background: var(--brand);
+      color: #fff;
+      border: 0;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .modal button:hover,.modal button:focus{ background: var(--brand-dark); outline: none; }
+
+    .toast{
+      position: fixed;
+      bottom: 80px; left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,.88);
+      color:#fff;
+      padding: 10px 16px;
+      border-radius: 28px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.35);
+      z-index: 10500;
+      font-size: .98rem;
+      user-select: none;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s ease;
+    }
+    .toast.show{ opacity:1; pointer-events: all; }
+
+    .bottom-ad{
+      position: fixed;
+      bottom: 0; left: 0; width: 100%;
+      background:#fff;
+      text-align:center;
+      box-shadow: 0 -2px 8px rgba(0,0,0,.08);
+      padding: 8px 0;
+      font-size: 13px;
+      color: var(--muted);
+      user-select:none;
+      z-index: 999;
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 760px){
+      .controls{ top:58px; padding: 12px; gap: 12px; }
+      .input-group{ min-width:unset; flex:1 1 100%; }
+      .suggestion-list{ top: 140px; padding: 2px 10px 0; }
+      #map{ top: 178px; bottom: 100px; }
+      .nav-inner{ gap: 10px; }
+      nav a{ font-size: .95rem; padding: 7px 8px; }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="map.html" class="active" aria-current="page">Map</a>
-    <a href="blog.html">Blog</a>
-    <a href="bookings.html">Bookings</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <div class="map-main">
-    <div id="sidebar">
-      <button class="show-hide-btn" id="hideSidebarBtn" onclick="hideSidebar()" aria-label="Hide sidebar">Hide Details</button>
-      <div class="controls" aria-label="Route search controls">
-        <div class="input-row">
-          <div class="input-group">
-            <label for="from">From</label>
-            <input id="from" placeholder="Start location" type="search" autocomplete="off">
-          </div>
-          <div class="input-group">
-            <label for="to">To</label>
-            <input id="to" placeholder="Destination" type="search" autocomplete="off">
-          </div>
-        </div>
-        <div class="input-row">
-          <div class="input-group">
-            <label for="mode">Travel mode</label>
-            <select id="mode">
-              <option value="DRIVING">By Road</option>
-              <option value="WALKING">Walk</option>
-              <option value="TRANSIT">By Train</option>
-            </select>
-          </div>
-        </div>
-        <button id="routeBtn" onclick="calcRoute()" disabled>Show Route</button>
-        <button class="geo-btn" id="geoBtn" onclick="geoLocate()">Use My Location</button>
-      </div>
-      <div id="weatherPanel"></div>
-      <div id="routePanel"></div>
+  <!-- NAVBAR (centered links, fixed at top) -->
+  <nav role="navigation" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="index.html" tabindex="1">Home</a>
+      <a href="map.html" tabindex="2" aria-current="page">Map</a>
+      <a href="blog.html" tabindex="3">Blog</a>
+      <a href="bookings.html" tabindex="4">Bookings</a>
+      <a href="submit-story.html" tabindex="5">Submit Story</a>
+      <a href="stories.html" tabindex="6">Stories</a>
+      <a href="about.html" tabindex="7">About</a>
+      <a href="contact.html" tabindex="8">Contact</a>
     </div>
-    <div id="map"></div>
+  </nav>
+
+  <!-- CONTROLS -->
+  <div class="controls" role="region" aria-label="Route search controls">
+    <div class="input-group">
+      <label for="from">From location</label>
+      <input id="from" placeholder="Enter start location" aria-required="true" autocomplete="off" type="search" />
+    </div>
+    <div class="input-group">
+      <label for="to">To location</label>
+      <input id="to" placeholder="Enter destination" aria-required="true" autocomplete="off" type="search" />
+    </div>
+    <div class="input-group" style="max-width:220px">
+      <label for="mode">Travel mode</label>
+      <select id="mode" aria-required="true" aria-label="Select mode of travel">
+        <option value="DRIVING">By Road</option>
+        <option value="TRANSIT">By Train</option>
+        <option value="FLIGHT">By Air</option>
+      </select>
+    </div>
+    <button id="routeBtn" onclick="calcRoute()" disabled aria-disabled="true" aria-label="Show route">Show Route</button>
+    <button id="geoBtn" onclick="geoLocate()" style="background:#25D366;" aria-label="Use my current location as From">Use My Location</button>
   </div>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7NzB6il5P8g1IkkiA8rfmi_f4tPnVr84&libraries=places&callback=initMap" async defer></script>
+
+  <!-- Popular quick-fill suggestions -->
+  <div class="suggestion-list" id="placeSuggestions" aria-label="Popular places quick fill"></div>
+
+  <!-- MAP -->
+  <div id="map" tabindex="0" aria-label="Interactive travel map"></div>
+
+  <!-- Spinner -->
+  <div class="spinner-overlay" id="spinner" role="alert" aria-live="assertive" aria-busy="true" hidden>
+    <div class="spinner" aria-hidden="true"></div>
+    Calculating route...
+  </div>
+
+  <!-- Route details modal -->
+  <div class="modal" id="routeDetailsModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+    <h3 id="modalTitle">🛣️ Travel Details</h3>
+    <div id="routeDetailsContent"></div>
+    <button onclick="closeModal()" aria-label="Close travel details">Close</button>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+  <!-- Bottom ad -->
+  <div class="bottom-ad" aria-label="Advertisement">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+
+  <!-- Google Maps Script -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiM_R3u7K9pIm9vrg7-XVz-AR2WLeRC-k&libraries=places&callback=initMap" async defer></script>
+
   <script>
-    function hideSidebar() {
-      document.getElementById('sidebar').classList.remove('show');
-      setTimeout(() => {
-        document.getElementById('sidebar').style.display = 'none';
-      }, 390);
-    }
-    function showSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      sidebar.style.display = '';
-      setTimeout(() => sidebar.classList.add('show'), 20);
+    /* ====== CONFIG ====== */
+    const rates = {
+      driving: { fuelCostPerKm: 8, tollEstimate: 300 },
+      train: { costPerKm: 1.2 },
+      flight: { costPerKm: 6 }
+    };
+
+    const POPULAR_PLACES = [
+      "Delhi","Mumbai","Goa","Jaipur","Agra",
+      "Bengaluru","Kolkata","Chennai","Manali","Varanasi"
+    ];
+
+    /* ====== STATE ====== */
+    let map, directionsService, directionsRenderer, geoCoder, trafficLayer;
+
+    /* ====== UI HELPERS ====== */
+    function showToast(message, duration = 4000) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), duration);
     }
 
-    // ==== GOOGLE MAPS + WEATHER CODE ====
-    const rates = { driving: { perKm:13 }, walking: { perKm:0 }, train:{ perKm:1.0 } };
-    let map, directionsService, directionsRenderer, geoCoder;
-    let lastFromCoords, lastToCoords;
+    function showSpinner(show) {
+      const s = document.getElementById("spinner");
+      if (show) {
+        s.removeAttribute("hidden");
+        s.classList.add("active");
+      } else {
+        s.classList.remove("active");
+        s.setAttribute("hidden", "");
+      }
+    }
 
+    function showDetails(content) {
+      const modal = document.getElementById("routeDetailsModal");
+      document.getElementById("routeDetailsContent").innerHTML = content;
+      modal.classList.add("show");
+      modal.focus();
+    }
+    function closeModal() {
+      const modal = document.getElementById("routeDetailsModal");
+      modal.classList.remove("show");
+      document.getElementById("routeBtn").focus();
+    }
+
+    /* ====== MAP INIT ====== */
     function initMap() {
       map = new google.maps.Map(document.getElementById("map"), {
-        center:{ lat:22.9734, lng:78.6569 }, zoom:5,
-        streetViewControl:false, mapTypeControl:false, fullscreenControl:true, zoomControl:true
+        center: { lat: 22.9734, lng: 78.6569 },
+        zoom: 5,
+        streetViewControl: false,
+        mapTypeControl: false,
+        fullscreenControl: true,
+        zoomControl: true
       });
+
       directionsService = new google.maps.DirectionsService();
-      directionsRenderer = new google.maps.DirectionsRenderer({ map, suppressMarkers:false });
+      directionsRenderer = new google.maps.DirectionsRenderer({ map });
+      trafficLayer = new google.maps.TrafficLayer();
       geoCoder = new google.maps.Geocoder();
+
+      // Traffic toggle control (top-right)
+      const trafficToggle = document.createElement("button");
+      trafficToggle.textContent = "Show Traffic";
+      Object.assign(trafficToggle.style, {
+        padding: "10px 16px",
+        background: "var(--brand)",
+        color: "#fff",
+        border: "none",
+        borderRadius: "8px",
+        cursor: "pointer",
+        userSelect: "none",
+        boxShadow: "0 2px 8px rgba(0,0,0,.15)"
+      });
+      trafficToggle.setAttribute("aria-pressed","false");
+      map.controls[google.maps.ControlPosition.TOP_RIGHT].push(trafficToggle);
+
+      trafficToggle.addEventListener("click", () => {
+        if (trafficLayer.getMap()) {
+          trafficLayer.setMap(null);
+          trafficToggle.textContent = "Show Traffic";
+          trafficToggle.setAttribute("aria-pressed","false");
+        } else {
+          trafficLayer.setMap(map);
+          trafficToggle.textContent = "Hide Traffic";
+          trafficToggle.setAttribute("aria-pressed","true");
+        }
+      });
+
+      // Place autocompletes
       new google.maps.places.Autocomplete(document.getElementById("from"));
       new google.maps.places.Autocomplete(document.getElementById("to"));
-      const fromInput = document.getElementById("from"),
-            toInput = document.getElementById("to"),
-            routeBtn = document.getElementById("routeBtn");
-      [fromInput, toInput].forEach(input =>
-        input.addEventListener("input", () => {
-          const valid = fromInput.value.trim() !== "" && toInput.value.trim() !== "";
-          routeBtn.disabled = !valid;
-        })
-      );
-      showSidebar();
+
+      // Input events & Enter-to-search
+      const fromInput = document.getElementById("from");
+      const toInput = document.getElementById("to");
+      const routeBtn = document.getElementById("routeBtn");
+      const updateBtnState = () => {
+        const valid = fromInput.value.trim() && toInput.value.trim();
+        routeBtn.disabled = !valid;
+        routeBtn.setAttribute("aria-disabled", String(!valid));
+      };
+      [fromInput, toInput].forEach(el => {
+        el.addEventListener("input", updateBtnState);
+        el.addEventListener("keydown", (e)=>{
+          if(e.key==="Enter"){
+            e.preventDefault();
+            if(!routeBtn.disabled) calcRoute();
+          }
+        });
+      });
+
+      // Restore last inputs
+      const last = localStorage.getItem("lastRoute");
+      if(last){
+        try{
+          const data = JSON.parse(last);
+          if(data.from) fromInput.value = data.from;
+          if(data.to) toInput.value = data.to;
+          if(data.mode) document.getElementById("mode").value = data.mode;
+        }catch(e){ console.warn("localStorage parse error", e); }
+      }
+      updateBtnState();
+
+      // Suggestions
+      renderPlaceSuggestions();
     }
 
-    function geoLocate() {
-      if (!navigator.geolocation) {
-        displayPanelMsg('Geolocation is not supported by your browser.'); return;
+    function renderPlaceSuggestions(){
+      const wrap = document.getElementById("placeSuggestions");
+      wrap.innerHTML = POPULAR_PLACES.map(p =>
+        `<button class="suggest-btn" type="button" aria-label="Quick fill ${p}" onclick="fillInput('from','${p.replace(/'/g,"\\'")}')">${p}</button>`
+      ).join(" ");
+    }
+
+    function fillInput(id, value){
+      const input = document.getElementById(id);
+      input.value = value;
+      input.focus();
+      const routeBtn = document.getElementById("routeBtn");
+      const valid = document.getElementById("from").value.trim() && document.getElementById("to").value.trim();
+      routeBtn.disabled = !valid;
+      routeBtn.setAttribute("aria-disabled", String(!valid));
+    }
+
+    /* ====== GEO / GEOCODE ====== */
+    async function getCoords(address){
+      return new Promise((resolve,reject)=>{
+        geoCoder.geocode({ address }, (results, status) => {
+          if(status==="OK" && results && results[0]){
+            const loc = results[0].geometry.location;   // ✅ fixed: use first result
+            resolve({ lat: loc.lat(), lng: loc.lng() });
+          } else if (status==="OVER_QUERY_LIMIT"){
+            showToast("Google Maps API query limit exceeded. Please try again later.", 6000);
+            reject(new Error("API query limit exceeded"));
+          } else if (status==="ZERO_RESULTS"){
+            showToast("Location not found: " + address, 5000);
+            reject(new Error("Location not found"));
+          } else {
+            showToast("Error getting location data for: " + address, 5000);
+            reject(new Error("Geocode error: " + status));
+          }
+        });
+      });
+    }
+
+    function deg2rad(d){ return d * (Math.PI/180); }
+    function haversine(lat1, lon1, lat2, lon2){
+      const R=6371;
+      const dLat=deg2rad(lat2-lat1), dLon=deg2rad(lon2-lon1);
+      const a = Math.sin(dLat/2)**2 + Math.cos(deg2rad(lat1))*Math.cos(deg2rad(lat2))*Math.sin(dLon/2)**2;
+      return R * (2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
+    }
+
+    /* ====== ROUTING ====== */
+    async function calcRoute(){
+      const from = document.getElementById("from").value.trim();
+      const to   = document.getElementById("to").value.trim();
+      const mode = document.getElementById("mode").value;
+      if(!from || !to){ showToast("Please enter both From and To locations."); return; }
+
+      showSpinner(true);
+      try{
+        if(mode==="FLIGHT"){
+          const [a,b] = await Promise.all([getCoords(from), getCoords(to)]);
+          const distance = haversine(a.lat, a.lng, b.lat, b.lng);
+          const fare = (distance * rates.flight.costPerKm).toFixed(0);
+          const estTime = (distance / 600).toFixed(1); // ~600 km/h
+          directionsRenderer.set('directions', null);
+          showDetails(`
+            <strong>From:</strong> ${from}<br>
+            <strong>To:</strong> ${to}<br>
+            <strong>Mode:</strong> ✈️ By Air<br>
+            <strong>Distance:</strong> ${distance.toFixed(1)} km<br>
+            <strong>Estimated Fare:</strong> ₹${fare} (approx)<br>
+            <strong>Estimated Time:</strong> ${estTime} hrs
+          `);
+        } else {
+          const request = {
+            origin: from,
+            destination: to,
+            travelMode: google.maps.TravelMode[mode],
+            provideRouteAlternatives: true
+          };
+          directionsService.route(request, (result, status) => {
+            showSpinner(false);
+            if(status==='OK' && result?.routes?.length){
+              directionsRenderer.setOptions({ suppressMarkers:false });
+              directionsRenderer.setDirections(result);
+              window.lastRouteResult = result;
+
+              const detailsHtml = result.routes.map((route, idx) => {
+                const leg = route.legs?.[0] ?? null;
+                const distText = leg?.distance?.text ?? "N/A";
+                const durText  = leg?.duration?.text ?? "N/A";
+                const distanceKm = distText==="N/A" ? 0 : (parseFloat(distText.replace(/[^\d.]/g,'')) || 0);
+                let fare = 0;
+                if(mode==="DRIVING") fare = (distanceKm * rates.driving.fuelCostPerKm + rates.driving.tollEstimate).toFixed(0);
+                else if(mode==="TRANSIT") fare = (distanceKm * rates.train.costPerKm).toFixed(0);
+
+                return `
+                  <div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #eee;">
+                    <strong>Route ${idx+1}:</strong><br>
+                    <strong>Distance:</strong> ${distanceKm ? distanceKm.toFixed(1) + ' km' : 'N/A'}<br>
+                    <strong>Duration:</strong> ${durText}<br>
+                    <strong>Estimated Fare:</strong> ₹${fare}<br>
+                    <button onclick="displayRouteOption(${idx})" style="margin-top:6px;padding:6px 14px;background:var(--brand);color:white;border:none;border-radius:8px;cursor:pointer;">Show on Map</button>
+                  </div>
+                `;
+              }).join("");
+              showDetails(`<div style="max-height:360px;overflow:auto">${detailsHtml}</div>`);
+            } else if (status==='ZERO_RESULTS'){
+              showToast("No route found between these locations.");
+              directionsRenderer.set('directions', null);
+            } else if (status==='OVER_QUERY_LIMIT'){
+              showToast("Google Maps API usage limit exceeded. Please try again later.", 6000);
+            } else {
+              showToast(`Failed to find route: ${status}`, 5000);
+              directionsRenderer.set('directions', null);
+            }
+          });
+          return; // spinner already handled in callback
+        }
+      } catch(err){
+        showToast(err?.message || "An error occurred while calculating the route.");
+      } finally {
+        showSpinner(false);
+        localStorage.setItem('lastRoute', JSON.stringify({ from, to, mode }));
       }
-      displayPanelMsg('Detecting your location...');
+    }
+
+    window.displayRouteOption = function(index){
+      if(!window.lastRouteResult) return;
+      directionsRenderer.setDirections(window.lastRouteResult);
+      directionsRenderer.setRouteIndex(index);
+      closeModal();
+    };
+
+    function geoLocate(){
+      if(!navigator.geolocation){
+        showToast("Geolocation is not supported by your browser.");
+        return;
+      }
+      showToast("Detecting your location...");
       navigator.geolocation.getCurrentPosition(
-        async (position) => {
-          const latlng = { lat: position.coords.latitude, lng: position.coords.longitude };
-          try {
-            const results = await new Promise((resolve, reject) => {
-              geoCoder.geocode({ location: latlng }, (res, status) => {
-                if (status === 'OK' && res[0]) resolve(res);
+        async (pos)=>{
+          const latlng = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+          try{
+            const results = await new Promise((resolve,reject)=>{
+              geoCoder.geocode({ location: latlng }, (res, status)=>{
+                if(status==='OK' && res && res[0]) resolve(res);
                 else reject(status);
               });
             });
-            document.getElementById("from").value = results.formatted_address;
-            const valid = document.getElementById("from").value.trim() !== "" && document.getElementById("to").value.trim() !== "";
-            document.getElementById("routeBtn").disabled = !valid;
-            displayPanelMsg("Location detected: " + results.formatted_address);
-          } catch {
-            displayPanelMsg("Unable to detect address from your location.");
+            const addr = results[0].formatted_address; // ✅ fixed: use first result
+            document.getElementById("from").value = addr;
+            const btn = document.getElementById("routeBtn");
+            const valid = document.getElementById("from").value.trim() && document.getElementById("to").value.trim();
+            btn.disabled = !valid;
+            btn.setAttribute("aria-disabled", String(!valid));
+            showToast("Location detected: " + addr);
+          }catch(_){
+            showToast("Unable to detect address from your location.");
           }
         },
-        () => { displayPanelMsg("Permission denied or location unavailable."); }
+        ()=>{ showToast("Permission denied or location unavailable."); }
       );
     }
 
-    function displayPanelMsg(msg) {
-      document.getElementById("routePanel").innerHTML = `<div class="nothing">${msg}</div>`;
-      document.getElementById("weatherPanel").innerHTML = "";
-      showSidebar();
-    }
-
-    function getWeatherHtml(wdata, placename) {
-      if (!wdata || !wdata.current) return '';
-      const w = wdata.current;
-      const weatherIcons = {
-        // Simplified: https://open-meteo.com/en/docs
-        0:'☀️', 1:'🌤️', 2:'⛅', 3:'🌥️', 45:'🌫️', 48:'🌫️', 51:'🌦️', 53:'🌦️',
-        55:'🌦️', 56:'🌧️', 57:'🌧️', 61:'🌦️', 63:'🌧️', 65:'🌧️', 66:'🌧️',
-        67:'🌧️', 71:'🌨️', 73:'🌨️', 75:'🌨️', 77:'🌨️', 80:'🌦️', 81:'🌧️',
-        82:'🌧️', 85:'🌨️', 86:'🌨️', 95:'⛈️', 96:'🌩️', 99:'🌩️'
-      };
-      let icon = weatherIcons[String(w.weather_code)] || '🌤️';
-      return `<div class='weather'>
-        <span class="weatherloc">${placename}</span><br>
-        <span class="weather-main">
-          <span class="weathericon">${icon}</span>
-          <span class="bigger">${w.temperature_2m ?? w.temperature}°C</span>
-          <span class="smaller">${w.relative_humidity_2m !== undefined ? "Humidity " + w.relative_humidity_2m + "%" : ""}</span>
-        </span>
-        <span class="smaller" style="display:block">Wind: ${w.wind_speed_10m ?? w.wind_speed ?? "?"} km/h</span>
-      </div>`;
-    }
-
-    async function fetchWeather(lat, lng, placename, panelId) {
-      // Open-Meteo API, no key needed
-      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=auto`;
-      try {
-        const resp = await fetch(url);
-        const data = await resp.json();
-        document.getElementById(panelId).innerHTML += getWeatherHtml(data, placename);
-      } catch {
-        document.getElementById(panelId).innerHTML += 
-          `<div class="weather">${placename}: Weather unavailable</div>`;
+    // Close modal on Escape
+    document.addEventListener('keydown',(e)=>{
+      if(e.key==="Escape"){
+        const modal = document.getElementById('routeDetailsModal');
+        if(modal.classList.contains('show')) closeModal();
       }
-    }
-
-    function routeModeName(mode, transitInfo) {
-      if (mode === "DRIVING") return "🚗 By Road";
-      if (mode === "WALKING") return "🚶 Walk";
-      if (mode === "TRANSIT") return "🚆 By Train";
-      return mode;
-    }
-
-    function createRoutePanel(route, mode) {
-      if (!route || !route.legs || !route.legs.length) return "<div class='nothing'>No details.</div>";
-      const leg = route.legs[0];
-      let sum = `<div class="route-title">Route Details</div>
-        <div class="route-mode">${routeModeName(mode)}</div>
-        <div class="time-display">⏱️ ${leg.duration.text}</div>
-        <div class="distance-display">🛣️ ${leg.distance.text}</div>`;
-      // Estimate fare per mode
-      let faretxt = "";
-      let km = parseFloat(leg.distance.value) / 1000;
-      if (mode === "DRIVING") faretxt = `<span class="costtag">₹${(km * rates.driving.perKm).toFixed(0)} (car/taxi)</span>`;
-      else if (mode === "WALKING") faretxt = `<span class="costtag">Free (walk)</span>`;
-      else if (mode === "TRANSIT") {
-        if (route.fare && route.fare.text) faretxt = `<span class="costtag">${route.fare.text}</span>`;
-        else faretxt = `<span class="costtag">₹${(km * rates.train.perKm).toFixed(0)} (train)</span>`;
-      }
-      sum += `<div class="infotag"><b>From:</b> ${leg.start_address}<br><b>To:</b> ${leg.end_address}</div>`;
-      sum += `<div class="costtag">${faretxt}</div>`;
-      // Steps
-      if (leg.steps && leg.steps.length) {
-        sum += `<ul class="step-list">`;
-        leg.steps.forEach(step => {
-          let txt = step.instructions.replace(/<div.*?>/g,' ').replace(/<\/div>/g,'');
-          if (step.travel_mode==="TRANSIT" && step.transit && step.transit.line && step.transit.line.short_name)
-            txt += ` <b>[${step.transit.line.short_name}]</b>`;
-          sum += `<li>${txt} <span style="color:#bbb;font-size:.93em">${step.distance.text} - ${step.duration.text}</span></li>`;
-        });
-        sum += `</ul>`;
-      }
-      return sum;
-    }
-
-    async function calcRoute() {
-      const from = document.getElementById("from").value.trim();
-      const to = document.getElementById("to").value.trim();
-      const mode = document.getElementById("mode").value;
-      if (!from || !to) return;
-      document.getElementById("weatherPanel").innerHTML = '';
-      // Get coordinates for both
-      const fromRes = await getCoords(from);
-      const toRes = await getCoords(to);
-      if (fromRes) {
-        fetchWeather(fromRes.lat, fromRes.lng, "From: " + from, "weatherPanel");
-        lastFromCoords = fromRes;
-      }
-      if (toRes) {
-        fetchWeather(toRes.lat, toRes.lng, "To: " + to, "weatherPanel");
-        lastToCoords = toRes;
-      }
-
-      // Route search
-      const request = {
-        origin: from, destination: to, travelMode: google.maps.TravelMode[mode], provideRouteAlternatives: false,
-        ...(mode === "TRANSIT" ? { transitOptions: { modes: ['TRAIN'] } } : {})
-      };
-
-      directionsService.route(request, (result, status) => {
-        if (status === 'OK') {
-          directionsRenderer.setDirections(result);
-          showSidebar();
-          const route = result.routes[0];
-          document.getElementById("routePanel").innerHTML = createRoutePanel(route, mode);
-        } else if (status === 'ZERO_RESULTS') {
-          displayPanelMsg("No route found between these locations for this mode.");
-          directionsRenderer.set('directions', null);
-        } else {
-          displayPanelMsg("Unable to find route: " + status);
-          directionsRenderer.set('directions', null);
-        }
-      });
-      localStorage.setItem('lastRoute', JSON.stringify({ from, to, mode }));
-    }
-
-    async function getCoords(address) {
-      return new Promise((resolve, reject) => {
-        geoCoder.geocode({ address }, (results, status) => {
-          if (status === 'OK' && results[0]) {
-            const loc = results.geometry.location;
-            resolve({ lat: loc.lat(), lng: loc.lng() });
-          } else {
-            resolve(null);
-          }
-        });
-      });
-    }
-
-    // Show sidebar on first load
-    document.addEventListener("DOMContentLoaded", showSidebar);
+    });
   </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632" crossorigin="anonymous"></script>
 </body>
 </html>
