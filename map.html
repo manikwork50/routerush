@@ -140,10 +140,7 @@
       animation: spin 1s linear infinite;
       margin-right: 15px;
     }
-    @keyframes spin {
-      0% { transform: rotate(0deg);}
-      100% { transform: rotate(360deg);}
-    }
+    @keyframes spin { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);} }
     .modal {
       display: none;
       position: fixed;
@@ -161,10 +158,7 @@
       line-height: 1.5;
       user-select: text;
     }
-    .modal.show {
-      display: block;
-      animation: fadeIn 0.3s ease forwards;
-    }
+    .modal.show { display: block; animation: fadeIn 0.3s ease forwards; }
     .modal h3 {
       margin-top: 0;
       color: #FF5E00;
@@ -186,14 +180,8 @@
       transition: background-color 0.3s;
       user-select: none;
     }
-    .modal button:hover, .modal button:focus {
-      background: #cc4a00;
-      outline: none;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translate(-50%, -45%) scale(0.95); }
-      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    }
+    .modal button:hover, .modal button:focus { background: #cc4a00; outline: none; }
+    @keyframes fadeIn { from { opacity: 0; transform: translate(-50%, -45%) scale(0.95);} to { opacity: 1; transform: translate(-50%, -50%) scale(1);} }
     .bottom-ad {
       position: fixed;
       bottom: 0;
@@ -225,11 +213,7 @@
       pointer-events: none;
       transition: opacity 0.4s ease;
     }
-    .toast.show {
-      opacity: 1;
-      pointer-events: all;
-    }
-    /* Popular place suggestions styles */
+    .toast.show { opacity: 1; pointer-events: all; }
     .suggestion-list {
       width: 100%;
       text-align: center;
@@ -250,30 +234,13 @@
       cursor: pointer;
       transition: background 0.2s;
     }
-    .suggest-btn:hover, .suggest-btn:focus {
-      background: #ffecd8;
-      outline: none;
-    }
+    .suggest-btn:hover, .suggest-btn:focus { background: #ffecd8; outline: none; }
     @media (max-width: 700px) {
-      .controls {
-        flex-direction: column;
-        gap: 12px;
-        padding: 14px;
-      }
-      .input-group {
-        width: 100% !important;
-      }
-      #map {
-        top: 180px;
-        bottom: 100px;
-      }
-      .modal {
-        width: 90%;
-        padding: 18px;
-      }
-      .suggestion-list {
-        top: 142px;
-      }
+      .controls { flex-direction: column; gap: 12px; padding: 14px; }
+      .input-group { width: 100% !important; }
+      #map { top: 180px; bottom: 100px; }
+      .modal { width: 90%; padding: 18px; }
+      .suggestion-list { top: 142px; }
     }
   </style>
 </head>
@@ -412,11 +379,19 @@
       const toInput = document.getElementById("to");
       const routeBtn = document.getElementById("routeBtn");
 
+      const updateBtnState = () => {
+        const valid = fromInput.value.trim() !== "" && toInput.value.trim() !== "";
+        routeBtn.disabled = !valid;
+        routeBtn.setAttribute("aria-disabled", String(!valid));
+      };
+
       [fromInput, toInput].forEach(input => {
-        input.addEventListener("input", () => {
-          const valid = fromInput.value.trim() !== "" && toInput.value.trim() !== "";
-          routeBtn.disabled = !valid;
-          routeBtn.setAttribute("aria-disabled", !valid);
+        input.addEventListener("input", updateBtnState);
+        input.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            if (!routeBtn.disabled) calcRoute();
+          }
         });
       });
 
@@ -428,8 +403,7 @@
           if(routeData.from) fromInput.value = routeData.from;
           if(routeData.to) toInput.value = routeData.to;
           if(routeData.mode) document.getElementById("mode").value = routeData.mode;
-          routeBtn.disabled = !(fromInput.value.trim() && toInput.value.trim());
-          routeBtn.setAttribute("aria-disabled", routeBtn.disabled);
+          updateBtnState();
         } catch(e) { console.warn("localStorage read error", e); }
       }
 
@@ -447,10 +421,11 @@
       const input = document.getElementById(inputId);
       input.value = place;
       input.focus();
-      document.getElementById("routeBtn").disabled = !(
-        document.getElementById("from").value.trim() !== "" &&
-        document.getElementById("to").value.trim() !== ""
-      );
+      const routeBtn = document.getElementById("routeBtn");
+      const valid = document.getElementById("from").value.trim() !== "" &&
+                    document.getElementById("to").value.trim() !== "";
+      routeBtn.disabled = !valid;
+      routeBtn.setAttribute("aria-disabled", String(!valid));
     }
 
     function showSpinner(show) {
@@ -459,8 +434,8 @@
         spinner.removeAttribute("hidden");
         spinner.classList.add("active");
       } else {
-        spinner.setAttribute("hidden", "");
         spinner.classList.remove("active");
+        spinner.setAttribute("hidden", "");
       }
     }
 
@@ -480,8 +455,8 @@
     async function getCoords(address) {
       return new Promise((resolve, reject) => {
         geoCoder.geocode({ address }, (results, status) => {
-          if (status === 'OK' && results[0]) {
-            const loc = results.geometry.location;
+          if (status === 'OK' && results && results[0]) {
+            const loc = results[0].geometry.location;     // ✅ fixed: use results[0]
             resolve({ lat: loc.lat(), lng: loc.lng() });
           } else if (status === 'OVER_QUERY_LIMIT') {
             showToast("Google Maps API query limit exceeded. Please try again later.", 6000);
@@ -491,15 +466,13 @@
             reject(new Error("Location not found"));
           } else {
             showToast("Error getting location data for: " + address, 5000);
-            reject(new Error("Geocode error"));
+            reject(new Error("Geocode error: " + status));
           }
         });
       });
     }
 
-    function deg2rad(deg) {
-      return deg * (Math.PI / 180);
-    }
+    function deg2rad(deg) { return deg * (Math.PI / 180); }
 
     function haversine(lat1, lon1, lat2, lon2) {
       const R = 6371;
@@ -550,21 +523,26 @@
 
           directionsService.route(request, (result, status) => {
             showSpinner(false);
-            if (status === 'OK') {
+            if (status === 'OK' && result && result.routes && result.routes.length) {
               directionsRenderer.setOptions({ suppressMarkers: false });
               directionsRenderer.setDirections(result);
               window.lastRouteResult = result;
+
               let detailsHtml = result.routes.map((route, idx) => {
-                const leg = route.legs[0];
-                const distanceKm = parseFloat(leg.distance.text.replace(/[^\d.]/g, ''));
-                let fare;
+                const leg = route.legs && route.legs[0] ? route.legs[0] : null;
+                const distText = leg && leg.distance ? leg.distance.text : "N/A";
+                const durText = leg && leg.duration ? leg.duration.text : "N/A";
+                const distanceKm = distText === "N/A" ? 0 : parseFloat(distText.replace(/[^\d.]/g, '')) || 0;
+
+                let fare = 0;
                 if (mode === "DRIVING") fare = (distanceKm * rates.driving.fuelCostPerKm + rates.driving.tollEstimate).toFixed(0);
                 else if (mode === "TRANSIT") fare = (distanceKm * rates.train.costPerKm).toFixed(0);
+
                 return `
                   <div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #eee;">
                     <strong>Route ${idx+1}:</strong><br>
-                    <strong>Distance:</strong> ${distanceKm.toFixed(1)} km<br>
-                    <strong>Duration:</strong> ${leg.duration.text}<br>
+                    <strong>Distance:</strong> ${distanceKm ? distanceKm.toFixed(1) + ' km' : 'N/A'}<br>
+                    <strong>Duration:</strong> ${durText}<br>
                     <strong>Estimated Fare:</strong> ₹${fare}<br>
                     <button onclick="displayRouteOption(${idx})" style="margin-top:6px;padding:6px 14px;background:#FF5E00;color:white;border:none;border-radius:6px;cursor:pointer;">Show on Map</button>
                   </div>
@@ -581,11 +559,10 @@
               directionsRenderer.set('directions', null);
             }
           });
-          return;
+          return; // spinner handled in callback
         }
       } catch (e) {
-        showSpinner(false);
-        showToast(e.message || "An error occurred while calculating the route.");
+        showToast(e && e.message ? e.message : "An error occurred while calculating the route.");
       } finally {
         showSpinner(false);
       }
@@ -613,14 +590,17 @@
           try {
             const results = await new Promise((resolve, reject) => {
               geoCoder.geocode({ location: latlng }, (res, status) => {
-                if (status === 'OK' && res[0]) resolve(res);
+                if (status === 'OK' && res && res[0]) resolve(res);
                 else reject(status);
               });
             });
-            document.getElementById("from").value = results.formatted_address;
-            document.getElementById("routeBtn").disabled = false;
-            showToast("Location detected: " + results.formatted_address);
-          } catch {
+            const addr = results[0].formatted_address; // ✅ fixed: use first result
+            document.getElementById("from").value = addr;
+            const routeBtn = document.getElementById("routeBtn");
+            routeBtn.disabled = !(document.getElementById("from").value.trim() && document.getElementById("to").value.trim());
+            routeBtn.setAttribute("aria-disabled", String(routeBtn.disabled));
+            showToast("Location detected: " + addr);
+          } catch (err) {
             showToast("Unable to detect address from your location.");
           }
         },
