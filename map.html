@@ -354,3 +354,58 @@
     function displayRouteDetails(route, mode) {
       if (!route || !route.legs || route.legs.length === 0) {
         document.getElementById('routePanel').innerHTML = '<p>No route details available.</p>';
+        return;
+      }
+      const leg = route.legs[0];
+      const km = leg.distance.value / 1000;
+      let fare = 0;
+      if (mode === 'DRIVING') fare = (km * rates.driving.perKm).toFixed(0);
+      else if (mode === 'WALKING') fare = 0;
+      else if (mode === 'TRANSIT') fare = (km * rates.train.perKm).toFixed(0);
+
+      let html = `<div class="route-title">Travel Details</div>
+                  <div><b>From:</b> ${leg.start_address} <br><b>To:</b> ${leg.end_address}</div>
+                  <div class="route-mode"><b>Mode:</b> ${mode === 'DRIVING' ? 'By Road' : (mode === 'WALKING' ? 'Walk' : 'By Train')}</div>
+                  <div class="time-display"><b>Time:</b> ${leg.duration.text}</div>
+                  <div class="distance-display"><b>Distance:</b> ${leg.distance.text}</div>
+                  <span class="costtag">Estimated Fare: ${mode === 'WALKING' ? 'Free' : `₹${fare}`}</span>`;
+
+      if (leg.steps && leg.steps.length > 0) {
+        html += '<ul class="step-list">';
+        leg.steps.forEach(step => {
+          const instr = step.instructions.replace(/<[^>]+>/g, '');
+          html += `<li>${instr} (${step.distance.text}, ${step.duration.text})</li>`;
+        });
+        html += '</ul>';
+      }
+
+      document.getElementById('routePanel').innerHTML = html;
+    }
+
+    function geoLocate() {
+      if (!navigator.geolocation) {
+        alert('Geolocation is not supported by your browser.');
+        return;
+      }
+      navigator.geolocation.getCurrentPosition(async (pos) => {
+        const latlng = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        try {
+          const response = await new Promise((resolve, reject) => {
+            geoCoder.geocode({ location: latlng }, (res, status) => {
+              if (status === 'OK' && res && res[0]) resolve(res);
+              else reject(status);
+            });
+          });
+          document.getElementById('from').value = response[0].formatted_address;
+          const routeBtn = document.getElementById('routeBtn');
+          const valid = document.getElementById('from').value.trim() !== '' && document.getElementById('to').value.trim() !== '';
+          routeBtn.disabled = !valid;
+          routeBtn.setAttribute('aria-disabled', !valid);
+        } catch {
+          alert('Unable to detect address from your location.');
+        }
+      }, () => alert('Permission denied or location unavailable.'));
+    }
+  </script>
+</body>
+</html>
