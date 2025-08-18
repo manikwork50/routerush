@@ -2,234 +2,158 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Interactive Travel Route Map — WanderMap India</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="index, follow" />
+  <title>WanderMap: Interactive Indian Route Map + Weather</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
+    :root { --accent: #FF5E00; --main-bg: #f5f5f5; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-      color: #222;
+      background: var(--main-bg); color: #222;
+      margin: 0; height: 100vh; overflow: hidden;
     }
-    nav {
-      background: #fff;
-      padding: 14px 10px;
-      text-align: center;
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      width: 100%;
-      z-index: 20;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.07);
-      font-weight: 600;
-      user-select: none;
+    nav { background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      height: 52px; padding: 0 24px; display: flex; align-items: center;
+      gap: 19px; position: fixed; left: 0; right: 0; top: 0; z-index: 100;
     }
-    nav a {
-      color: #333;
-      margin: 0 14px;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.3s;
+    nav a { color: #222;text-decoration: none;font-weight:600;font-size:1rem;transition:color 0.2s;
+      margin-right:5px; border-radius:7px;padding:7px 9px;}
+    nav a.active, nav a:focus, nav a:hover {color:var(--accent);background: #fffbe9;}
+    .map-main { display: flex; flex-direction: row; height: 100vh;
+      margin-top: 52px; background: var(--main-bg);}
+    #sidebar { width: 410px; background: #fff;
+      box-shadow: 2px 0 24px #eccfbc6c, 0 2px 17px #eee;
+      z-index: 90; padding: 23px 22px 14px 24px; min-width: 240px;
+      max-width: 98vw; transform: translateX(-440px); opacity: .18;
+      transition: transform .39s cubic-bezier(.73,.03,.29,1.07),opacity .23s cubic-bezier(.37,.45,.78,.95);
+      position: relative; border-radius: 0 16px 16px 0; height:100vh;overflow-y:auto;}
+    #sidebar.show {transform:translateX(0);opacity:1;box-shadow:2px 0 24px #ff9c602c,0 0 0;}
+    .controls {display: flex; flex-direction: column; gap: 11px; background: #fff;
+      border-radius: 14px; padding: 16px 17px 12px 13px; margin-bottom:17px;
+      box-shadow: 0 0px 14px #53230008; border:1px solid #faf3ee;
+      animation:fadein .78s cubic-bezier(.23,1,.32,1);}
+    @keyframes fadein {from{opacity:0;transform:translateY(-18px);}to{opacity:1;transform:none;}}
+    label {font-weight:600;font-size:1.00rem;margin-bottom:1px;color:#444;}
+    .input-row { display: flex; gap: 10px; align-items: flex-end; margin-bottom:2px;}
+    .input-group {flex:1 1 90px;}
+    input, select {border:1.5px solid #ccc;border-radius:7px;padding:9px 14px;font-size:1rem;width:100%;margin-top:2px;box-sizing:border-box;transition:.14s;}
+    input:focus, select:focus {border-color:var(--accent); outline:none;box-shadow: 0 0 9px #ff76001a;}
+    .controls button {
+      background:var(--accent);color:#fff;font-weight:700;font-size:1.06rem;
+      border:none;border-radius:9px;cursor:pointer;padding:10px 0;
+      margin-top:7px;transition:background .18s,transform .18s;box-shadow:0 1.5px 7px #ffd9b8b9;letter-spacing:0.01em;outline:none;
     }
-    nav a:hover, nav a:focus { color: #FF5E00; outline: none; }
-    .controls {
-      position: fixed;
-      top: 58px;
-      left: 0; right: 0;
-      text-align: center;
-      background: #fff;
-      padding: 12px 10px 4px;
-      z-index: 21;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.07);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      user-select: none;
+    .controls button:active { background: #db4b00; transform: scale(.97);}
+    .controls button:disabled { background: #ddd; color: #999; cursor: not-allowed;}
+    .geo-btn { background: #25D366 !important; color: #fff !important; margin-top: 0 !important;}
+    #map { flex-grow: 1; height: 100%; min-width: 0; background: #e8ebf4;}
+    .show-hide-btn {
+      background:#fff3eb; color:var(--accent);
+      border:1px solid #ffe9d2;border-radius:9px;font-weight:600;
+      padding:8px 10px; cursor:pointer; font-size:1rem;margin-bottom:7px;
+      margin-top: 2px; box-shadow:0 1px 7px 0 #ffdcbc81; transition:.2s;
     }
-    .input-group {
-      min-width: 180px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+    .show-hide-btn:active { background: #ffe3c7;}
+    .nothing { text-align: center; font-size:1.07rem;margin-top:15px;color:#888;}
+    .route-title {font-size:1.19rem;font-weight:700;color:var(--accent);margin-bottom:2px;}
+    #route-summary {margin-top:11px;font-size:1.07rem;color:#7e4d00;}
+    .step-list {list-style:none;padding:0 0 0 6px;}
+    .step-list li {
+      padding:2.5px 0 3.5px 3px; font-size:.98rem;color:#333;
+      border-left:2.3px solid #ffe6d8; margin-bottom:1.3px;animation:fadein .3s;}
+    .infotag, .costtag {
+      display:inline-block;background:#ffead8;color:#ba5515;font-weight:700;
+      border-radius:8px;font-size:.97em;padding:2px 9px 3px 9px;margin-right:7px;
+      margin-bottom:0;margin-top:5px;
     }
-    label {
-      font-weight: bold;
-      font-size: 0.9rem;
-      margin-bottom: 3px;
-      user-select: none;
+    .costtag { background:#d6f0e6; color:#008c57;}
+    .time-display {font-size:1.19rem;font-weight:bold;letter-spacing:0.01em;color:#004d80;margin:8px 0 5px 0;display:flex;align-items:center;gap:6px;}
+    .distance-display {font-size:1.11rem;color:#666;margin-bottom:4px;}
+    .route-mode {font-size:1.07rem;font-weight:600;color:#0a4d0a;margin-bottom:5px;}
+    .weather {border-radius:11px;padding: 3px 0 9px 9px;margin-bottom:6px;background:#eaf3fa;}
+    .weatherloc {font-size:.97em;font-weight:600;margin-bottom:2px;}
+    .weathericon {vertical-align:middle;margin-right:6px;filter: drop-shadow(0 0 7px #dcf6ffaf);}
+    .weather-main {font-size:1.05em;background:#fafcff;padding:3px 12px 5px 6px;border-radius:7px;display:inline-block;margin-right:5px;}
+    .weather .bigger {font-size:1.19em;}
+    .weather .smaller {font-size:.96em;color:#368;}
+    @media (max-width: 900px) {
+      .map-main { flex-direction: column; }
+      #sidebar { width: 96vw; min-width: 0; max-width:none; padding:7vw 3vw 3vw 2vw; position:absolute;z-index:95;}
+      #sidebar { height:auto; max-height:68vh;}
     }
-    input, select, button {
-      padding: 10px 14px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1rem;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    input:focus, select:focus {
-      border-color: #FF5E00;
-      box-shadow: 0 0 6px #FF5E00aa;
-      outline: none;
-    }
-    button {
-      background: #ff6f31;
-      color: white;
-      border: none;
-      font-weight: 700;
-      min-width: 130px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.2s;
-      user-select: none;
-      margin-top: 2px;
-    }
-    button:disabled {
-      background: #c8c8c8;
-      cursor: not-allowed;
-    }
-    button:hover:not(:disabled), button:focus:not(:disabled) {
-      background: #cc4a00;
-      outline: none;
-    }
-    #map {
-      position: fixed;
-      top: 140px;
-      bottom: 0;
-      left: 0; right: 0;
-      border-radius: 0;
-      box-shadow: 0 2px 24px #22856622;
-      touch-action: pinch-zoom;
-      background: #eaeaea;
-      outline: none;
-      min-height: 430px;
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      top: 52%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #fff;
-      padding: 22px 30px;
-      border-radius: 13px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.23);
-      z-index: 10000;
-      min-width: 270px;
-      max-width: 95vw;
-      color: #222;
-      font-size: 1rem;
-      line-height: 1.5;
-      user-select: text;
-    }
-    .modal.show { display: block; animation: fadeIn 0.23s ease; }
-    .modal h3 {
-      margin-top: 0; color: #FF5E00;
-      font-weight: 700; font-size: 1.5rem;
-      margin-bottom: 13px;
-    }
-    .modal button {
-      margin-top: 18px;
-      background: #FF5E00;
-      color: white;
-      font-weight: 700;
-      font-size: 1.05rem;
-      border-radius: 8px;
-      width: 100%;
-      cursor: pointer;
-      padding: 10px 20px;
-    }
-    .modal button:hover { background: #d94a00; outline: none; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    .toast {
-      position: fixed;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #222;
-      color: white;
-      padding: 10px 24px;
-      border-radius: 24px;
-      z-index: 10500;
-      font-size: 1rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s;
-    }
-    .toast.show { opacity: 1; pointer-events: all; }
-    @media (max-width: 700px) {
-      .controls { flex-direction: column; gap: 10px; padding: 14px; }
-      .input-group { width: 100%!important; }
-      #map { top: 182px; min-height: 270px; }
-      .modal { min-width: 120px; padding: 8px 7vw; }
+    @media (max-width: 710px){
+      nav{font-size:.94rem;}
+      .controls { padding:12px 6vw 10px 4vw;}
+      #sidebar { padding:2vw 1vw;}
     }
   </style>
 </head>
 <body>
   <nav>
     <a href="index.html">Home</a>
-    <a href="map.html" aria-current="page">Map</a>
+    <a href="map.html" class="active" aria-current="page">Map</a>
     <a href="blog.html">Blog</a>
     <a href="bookings.html">Bookings</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
-  <div class="controls" role="region" aria-label="Route search controls">
-    <div class="input-group">
-      <label for="from">From location</label>
-      <input id="from" placeholder="Enter start location" aria-required="true" autocomplete="off" type="search" />
+  <div class="map-main">
+    <div id="sidebar">
+      <button class="show-hide-btn" id="hideSidebarBtn" onclick="hideSidebar()" aria-label="Hide sidebar">Hide Details</button>
+      <div class="controls" aria-label="Route search controls">
+        <div class="input-row">
+          <div class="input-group">
+            <label for="from">From</label>
+            <input id="from" placeholder="Start location" type="search" autocomplete="off">
+          </div>
+          <div class="input-group">
+            <label for="to">To</label>
+            <input id="to" placeholder="Destination" type="search" autocomplete="off">
+          </div>
+        </div>
+        <div class="input-row">
+          <div class="input-group">
+            <label for="mode">Travel mode</label>
+            <select id="mode">
+              <option value="DRIVING">By Road</option>
+              <option value="WALKING">Walk</option>
+              <option value="TRANSIT">By Train</option>
+            </select>
+          </div>
+        </div>
+        <button id="routeBtn" onclick="calcRoute()" disabled>Show Route</button>
+        <button class="geo-btn" id="geoBtn" onclick="geoLocate()">Use My Location</button>
+      </div>
+      <div id="weatherPanel"></div>
+      <div id="routePanel"></div>
     </div>
-    <div class="input-group">
-      <label for="to">To location</label>
-      <input id="to" placeholder="Enter destination" aria-required="true" autocomplete="off" type="search" />
-    </div>
-    <div class="input-group">
-      <label for="mode">Travel mode</label>
-      <select id="mode" aria-required="true" aria-label="Select mode of travel">
-        <option value="DRIVING">By Road</option>
-        <option value="WALKING">Walk</option>
-        <option value="TRANSIT">By Train</option>
-        <option value="FLIGHT">Plane</option>
-      </select>
-    </div>
-    <button id="routeBtn" onclick="calcRoute()" disabled aria-label="Show route">Show Route</button>
-    <button id="geoBtn" onclick="geoLocate()" style="background:#25D366;" aria-label="Use my current location as From">Use My Location</button>
+    <div id="map"></div>
   </div>
-  <div id="map" tabindex="0" aria-label="Interactive travel map"></div>
-  <div class="modal" id="routeDetailsModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
-    <h3 id="modalTitle">🛣️ Travel Details</h3>
-    <div id="routeDetailsContent"></div>
-    <button onclick="closeModal()" aria-label="Close travel details">Close</button>
-  </div>
-  <div class="toast" id="toast" role="alert" aria-live="polite"></div>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7NzB6il5P8g1IkkiA8rfmi_f4tPnVr84&libraries=places&callback=initMap" async defer></script>
   <script>
-    // Accurate by-India rates (2025)
-    const rates = {
-      driving: { perKm: 13 },
-      walking: { perKm: 0 },
-      train: { perKm: 1.0 },
-      flight: { perKm: 7 }
-    };
-    let map, directionsService, directionsRenderer, geoCoder;
-
-    function showToast(message, duration = 4200) {
-      const toast = document.getElementById('toast');
-      toast.textContent = message, toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), duration);
+    function hideSidebar() {
+      document.getElementById('sidebar').classList.remove('show');
+      setTimeout(() => {
+        document.getElementById('sidebar').style.display = 'none';
+      }, 390);
     }
+    function showSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.display = '';
+      setTimeout(() => sidebar.classList.add('show'), 20);
+    }
+
+    // ==== GOOGLE MAPS + WEATHER CODE ====
+    const rates = { driving: { perKm:13 }, walking: { perKm:0 }, train:{ perKm:1.0 } };
+    let map, directionsService, directionsRenderer, geoCoder;
+    let lastFromCoords, lastToCoords;
+
     function initMap() {
       map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 22.9734, lng: 78.6569 },
-        zoom: 5,
-        streetViewControl: false,
-        mapTypeControl: false,
-        fullscreenControl: true,
-        zoomControl: true
+        center:{ lat:22.9734, lng:78.6569 }, zoom:5,
+        streetViewControl:false, mapTypeControl:false, fullscreenControl:true, zoomControl:true
       });
       directionsService = new google.maps.DirectionsService();
-      directionsRenderer = new google.maps.DirectionsRenderer({ map });
+      directionsRenderer = new google.maps.DirectionsRenderer({ map, suppressMarkers:false });
       geoCoder = new google.maps.Geocoder();
       new google.maps.places.Autocomplete(document.getElementById("from"));
       new google.maps.places.Autocomplete(document.getElementById("to"));
@@ -242,146 +166,14 @@
           routeBtn.disabled = !valid;
         })
       );
-      const lastRoute = localStorage.getItem('lastRoute');
-      if(lastRoute) {
-        try {
-          const r = JSON.parse(lastRoute);
-          if(r.from) fromInput.value = r.from;
-          if(r.to) toInput.value = r.to;
-          if(r.mode) document.getElementById("mode").value = r.mode;
-          const valid = fromInput.value.trim() !== "" && toInput.value.trim() !== "";
-          routeBtn.disabled = !valid;
-        } catch(e) {}
-      }
+      showSidebar();
     }
-    function showDetails(content) {
-      const modal = document.getElementById("routeDetailsModal");
-      document.getElementById("routeDetailsContent").innerHTML = content;
-      modal.classList.add("show"); modal.focus();
-    }
-    function closeModal() {
-      const modal = document.getElementById("routeDetailsModal");
-      modal.classList.remove("show");
-    }
-    async function getCoords(address) {
-      return new Promise((resolve, reject) => {
-        geoCoder.geocode({ address }, (results, status) => {
-          if (status === 'OK' && results[0]) {
-            const loc = results.geometry.location;
-            resolve({ lat: loc.lat(), lng: loc.lng() });
-          } else {
-            showToast("Error locating: " + address, 4000);
-            reject(new Error("Geocode error"));
-          }
-        });
-      });
-    }
-    function deg2rad(deg) {
-      return deg * (Math.PI / 180);
-    }
-    function haversine(lat1, lon1, lat2, lon2) {
-      const R = 6371;
-      const dLat = deg2rad(lat2 - lat1),
-            dLon = deg2rad(lon2 - lon1);
-      const a =
-        Math.sin(dLat / 2) ** 2 +
-        Math.cos(deg2rad(lat1)) *
-        Math.cos(deg2rad(lat2)) *
-        Math.sin(dLon / 2) ** 2;
-      return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
-    }
-    async function calcRoute() {
-      const from = document.getElementById("from").value.trim();
-      const to   = document.getElementById("to").value.trim();
-      const mode = document.getElementById("mode").value;
-      if (!from || !to) return;
-      let price = 0, distance = 0, estTime = 0, detailsHTML = '';
-      try {
-        if (mode === "FLIGHT") {
-          const [fromCoords, toCoords] = await Promise.all([getCoords(from), getCoords(to)]);
-          distance = haversine(fromCoords.lat, fromCoords.lng, toCoords.lat, toCoords.lng);
-          price = (distance * rates.flight.perKm).toFixed(0);
-          estTime = (distance / 600).toFixed(1); // hour, 600kmph
-          directionsRenderer.set('directions', null);
-          detailsHTML = `<strong>From:</strong> ${from}<br>
-            <strong>To:</strong> ${to}<br>
-            <strong>Mode:</strong> ✈️ Plane<br>
-            <strong>Distance:</strong> ${distance.toFixed(1)} km<br>
-            <strong>Estimated Fare:</strong> ₹${price} (approx, per person)<br>
-            <strong>Estimated Flight Time:</strong> ${estTime} hr`;
-          showDetails(detailsHTML);
-        } else if (mode === "TRANSIT") {
-          const request = {
-            origin: from,
-            destination: to,
-            travelMode: google.maps.TravelMode.TRANSIT,
-            provideRouteAlternatives: false,
-            transitOptions: { modes: ['TRAIN'] }
-          };
-          directionsService.route(request, (result, status) => {
-            if (status === 'OK') {
-              directionsRenderer.setDirections(result);
-              const leg = result.routes[0].legs;
-              distance = parseFloat(leg.distance.text.replace(/[^\d.]/g, ''));
-              price = (distance * rates.train.perKm).toFixed(0);
-              detailsHTML = `<strong>From:</strong> ${leg.start_address}<br>
-                <strong>To:</strong> ${leg.end_address}<br>
-                <strong>Mode:</strong> 🚆 Train<br>
-                <strong>Distance:</strong> ${distance.toFixed(1)} km<br>
-                <strong>Estimated Fare:</strong> ₹${price} (sleeper/avg)<br>
-                <strong>Travel Time:</strong> ${leg.duration.text}`;
-              showDetails(detailsHTML);
-            } else {
-              showToast("No train route found between these locations.", 4000);
-              directionsRenderer.set('directions', null);
-            }
-          });
-          return;
-        } else {
-          let travelMode = google.maps.TravelMode[mode];
-          const request = {
-            origin: from,
-            destination: to,
-            travelMode: travelMode,
-            provideRouteAlternatives: false
-          };
-          directionsService.route(request, (result, status) => {
-            if (status === 'OK') {
-              directionsRenderer.setDirections(result);
-              const leg = result.routes[0].legs;
-              distance = parseFloat(leg.distance.text.replace(/[^\d.]/g, ''));
-              let priceSymbol, modeLabel;
-              if (mode === "WALKING") {
-                price = 0; modeLabel = "🚶 Walk"; priceSymbol = "Free";
-              } else {
-                price = (distance * rates.driving.perKm).toFixed(0); modeLabel = "🚗 Road";
-                priceSymbol = `₹${price}`;
-              }
-              detailsHTML = `<strong>From:</strong> ${leg.start_address}<br>
-                <strong>To:</strong> ${leg.end_address}<br>
-                <strong>Mode:</strong> ${modeLabel}<br>
-                <strong>Distance:</strong> ${distance.toFixed(1)} km<br>
-                <strong>Estimated Fare:</strong> ${priceSymbol} ${(mode === "WALKING") ? "" : "(approx)"}<br>
-                <strong>Travel Time:</strong> ${leg.duration.text}`;
-              showDetails(detailsHTML);
-            } else {
-              showToast("No route found.", 3800);
-              directionsRenderer.set('directions', null);
-            }
-          });
-          return;
-        }
-      } catch (e) {
-        showToast(e.message || "An error occurred while calculating the route.");
-      }
-      localStorage.setItem('lastRoute', JSON.stringify({ from, to, mode }));
-    }
+
     function geoLocate() {
       if (!navigator.geolocation) {
-        showToast("Geolocation is not supported by your browser.");
-        return;
+        displayPanelMsg('Geolocation is not supported by your browser.'); return;
       }
-      showToast("Detecting your location...");
+      displayPanelMsg('Detecting your location...');
       navigator.geolocation.getCurrentPosition(
         async (position) => {
           const latlng = { lat: position.coords.latitude, lng: position.coords.longitude };
@@ -395,20 +187,151 @@
             document.getElementById("from").value = results.formatted_address;
             const valid = document.getElementById("from").value.trim() !== "" && document.getElementById("to").value.trim() !== "";
             document.getElementById("routeBtn").disabled = !valid;
-            showToast("Location detected: " + results.formatted_address);
+            displayPanelMsg("Location detected: " + results.formatted_address);
           } catch {
-            showToast("Unable to detect address from your location.");
+            displayPanelMsg("Unable to detect address from your location.");
           }
         },
-        () => { showToast("Permission denied or location unavailable."); }
+        () => { displayPanelMsg("Permission denied or location unavailable."); }
       );
     }
-    document.addEventListener('keydown', (e) => {
-      if (e.key === "Escape") {
-        const modal = document.getElementById('routeDetailsModal');
-        if (modal.classList.contains("show")) closeModal();
+
+    function displayPanelMsg(msg) {
+      document.getElementById("routePanel").innerHTML = `<div class="nothing">${msg}</div>`;
+      document.getElementById("weatherPanel").innerHTML = "";
+      showSidebar();
+    }
+
+    function getWeatherHtml(wdata, placename) {
+      if (!wdata || !wdata.current) return '';
+      const w = wdata.current;
+      const weatherIcons = {
+        // Simplified: https://open-meteo.com/en/docs
+        0:'☀️', 1:'🌤️', 2:'⛅', 3:'🌥️', 45:'🌫️', 48:'🌫️', 51:'🌦️', 53:'🌦️',
+        55:'🌦️', 56:'🌧️', 57:'🌧️', 61:'🌦️', 63:'🌧️', 65:'🌧️', 66:'🌧️',
+        67:'🌧️', 71:'🌨️', 73:'🌨️', 75:'🌨️', 77:'🌨️', 80:'🌦️', 81:'🌧️',
+        82:'🌧️', 85:'🌨️', 86:'🌨️', 95:'⛈️', 96:'🌩️', 99:'🌩️'
+      };
+      let icon = weatherIcons[String(w.weather_code)] || '🌤️';
+      return `<div class='weather'>
+        <span class="weatherloc">${placename}</span><br>
+        <span class="weather-main">
+          <span class="weathericon">${icon}</span>
+          <span class="bigger">${w.temperature_2m ?? w.temperature}°C</span>
+          <span class="smaller">${w.relative_humidity_2m !== undefined ? "Humidity " + w.relative_humidity_2m + "%" : ""}</span>
+        </span>
+        <span class="smaller" style="display:block">Wind: ${w.wind_speed_10m ?? w.wind_speed ?? "?"} km/h</span>
+      </div>`;
+    }
+
+    async function fetchWeather(lat, lng, placename, panelId) {
+      // Open-Meteo API, no key needed
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=auto`;
+      try {
+        const resp = await fetch(url);
+        const data = await resp.json();
+        document.getElementById(panelId).innerHTML += getWeatherHtml(data, placename);
+      } catch {
+        document.getElementById(panelId).innerHTML += 
+          `<div class="weather">${placename}: Weather unavailable</div>`;
       }
-    });
+    }
+
+    function routeModeName(mode, transitInfo) {
+      if (mode === "DRIVING") return "🚗 By Road";
+      if (mode === "WALKING") return "🚶 Walk";
+      if (mode === "TRANSIT") return "🚆 By Train";
+      return mode;
+    }
+
+    function createRoutePanel(route, mode) {
+      if (!route || !route.legs || !route.legs.length) return "<div class='nothing'>No details.</div>";
+      const leg = route.legs[0];
+      let sum = `<div class="route-title">Route Details</div>
+        <div class="route-mode">${routeModeName(mode)}</div>
+        <div class="time-display">⏱️ ${leg.duration.text}</div>
+        <div class="distance-display">🛣️ ${leg.distance.text}</div>`;
+      // Estimate fare per mode
+      let faretxt = "";
+      let km = parseFloat(leg.distance.value) / 1000;
+      if (mode === "DRIVING") faretxt = `<span class="costtag">₹${(km * rates.driving.perKm).toFixed(0)} (car/taxi)</span>`;
+      else if (mode === "WALKING") faretxt = `<span class="costtag">Free (walk)</span>`;
+      else if (mode === "TRANSIT") {
+        if (route.fare && route.fare.text) faretxt = `<span class="costtag">${route.fare.text}</span>`;
+        else faretxt = `<span class="costtag">₹${(km * rates.train.perKm).toFixed(0)} (train)</span>`;
+      }
+      sum += `<div class="infotag"><b>From:</b> ${leg.start_address}<br><b>To:</b> ${leg.end_address}</div>`;
+      sum += `<div class="costtag">${faretxt}</div>`;
+      // Steps
+      if (leg.steps && leg.steps.length) {
+        sum += `<ul class="step-list">`;
+        leg.steps.forEach(step => {
+          let txt = step.instructions.replace(/<div.*?>/g,' ').replace(/<\/div>/g,'');
+          if (step.travel_mode==="TRANSIT" && step.transit && step.transit.line && step.transit.line.short_name)
+            txt += ` <b>[${step.transit.line.short_name}]</b>`;
+          sum += `<li>${txt} <span style="color:#bbb;font-size:.93em">${step.distance.text} - ${step.duration.text}</span></li>`;
+        });
+        sum += `</ul>`;
+      }
+      return sum;
+    }
+
+    async function calcRoute() {
+      const from = document.getElementById("from").value.trim();
+      const to = document.getElementById("to").value.trim();
+      const mode = document.getElementById("mode").value;
+      if (!from || !to) return;
+      document.getElementById("weatherPanel").innerHTML = '';
+      // Get coordinates for both
+      const fromRes = await getCoords(from);
+      const toRes = await getCoords(to);
+      if (fromRes) {
+        fetchWeather(fromRes.lat, fromRes.lng, "From: " + from, "weatherPanel");
+        lastFromCoords = fromRes;
+      }
+      if (toRes) {
+        fetchWeather(toRes.lat, toRes.lng, "To: " + to, "weatherPanel");
+        lastToCoords = toRes;
+      }
+
+      // Route search
+      const request = {
+        origin: from, destination: to, travelMode: google.maps.TravelMode[mode], provideRouteAlternatives: false,
+        ...(mode === "TRANSIT" ? { transitOptions: { modes: ['TRAIN'] } } : {})
+      };
+
+      directionsService.route(request, (result, status) => {
+        if (status === 'OK') {
+          directionsRenderer.setDirections(result);
+          showSidebar();
+          const route = result.routes[0];
+          document.getElementById("routePanel").innerHTML = createRoutePanel(route, mode);
+        } else if (status === 'ZERO_RESULTS') {
+          displayPanelMsg("No route found between these locations for this mode.");
+          directionsRenderer.set('directions', null);
+        } else {
+          displayPanelMsg("Unable to find route: " + status);
+          directionsRenderer.set('directions', null);
+        }
+      });
+      localStorage.setItem('lastRoute', JSON.stringify({ from, to, mode }));
+    }
+
+    async function getCoords(address) {
+      return new Promise((resolve, reject) => {
+        geoCoder.geocode({ address }, (results, status) => {
+          if (status === 'OK' && results[0]) {
+            const loc = results.geometry.location;
+            resolve({ lat: loc.lat(), lng: loc.lng() });
+          } else {
+            resolve(null);
+          }
+        });
+      });
+    }
+
+    // Show sidebar on first load
+    document.addEventListener("DOMContentLoaded", showSidebar);
   </script>
 </body>
 </html>
