@@ -237,11 +237,11 @@
   </section>
 </main>
 <script>
-  // Home button logic
-  function goHome() {
-    // You can customize this as needed, e.g. location.href = "index.html";
-    // For now it reloads this page (reloads first game)
-    location.reload();
+ // Use this function for your Home button
+function goHome() {
+  window.location.href = "index.html"; // Change this to your actual home page path if needed
+}
+
   }
   // Utility shuffle
   function shuffle(array) { for(let i=array.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[array[i],array[j]]=[array[j],array[i]];} }
