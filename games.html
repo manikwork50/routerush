@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <title>Travel Games Zone</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -11,56 +11,118 @@
       color: #222;
       margin: 0;
       padding: 0;
+      padding-top: 56px; /* for fixed navbar height */
+    }
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: #20639B;
+      color: white;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      user-select: none;
+      z-index: 10000;
+      box-shadow: 0 2px 8px #003f5caa;
+    }
+    nav .nav-title {
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: 1.2px;
+      flex-grow: 1;
+    }
+    nav button {
+      background: #3caea3;
+      border: none;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 8px 16px;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: background 0.25s;
+      user-select: none;
+    }
+    nav button:hover {
+      background: #1f857f;
+      outline: none;
     }
     header {
-      background: #20639B;
-      color: #fff;
-      padding: 24px 0 10px 0;
       text-align: center;
       letter-spacing: 1px;
+      margin-top: 0;
+      margin-bottom: 22px;
     }
     h1 {
       margin: 0;
       font-size: 2.4rem;
       font-weight: bold;
+      color: #20639B;
+    }
+    .subtitle {
+      color: #20639Bdd;
+      font-size: 1.05rem;
+      margin-top: 5px;
+      user-select: none;
     }
     .game-selector {
       text-align: center;
-      margin: 32px 0 18px 0;
+      margin: 0 0 28px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
     }
     .game-selector button {
       background: #3caea3;
       color: #fff;
       border: none;
       border-radius: 18px;
-      font-size: 1.1rem;
-      padding: 10px 26px;
-      margin: 0 14px;
+      font-size: 1.07rem;
+      padding: 10px 22px;
+      margin: 0;
       cursor: pointer;
       font-weight: bold;
       transition: background 0.2s;
+      min-width: 88px;
+      user-select: none;
     }
     .game-selector button.active, .game-selector button:hover {
       background: #20639B;
     }
     .game-container {
       max-width: 480px;
-      margin: 0 auto;
+      margin: 0 auto 30px auto;
       background: #fff;
       border-radius: 16px;
       box-shadow: 0 2px 16px rgba(60,174,163,.11);
       padding: 28px 26px 32px 26px;
       min-height: 340px;
     }
-    .capital-question {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
+    .score {
+      margin-top: 10px;
       text-align: center;
+      font-size: 1.03rem;
+      color: #20639B;
     }
+    .emoji-result, .capital-result, .tf-result {
+      margin-top: 18px;
+      min-height: 1.5rem;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.08rem;
+    }
+    button, input[type="text"] {
+      font-family: inherit;
+    }
+    /* --- Capital Game --- */
+    .capital-question { font-size: 1.18rem; margin-bottom: 17px; text-align: center;}
     .capital-options {
       display: flex;
       flex-direction: column;
       gap: 14px;
+      align-items: stretch;
     }
     .capital-options button {
       background: #fdebd3;
@@ -70,296 +132,428 @@
       font-size: 1rem;
       cursor: pointer;
       transition: background 0.2s, border 0.2s;
+      color: #222;
     }
-    .capital-options button:hover {
-      background: #fff3e6;
-      border-color: #20639B;
-    }
-    .capital-result {
-      margin-top: 20px;
-      text-align: center;
-      font-weight: bold;
-      font-size: 1.1rem;
-    }
-    .score {
-      margin-top: 12px;
-      text-align: center;
-      font-size: 1.03rem;
-      color: #20639B;
-    }
-
-    /* -------- Memory Game -------- */
+    .capital-options button:hover { background: #fff3e6; border-color: #20639B; }
+    /* --- Memory Game --- */
     .memory-board {
-      display: grid;
-      grid-template-columns: repeat(4, 62px);
-      grid-gap: 16px 16px;
-      justify-content: center;
-      margin: 26px 0 16px 0;
+      display: grid; grid-template-columns: repeat(4, 62px); grid-gap: 16px 16px;
+      justify-content: center; margin: 26px 0 16px 0;
     }
     .memory-card {
-      width: 62px;
-      height: 42px;
-      perspective: 300px;
-      border: none;
-      background: none;
-      outline: none;
-      margin: 0;
-      padding: 0;
-      cursor: pointer;
+      width: 62px; height: 42px; perspective: 300px; border: none; background: none; outline: none; margin: 0; padding: 0; cursor: pointer;
     }
     .card-inner {
-      width: 100%;
-      height: 100%;
-      border-radius: 6px;
-      box-shadow: 0 1px 3px #c9dfef;
-      background: #fbfbfbd0;
-      transform: rotateY(0deg);
-      transition: transform 0.3s;
-      position: relative;
+      width: 100%; height: 100%; border-radius: 6px; box-shadow: 0 1px 3px #c9dfef; background: #fbfbfbd0; transform: rotateY(0deg); transition: transform 0.3s; position: relative;
     }
-    .memory-card.flipped .card-inner {
-      background: #fff;
-      transform: rotateY(180deg);
-    }
+    .memory-card.flipped .card-inner { background: #fff; transform: rotateY(180deg);}
     .card-face, .card-back {
-      position: absolute;
-      width: 100%; height: 100%;
-      left: 0; top: 0; right: 0; bottom: 0;
-      display: flex;
-      align-items: center; justify-content: center;
-      font-size: 1.65rem;
-      border-radius: 6px;
+      position: absolute; width: 100%; height: 100%; left: 0; top: 0; right: 0; bottom: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 1.65rem; border-radius: 6px;
     }
-    .card-face {
-      background: #fff;
-      transform: rotateY(180deg);
-    }
-    .card-back {
-      background: #F6B665;
-      color: #fff;
-      font-size: 2rem;
-      font-family: Arial, sans-serif;
-      letter-spacing: 2px;
-      user-select: none;
-    }
+    .card-face { background: #fff; transform: rotateY(180deg);}
+    .card-back { background: #F6B665; color: #fff; font-size: 2rem; letter-spacing: 2px; user-select: none;}
     .memory-score, .memory-status {
-      text-align: center;
-      margin-top: 10px;
-      font-size: 1.04rem;
-      font-weight: 500;
+      text-align: center; margin-top: 10px; font-size: 1.04rem; font-weight: 500;
     }
-    .memory-status {
-      font-weight: bold;
-      margin-top: 16px;
-      color: #3caea3;
-      min-height: 1.6rem;
-    }
-
-    @media only screen and (max-width: 600px) {
-      .game-container { max-width: 96vw; padding: 18px 4vw 28px 4vw;}
+    .memory-status { font-weight: bold; margin-top: 16px; color: #3caea3; min-height: 1.6rem;}
+    /* --- Emoji Quiz --- */
+    .landmark-question { font-size: 1.13rem; margin-bottom: 17px; text-align: center;}
+    /* --- City Typing Race --- */
+    .typing-timer { text-align:center;font-size:1.13rem;}
+    .cityrace-next {margin:19px auto 4px auto;text-align:center;font-size:1.11rem;width:98%;}
+    /* --- True/False --- */
+    #tfQuestion { font-size: 1.13rem; text-align: center; margin-bottom: 17px;}
+    .truefalse-btn { padding:12px 26px; background:#fdebd3; border:1px solid #f6b665; border-radius:12px; font-size:1.09rem; color:#222; font-weight:bold; cursor:pointer;}
+    .truefalse-btn:hover {background:#fff3e6; border-color:#20639B;}
+    /* --- Responsive --- */
+    @media only screen and (max-width:600px){
+      .game-container { max-width:96vw; padding:18px 4vw 28px 4vw;}
       .memory-board { grid-template-columns: repeat(4, 20vw); grid-gap: 6vw 4vw;}
-      .memory-card { width: 20vw; height: 13vw;}
+      .memory-card { width:20vw; height:13vw;}
+      .game-selector {gap: 4vw;}
+      nav button { font-size: 0.88rem; padding: 6px 14px;}
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Travel Games Zone</h1>
-    <div style="font-size: 1.05rem; letter-spacing: 0.4px; margin-top: 5px;">Play &amp; Learn About the World!</div>
-  </header>
-
-  <div class="game-selector">
-    <button id="btn-capital" class="active" onclick="showGame('capital')">Guess The Capital</button>
-    <button id="btn-memory" onclick="showGame('memory')">Flag Memory</button>
-  </div>
-  <div class="game-container">
-    <!-- Capital Game -->
-    <div id="game-capital">
-      <div class="capital-question" id="capitalQuestion"></div>
-      <div class="capital-options" id="capitalOptions"></div>
-      <div class="capital-result" id="capitalResult"></div>
-      <div class="score" id="capitalScore"></div>
-      <button onclick="nextCapital()" style="margin-top:24px; display:none;" id="nextCapBtn">Next</button>
+<nav>
+  <div class="nav-title">Travel Games Zone</div>
+  <button onclick="goHome()" aria-label="Go to Home Page">Home</button>
+</nav>
+<header>
+  <h1>Travel Games Zone</h1>
+  <div class="subtitle">Play &amp; Learn About the World!</div>
+</header>
+<div class="game-selector" role="tablist" aria-label="Select a Travel Game">
+  <button id="btn-capital" class="active" role="tab" aria-selected="true" aria-controls="game-capital" onclick="showGame('capital')">Guess The Capital</button>
+  <button id="btn-memory" role="tab" aria-selected="false" aria-controls="game-memory" onclick="showGame('memory')">Flag Memory</button>
+  <button id="btn-emoji" role="tab" aria-selected="false" aria-controls="game-emoji" onclick="showGame('emoji')">Landmark Emoji Quiz</button>
+  <button id="btn-cityrace" role="tab" aria-selected="false" aria-controls="game-cityrace" onclick="showGame('cityrace')">City Typing Race</button>
+  <button id="btn-truefalse" role="tab" aria-selected="false" aria-controls="game-truefalse" onclick="showGame('truefalse')">True/False Facts</button>
+</div>
+<main class="game-container">
+  <section id="game-capital" role="tabpanel" aria-labelledby="btn-capital">
+    <div class="capital-question" id="capitalQuestion"></div>
+    <div class="capital-options" id="capitalOptions"></div>
+    <div class="capital-result" id="capitalResult"></div>
+    <div class="score" id="capitalScore"></div>
+    <button onclick="nextCapital()" style="margin-top:24px; display:none;" id="nextCapBtn">Next</button>
+  </section>
+  <section id="game-memory" role="tabpanel" aria-labelledby="btn-memory" style="display:none;">
+    <div class="memory-board" id="memoryBoard"></div>
+    <div class="memory-status" id="memoryStatus"></div>
+    <div class="memory-score" id="memoryScore"></div>
+    <button onclick="resetMemory()" style="margin-top:14px;">Restart Game</button>
+  </section>
+  <section id="game-emoji" role="tabpanel" aria-labelledby="btn-emoji" style="display:none;">
+    <div class="landmark-question" id="emojiQuestion"></div>
+    <input type="text" id="emojiAnswer" placeholder="Your answer..." style="font-size:1.05rem;padding:8px 12px;width:94%;margin:14px 0 2px 0;border-radius:7px;border:1px solid #ccc;" autocomplete="off" />
+    <button onclick="checkEmoji()" style="margin:5px 0 0 0;">Check</button>
+    <div class="emoji-result" id="emojiResult"></div>
+    <div class="score" id="emojiScore"></div>
+    <button onclick="nextEmoji()" style="margin-top:18px;display:none;" id="nextEmojiBtn">Next</button>
+  </section>
+  <section id="game-cityrace" role="tabpanel" aria-labelledby="btn-cityrace" style="display:none;">
+    <div class="typing-timer">
+      Time left: <span id="cityRaceTime" style="font-weight:bold;">60</span>s
     </div>
-    <!-- Memory Game (hidden initially) -->
-    <div id="game-memory" style="display:none;">
-      <div class="memory-board" id="memoryBoard"></div>
-      <div class="memory-status" id="memoryStatus"></div>
-      <div class="memory-score" id="memoryScore"></div>
-      <button onclick="resetMemory()" style="margin-top:14px;">Restart Game</button>
+    <div class="cityrace-next">
+      Type: <span id="cityRaceTarget" style="font-weight:bold;"></span>
     </div>
-  </div>
-
-  <script>
-    // ---- GUESS THE CAPITAL GAME ----
-    const capitalQuestions = [
-      {country: "India", capital: "New Delhi"},
-      {country: "France", capital: "Paris"},
-      {country: "Japan", capital: "Tokyo"},
-      {country: "Brazil", capital: "Brasília"},
-      {country: "Australia", capital: "Canberra"},
-      {country: "Egypt", capital: "Cairo"},
-      {country: "Canada", capital: "Ottawa"},
-      {country: "South Africa", capital: "Pretoria"},
-      {country: "Argentina", capital: "Buenos Aires"},
-      {country: "Turkey", capital: "Ankara"},
-      {country: "Italy", capital: "Rome"},
-      {country: "Thailand", capital: "Bangkok"},
-      {country: "USA", capital: "Washington DC"},
-      {country: "UK", capital: "London"},
-      {country: "Russia", capital: "Moscow"},
-      {country: "China", capital: "Beijing"},
-      {country: "Nepal", capital: "Kathmandu"},
-      {country: "Kenya", capital: "Nairobi"}
-    ];
-    let capCurrent = 0, capScore = 0, capDone = false;
-
-    function shuffle(array) { // Fisher-Yates
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-    }
-    function startCapital() {
-      capCurrent = 0; capScore = 0; capDone = false;
-      shuffle(capitalQuestions);
-      loadCapital();
-      document.getElementById("capitalScore").textContent = "";
+    <input type="text" id="cityRaceInput" autocomplete="off" placeholder="Type here..." style="width:95%;font-size:1.1rem;padding:9px 13px;border-radius:10px;border:1px solid #ccc;" />
+    <div class="score" id="cityRaceScore"></div>
+    <button onclick="startCityRace()" style="margin-top:10px;">Restart</button>
+  </section>
+  <section id="game-truefalse" role="tabpanel" aria-labelledby="btn-truefalse" style="display:none;">
+    <div id="tfQuestion"></div>
+    <div style="display:flex;justify-content:center;gap:22px; margin-top: 12px;">
+      <button class="truefalse-btn" onclick="trueFalse('true')">True</button>
+      <button class="truefalse-btn" onclick="trueFalse('false')">False</button>
+    </div>
+    <div class="tf-result" id="tfResult"></div>
+    <div class="score" id="tfScore"></div>
+    <button onclick="nextTf()" style="margin-top:12px;" id="tfNextBtn" hidden>Next</button>
+  </section>
+</main>
+<script>
+  // Home button logic
+  function goHome() {
+    // You can customize this as needed, e.g. location.href = "index.html";
+    // For now it reloads this page (reloads first game)
+    location.reload();
+  }
+  // Utility shuffle
+  function shuffle(array) { for(let i=array.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[array[i],array[j]]=[array[j],array[i]];} }
+  // --------- GUESS THE CAPITAL ------------
+  const capitalQuestions = [
+    {country: "India", capital: "New Delhi"},
+    {country: "France", capital: "Paris"},
+    {country: "Japan", capital: "Tokyo"},
+    {country: "Brazil", capital: "Brasília"},
+    {country: "Australia", capital: "Canberra"},
+    {country: "Egypt", capital: "Cairo"},
+    {country: "Canada", capital: "Ottawa"},
+    {country: "South Africa", capital: "Pretoria"},
+    {country: "Argentina", capital: "Buenos Aires"},
+    {country: "Turkey", capital: "Ankara"},
+    {country: "Italy", capital: "Rome"},
+    {country: "Thailand", capital: "Bangkok"},
+    {country: "USA", capital: "Washington DC"},
+    {country: "UK", capital: "London"},
+    {country: "Russia", capital: "Moscow"},
+    {country: "China", capital: "Beijing"},
+    {country: "Nepal", capital: "Kathmandu"},
+    {country: "Kenya", capital: "Nairobi"}
+  ];
+  let capCurrent = 0, capScore = 0, capDone = false;
+  function startCapital() {
+    capCurrent = 0; capScore = 0; capDone = false;
+    shuffle(capitalQuestions);
+    loadCapital();
+    document.getElementById("capitalScore").textContent = "";
+    document.getElementById("nextCapBtn").style.display = "none";
+  }
+  function loadCapital() {
+    if(capCurrent >= capitalQuestions.length) {
+      document.getElementById("capitalQuestion").textContent = "Game Over!";
+      document.getElementById("capitalOptions").innerHTML = "";
+      document.getElementById("capitalResult").textContent =
+        `Your final score: ${capScore} / ${capitalQuestions.length}`;
       document.getElementById("nextCapBtn").style.display = "none";
+      capDone = true;
+      return;
     }
-    function loadCapital() {
-      if(capCurrent >= capitalQuestions.length) {
-        document.getElementById("capitalQuestion").textContent = "Game Over!";
-        document.getElementById("capitalOptions").innerHTML = "";
-        document.getElementById("capitalResult").textContent =
-          `Your final score: ${capScore} / ${capitalQuestions.length}`;
-        document.getElementById("nextCapBtn").style.display = "none";
-        capDone = true;
-        return;
-      }
-      const q = capitalQuestions[capCurrent];
-      document.getElementById("capitalQuestion").textContent =
-        `What is the capital of ${q.country}?`;
-      // Generate options
-      let options = [q.capital];
-      while(options.length < 4) {
-        const idx = Math.floor(Math.random() * capitalQuestions.length);
-        const c = capitalQuestions[idx].capital;
-        if(!options.includes(c)) options.push(c);
-      }
-      shuffle(options);
-      document.getElementById("capitalOptions").innerHTML = options.map(opt =>
-        `<button onclick="selectCapital('${opt.replace(/'/g,"\\'")}')">${opt}</button>`
-      ).join('');
-      document.getElementById("capitalResult").textContent = "";
-      document.getElementById("capitalScore").textContent =
-        `Score: ${capScore} / ${capitalQuestions.length}`;
-      document.getElementById("nextCapBtn").style.display = "none";
+    const q = capitalQuestions[capCurrent];
+    document.getElementById("capitalQuestion").textContent =
+      `What is the capital of ${q.country}?`;
+    let options = [q.capital];
+    while(options.length < 4) {
+      const idx = Math.floor(Math.random() * capitalQuestions.length);
+      const c = capitalQuestions[idx].capital;
+      if(!options.includes(c)) options.push(c);
     }
-    function selectCapital(ans) {
-      if(capDone) return;
-      const q = capitalQuestions[capCurrent];
-      if(ans === q.capital) {
-        document.getElementById("capitalResult").textContent = "✅ Correct!";
-        capScore++;
+    shuffle(options);
+    document.getElementById("capitalOptions").innerHTML = options.map(opt =>
+      `<button onclick="selectCapital('${opt.replace(/'/g,"\\'")}')">${opt}</button>`
+    ).join('');
+    document.getElementById("capitalResult").textContent = "";
+    document.getElementById("capitalScore").textContent =
+      `Score: ${capScore} / ${capitalQuestions.length}`;
+    document.getElementById("nextCapBtn").style.display = "none";
+  }
+  function selectCapital(ans) {
+    if(capDone) return;
+    const q = capitalQuestions[capCurrent];
+    if(ans === q.capital) {
+      document.getElementById("capitalResult").textContent = "✅ Correct!";
+      capScore++;
+    } else {
+      document.getElementById("capitalResult").textContent = `❌ Wrong! The answer is ${q.capital}`;
+    }
+    document.getElementById("capitalScore").textContent =
+      `Score: ${capScore} / ${capitalQuestions.length}`;
+    document.getElementById("nextCapBtn").style.display = "inline-block";
+    document.querySelectorAll("#capitalOptions button").forEach(btn => btn.disabled = true);
+  }
+  function nextCapital() {
+    capCurrent++;
+    loadCapital();
+  }
+  // --------- MEMORY FLAG GAME ------------
+  const flagData = [
+    { country: 'India',   flag: '🇮🇳' },
+    { country: 'Japan',   flag: '🇯🇵' },
+    { country: 'France',  flag: '🇫🇷' },
+    { country: 'Brazil',  flag: '🇧🇷' },
+    { country: 'USA',     flag: '🇺🇸' },
+    { country: 'Italy',   flag: '🇮🇹' },
+    { country: 'Kenya',   flag: '🇰🇪' },
+    { country: 'Nepal',   flag: '🇳🇵' }
+  ];
+  let memCards = [], memFlipped = [], memMatched = 0, memMoves = 0, memCanClick = true;
+  function setupMemory() {
+    memCards = [];
+    for(let i=0; i<flagData.length; i++) {
+      memCards.push({...flagData[i], id: i*2});
+      memCards.push({...flagData[i], id: i*2+1});
+    }
+    shuffle(memCards);
+    memFlipped = []; memMatched = 0; memMoves = 0; memCanClick = true;
+    drawMemory();
+    document.getElementById("memoryScore").textContent = "";
+    document.getElementById("memoryStatus").textContent = "Match the pairs!";
+  }
+  function drawMemory() {
+    let html = '';
+    for(let i=0; i<memCards.length; i++) {
+      html += `<button class="memory-card" onclick="flipMemory(${i})" id="memcard-${i}">
+        <div class="card-inner">
+          <div class="card-back">🌎</div>
+          <div class="card-face">${memCards[i].flag}</div>
+        </div></button>`;
+    }
+    document.getElementById("memoryBoard").innerHTML = html;
+  }
+  function flipMemory(idx) {
+    if(!memCanClick) return;
+    const btn = document.getElementById(`memcard-${idx}`);
+    if(btn.classList.contains("flipped")) return;
+    btn.classList.add("flipped");
+    memFlipped.push(idx);
+    if(memFlipped.length === 2) {
+      memCanClick = false;
+      memMoves++;
+      const [i, j] = memFlipped;
+      if(memCards[i].flag === memCards[j].flag && i!==j) {
+        memMatched++;
+        setTimeout(() => {
+          document.getElementById("memoryStatus").textContent = "🎉 Match!";
+          memFlipped = [];
+          memCanClick = true;
+          if(memMatched === flagData.length) {
+            document.getElementById("memoryStatus").textContent = "🏆 All matched! Game over.";
+            document.getElementById("memoryScore").textContent = `Moves: ${memMoves}`;
+          }
+        }, 700);
       } else {
-        document.getElementById("capitalResult").textContent = `❌ Wrong! The answer is ${q.capital}`;
+        setTimeout(() => {
+          document.getElementById(`memcard-${i}`).classList.remove("flipped");
+          document.getElementById(`memcard-${j}`).classList.remove("flipped");
+          document.getElementById("memoryStatus").textContent = "❌ Not a match!";
+          memFlipped = [];
+          memCanClick = true;
+        }, 900);
       }
-      document.getElementById("capitalScore").textContent =
-        `Score: ${capScore} / ${capitalQuestions.length}`;
-      document.getElementById("nextCapBtn").style.display = "inline-block";
-      // Disable all options
-      document.querySelectorAll("#capitalOptions button").forEach(btn => btn.disabled = true);
+      document.getElementById("memoryScore").textContent = `Moves: ${memMoves}`;
     }
-    function nextCapital() {
-      capCurrent++;
-      loadCapital();
+  }
+  function resetMemory() { setupMemory(); }
+  // -------- LANDMARK EMOJI QUIZ ----------
+  const emojiQuestions = [
+    {emojis: "🗼🇫🇷", answers: ["paris","france"], display: "Paris, France"},
+    {emojis: "🕍🇮🇳", answers: ["agra","india","taj mahal"], display: "Agra, India (Taj Mahal)"},
+    {emojis: "🗽🇺🇸", answers: ["new york","nyc","usa","statue of liberty"], display: "New York, USA"},
+    {emojis: "🌉🇺🇸", answers: ["san francisco","golden gate bridge"], display: "San Francisco, USA"},
+    {emojis: "🕌🇹🇷", answers: ["istanbul","turkey"], display: "Istanbul, Turkey"},
+    {emojis: "🛕🇮🇳", answers: ["madurai","meenakshi amathar temple","india"], display: "Madurai, India"},
+    {emojis: "⛩️🇯🇵", answers: ["kyoto","japan"], display: "Kyoto, Japan"},
+    {emojis: "🏜️🇦🇪", answers: ["dubai","uae"], display: "Dubai, UAE"},
+    {emojis: "🗻🇯🇵", answers: ["mount fuji","fuji","japan"], display: "Mount Fuji, Japan"},
+    {emojis: "🏰🇩🇪", answers: ["neuschwanstein castle","germany"], display: "Germany (Neuschwanstein Castle)"}
+  ];
+  let emojiIndex = 0, emojiScore = 0, emojiDone = false;
+  function startEmojiQuiz() {
+    emojiIndex = 0; emojiScore = 0; emojiDone = false;
+    shuffle(emojiQuestions);
+    loadEmoji();
+    document.getElementById("emojiScore").textContent = "";
+    document.getElementById("nextEmojiBtn").style.display = "none";
+  }
+  function loadEmoji() {
+    if(emojiIndex >= emojiQuestions.length) {
+      document.getElementById("emojiQuestion").textContent = "Game Over!";
+      document.getElementById("emojiResult").textContent = `Your final score: ${emojiScore}/${emojiQuestions.length}`;
+      document.getElementById("nextEmojiBtn").style.display = "none";
+      emojiDone = true;
+      return;
     }
-
-    // ---- MEMORY FLAG GAME ----
-    const flagData = [
-      { country: 'India',   flag: '🇮🇳' },
-      { country: 'Japan',   flag: '🇯🇵' },
-      { country: 'France',  flag: '🇫🇷' },
-      { country: 'Brazil',  flag: '🇧🇷' },
-      { country: 'USA',     flag: '🇺🇸' },
-      { country: 'Italy',   flag: '🇮🇹' },
-      { country: 'Kenya',   flag: '🇰🇪' },
-      { country: 'Nepal',   flag: '🇳🇵' }
-    ];
-    let memCards = [], memFlipped = [], memMatched = 0, memMoves = 0, memCanClick = true;
-    function setupMemory() {
-      // Build card array: each flag twice
-      memCards = [];
-      for(let i=0; i<flagData.length; i++) {
-        memCards.push({...flagData[i], id: i*2});
-        memCards.push({...flagData[i], id: i*2+1});
-      }
-      shuffle(memCards);
-      memFlipped = []; memMatched = 0; memMoves = 0; memCanClick = true;
-      drawMemory();
-      document.getElementById("memoryScore").textContent = "";
-      document.getElementById("memoryStatus").textContent = "Match the pairs!";
+    document.getElementById("emojiQuestion").textContent = "Guess the city or country: " + emojiQuestions[emojiIndex].emojis;
+    document.getElementById("emojiAnswer").value = "";
+    document.getElementById("emojiAnswer").disabled = false;
+    document.getElementById("emojiResult").textContent = "";
+    document.getElementById("emojiScore").textContent = `Score: ${emojiScore} / ${emojiQuestions.length}`;
+    document.getElementById("nextEmojiBtn").style.display = "none";
+  }
+  function checkEmoji() {
+    if(emojiDone) return;
+    let ans = document.getElementById("emojiAnswer").value.trim().toLowerCase();
+    if(ans === "") return;
+    let q = emojiQuestions[emojiIndex];
+    let correct = q.answers.some(a => ans === a);
+    if(correct) {
+      document.getElementById("emojiResult").textContent = `✅ Correct! ${q.display}`;
+      emojiScore++;
+    } else {
+      document.getElementById("emojiResult").textContent = `❌ Wrong! ${q.display}`;
     }
-    function drawMemory() {
-      let html = '';
-      for(let i=0; i<memCards.length; i++) {
-        html += `<button class="memory-card" onclick="flipMemory(${i})" id="memcard-${i}">
-          <div class="card-inner">
-            <div class="card-back">🌎</div>
-            <div class="card-face">${memCards[i].flag}</div>
-          </div></button>`;
-      }
-      document.getElementById("memoryBoard").innerHTML = html;
+    document.getElementById("emojiAnswer").disabled = true;
+    document.getElementById("nextEmojiBtn").style.display = "inline-block";
+    document.getElementById("emojiScore").textContent = `Score: ${emojiScore} / ${emojiQuestions.length}`;
+  }
+  function nextEmoji() { emojiIndex++; loadEmoji(); }
+  // --- CITY TYPING RACE ---
+  const cityList = [
+    "Paris","New York","Tokyo","London","Sydney","Berlin","Moscow","Madrid","Dubai","Singapore",
+    "Bangkok","Toronto","Los Angeles","Cape Town","Rome","Rio de Janeiro","Hong Kong","Beijing",
+    "Delhi","Istanbul","San Francisco","Kuala Lumpur","Mumbai","Seoul","Jakarta"
+  ];
+  let cityRaceLeft = [], cityRaceIdx = 0, cityRaceScore = 0, cityRaceTime = 60, cityRaceTimer = null;
+  function startCityRace() {
+    cityRaceLeft = [...cityList]; shuffle(cityRaceLeft); cityRaceIdx = 0; cityRaceScore = 0; cityRaceTime = 60;
+    document.getElementById("cityRaceScore").textContent = "";
+    document.getElementById("cityRaceInput").value = "";
+    document.getElementById("cityRaceInput").disabled = false;
+    document.getElementById("cityRaceTarget").textContent = cityRaceLeft[cityRaceIdx];
+    document.getElementById("cityRaceTime").textContent = cityRaceTime;
+    if(cityRaceTimer) clearInterval(cityRaceTimer);
+    cityRaceTimer = setInterval(cityRaceTick,1000);
+    document.getElementById("cityRaceInput").focus();
+  }
+  function cityRaceTick() {
+    cityRaceTime--; document.getElementById("cityRaceTime").textContent = cityRaceTime;
+    if(cityRaceTime <=0) {
+      document.getElementById("cityRaceInput").disabled = true;
+      document.getElementById("cityRaceScore").textContent = `Time up! Score: ${cityRaceScore}`;
+      clearInterval(cityRaceTimer);
     }
-    function flipMemory(idx) {
-      if(!memCanClick) return;
-      const btn = document.getElementById(`memcard-${idx}`);
-      if(btn.classList.contains("flipped")) return;
-      btn.classList.add("flipped");
-      memFlipped.push(idx);
-      if(memFlipped.length === 2) {
-        memCanClick = false;
-        memMoves++;
-        const [i, j] = memFlipped;
-        if(memCards[i].flag === memCards[j].flag && i!==j) {
-          memMatched++;
-          setTimeout(() => {
-            document.getElementById("memoryStatus").textContent = "🎉 Match!";
-            memFlipped = [];
-            memCanClick = true;
-            if(memMatched === flagData.length) {
-              document.getElementById("memoryStatus").textContent = "🏆 All matched! Game over.";
-              document.getElementById("memoryScore").textContent = `Moves: ${memMoves}`;
-            }
-          }, 700);
+  }
+  document.getElementById("cityRaceInput").addEventListener("keydown",function(e){
+    if(e.key==="Enter" && !this.disabled) {
+      let val = this.value.trim();
+      let tgt = cityRaceLeft[cityRaceIdx];
+      if(val.toLowerCase() === tgt.toLowerCase()) {
+        cityRaceScore++;
+        cityRaceIdx++;
+        if(cityRaceIdx>=cityRaceLeft.length) {
+          this.disabled = true;
+          document.getElementById("cityRaceScore").textContent = `Finished! Score: ${cityRaceScore}`;
+          clearInterval(cityRaceTimer);
         } else {
-          setTimeout(() => {
-            document.getElementById(`memcard-${i}`).classList.remove("flipped");
-            document.getElementById(`memcard-${j}`).classList.remove("flipped");
-            document.getElementById("memoryStatus").textContent = "❌ Not a match!";
-            memFlipped = [];
-            memCanClick = true;
-          }, 900);
+          document.getElementById("cityRaceTarget").textContent = cityRaceLeft[cityRaceIdx];
+          this.value = "";
         }
-        document.getElementById("memoryScore").textContent = `Moves: ${memMoves}`;
       }
     }
-    function resetMemory() {
-      setupMemory();
+  });
+  // --- TRUE/FALSE FACTS ---
+  const tfQuestions = [
+    {q:"Sydney is the capital of Australia.", a:false},
+    {q:"You can see the Northern Lights from Iceland.", a:true},
+    {q:"Machu Picchu is in Peru.", a:true},
+    {q:"The Eiffel Tower is taller than the Statue of Liberty.", a:true},
+    {q:"The Amazon River is the longest river in the world.", a:false},
+    {q:"Mount Kilimanjaro is in Kenya.", a:false},
+    {q:"Bangkok is the most visited city in the world (2019).", a:true},
+    {q:"The Sahara is the world's largest hot desert.", a:true}
+  ];
+  let tfIdx=0, tfScore=0;
+  function startTf() {
+    tfIdx = 0; tfScore = 0; shuffle(tfQuestions);
+    loadTf();
+    document.getElementById("tfResult").textContent = "";
+    document.getElementById("tfScore").textContent = "";
+    document.getElementById("tfNextBtn").hidden = true;
+  }
+  function loadTf() {
+    if(tfIdx>=tfQuestions.length) {
+      document.getElementById("tfQuestion").textContent = "Game Over!";
+      document.getElementById("tfResult").textContent = `Your score: ${tfScore} / ${tfQuestions.length}`;
+      document.getElementById("tfNextBtn").hidden = true;
+      return;
     }
-
-    // ---- Game Switching ----
-    function showGame(which) {
-      document.getElementById("game-capital").style.display = which === 'capital' ? 'block' : 'none';
-      document.getElementById("game-memory").style.display = which === 'memory' ? 'block' : 'none';
-      document.getElementById("btn-capital").classList.toggle('active', which === 'capital');
-      document.getElementById("btn-memory").classList.toggle('active', which === 'memory');
-      if(which === 'capital') startCapital();
-      else setupMemory();
+    document.getElementById("tfQuestion").textContent = tfQuestions[tfIdx].q;
+    document.getElementById("tfResult").textContent = "";
+    document.getElementById("tfScore").textContent = `Score: ${tfScore} / ${tfQuestions.length}`;
+    document.getElementById("tfNextBtn").hidden = true;
+  }
+  function trueFalse(ans) {
+    if(tfIdx>=tfQuestions.length) return;
+    let correct = tfQuestions[tfIdx].a ? "true" : "false";
+    if(ans===correct) {
+      document.getElementById("tfResult").textContent = "✅ Correct!";
+      tfScore++;
+    } else {
+      document.getElementById("tfResult").textContent = "❌ Wrong.";
     }
-    // Initialize
-    startCapital();
-  </script>
+    document.getElementById("tfScore").textContent = `Score: ${tfScore} / ${tfQuestions.length}`;
+    document.getElementById("tfNextBtn").hidden = false;
+  }
+  function nextTf() { tfIdx++; loadTf(); }
+  // --------- UI LOGIC ---------
+  function showGame(which) {
+    const ids = ['capital','memory','emoji','cityrace','truefalse'];
+    ids.forEach(id=>{
+      const gameElem = document.getElementById('game-'+id);
+      const btnElem = document.getElementById('btn-'+id);
+      if(which===id) {
+        gameElem.style.display = 'block';
+        btnElem.classList.add('active');
+        btnElem.setAttribute('aria-selected','true');
+      } else {
+        gameElem.style.display = 'none';
+        btnElem.classList.remove('active');
+        btnElem.setAttribute('aria-selected','false');
+      }
+    });
+    if(which==='capital') startCapital();
+    if(which==='memory') setupMemory();
+    if(which==='emoji') startEmojiQuiz();
+    if(which==='cityrace') startCityRace();
+    if(which==='truefalse') startTf();
+  }
+  // Initialize first game on page load
+  startCapital();
+</script>
 </body>
 </html>
