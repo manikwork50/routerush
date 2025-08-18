@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-
+  <meta charset="UTF-8" />
   <!-- Google Analytics (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5VRMZELWBP"></script>
   <script>
@@ -11,306 +10,311 @@
     gtag('js', new Date());
     gtag('config', 'G-5VRMZELWBP');
   </script>
-
   <title>WanderMap — India’s Best Travel Routes, Bookings & Deals</title>
-  <link rel="stylesheet" href="style.css">
   <meta name="description" content="Discover top travel destinations, route maps, hotel & train bookings, travel blogs, and exclusive deals with WanderMap — India’s fastest-growing travel platform.">
-  <meta name="keywords" content="India travel, hotel booking India, IRCTC train tickets, flight booking India, travel deals, road trip routes India, Indian travel blogs, adventure destinations India, travel itineraries India, cheap hotels India">
+  <meta name="keywords" content="India travel, hotel booking India, train tickets, flight booking India, travel deals, road trips, Indian blogs, adventure, itineraries, cheap hotels">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Manik Rao">
-
-  <!-- AdSense Script -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632"
-     crossorigin="anonymous"></script>
-
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- AOS Animation CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632" crossorigin="anonymous"></script>
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * {margin:0; padding:0; box-sizing:border-box;}
     body {
-      font-family: 'Segoe UI', sans-serif;
-      color: #fff;
-      overflow-x:hidden;
-    }
-    .bg-image {
-      position: fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      object-fit:cover;
-      z-index: -1;
+      font-family: 'Nunito', Arial, sans-serif;
+      color: #333;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      /* Beautiful, free Unsplash waterfalls+forest image in a light color palette */
+      background: url('https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=1500&q=80') no-repeat center center fixed, #eef6f1;
+      background-size: cover;
     }
     .overlay {
-      position: fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      background: rgba(0,0,0,0.6);
-      z-index: -1;
+      position: fixed; top:0; left:0; width:100%; height:100%;
+      /* Subtle white-green overlay for readability, not dark */
+      background: linear-gradient(125deg,rgba(255,255,255,0.52) 70%,rgba(139,208,241,0.28) 94%);
+      z-index:-1;
     }
     nav {
-      background: rgba(0,0,0,0);
-      padding: 18px;
-      text-align: center;
-      position: relative;
-      z-index: 2;
+      background: transparent;
+      padding: 18px 0; text-align: center;
+      position: relative; z-index:1000; user-select:none;
     }
     nav a {
-      color: #fff;
-      margin: 0 14px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
+      font-family: 'Montserrat', 'Nunito', Arial, sans-serif;
+      color: #348d5d; margin: 0 14px; text-decoration: none; font-weight: 700;
+      font-size: 1rem; letter-spacing: .03em; transition: color .3s, background .3s;
+      padding: 9px 12px; border-radius: 12px;
     }
-    nav a:hover { color: #FFB347; }
-
+    nav a:hover, nav a:focus {color: #2a3132; background: rgba(108,187,109,0.18);}
+    nav a.active {color: #43b786; background: rgba(75,213,179,0.23);}
     .hero {
-      padding: 80px 20px 40px;
-      text-align: center;
-      animation: fadeIn 2s ease;
+      padding: 90px 25px 40px;
+      text-align:center; max-width:880px; margin:0 auto 55px;
+      color: #2e8940; user-select:none;  animation: fadeIn 2s;
+      font-family:'Montserrat',Arial,sans-serif;
+      position:relative; z-index:10;
+      text-shadow:0 2px 14px #e0ffe0bb;
     }
     .hero h1 {
-      font-size: 3.2em;
-      color: #FFB347;
-      margin-bottom: 20px;
+      font-family:'Montserrat',Arial,sans-serif;
+      font-size:2.95rem;font-weight:900;margin-bottom:22px;line-height:1.13;
+      color:#28a865;-webkit-text-stroke:.5px #d8ffceaa;
+      filter:drop-shadow(0 1px 4px #b6f0cb);
     }
     .hero p {
-      font-size: 1.2em;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: 0 auto;
-      color: #ddd;
+      font-family:'Nunito',Arial,sans-serif;
+      font-size:1.24rem; font-weight: 600; color: #28703dcc; line-height:1.58;
+      margin:0 auto; max-width:650px;
+      text-shadow:0 1px 5px #c8f1d6;
     }
-    .cta-buttons {
-      margin-top: 30px;
-    }
+    .cta-buttons {margin-top:39px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap;}
     .cta-buttons a {
-      display: inline-block;
-      margin: 8px;
-      padding: 14px 26px;
-      background: #FF5E00;
-      color: #fff;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
+      font-family:'Montserrat',Arial,sans-serif;
+      display:inline-block;padding:16px 36px;background:#3cd07d;
+      color:#fff;font-weight:900;font-size:1.17rem;border-radius:40px;
+      text-decoration:none;box-shadow:0 4px 28px #29aa6066;
+      transition:background .3s, box-shadow .3s, transform .23s;
+      will-change:transform; user-select:none; letter-spacing:.01em;
+      animation:bubbleUp 2.4s cubic-bezier(.42,.48,.32,1.19) infinite alternate;
     }
-    .cta-buttons a:hover { background: #FFB347; }
-
+    @keyframes bubbleUp {0%{transform:translateY(0);} 73%{transform:translateY(-6px);} 100%{transform:translateY(-2px);}}
+    .cta-buttons a:hover,.cta-buttons a:focus {background:#71e2c8; color:#04522c; box-shadow:0 8px 38px #baf5eea7; outline:none; transform:translateY(-5px);}
+    .cta-buttons a:active {transform:translateY(-1px);}
+    .quick-search {max-width:340px;margin:28px auto 8px;text-align:center;display:flex;}
+    .quick-search input {
+      flex:1; padding:15px 19px; border-radius:30px 0 0 30px;
+      border:1.5px solid #b8eacb; font-size:1.15em; font-family:'Nunito',Arial,sans-serif; color:#21644d;
+    }
+    .quick-search button {
+      padding:15px 18px; border:0; border-radius:0 30px 30px 0; background:#43b786;
+      color:#fff; font-weight:700; font-size:1.14em; cursor:pointer;
+      transition:background .18s;
+    }
+    .quick-search input:focus {outline:none; border-color:#43b786;}
+    .quick-search button:hover {background:#28a865;}
+    .testimonials-rotator {
+      max-width:540px; margin:46px auto 14px; background:rgba(255,255,255,0.93);
+      border-radius:19px; box-shadow:0 6px 18px #b4e3cb5c;
+      color:#2e8940; text-align:center; font-size:1.19rem; font-family:'Nunito',Arial,sans-serif; font-weight:700;
+      padding:31px 20px 28px; position:relative; transition:box-shadow .18s;
+    }
+    .testimonial-text {font-family:'Nunito',Arial,sans-serif;font-size:1.07rem; color:#24763a; margin-bottom:6px;}
+    .testimonial-author {font-size:1.01rem;color:#16845d;font-weight:800;}
+    .testimonial-arrow {
+      cursor: pointer; background: #5be07b;
+      border:none;border-radius:50%;font-size:1.6em;color:#fff;
+      position:absolute;top:50%;transform:translateY(-50%);
+      width:41px;height:41px;box-shadow:0 4px 16px #61e6ba2c;
+      transition:background .18s;
+    }
+    .testimonial-arrow:active { background:#10bc80;}
+    .testimonial-arrow.left { left: 12px;}
+    .testimonial-arrow.right { right: 12px;}
     .ad-container, .affiliate-wrap, .sponsored-wrap, .donate-wrap {
-      margin: 40px auto;
-      padding: 10px;
-      text-align: center;
-      max-width: 1000px;
+      margin:50px auto 65px;padding:15px;text-align:center;
+      max-width:1040px;border-radius:13px;
+      background:rgba(238,246,241,0.70); box-shadow:inset 0 0 17px #81e3b473;
     }
-    .affiliate-card, .sponsored-card {
-      display: inline-block;
-      background: #fff;
-      color: #333;
-      border-radius: 10px;
-      overflow: hidden;
-      width: 300px;
-      margin: 12px;
-      text-align: left;
-    }
-    .affiliate-card img, .sponsored-card img {
-      width:100%; height:160px; object-fit:cover;
-    }
-    .affiliate-card div, .sponsored-card div {
-      padding: 12px;
-    }
-    .affiliate-card a, .sponsored-card a {
-      display:inline-block;
-      margin-top: 8px;
-      padding: 8px 12px;
-      background:#FF5E00;
-      color:#fff;
-      border-radius:4px;
-      text-decoration:none;
-    }
-    .donate-wrap a {
-      background:#FFB347;
-      padding:12px 20px;
-      color:#fff;
-      text-decoration:none;
-      border-radius:30px;
-    }
+    .grid-wrap {display:grid;grid-template-columns:repeat(auto-fit, minmax(300px,1fr));gap:24px;}
+    .affiliate-card,.sponsored-card{
+      background:rgba(255,255,255,0.98);color:#333;border-radius:13px;
+      overflow:hidden;box-shadow:0 6px 14px #cdffdd58;display:flex;
+      flex-direction:column;height:100%;user-select:text;transition:transform .28s,box-shadow .27s;}
+    .affiliate-card:hover,.sponsored-card:hover{
+      transform:scale(1.04) translateY(-9px); box-shadow:0 16px 41px #31df94a8;}
+    .affiliate-card img,.sponsored-card img{width:100%;height:200px;object-fit:cover;border-radius:13px 13px 0 0;}
+    .affiliate-card div, .sponsored-card div{padding:15px;flex-grow:1;display:flex;flex-direction:column;justify-content:space-between;}
+    .affiliate-card h4,.sponsored-card h4{font-size:1.16rem;font-family:'Montserrat',Arial,sans-serif;color:#31903d;margin-bottom:7px;}
+    .affiliate-card p,.sponsored-card p{color:#498a56;font-size:.97rem;min-height:48px;}
+    .affiliate-card a, .sponsored-card a{background:#b8eacb;color:#19683c;padding:10px 16px;border-radius:9px;text-decoration:none;text-align:center;box-shadow:0 2px 10px #d2ffe4bd;transition:background .18s;}
+    .affiliate-card a:hover,.sponsored-card a:hover{background:#29aa60; color:#fff;}
+    .donate-wrap a{background:#92ecae;padding:14px 26px;color:#103f28;text-decoration:none;border-radius:40px;display:inline-block;margin-top:18px;box-shadow:0 4px 13px #d2ffe4ad;transition:background .22s;user-select:none;font-weight:900;font-family:'Montserrat',Arial,sans-serif;}
+    .donate-wrap a:hover{background:#45c274; color:#fff;}
     footer {
-      background: rgba(0,0,0,0.85);
-      color: #fff;
-      text-align: center;
-      padding: 16px;
-      margin-top: 40px;
+      background: rgba(245,255,252,0.92); color: #3e7755; text-align: center;
+      padding: 16px; margin-top: 44px; font-weight:600; font-size:.96rem; letter-spacing:.03em; user-select: none;
+      box-shadow:0 0 20px #b1ffe7c4;
     }
-    .sticky-ad {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.85);
-      z-index: 999;
-      padding: 8px 0;
-      text-align: center;
+    .sticky-ad {position:fixed;bottom:0;left:0;width:100%;background:rgba(208,255,225,0.82);z-index:999;padding:10px 0;text-align:center;}
+    .sticky-ad ins {display:inline-block; min-height:50px;}
+    /* WhatsApp Floating Bubble */
+    .wa-bubble {
+      position: fixed; right: 23px; bottom: 84px; z-index: 1201;
+      background: #25D366;
+      width: 58px; height: 58px;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 7px 31px #0c8a438c;
+      cursor: pointer;
+      transition: background .22s, transform .18s;
+      animation: wa-bounce 2s infinite alternate;
     }
-    .sticky-ad ins {
-      display: inline-block;
-      min-height: 50px;
+    .wa-bubble:hover {background: #22ba5a; transform: scale(1.09);}
+    .wa-bubble img {width: 30px; height: 30px;}
+    @keyframes wa-bounce { 0%{transform:scale(1);} 100%{transform:scale(1.12);} }
+    @keyframes fadeIn {from{opacity:0;} to{opacity:1;}}
+    /* Responsive */
+    @media (max-width:950px){
+      .grid-wrap {grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+      .hero {padding: 48px 12px 30px;}
+      .hero h1 {font-size:2.4rem;}
+      nav{font-size:.97rem;}
     }
-    @keyframes fadeIn {
-      from { opacity:0; }
-      to { opacity:1; }
+    @media (max-width:600px){
+      .hero {padding: 33px 5vw 20px;}
+      .hero h1 {font-size:1.33rem;}
+      .hero p {font-size:1rem;}
+      .cta-buttons{flex-direction:column;}
+      .cta-buttons a {width:98%;margin:7px auto;}
+      .testimonials-rotator {padding:13vw 3vw;}
+      .wa-bubble{right:13px;bottom: 80px;}
     }
   </style>
 </head>
-
 <body>
+  <div class="overlay"></div>
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="map.html">Map</a>
+    <a href="blog.html">Blog</a>
+    <a href="bookings.html">Bookings</a>
+    <a href="submit-story.html">Submit Story</a>
+    <a href="stories.html">Stories</a>
+    <a href="planner.html">Plan Your Trip</a>
+    <a href="games.html">Games</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="emergency-info.html">Emergency Info</a>
+    <a href="admin.html" style="display:none;">Admin</a>
+  </nav>
+  <section class="hero" data-aos="fade-down">
+    <h1>Welcome to WanderMap 🌊🍃</h1>
+    <p>Your personal travel guide to hidden gems, road trip routes, pristine waterfalls, adventure destinations, and curated itineraries across India and beyond.</p>
+    <form class="quick-search" action="map.html" method="get" autocomplete="off" aria-label="Quick Destination Search">
+      <input type="search" placeholder="Search a destination, route, hotel..." name="query" id="hero-search" required aria-label="Search any travel destination or hotel"/>
+      <button type="submit" aria-label="Search"><b>🔍</b> Search</button>
+    </form>
+    <div class="cta-buttons">
+      <a href="map.html" aria-label="Explore the interactive map page">Explore Map</a>
+      <a href="deals.html" aria-label="View latest travel deals">Travel Deals</a>
+      <a href="blog.html" aria-label="Read our travel stories and blogs">Read Stories</a>
+    </div>
+  </section>
 
-<img src="img/nature-home-bg.jpg" alt="WanderMap Background" class="bg-image">
-<div class="overlay"></div>
+  <section class="testimonials-rotator" aria-live="polite" data-aos="fade-up">
+    <button class="testimonial-arrow left" aria-label="Previous testimonial" onclick="prevTestimonial()">&#8592;</button>
+    <div id="testimonial-content"></div>
+    <button class="testimonial-arrow right" aria-label="Next testimonial" onclick="nextTestimonial()">&#8594;</button>
+  </section>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="map.html">Map</a>
-  <a href="blog.html">Blog</a>
-  <a href="bookings.html">Bookings</a>
-  <a href="submit-story.html">Submit Story</a>
-  <a href="stories.html">Stories</a>
-  <a href="planner.html" class="nav-link">Plan Your Trip</a>
-  <a href="games.html">Games</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-  <a href="emergency-info.html" class="nav-link">Emergency Info</a>
-  <a href="admin.html" class="nav-link">Admin</a>
-</nav>
+  <section class="ad-container" data-aos="fade-up">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="4877919940"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
 
-<div class="hero">
-  <h1>Welcome to WanderMap 🌍</h1>
-  <p>Your personal travel guide to hidden gems, road trip routes, adventure destinations, and curated itineraries across India and beyond.</p>
-  <div class="cta-buttons">
-    <a href="map.html">Explore Map</a>
-    <a href="deals.html">Travel Deals</a>
-    <a href="blog.html">Read Stories</a>
+  <section class="affiliate-wrap" data-aos="fade-up">
+    <h2 style="color:#43b786; margin-bottom:22px; font-weight:900; font-size:1.85rem; text-align:center;">🔥 Top Travel Deals</h2>
+    <div class="grid-wrap">
+      <article class="affiliate-card" data-aos="fade-up" data-aos-delay="50">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=cover&w=600&q=70" alt="Hotel Deal" loading="lazy" width="400" height="200"/>
+        <div>
+          <h4>50% Off on Hotels</h4>
+          <p>Massive discounts on top hotels via Booking.com</p>
+          <a href="https://www.booking.com/?aid=your_aff_id" target="_blank" rel="noopener">Book Now</a>
+        </div>
+      </article>
+      <article class="affiliate-card" data-aos="fade-up" data-aos-delay="100">
+        <img src="https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?auto=format&fit=cover&w=600&q=70" alt="Flight Deal" loading="lazy" width="400" height="200"/>
+        <div>
+          <h4>Lowest Flight Fares</h4>
+          <p>City tour special offers</p>
+          <a href="https://www.exampleflightdeals.com" target="_blank" rel="noopener">View Deals</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sponsored-wrap" data-aos="fade-up">
+    <h2 style="color:#43b786; margin-bottom:22px; font-weight:900; font-size:1.85rem; text-align:center;">🌊 Sponsored Listings</h2>
+    <div class="grid-wrap">
+      <article class="sponsored-card" data-aos="fade-up" data-aos-delay="50">
+        <img src="https://images.unsplash.com/photo-1455763916899-e8b50eca9967?auto=format&fit=cover&w=600&q=70" alt="Car Rental" loading="lazy" width="400" height="200"/>
+        <div>
+          <h4>Car Rentals</h4>
+          <p>Rent your car or vehicle easily for your waterfall adventure.</p>
+          <a href="https://www.carrentalindia.com" target="_blank" rel="noopener">Rent Now</a>
+        </div>
+      </article>
+      <article class="sponsored-card" data-aos="fade-up" data-aos-delay="100">
+        <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=cover&w=600&q=70" alt="Cab Rental" loading="lazy" width="400" height="200"/>
+        <div>
+          <h4>WanderCab Rentals</h4>
+          <p>Self-drive cars starting ₹1500/day across India.</p>
+          <a href="https://wandercabrentals.com" target="_blank" rel="noopener">Book Ride</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="donate-wrap" data-aos="fade-up" style="text-align:center;margin-bottom:60px;">
+    <h3>❤️ Support WanderMap</h3>
+    <p>If you love our travel guides, you can buy me a coffee ☕</p>
+    <a href="https://www.buymeacoffee.com/yourusername" target="_blank">Buy Me a Coffee</a>
+  </section>
+
+  <div class="sticky-ad" aria-label="Advertisement" role="complementary">
+    <ins class="adsbygoogle"
+         style="display:inline-block; width:320px; height:50px"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="4877919940"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
-</div>
 
-<div class="ad-container">
-  <ins class="adsbygoogle"
-       style="display:block; text-align:center;"
-       data-ad-client="ca-pub-8124807245840632"
-       data-ad-slot="4877919940"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-<style>
-  .grid-wrap {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-  }
-  .affiliate-card, .sponsored-card {
-    background: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  .affiliate-card img, .sponsored-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-  .affiliate-card div, .sponsored-card div {
-    padding: 15px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .affiliate-card h4, .sponsored-card h4 {
-    margin: 0 0 10px;
-    font-size: 18px;
-    color: #333;
-  }
-  .affiliate-card p, .sponsored-card p {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 10px;
-  }
-  .affiliate-card a, .sponsored-card a {
-    background: #FFB347;
-    color: white;
-    padding: 8px 12px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-  }
-  h2 {
-    margin-bottom: 15px;
-  }
-</style>
+  <!-- Floating WhatsApp Chat Bubble -->
+  <a href="https://wa.me/919999999999?text=Hi%20WanderMap%21%20I%20have%20a%20question%20about%20travel..." target="_blank" aria-label="Ask us anything on WhatsApp" class="wa-bubble">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp support chat" width="33" height="33" />
+  </a>
 
-<div class="affiliate-wrap">
-  <h2 style="color:#FFB347;">🔥 Top Travel Deals</h2>
-  <div class="grid-wrap">
-    <div class="affiliate-card">
-      <img src="https://source.unsplash.com/400x200/?hotel" alt="Hotel Deal">
-      <div>
-        <h4>50% Off on Hotels</h4>
-        <p>Massive discounts on top hotels via Booking.com</p>
-        <script async src="https://tpwgt.com/content?trs=434139&shmarker=648728&locale=en&sustainable=false&deals=false&border_radius=5&plain=true&powered_by=true&promo_id=2693&campaign_id=84" charset="utf-8"></script>
-        <a href="https://www.booking.com/?aid=your_aff_id" target="_blank">Book Now</a>
-      </div>
-    </div>
-    <div class="affiliate-card">
-      <img src="https://source.unsplash.com/400x200/?flight" alt="Flight Deal">
-      <div>
-        <h4>Lowest Flight Fares</h4>
-        <p>City tour special offers</p>
-        <script async src="https://tpwgt.com/content?currency=USD&trs=434139&shmarker=648728&locale=en&category=4&amount=3&powered_by=true&campaign_id=137&promo_id=4497" charset="utf-8"></script>
-      </div>
-    </div>
-  </div>
-</div>
+  <footer>
+    &copy; 2025 WanderMap | Created by Manik Rao | Travel Better 🌏
+  </footer>
+  <!-- AOS Animation JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 700, once: true, easing: 'ease-in-out' });
 
-<div class="sponsored-wrap">
-  <h2 style="color:#FFB347;">🎖️ Sponsored Listings</h2>
-  <div class="grid-wrap">
-    <div class="sponsored-card">
-      <img src="https://source.unsplash.com/400x200/?resort" alt="Car Rental">
-      <div>
-        <h4>Car Rentals</h4>
-        <p>Rent your car or vehicle easily.</p>
-        <script async src="https://tpwgt.com/content?trs=434139&shmarker=648728&country=india&city=Agra&locale=en&powered_by=true&bg_color=%23fad130&font_color=%23333333&button_color=%2300a200&button_font_color=%23ffffff&button_text=Search&rounded_corners=false&benefits=false&dc_powered_by=false&supplier_logos=false&campaign_id=117&promo_id=3873" charset="utf-8"></script>
-      </div>
-    </div>
-    <div class="sponsored-card">
-      <img src="https://source.unsplash.com/400x200/?cab" alt="Cab Rental">
-      <div>
-        <h4>WanderCab Rentals</h4>
-        <p>Self-drive cars starting ₹1500/day across India.</p>
-        <a href="https://wandercabrentals.com" target="_blank">Book Ride</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="donate-wrap">
-  <h3>❤️ Support WanderMap</h3>
-  <p>If you love our travel guides, you can buy me a coffee ☕</p>
-  <a href="https://www.buymeacoffee.com/yourusername" target="_blank">Buy Me a Coffee</a>
-</div>
-
-<div class="sticky-ad">
-  <ins class="adsbygoogle"
-       style="display:inline-block; width:320px; height:50px"
-       data-ad-client="ca-pub-8124807245840632"
-       data-ad-slot="4877919940"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-
-<footer>
-  &copy; 2025 WanderMap | Created by Manik Rao | Travel Better 🌏
-</footer>
-
+    // Rotating Testimonials
+    const testimonials = [
+      {text: "We discovered beautiful waterfalls through WanderMap and our road trip went perfectly! Highly recommended! ⭐⭐⭐⭐⭐", author: "Anisha, Pune"},
+      {text: "Best site for hidden nature routes and stay options near waterfalls. Loved the step-by-step maps!", author: "Rupesh, Hyderabad"},
+      {text: "Trek, food, and waterfall options all in one resource. Proud to travel with Indian startups!", author: "Sheetal, Mumbai"},
+      {text: "Affordable rental and great local guides via WanderMap. Can't wait for our next monsoon trip!", author: "Prateek, Bengaluru"}
+    ];
+    let curTestimonial = 0;
+    function showTestimonial(idx) {
+      const t = testimonials[idx];
+      document.getElementById('testimonial-content').innerHTML =
+        `<div class="testimonial-text">“${t.text}”</div><div class="testimonial-author">– ${t.author}</div>`;
+    }
+    function prevTestimonial() {
+      curTestimonial = (curTestimonial + testimonials.length - 1) % testimonials.length;
+      showTestimonial(curTestimonial);
+    }
+    function nextTestimonial() {
+      curTestimonial = (curTestimonial + 1) % testimonials.length;
+      showTestimonial(curTestimonial);
+    }
+    setInterval(nextTestimonial, 8000);
+    showTestimonial(curTestimonial);
+  </script>
 </body>
 </html>
