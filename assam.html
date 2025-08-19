@@ -2,156 +2,221 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Assam - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Assam Tourism | History, Places to Visit & Local Cuisine</title>
+  <meta name="description" content="Explore Assam - Land of Ahom dynasty, famous for Kaziranga National Park, Majuli Island, Kamakhya Temple, and rich Assamese culture and cuisine." />
+  <meta name="keywords" content="Assam tourism, Kaziranga National Park, Majuli Island, Kamakhya Temple, Assamese cuisine, Assam tea gardens, Assam tribal culture" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Assam Tourism | History, Places to Visit & Local Cuisine" />
+  <meta property="og:description" content="Discover Assam's wildlife, ancient temples, and vibrant cultural heritage." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/assam.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1558981403-c94feb28b3fb?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/d/d4/Assam_Collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1558981403-c94feb28b3fb?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(3px);
+      color: #0a2540;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.8);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      font-size: 1.05rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    nav a[aria-current="page"] {
+      background-color: #2a4d9c;
+      color: white;
+    }
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #174a93;
+    }
+    h2 {
+      color: #3762cc;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+    }
+    p {
+      margin-bottom: 1.3rem;
+      font-size: 1.1rem;
+    }
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.6rem;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 15px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      margin: 1.2rem 0;
+      display: block;
+      border: 1px solid #cbd9ff;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      color: #3a75ff;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover,
+    footer a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    .ad-container {
+      margin: 1.5rem 0;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- State Info -->
-  <header class="state-header">
-    <h1>Assam</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> Dispur</p>
-      <p><strong>Population:</strong> ~36 million (2023 est.)</p>
-      <p><strong>Official Language:</strong> Assamese</p>
-      <p><strong>History:</strong> Assam, known for its tea, silk, and biodiversity, is a key northeastern state of India. With rich tribal culture, wildlife sanctuaries, and temples, it has historically been the gateway to the Northeast. It’s home to the mighty Brahmaputra River and ancient Kamakhya Temple.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Places -->
-  <section class="places-grid">
-
-    <!-- Kaziranga National Park -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Kaziranga_rhino.jpg" alt="Kaziranga National Park">
-      <div class="card-content">
-        <h3>Kaziranga National Park</h3>
-        <p><strong>Location:</strong> Golaghat & Nagaon districts</p>
-        <p><strong>Famous for:</strong> One-horned rhinoceroses, tigers, elephants</p>
-        <p><strong>How to reach:</strong> Nearest airport: Jorhat (97 km); by road from Guwahati</p>
-      </div>
-    </div>
-
-    <!-- Majuli Island -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Majuli_Island_Assam.jpg" alt="Majuli Island">
-      <div class="card-content">
-        <h3>Majuli Island</h3>
-        <p><strong>Location:</strong> Brahmaputra River</p>
-        <p><strong>Famous for:</strong> World's largest river island, satras, tribal culture</p>
-        <p><strong>How to reach:</strong> Ferry from Neemati Ghat near Jorhat</p>
-      </div>
-    </div>
-
-    <!-- Kamakhya Temple -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Kamakhya_Temple_Guwahati.jpg" alt="Kamakhya Temple">
-      <div class="card-content">
-        <h3>Kamakhya Temple</h3>
-        <p><strong>Location:</strong> Nilachal Hill, Guwahati</p>
-        <p><strong>Famous for:</strong> Powerful Shakti Peeth, Ambubachi Mela</p>
-        <p><strong>How to reach:</strong> 6 km from Guwahati Railway Station</p>
-      </div>
-    </div>
-
-    <!-- Sivasagar -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Sivasagar_Tank_Assam.jpg" alt="Sivasagar">
-      <div class="card-content">
-        <h3>Sivasagar</h3>
-        <p><strong>Location:</strong> Eastern Assam</p>
-        <p><strong>Famous for:</strong> Ahom monuments, Sivadol Temple, tanks</p>
-        <p><strong>How to reach:</strong> Nearest airport: Jorhat (75 km); rail from Guwahati</p>
-      </div>
-    </div>
-
-    <!-- Manas National Park -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Manas_tiger_reserve.jpg" alt="Manas National Park">
-      <div class="card-content">
-        <h3>Manas National Park</h3>
-        <p><strong>Location:</strong> Western Assam (Barpeta)</p>
-        <p><strong>Famous for:</strong> UNESCO site, tigers, elephants, golden langur</p>
-        <p><strong>How to reach:</strong> Nearest rail: Barpeta Road (22 km); Guwahati by road</p>
-      </div>
-    </div>
-
-    <!-- Haflong -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Haflong_Hill.jpg" alt="Haflong">
-      <div class="card-content">
-        <h3>Haflong</h3>
-        <p><strong>Location:</strong> Dima Hasao district</p>
-        <p><strong>Famous for:</strong> Only hill station of Assam, scenic views</p>
-        <p><strong>How to reach:</strong> Connected by rail from Lumding; buses from Silchar</p>
-      </div>
-    </div>
-
-    <!-- Tezpur -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Agnigarh_Tezpur.jpg" alt="Tezpur">
-      <div class="card-content">
-        <h3>Tezpur</h3>
-        <p><strong>Location:</strong> Sonitpur District</p>
-        <p><strong>Famous for:</strong> Mythology, Agnigarh Fort, cultural town</p>
-        <p><strong>How to reach:</strong> Road/train from Guwahati (180 km)</p>
-      </div>
-    </div>
-
-    <!-- Dipor Bil -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Dipor_Bil_Guwahati.jpg" alt="Dipor Bil">
-      <div class="card-content">
-        <h3>Dipor Bil</h3>
-        <p><strong>Location:</strong> Guwahati outskirts</p>
-        <p><strong>Famous for:</strong> Wetland, birdwatching, sunset views</p>
-        <p><strong>How to reach:</strong> 13 km from Guwahati Railway Station</p>
-      </div>
-    </div>
-
-    <!-- Hoollongapar Gibbon Sanctuary -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Hoolock_gibbon_Assam.jpg" alt="Gibbon Sanctuary">
-      <div class="card-content">
-        <h3>Hoollongapar Gibbon Sanctuary</h3>
-        <p><strong>Location:</strong> Jorhat District</p>
-        <p><strong>Famous for:</strong> India's only gibbon sanctuary</p>
-        <p><strong>How to reach:</strong> Jorhat (20 km); easy by auto/rickshaw</p>
-      </div>
-    </div>
-
-    <!-- Digboi Oil Town -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Digboi_refinery_Assam.jpg" alt="Digboi">
-      <div class="card-content">
-        <h3>Digboi</h3>
-        <p><strong>Location:</strong> Tinsukia District</p>
-        <p><strong>Famous for:</strong> Asia's oldest oil refinery, golf course, WWII cemetery</p>
-        <p><strong>How to reach:</strong> Nearest airport: Dibrugarh (70 km); by train to Tinsukia</p>
-      </div>
-    </div>
-
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement top">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="4877919940"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Assam</h1>
+  <img 
+    src="https://images.unsplash.com/photo-1558981403-c94feb28b3fb?auto=format&fit=crop&w=900&q=80"
+    alt="Tea gardens in Assam"
+    loading="lazy"
+    width="900"
+    height="600"
+  />
+
+  <h2>Brief History</h2>
+  <p>Assam has a rich history under the Ahom dynasty, famous for tea gardens, silk production, and diverse wetland ecosystems.</p>
+
+  <h2>Major Places to Visit</h2>
+  <ul class="places-list">
+    <li>Kaziranga National Park
+      <p class="place-details">
+        <strong>Why visit:</strong> World Heritage site protecting the one-horned rhinoceros.<br/>
+        <strong>How to reach:</strong> Airports at Jorhat (~95 km) and Guwahati (~215 km), rail at Furkating (~75 km).
+      </p>
+      <img src="https://images.unsplash.com/photo-1540206395-68808572332f?auto=format&fit=crop&w=800&q=80" alt="Kaziranga National Park" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Majuli Island
+      <p class="place-details">
+        <strong>Why visit:</strong> World's largest river island known for Vaishnavite culture.<br/>
+        <strong>How to reach:</strong> Airport: Jorhat (~25 km to Nimati Ghat + ferry), rail: Jorhat Town.
+      </p>
+      <img src="https://images.unsplash.com/photo-1517457373958-c7f7f4ca98ee?auto=format&fit=crop&w=800&q=80" alt="Majuli Island" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Kamakhya Temple (Guwahati)
+      <p class="place-details">
+        <strong>Why visit:</strong> Important cultural and religious site.<br/>
+        <strong>How to reach:</strong> Guwahati Airport (~20 km), rail at Kamakhya or Guwahati station.
+      </p>
+    </li>
+    <li>Sivasagar (Ahom monuments)
+      <p class="place-details">
+        <strong>Why visit:</strong> Historical capital with Ahom heritage.<br/>
+        <strong>How to reach:</strong> Airport: Jorhat (~70 km), rail to Sibsagar Town.
+      </p>
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Enjoy Khar, Masor Tenga (sour fish curry), Aloo Pitika, Pitha sweets, and famous Assam teas including Muga and Eri silk products.</p>
+  <img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?auto=format&fit=crop&w=900&q=80" alt="Assam cuisine dishes" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="4877919940"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> | 
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
