@@ -2,156 +2,212 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sikkim - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sikkim Tourism | History, Places to Visit & Local Cuisine</title>
+  <meta name="description" content="Explore Sikkim - Himalayan state known for stunning landscapes, Buddhist monasteries, Tsomgo Lake, Nathula Pass, Yumthang Valley, and unique local culture and cuisine." />
+  <meta name="keywords" content="Sikkim tourism, Gangtok, Tsomgo Lake, Nathula Pass, Yumthang Valley, Buddhist monasteries, Sikkim cuisine, Himalayan travel, adventure tourism Sikkim" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Sikkim Tourism | History, Places to Visit & Local Cuisine" />
+  <meta property="og:description" content="Discover beautiful Sikkim with its rich culture, scenic beauty, sacred sites, and flavorful cuisine." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/sikkim.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/5/5f/Sikkim_Collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(3px);
+      color: #0a2540;
+      line-height: 1.6;
+      min-height: 100vh;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.85);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      font-size: 1.05rem;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a[aria-current="page"], nav a:hover, nav a:focus {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    h1 {
+      font-size: 2.6rem;
+      color: #174a93;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    h2 {
+      color: #3762cc;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+    }
+    p, ul {
+      font-size: 1.1rem;
+      margin-bottom: 1.3rem;
+    }
+    ul.places-list {
+      list-style: disc inside;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 18px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 1.2rem 0;
+      display: block;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      border: 1px solid #cbd9ff;
+    }
+    .ad-container {
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      font-weight: 700;
+      color: #3a75ff;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover, footer a:focus {
+      text-decoration: underline;
+      outline: none;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- Sikkim Info -->
-  <header class="state-header">
-    <h1>Sikkim</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> Gangtok</p>
-      <p><strong>Population:</strong> ~700,000 (2023 est.)</p>
-      <p><strong>Official Languages:</strong> Nepali, Bhutia, Lepcha, English</p>
-      <p><strong>History:</strong> Sikkim, a Himalayan state, was an independent kingdom until it joined India in 1975. Known for its Buddhist monasteries, alpine scenery, snow-capped mountains, and rich biodiversity, Sikkim is also India’s first fully organic state.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Places in Sikkim -->
-  <section class="places-grid">
-
-    <!-- Tsomgo Lake -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Tsomgo_Lake.jpg" alt="Tsomgo Lake">
-      <div class="card-content">
-        <h3>Tsomgo Lake</h3>
-        <p><strong>Location:</strong> 40 km from Gangtok</p>
-        <p><strong>Famous for:</strong> Glacial lake, snow views, yak rides</p>
-        <p><strong>How to reach:</strong> Hire a cab from Gangtok (permit required)</p>
-      </div>
-    </div>
-
-    <!-- Nathula Pass -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Nathula_pass.jpg" alt="Nathula Pass">
-      <div class="card-content">
-        <h3>Nathula Pass</h3>
-        <p><strong>Location:</strong> Indo-China border</p>
-        <p><strong>Famous for:</strong> Historic trade route, Indo-China border</p>
-        <p><strong>How to reach:</strong> 55 km from Gangtok with permit</p>
-      </div>
-    </div>
-
-    <!-- Rumtek Monastery -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Rumtek_Monastery_Sikkim.jpg" alt="Rumtek Monastery">
-      <div class="card-content">
-        <h3>Rumtek Monastery</h3>
-        <p><strong>Location:</strong> 23 km from Gangtok</p>
-        <p><strong>Famous for:</strong> Tibetan Buddhism, architecture</p>
-        <p><strong>How to reach:</strong> Taxi from Gangtok</p>
-      </div>
-    </div>
-
-    <!-- Yumthang Valley -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Yumthang_Valley.jpg" alt="Yumthang Valley">
-      <div class="card-content">
-        <h3>Yumthang Valley</h3>
-        <p><strong>Location:</strong> North Sikkim</p>
-        <p><strong>Famous for:</strong> Valley of flowers, hot springs, snow</p>
-        <p><strong>How to reach:</strong> Via Lachung (from Gangtok)</p>
-      </div>
-    </div>
-
-    <!-- Gurudongmar Lake -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Gurudongmar_Lake.jpg" alt="Gurudongmar Lake">
-      <div class="card-content">
-        <h3>Gurudongmar Lake</h3>
-        <p><strong>Location:</strong> 17,800 ft, North Sikkim</p>
-        <p><strong>Famous for:</strong> High-altitude sacred lake</p>
-        <p><strong>How to reach:</strong> Via Lachen by road (permit needed)</p>
-      </div>
-    </div>
-
-    <!-- Pelling -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Pelling_Viewpoint_Sikkim.jpg" alt="Pelling">
-      <div class="card-content">
-        <h3>Pelling</h3>
-        <p><strong>Location:</strong> West Sikkim</p>
-        <p><strong>Famous for:</strong> Kanchenjunga views, monasteries</p>
-        <p><strong>How to reach:</strong> 131 km from Gangtok</p>
-      </div>
-    </div>
-
-    <!-- Zuluk Loop -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Zuluk_Loops_Sikkim.jpg" alt="Zuluk Loop">
-      <div class="card-content">
-        <h3>Zuluk Loop</h3>
-        <p><strong>Location:</strong> East Sikkim</p>
-        <p><strong>Famous for:</strong> Hairpin roads, scenic Himalayan drive</p>
-        <p><strong>How to reach:</strong> Permit required, from Gangtok</p>
-      </div>
-    </div>
-
-    <!-- Kanchenjunga National Park -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Kanchenjunga_from_Goecha_La.jpg" alt="Kanchenjunga National Park">
-      <div class="card-content">
-        <h3>Kanchenjunga National Park</h3>
-        <p><strong>Location:</strong> West Sikkim</p>
-        <p><strong>Famous for:</strong> UNESCO site, trekking, biodiversity</p>
-        <p><strong>How to reach:</strong> Permit required, via Yuksom</p>
-      </div>
-    </div>
-
-    <!-- Tashi View Point -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Tashi_View_Point_Gangtok.jpg" alt="Tashi View Point">
-      <div class="card-content">
-        <h3>Tashi View Point</h3>
-        <p><strong>Location:</strong> Near Gangtok</p>
-        <p><strong>Famous for:</strong> Panoramic view of Kanchenjunga</p>
-        <p><strong>How to reach:</strong> 8 km from Gangtok city</p>
-      </div>
-    </div>
-
-    <!-- Namchi Chardham -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Namchi_Chardham_Sikkim.jpg" alt="Namchi Chardham">
-      <div class="card-content">
-        <h3>Namchi Chardham</h3>
-        <p><strong>Location:</strong> South Sikkim</p>
-        <p><strong>Famous for:</strong> Pilgrimage replica site of four dhams</p>
-        <p><strong>How to reach:</strong> 80 km from Gangtok</p>
-      </div>
-    </div>
-
+  <section class="ad-container" aria-label="Advertisement top">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="4877919940"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Sikkim</h1>
+  <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80" alt="Gangtok, Sikkim" loading="lazy" width="900" height="600" />
+
+  <h2>Brief History</h2>
+  <p>Sikkim, nestled in the Himalayas, is known for its rich Buddhist culture, scenic mountain beauty, and warm hospitality. It was a monarchy until 1975 and is now India’s smallest state by population.</p>
+
+  <h2>Major Places to Visit</h2>
+  <ul class="places-list">
+    <li>Gangtok
+      <p class="place-details">
+        <strong>Why visit:</strong> Capital city with panoramic Himalayan views, vibrant markets and monasteries.<br />
+        <strong>How to reach:</strong> Pakyong Airport (16 km); road connectivity with Siliguri.
+      </p>
+    </li>
+    <li>Tsomgo Lake
+      <p class="place-details">
+        <strong>Why visit:</strong> High altitude glacial lake known for breathtaking blue waters.<br />
+        <strong>How to reach:</strong> 38 km from Gangtok by road via Nathula Pass.
+      </p>
+    </li>
+    <li>Nathula Pass
+      <p class="place-details">
+        <strong>Why visit:</strong> Historic mountain pass on Indo-China border accessible seasonally.<br />
+        <strong>How to reach:</strong> 54 km from Gangtok, requires permit.
+      </p>
+    </li>
+    <li>Yumthang Valley
+      <p class="place-details">
+        <strong>Why visit:</strong> Scenic valley known as the Valley of Flowers, beautiful year-round.<br />
+        <strong>How to reach:</strong> Around 150 km from Gangtok by road.
+      </p>
+    </li>
+    <li>Rumtek Monastery
+      <p class="place-details">
+        <strong>Why visit:</strong> Important Tibetan Buddhist monastery with colorful ceremonies.<br />
+        <strong>How to reach:</strong> About 24 km from Gangtok.
+      </p>
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Sikkimese cuisine blends Tibetan and Nepali influences offering dishes like Momos, Thukpa (noodle soup), Gundruk (fermented leafy greens), and locally brewed Chhaang (rice beer).</p>
+  <img src="https://images.unsplash.com/photo-1543157106-cee71837ff62?auto=format&fit=crop&w=900&q=80" alt="Sikkimese cuisine" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="4877919940"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> |
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
