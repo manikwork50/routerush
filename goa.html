@@ -2,156 +2,207 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Goa - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Goa Tourism | History, Places to Visit & Local Cuisine</title>
+  <meta name="description" content="Explore Goa - Stunning beaches, historic forts, vibrant nightlife, Portuguese heritage, and delicious local cuisine. Detailed travel guide with places, food, and accessibility tips." />
+  <meta name="keywords" content="Goa tourism, Goa beaches, Fort Aguada, Bom Jesus Basilica, Goa nightlife, Goan cuisine, Dudhsagar Waterfalls, Goa travel guide" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Goa Tourism | Best Beaches, Forts & Local Food" />
+  <meta property="og:description" content="Discover Goa's top tourist spots: beaches, forts, nightlife, and unique cuisine with travel information." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/goa.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/b/b5/Goa_Collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(3px);
+      color: #0a2540;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.8);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      font-size: 1.05rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    nav a[aria-current="page"] {
+      background-color: #2a4d9c;
+      color: white;
+    }
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #174a93;
+    }
+    h2 {
+      color: #3762cc;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+    }
+    p {
+      margin-bottom: 1.3rem;
+      font-size: 1.1rem;
+    }
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.6rem;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 15px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      margin: 1.2rem 0;
+      display: block;
+      border: 1px solid #cbd9ff;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      color: #3a75ff;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover,
+    footer a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    .ad-container {
+      margin: 1.5rem 0;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- Goa Info -->
-  <header class="state-header">
-    <h1>Goa</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> Panaji</p>
-      <p><strong>Population:</strong> ~1.6 million (2023 est.)</p>
-      <p><strong>Official Languages:</strong> Konkani (official), Marathi, English</p>
-      <p><strong>History:</strong> Goa, a former Portuguese colony, became part of India in 1961. Known for its beaches, nightlife, Portuguese architecture, churches, and seafood, Goa is one of the most visited tourist destinations in India, blending heritage and coastal charm.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Places in Goa -->
-  <section class="places-grid">
-
-    <!-- Baga Beach -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Baga_Beach_Goa.jpg" alt="Baga Beach">
-      <div class="card-content">
-        <h3>Baga Beach</h3>
-        <p><strong>Location:</strong> North Goa</p>
-        <p><strong>Famous for:</strong> Water sports, nightlife, beach shacks</p>
-        <p><strong>How to reach:</strong> 18 km from Panaji by taxi or scooter</p>
-      </div>
-    </div>
-
-    <!-- Basilica of Bom Jesus -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Basilica_of_Bom_Jesus_Goa.jpg" alt="Bom Jesus Basilica">
-      <div class="card-content">
-        <h3>Basilica of Bom Jesus</h3>
-        <p><strong>Location:</strong> Old Goa</p>
-        <p><strong>Famous for:</strong> 400-year-old UNESCO church, relics of St. Francis Xavier</p>
-        <p><strong>How to reach:</strong> 10 km from Panaji</p>
-      </div>
-    </div>
-
-    <!-- Fort Aguada -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Fort_Aguada_Lighthouse_Goa.jpg" alt="Fort Aguada">
-      <div class="card-content">
-        <h3>Fort Aguada</h3>
-        <p><strong>Location:</strong> Near Sinquerim Beach</p>
-        <p><strong>Famous for:</strong> 17th-century Portuguese fort & lighthouse</p>
-        <p><strong>How to reach:</strong> 15 km from Panaji</p>
-      </div>
-    </div>
-
-    <!-- Dudhsagar Falls -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Dudhsagar_Waterfalls.jpg" alt="Dudhsagar Falls">
-      <div class="card-content">
-        <h3>Dudhsagar Falls</h3>
-        <p><strong>Location:</strong> Goa-Karnataka border</p>
-        <p><strong>Famous for:</strong> One of India’s tallest waterfalls</p>
-        <p><strong>How to reach:</strong> Jeep safari from Kulem station</p>
-      </div>
-    </div>
-
-    <!-- Anjuna Beach -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Anjuna_Beach.jpg" alt="Anjuna Beach">
-      <div class="card-content">
-        <h3>Anjuna Beach</h3>
-        <p><strong>Location:</strong> North Goa</p>
-        <p><strong>Famous for:</strong> Psytrance culture, flea market, cliffs</p>
-        <p><strong>How to reach:</strong> 20 km from Panaji</p>
-      </div>
-    </div>
-
-    <!-- Calangute Beach -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Calangute_Beach_Goa.jpg" alt="Calangute Beach">
-      <div class="card-content">
-        <h3>Calangute Beach</h3>
-        <p><strong>Location:</strong> North Goa</p>
-        <p><strong>Famous for:</strong> Largest beach in Goa, food & water sports</p>
-        <p><strong>How to reach:</strong> 17 km from Panaji</p>
-      </div>
-    </div>
-
-    <!-- Chapora Fort -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Chapora_Fort_Goa.jpg" alt="Chapora Fort">
-      <div class="card-content">
-        <h3>Chapora Fort</h3>
-        <p><strong>Location:</strong> Near Vagator</p>
-        <p><strong>Famous for:</strong> ‘Dil Chahta Hai’ filming spot, sunset views</p>
-        <p><strong>How to reach:</strong> 22 km from Panaji</p>
-      </div>
-    </div>
-
-    <!-- Palolem Beach -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Palolem_Beach_South_Goa.jpg" alt="Palolem Beach">
-      <div class="card-content">
-        <h3>Palolem Beach</h3>
-        <p><strong>Location:</strong> South Goa</p>
-        <p><strong>Famous for:</strong> Crescent-shaped beach, peaceful vibe</p>
-        <p><strong>How to reach:</strong> 70 km from Panaji, taxi or train to Canacona</p>
-      </div>
-    </div>
-
-    <!-- Fontainhas -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Fontainhas_Lanes_Goa.jpg" alt="Fontainhas">
-      <div class="card-content">
-        <h3>Fontainhas</h3>
-        <p><strong>Location:</strong> Panaji</p>
-        <p><strong>Famous for:</strong> Latin Quarter, colorful houses, walking tours</p>
-        <p><strong>How to reach:</strong> Walkable from central Panaji</p>
-      </div>
-    </div>
-
-    <!-- Cabo de Rama Fort -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Cabo_de_Rama_Fort.jpg" alt="Cabo de Rama">
-      <div class="card-content">
-        <h3>Cabo de Rama Fort</h3>
-        <p><strong>Location:</strong> South Goa</p>
-        <p><strong>Famous for:</strong> Cliffside views, history, quiet beauty</p>
-        <p><strong>How to reach:</strong> 60 km from Panaji, accessible by road</p>
-      </div>
-    </div>
-
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement top">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Goa</h1>
+  <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80" alt="Goa Beach" loading="lazy" width="900" height="600" />
+
+  <h2>Brief History</h2>
+  <p>Goa is a coastal paradise known for its Portuguese colonial heritage, beautiful beaches, vibrant nightlife, and unique blend of Indian and Lusitanian cultures.</p>
+
+  <h2>Major Places to Visit</h2>
+  <ul class="places-list">
+    <li>Bom Jesus Basilica
+      <p class="place-details">
+        <strong>Why visit:</strong> UNESCO World Heritage Site and famous church housing the remains of St. Francis Xavier.<br/>
+        <strong>How to reach:</strong> Dabolim Airport (26 km), Panjim City.
+      </p>
+      <img src="https://images.unsplash.com/photo-1565036027310-40cc0f2c7ccc?auto=format&fit=crop&w=800&q=80" alt="Bom Jesus Basilica" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Fort Aguada
+      <p class="place-details">
+        <strong>Why visit:</strong> Well-preserved Portuguese fort overlooking the Arabian Sea.<br/>
+        <strong>How to reach:</strong> Located near Sinquerim Beach, accessible by road.
+      </p>
+      <img src="https://images.unsplash.com/photo-1508154048109-de555266b032?auto=format&fit=crop&w=800&q=80" alt="Fort Aguada" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Calangute and Baga Beaches
+      <p class="place-details">
+        <strong>Why visit:</strong> Popular beaches with lively markets, water sports, and nightlife.<br/>
+        <strong>How to reach:</strong> Accessible via road from Panjim.
+      </p>
+      <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80" alt="Baga Beach" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Dudhsagar Waterfalls
+      <p class="place-details">
+        <strong>Why visit:</strong> One of India’s tallest waterfalls, surrounded by lush forest.<br/>
+        <strong>How to reach:</strong> By train to Castle Rock, then jeep/trek.
+      </p>
+      <img src="https://images.unsplash.com/photo-1506744671877-0e840aff1c65?auto=format&fit=crop&w=800&q=80" alt="Dudhsagar Waterfalls" loading="lazy" width="800" height="500" />
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Goan cuisine is rich with seafood, coconut-based curries, and Portuguese influenced dishes such as Vindaloo, Xacuti, Bebinca dessert, and Feni (local liquor).</p>
+  <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80" alt="Goan cuisine" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> | 
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
