@@ -1,157 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF- />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Karnataka - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Karnataka Tourism | History, Places to Visit & Local Cuisine</title>
+  <meta name="description" content="Explore Karnataka - Land of Mysore Palace, Hampi ruins, Coorg hill station, and rich diverse cuisine. Discover cultural heritage, travel tips, and best places to visit." />
+  <meta name="keywords" content="Karnataka tourism, Mysore Palace, Hampi ruins, Coorg, Bangalore travel, Karnataka cuisine, Lalbagh Botanical Gardens, Karnataka heritage" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Karnataka Tourism | History, Places to Visit & Local Cuisine" />
+  <meta property="og:description" content="Discover Karnataka’s historic landmarks, scenic hill stations, and flavorful cuisine with travel information." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/karnataka.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1552072095-be1df17c13bb?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/e/e2/Karnataka_Collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1552072095-be1df17c13bb?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(3px);
+      color: #0a2540;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.8);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      font-size: 1.05rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    nav a[aria-current="page"] {
+      background-color: #2a4d9c;
+      color: white;
+    }
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #174a93;
+    }
+    h2 {
+      color: #3762cc;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+    }
+    p {
+      margin-bottom: 1.3rem;
+      font-size: 1.1rem;
+    }
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.6rem;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 15px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      margin: 1.2rem 0;
+      display: block;
+      border: 1px solid #cbd9ff;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      color: #3a75ff;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover,
+    footer a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    .ad-container {
+      margin: 1.5rem 0;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- State Info -->
-  <header class="state-header">
-    <h1>Karnataka</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> Bengaluru</p>
-      <p><strong>Population:</strong> ~68 million (2023 est.)</p>
-      <p><strong>Official Language:</strong> Kannada</p>
-      <p><strong>History:</strong> Karnataka, known for its rich heritage of the Vijayanagara Empire and diverse landscapes from beaches to coffee hills, is one of India’s most advanced states with a tech hub in Bengaluru.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Places -->
-  <section class="places-grid">
-
-    <!-- Bengaluru -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Vidhana_Soudha_Bangalore.jpg" alt="Bengaluru">
-      <div class="card-content">
-        <h3>Bengaluru</h3>
-        <p><strong>Location:</strong> Bangalore Urban</p>
-        <p><strong>Famous for:</strong> IT hub, gardens, nightlife</p>
-        <p><strong>How to reach:</strong> Kempegowda Intl. Airport, Bengaluru City Railway Station</p>
-      </div>
-    </div>
-
-    <!-- Mysore -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Mysore_Palace_India.jpg" alt="Mysore">
-      <div class="card-content">
-        <h3>Mysore</h3>
-        <p><strong>Location:</strong> Mysuru District</p>
-        <p><strong>Famous for:</strong> Mysore Palace, Dussehra Festival</p>
-        <p><strong>How to reach:</strong> Mysuru Junction, road from Bengaluru (150 km)</p>
-      </div>
-    </div>
-
-    <!-- Hampi -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Hampi_Karnataka.jpg" alt="Hampi">
-      <div class="card-content">
-        <h3>Hampi</h3>
-        <p><strong>Location:</strong> Vijayanagara District</p>
-        <p><strong>Famous for:</strong> Ruins of Vijayanagara Empire</p>
-        <p><strong>How to reach:</strong> Train to Hospet; road to Hampi (13 km)</p>
-      </div>
-    </div>
-
-    <!-- Coorg -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Coorg_Coffee_Plantation.jpg" alt="Coorg">
-      <div class="card-content">
-        <h3>Coorg</h3>
-        <p><strong>Location:</strong> Kodagu District</p>
-        <p><strong>Famous for:</strong> Coffee estates, hills, waterfalls</p>
-        <p><strong>How to reach:</strong> Road from Mysore (115 km); no rail/air</p>
-      </div>
-    </div>
-
-    <!-- Gokarna -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Gokarna_beach_Karnataka.jpg" alt="Gokarna">
-      <div class="card-content">
-        <h3>Gokarna</h3>
-        <p><strong>Location:</strong> Uttara Kannada</p>
-        <p><strong>Famous for:</strong> Pilgrimage & secluded beaches</p>
-        <p><strong>How to reach:</strong> Ankola Railway (20 km); road from Goa or Karwar</p>
-      </div>
-    </div>
-
-    <!-- Badami -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Badami_Cave_Temple.jpg" alt="Badami">
-      <div class="card-content">
-        <h3>Badami</h3>
-        <p><strong>Location:</strong> Bagalkot District</p>
-        <p><strong>Famous for:</strong> Cave temples & Chalukya architecture</p>
-        <p><strong>How to reach:</strong> Badami Railway Station or by road from Hubli</p>
-      </div>
-    </div>
-
-    <!-- Chikmagalur -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Chikmagalur_mountain_range.jpg" alt="Chikmagalur">
-      <div class="card-content">
-        <h3>Chikmagalur</h3>
-        <p><strong>Location:</strong> Western Ghats</p>
-        <p><strong>Famous for:</strong> Coffee plantations, Mullayanagiri peak</p>
-        <p><strong>How to reach:</strong> Road from Bengaluru (245 km)</p>
-      </div>
-    </div>
-
-    <!-- Jog Falls -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Jog_Falls_Shivamogga.jpg" alt="Jog Falls">
-      <div class="card-content">
-        <h3>Jog Falls</h3>
-        <p><strong>Location:</strong> Shivamogga District</p>
-        <p><strong>Famous for:</strong> Highest waterfall in Karnataka</p>
-        <p><strong>How to reach:</strong> Road from Sagara or Hubli; nearest rail Talguppa</p>
-      </div>
-    </div>
-
-    <!-- Belur & Halebidu -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Belur_Chennakesava_temple.jpg" alt="Belur Temple">
-      <div class="card-content">
-        <h3>Belur & Halebidu</h3>
-        <p><strong>Location:</strong> Hassan District</p>
-        <p><strong>Famous for:</strong> Hoysala temples, intricate stone carvings</p>
-        <p><strong>How to reach:</strong> Road/train from Hassan or Bengaluru</p>
-      </div>
-    </div>
-
-    <!-- Kabini Wildlife Sanctuary -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Kabini_elephants.jpg" alt="Kabini">
-      <div class="card-content">
-        <h3>Kabini Wildlife Sanctuary</h3>
-        <p><strong>Location:</strong> Mysuru District</p>
-        <p><strong>Famous for:</strong> Safaris, elephants, tiger sightings</p>
-        <p><strong>How to reach:</strong> Road from Mysore (~80 km)</p>
-      </div>
-    </div>
-
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement top">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Karnataka</h1>
+  <img 
+    src="https://images.unsplash.com/photo-1552072095-be1df17c13bb?auto=format&fit=crop&w=900&q=80"
+    alt="Mysore Palace, Karnataka" 
+    loading="lazy" 
+    width="900" 
+    height="600" 
+  />
+
+  <h2>Brief History</h2>
+  <p>Karnataka is known for its rich history with the Vijayanagara Empire, the royal city of Mysore, Hampi ruins, and lively cosmopolitan Bangalore city.</p>
+
+  <h2>Major Places to Visit</h2>
+  <ul class="places-list">
+    <li>Mysore Palace
+      <p class="place-details">
+        <strong>Why visit:</strong> Magnificent royal palace and cultural heritage.<br/>
+        <strong>How to reach:</strong> Mysore Airport; Rail and road connectivity from Bangalore (150 km).
+      </p>
+      <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80" alt="Mysore Palace" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Hampi
+      <p class="place-details">
+        <strong>Why visit:</strong> UNESCO World Heritage site with ancient ruins.<br/>
+        <strong>How to reach:</strong> Airport: Hubli (nearby); Rail: Hospet.
+      </p>
+    </li>
+    <li>Coorg
+      <p class="place-details">
+        <strong>Why visit:</strong> Scenic hill station with coffee plantations and waterfalls.<br/>
+        <strong>How to reach:</strong> Mangalore Airport (90 km); road from Mysore.
+      </p>
+    </li>
+    <li>Bangalore (Bengaluru)
+      <p class="place-details">
+        <strong>Why visit:</strong> IT hub with botanical gardens and vibrant nightlife.<br/>
+        <strong>How to reach:</strong> Kempegowda International Airport; excellent road and rail network.
+      </p>
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Enjoy Bisi Bele Bath, Mysore Pak, Ragi Mudde and a variety of dosas reflecting Karnataka’s culinary diversity.</p>
+  <img src="https://images.unsplash.com/photo-1517457373958-c7f7f4ca98ee?auto=format&fit=crop&w=900&q=80" alt="Karnataka cuisine" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> | 
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
