@@ -2,156 +2,210 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Haryana - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Haryana Tourism | History, Places to Visit & Local Cuisine</title>
+  <meta name="description" content="Explore Haryana - Land of ancient temples, Kurukshetra Panorama, Sultanpur Bird Sanctuary, beautiful gardens and vibrant culture. Detailed travel guide and local cuisine." />
+  <meta name="keywords" content="Haryana tourism, Kurukshetra tourism, Sultanpur Bird Sanctuary, Pinjore Gardens, Morni Hills, Haryana local cuisine, Haryana heritage sites" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Haryana Tourism | History, Places to Visit & Local Cuisine" />
+  <meta property="og:description" content="Discover Haryana’s historical and natural attractions, religious sites, and delicious dishes with travel info." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/haryana.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/5/5b/Haryana_collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(3px);
+      color: #0a2540;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.8);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      font-size: 1.05rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    nav a[aria-current="page"] {
+      background-color: #2a4d9c;
+      color: white;
+    }
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #174a93;
+    }
+    h2 {
+      color: #3762cc;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+    }
+    p {
+      margin-bottom: 1.3rem;
+      font-size: 1.1rem;
+    }
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.6rem;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 15px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      margin: 1.2rem 0;
+      display: block;
+      border: 1px solid #cbd9ff;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      color: #3a75ff;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover,
+    footer a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    .ad-container {
+      margin: 1.5rem 0;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- State Info -->
-  <header class="state-header">
-    <h1>Haryana</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> Chandigarh</p>
-      <p><strong>Population:</strong> ~29 million (2023 est.)</p>
-      <p><strong>Official Language:</strong> Hindi</p>
-      <p><strong>History:</strong> Haryana is the land of the epic Mahabharata battlefield, Kurukshetra. With a rich Vedic history, it is also a major agricultural and industrial hub, bordering Delhi and offering a blend of heritage, spirituality, and modernity.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Places -->
-  <section class="places-grid">
-
-    <!-- Kurukshetra -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Brahma_Sarovar%2C_Kurukshetra.jpg" alt="Kurukshetra">
-      <div class="card-content">
-        <h3>Kurukshetra</h3>
-        <p><strong>Location:</strong> Kurukshetra District</p>
-        <p><strong>Famous for:</strong> Mahabharata battlefield, Brahma Sarovar</p>
-        <p><strong>How to reach:</strong> Kurukshetra Railway Station; road from Delhi (160 km)</p>
-      </div>
-    </div>
-
-    <!-- Sultanpur Bird Sanctuary -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Sultanpur_Bird_Sanctuary.jpg" alt="Sultanpur">
-      <div class="card-content">
-        <h3>Sultanpur Bird Sanctuary</h3>
-        <p><strong>Location:</strong> Gurgaon District</p>
-        <p><strong>Famous for:</strong> Migratory birds, nature walks</p>
-        <p><strong>How to reach:</strong> 50 km from Delhi by road</p>
-      </div>
-    </div>
-
-    <!-- Pinjore Gardens -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Pinjore_Garden.jpg" alt="Pinjore Gardens">
-      <div class="card-content">
-        <h3>Pinjore Gardens</h3>
-        <p><strong>Location:</strong> Panchkula District</p>
-        <p><strong>Famous for:</strong> Mughal-style garden complex</p>
-        <p><strong>How to reach:</strong> Near Chandigarh (22 km)</p>
-      </div>
-    </div>
-
-    <!-- Morni Hills -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Morni_hills.jpg" alt="Morni Hills">
-      <div class="card-content">
-        <h3>Morni Hills</h3>
-        <p><strong>Location:</strong> Panchkula</p>
-        <p><strong>Famous for:</strong> Scenic hill station, boating, trekking</p>
-        <p><strong>How to reach:</strong> 45 km from Chandigarh</p>
-      </div>
-    </div>
-
-    <!-- Karnal -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Karnal_Lake.jpg" alt="Karnal">
-      <div class="card-content">
-        <h3>Karnal</h3>
-        <p><strong>Location:</strong> Central Haryana</p>
-        <p><strong>Famous for:</strong> Karnal Lake, historic Mughal bridge</p>
-        <p><strong>How to reach:</strong> Karnal Railway Station; NH 44 from Delhi</p>
-      </div>
-    </div>
-
-    <!-- Panipat -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Panipat_Museum.jpg" alt="Panipat">
-      <div class="card-content">
-        <h3>Panipat</h3>
-        <p><strong>Location:</strong> Northern Haryana</p>
-        <p><strong>Famous for:</strong> Historic battlefields, Panipat Museum</p>
-        <p><strong>How to reach:</strong> Panipat Junction by train, NH 44</p>
-      </div>
-    </div>
-
-    <!-- Bhindawas Wildlife Sanctuary -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Bhindawas_Lake.jpg" alt="Bhindawas">
-      <div class="card-content">
-        <h3>Bhindawas Sanctuary</h3>
-        <p><strong>Location:</strong> Jhajjar District</p>
-        <p><strong>Famous for:</strong> Wetland birds, peaceful environment</p>
-        <p><strong>How to reach:</strong> 100 km from Delhi by road</p>
-      </div>
-    </div>
-
-    <!-- Agroha Dham -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Agroha_Dham_Hisar.jpg" alt="Agroha Dham">
-      <div class="card-content">
-        <h3>Agroha Dham</h3>
-        <p><strong>Location:</strong> Hisar District</p>
-        <p><strong>Famous for:</strong> Hindu temple complex, cultural site</p>
-        <p><strong>How to reach:</strong> 20 km from Hisar city; bus/taxi</p>
-      </div>
-    </div>
-
-    <!-- Surajkund -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Surajkund_Mela.jpg" alt="Surajkund Mela">
-      <div class="card-content">
-        <h3>Surajkund</h3>
-        <p><strong>Location:</strong> Faridabad</p>
-        <p><strong>Famous for:</strong> International crafts mela, folk art</p>
-        <p><strong>How to reach:</strong> 20 km from Delhi; easily accessible by road</p>
-      </div>
-    </div>
-
-    <!-- Panchkula Rock Garden -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Nek_Chand_Rock_Garden.jpg" alt="Rock Garden">
-      <div class="card-content">
-        <h3>Rock Garden</h3>
-        <p><strong>Location:</strong> Near Chandigarh</p>
-        <p><strong>Famous for:</strong> Sculptures made of waste materials</p>
-        <p><strong>How to reach:</strong> Chandigarh city; accessible by rail, road, air</p>
-      </div>
-    </div>
-
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement top">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Haryana</h1>
+  <img 
+    src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80"
+    alt="Kurukshetra Panorama and Science Centre, Haryana" 
+    loading="lazy" 
+    width="900" 
+    height="600" 
+  />
+
+  <h2>Brief History</h2>
+  <p>Haryana offers a blend of ancient heritage and urban growth, known for sites linked with the Mahabharata, architectural marvels, and rich cultural traditions.</p>
+
+  <h2>Major Places to Visit</h2>
+  <ul class="places-list">
+    <li>Kurukshetra
+      <p class="place-details">
+        <strong>Why visit:</strong> Known as the ‘Land of the Bhagavad Gita,’ with spiritual and historical sites.<br />
+        <strong>How to reach:</strong> Road and rail accessible from Delhi (~170 km).
+      </p>
+      <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80" alt="Kurukshetra Panorama and Science Centre" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Sultanpur National Park
+      <p class="place-details">
+        <strong>Why visit:</strong> Bird sanctuary with migratory birds.<br />
+        <strong>How to reach:</strong> Near Gurugram; accessible from Delhi.
+      </p>
+    </li>
+    <li>Pinjore Gardens
+      <p class="place-details">
+        <strong>Why visit:</strong> Well-maintained Mughal-style gardens.<br />
+        <strong>How to reach:</strong> Near Chandigarh, road accessible.
+      </p>
+    </li>
+    <li>Morni Hills
+      <p class="place-details">
+        <strong>Why visit:</strong> Pleasant hill station with rich natural beauty.<br />
+        <strong>How to reach:</strong> About 45 km from Chandigarh by road.
+      </p>
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Famous for Bajra Khichdi, Kadhi Pakora, Butter Chicken, and other traditional North Indian dishes with rich flavors.</p>
+  <img src="https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=900&q=80" alt="Haryana traditional cuisine" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> | 
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
