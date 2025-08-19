@@ -4,106 +4,151 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Andhra Pradesh Tourism | History, Places to Visit & Local Cuisine</title>
-  <meta name="description" content="Explore Andhra Pradesh - Rich history with Satavahanas and Vijayanagara Empire, top tourist attractions including Tirupati, Vishakhapatnam, Amaravati, and Lepakshi. Discover famous local cuisine and cultural crafts." />
-  <meta name="keywords" content="Andhra Pradesh tourism, Andhra Pradesh history, Tirupati temple, Vishakhapatnam beaches, Amaravati ruins, Lepakshi Veerabhadra temple, Andhra cuisine, Andhra Pradesh crafts, famous places Andhra Pradesh, Andhra Pradesh travel guide" />
+  <meta name="description" content="Discover Andhra Pradesh: rich history including Satavahanas and Vijayanagara Empire, top places like Tirupati, Vizag, Amaravati, Lepakshi, with travel info, local foods and culture." />
+  <meta name="keywords" content="Andhra Pradesh tourism, Tirupati temple travel, Vishakhapatnam beaches visit, Amaravati Buddhist site, Lepakshi Veerabhadra Temple, Andhra Pradesh food, Andhra Pradesh crafts, travel guide Andhra Pradesh" />
   <meta name="author" content="Manikrao" />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Andhra Pradesh Tourism | History, Places to Visit & Local Cuisine" />
-  <meta property="og:description" content="Discover the historical and cultural richness of Andhra Pradesh with key travel destinations and local specialties." />
+  <meta property="og:title" content="Andhra Pradesh Tourism | Travel Guide, Places, Food" />
+  <meta property="og:description" content="Explore key destinations and savory foods of Andhra Pradesh with detailed travel information." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://yourwebsite.com/andhra-pradesh.html" />
   <meta property="og:image" content="https://images.unsplash.com/photo-1582395761536-7d7e4a092b08?auto=format&fit=crop&w=1200&q=80" />
-  
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 2rem auto;
-      max-width: 900px;
-      padding: 1rem;
-      background: #e8f1ff;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
+      background-size: cover;
       color: #0a2540;
       line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
     }
-    a {
-      color: #3a75ff;
-      text-decoration: none;
-      font-weight: bold;
+    /* Overlay for readability */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.8);
+      pointer-events: none;
+      z-index: -1;
     }
-    a:hover, a:focus {
-      text-decoration: underline;
-      outline: none;
-    }
-    header {
+    nav {
+      background: white;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: center;
-      padding: 1rem 0;
-      background: #f0f8ff;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(54, 104, 171, 0.3);
+      gap: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
       margin-bottom: 20px;
-      font-size: 1.3rem;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      user-select: none;
     }
     nav a {
-      margin: 0 15px;
       color: #2a4d9c;
-      font-weight: 600;
-      font-size: 1.1rem;
+      text-decoration: none;
+      font-size: 1.05rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
     }
-    nav a:hover, nav a:focus {
-      color: #3a75ff;
+    nav a:hover,
+    nav a:focus {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    nav a[aria-current="page"] {
+      background-color: #2a4d9c;
+      color: white;
     }
     h1 {
-      color: #2a4d9c;
+      font-size: 2.6rem;
       margin-bottom: 1rem;
       text-align: center;
+      color: #174a93;
     }
     h2 {
       color: #3762cc;
-      margin-top: 2rem;
-      margin-bottom: 0.8rem;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+    }
+    p {
+      margin-bottom: 1.3rem;
+      font-size: 1.1rem;
     }
     ul {
-      margin-left: 1.5rem;
+      list-style: disc inside;
       margin-bottom: 1.6rem;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 15px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
     }
     img {
       max-width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(54, 104, 171, 0.5);
-      margin-bottom: 1.8rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      margin: 1.2rem 0;
       display: block;
+      border: 1px solid #cbd9ff;
+    }
+    .food-list li {
+      margin-bottom: 0.7rem;
     }
     footer {
       margin-top: 3rem;
       text-align: center;
       font-weight: 600;
       color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      color: #3a75ff;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover,
+    footer a:focus {
+      text-decoration: underline;
+      outline: none;
     }
     .ad-container {
-      margin: 1rem 0;
+      margin: 1.5rem 0;
       text-align: center;
     }
   </style>
 </head>
 <body>
-  <header>
-    <nav role="navigation" aria-label="Primary navigation">
-      <a href="index.html">Home</a>
-      <a href="map.html">Map</a>
-      <a href="destinations/index.html" aria-current="page">Destinations</a>
-      <a href="blog/index.html">Blog</a>
-      <a href="bookings/index.html">Bookings</a>
-      <a href="stories.html">Stories</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="games.html">Games</a>
-    </nav>
-  </header>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
+  </nav>
 
-  <section class="ad-container" data-aos="fade-up">
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement top">
     <ins class="adsbygoogle"
          style="display:block; text-align:center;"
          data-ad-client="ca-pub-8124807245840632"
@@ -115,28 +160,62 @@
 
   <h1>Andhra Pradesh</h1>
   <img 
-    src="https://images.unsplash.com/photo-1582395761536-7d7e4a092b08?auto=format&fit=crop&w=800&q=80" 
-    alt="Scenic view from Andhra Pradesh"
+    src="https://images.unsplash.com/photo-1582395761536-7d7e4a092b08?auto=format&fit=crop&w=900&q=80"
+    alt="Scenic view of Andhra Pradesh landscape"
     loading="lazy"
+    width="900"
+    height="600"
   />
+
   <h2>Brief History</h2>
   <p>Known as the “Rice Bowl of India,” Andhra Pradesh has a history tied to the Satavahanas, Eastern Chalukyas, and Vijayanagara Empire. Amaravati was an ancient Buddhist learning center. The region has been a cultural crossroads blending Dravidian and Telugu traditions.</p>
 
   <h2>Major Places to Visit</h2>
-  <ul>
-    <li><strong>Tirupati & Tirumala</strong>: Home to the world-famous <em>Sri Venkateswara Temple</em>, one of the richest pilgrimage centers globally.</li>
-    <li><strong>Vishakhapatnam (Vizag)</strong>: Beautiful beaches (RK Beach, Yarada Beach), Kailasagiri Hills, Araku Valley, Submarine Museum.</li>
-    <li><strong>Amaravati</strong>: Historic Buddhist stupa ruins and planned new capital of Andhra Pradesh.</li>
-    <li><strong>Lepakshi</strong>: Famous for the Veerabhadra Temple, mural paintings, and giant Nandi statue.</li>
+  <ul class="places-list">
+    <li>Tirupati & Tirumala
+      <p class="place-details">
+        <strong>Why visit:</strong> Home to the world-famous Sri Venkateswara Temple, one of the richest pilgrimage centers.<br />
+        <strong>How to reach:</strong> <br/>
+        Airport: Tirupati Airport (15 km)<br/>
+        Rail: Tirupati Railway Station (5 km)<br/>
+        Road: Well connected from Chennai (150 km) and Bangalore (250 km)
+      </p>
+      <img src="https://images.unsplash.com/photo-1649609273442-cc0759f7784b?auto=format&fit=crop&w=800&q=80" alt="Sri Venkateswara Temple, Tirupati" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Vishakhapatnam (Vizag)
+      <p class="place-details">
+        <strong>Why visit:</strong> Beautiful beaches (RK Beach, Yarada Beach), Kailasagiri Hills, Araku Valley, Submarine Museum.<br/>
+        Airport: Visakhapatnam International Airport<br/>
+        Rail: Visakhapatnam Junction<br/>
+        Road: NH16 connects from Bhubaneswar, Vijayawada, Hyderabad
+      </p>
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Beach in Vishakhapatnam" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Amaravati
+      <p class="place-details">
+        <strong>Why visit:</strong> Historic Buddhist stupa ruins and planned new capital of Andhra Pradesh.<br />
+        Airport: Vijayawada Airport (50 km)<br/>
+        Rail: Vijayawada Junction (40 km)<br/>
+        Road: Connected by APSRTC from Vijayawada and Guntur
+      </p>
+      <img src="https://images.unsplash.com/photo-1456926631373-3b3a92d53199?auto=format&fit=crop&w=800&q=80" alt="Amaravati Buddhist Stupa Ruins" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Lepakshi
+      <p class="place-details">
+        <strong>Why visit:</strong> Famous for the Veerabhadra Temple, mural paintings, and giant Nandi statue.<br/>
+        Nearest city: Anantapur (15 km)<br/>
+        Rail: Hindupur (12 km)<br/>
+        Airport: Bangalore (120 km)
+      </p>
+      <img src="https://images.unsplash.com/photo-1508154048109-de555266b032?auto=format&fit=crop&w=800&q=80" alt="Veerabhadra Temple, Lepakshi" loading="lazy" width="800" height="500" />
+    </li>
   </ul>
 
   <h2>Local Cuisine</h2>
   <p>Must-try dishes include Tirupati Laddu (prasadam), Pulihora (tamarind rice), Bongu Chicken (bamboo chicken), Chepala Pulusu (fish curry), and Pootharekulu (paper-like sweet). Andhra Pradesh is famous for its flavorful, spicy dishes and unique pickles like Gongura.</p>
+  <img src="https://images.unsplash.com/photo-1623842324843-6a23d0b503b2?auto=format&fit=crop&w=900&q=80" alt="Andhra Pradesh Traditional Food" loading="lazy" width="900" height="600" />
 
-  <h2>Culture & Crafts</h2>
-  <p>The state is known for Kondapalli toys, Kalamkari textiles (Machilipatnam and Srikalahasti styles), and Bidriware crafts. Festivals like Ugadi, Sankranti, and Brahmotsavam at Tirupati are major cultural highlights.</p>
-
-  <section class="ad-container" data-aos="fade-up">
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement bottom">
     <ins class="adsbygoogle"
          style="display:block; text-align:center;"
          data-ad-client="ca-pub-8124807245840632"
@@ -147,6 +226,11 @@
   </section>
 
   <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> | 
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
     <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
   </footer>
 </body>
