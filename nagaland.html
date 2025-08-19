@@ -2,156 +2,210 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nagaland - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nagaland Tourism | History, Places to Visit & Local Cuisine</title>
+  <meta name="description" content="Explore Nagaland - Famous for the Hornbill Festival, rich tribal heritage, scenic landscapes, and delicious local cuisine." />
+  <meta name="keywords" content="Nagaland tourism, Hornbill Festival, Kohima, Dzükou Valley, Nagaland tribal culture, Nagaland cuisine, tourist places in Nagaland" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Nagaland Tourism | History, Places to Visit & Local Cuisine" />
+  <meta property="og:description" content="Discover Nagaland’s vibrant festivals, beautiful valleys, and cultural richness with travel and food guides." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/nagaland.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/b/be/Nagaland_Collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(3px);
+      color: #0a2540;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.8);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      font-size: 1.05rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    nav a[aria-current="page"] {
+      background-color: #2a4d9c;
+      color: white;
+    }
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #174a93;
+    }
+    h2 {
+      color: #3762cc;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+    }
+    p {
+      margin-bottom: 1.3rem;
+      font-size: 1.1rem;
+    }
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.6rem;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 15px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      margin: 1.2rem 0;
+      display: block;
+      border: 1px solid #cbd9ff;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      color: #3a75ff;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover,
+    footer a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    .ad-container {
+      margin: 1.5rem 0;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- Nagaland Info -->
-  <header class="state-header">
-    <h1>Nagaland</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> Kohima</p>
-      <p><strong>Population:</strong> ~2.2 million (2023 est.)</p>
-      <p><strong>Official Languages:</strong> English (widely used), Nagamese, various tribal languages</p>
-      <p><strong>History:</strong> Nagaland became the 16th state of India in 1963. Known for its vibrant tribal culture, traditional festivals like Hornbill, and lush hills, Nagaland is one of the most culturally rich states in India. Over 16 major tribes inhabit this state.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Places in Nagaland -->
-  <section class="places-grid">
-
-    <!-- Kohima War Cemetery -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Kohima_War_Cemetery.jpg" alt="Kohima War Cemetery">
-      <div class="card-content">
-        <h3>Kohima War Cemetery</h3>
-        <p><strong>Location:</strong> Kohima</p>
-        <p><strong>Famous for:</strong> WWII memorial, peaceful gardens</p>
-        <p><strong>How to reach:</strong> 1 km from Kohima center</p>
-      </div>
-    </div>
-
-    <!-- Dzükou Valley -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/Dzukou_Valley.jpg" alt="Dzukou Valley">
-      <div class="card-content">
-        <h3>Dzükou Valley</h3>
-        <p><strong>Location:</strong> Border of Nagaland & Manipur</p>
-        <p><strong>Famous for:</strong> Trekking, lilies, panoramic views</p>
-        <p><strong>How to reach:</strong> Trek from Viswema or Zakhama near Kohima</p>
-      </div>
-    </div>
-
-    <!-- Hornbill Festival Grounds -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Hornbill_Festival_Nagaland.jpg" alt="Hornbill Festival">
-      <div class="card-content">
-        <h3>Hornbill Festival (Kisama)</h3>
-        <p><strong>Location:</strong> Kisama Heritage Village</p>
-        <p><strong>Famous for:</strong> Tribal festival, dance, crafts</p>
-        <p><strong>How to reach:</strong> 12 km from Kohima by taxi</p>
-      </div>
-    </div>
-
-    <!-- Japfu Peak -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Japfu_Peak_Nagaland.jpg" alt="Japfu Peak">
-      <div class="card-content">
-        <h3>Japfu Peak</h3>
-        <p><strong>Location:</strong> South of Kohima</p>
-        <p><strong>Famous for:</strong> Trekking, tallest Rhododendron tree</p>
-        <p><strong>How to reach:</strong> Trek from Kigwema or Viswema village</p>
-      </div>
-    </div>
-
-    <!-- Mokokchung -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Mokokchung_Town.jpg" alt="Mokokchung">
-      <div class="card-content">
-        <h3>Mokokchung</h3>
-        <p><strong>Location:</strong> Central Nagaland</p>
-        <p><strong>Famous for:</strong> Ao tribal culture, scenic town</p>
-        <p><strong>How to reach:</strong> 160 km from Kohima by road</p>
-      </div>
-    </div>
-
-    <!-- Tuophema Village -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Tuophema_Village_Huts.jpg" alt="Tuophema Village">
-      <div class="card-content">
-        <h3>Tuophema Village</h3>
-        <p><strong>Location:</strong> 40 km from Kohima</p>
-        <p><strong>Famous for:</strong> Cultural village, homestays</p>
-        <p><strong>How to reach:</strong> Taxi or private cab from Kohima</p>
-      </div>
-    </div>
-
-    <!-- Longwa Village -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Longwa_Village_Nagaland.jpg" alt="Longwa Village">
-      <div class="card-content">
-        <h3>Longwa Village</h3>
-        <p><strong>Location:</strong> Mon District, Indo-Myanmar border</p>
-        <p><strong>Famous for:</strong> Konyak tribes, headhunting history</p>
-        <p><strong>How to reach:</strong> 42 km from Mon town</p>
-      </div>
-    </div>
-
-    <!-- Mon District -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Konyak_tribesman.jpg" alt="Mon Nagaland">
-      <div class="card-content">
-        <h3>Mon District</h3>
-        <p><strong>Location:</strong> Northeast Nagaland</p>
-        <p><strong>Famous for:</strong> Konyak tribe tattoos, traditional homes</p>
-        <p><strong>How to reach:</strong> Reach via Sonari or Sivasagar in Assam</p>
-      </div>
-    </div>
-
-    <!-- Khonoma Green Village -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Khonoma_Nagaland.jpg" alt="Khonoma Village">
-      <div class="card-content">
-        <h3>Khonoma Village</h3>
-        <p><strong>Location:</strong> 20 km from Kohima</p>
-        <p><strong>Famous for:</strong> India's first green village, eco-tourism</p>
-        <p><strong>How to reach:</strong> Taxi from Kohima</p>
-      </div>
-    </div>
-
-    <!-- Ntangki National Park -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Ntangki_National_Park.jpg" alt="Ntangki Park">
-      <div class="card-content">
-        <h3>Ntangki National Park</h3>
-        <p><strong>Location:</strong> Peren District</p>
-        <p><strong>Famous for:</strong> Rare wildlife and dense forest</p>
-        <p><strong>How to reach:</strong> About 35 km from Dimapur by road</p>
-      </div>
-    </div>
-
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement top">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Nagaland</h1>
+  <img 
+    src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=900&q=80"
+    alt="Scenic Landscape of Nagaland"
+    loading="lazy"
+    width="900"
+    height="600"
+  />
+
+  <h2>Brief History</h2>
+  <p>Nagaland is famous for its rich tribal heritage, vibrant festivals like the Hornbill Festival, and stunning scenic landscapes nestled in the Eastern Himalayas.</p>
+
+  <h2>Major Places to Visit</h2>
+  <ul class="places-list">
+    <li>Hornbill Festival
+      <p class="place-details">
+        <strong>Why visit:</strong> Annual cultural festival showcasing tribal traditions, dance, and crafts.<br/>
+        <strong>How to reach:</strong> Dimapur Airport; Kohima is the main festival venue.
+      </p>
+    </li>
+    <li>Kohima
+      <p class="place-details">
+        <strong>Why visit:</strong> Capital city with historical WWII sites and cultural centers.<br/>
+        <strong>How to reach:</strong> Road and air via Dimapur.
+      </p>
+      <img src="https://images.unsplash.com/photo-1508154048109-de555266b032?auto=format&fit=crop&w=800&q=80" alt="Kohima City" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Dzükou Valley
+      <p class="place-details">
+        <strong>Why visit:</strong> Scenic valley known for trekking and seasonal flowers.<br/>
+        <strong>How to reach:</strong> Accessible from Kohima and Imphal by road.
+      </p>
+    </li>
+    <li>Khonoma
+      <p class="place-details">
+        <strong>Why visit:</strong> Traditional Angami Naga village and eco-tourism spot.<br/>
+        <strong>How to reach:</strong> Near Kohima, accessible by road.
+      </p>
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Enjoy dishes like Smoked pork, Axone (fermented soybeans), Bamboo shoot curry, and a variety of tribal meat preparations.</p>
+  <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80" alt="Nagaland Tribal Cuisine" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> | 
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
