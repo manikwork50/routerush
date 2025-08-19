@@ -2,156 +2,221 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bihar - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bihar Tourism | History, Places to Visit & Local Cuisine</title>
+  <meta name="description" content="Explore Bihar - Ancient land of Magadha, Buddhist pilgrimage sites like Bodh Gaya, Nalanda University ruins. Discover local cuisine and vibrant culture." />
+  <meta name="keywords" content="Bihar tourism, Bodh Gaya, Nalanda University, Buddhist sites Bihar, Litti Chokha, Bihar culture, Bihar history" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Bihar Tourism | History, Places to Visit & Local Cuisine" />
+  <meta property="og:description" content="Visit Bihar's historical and cultural landmarks including Bodh Gaya and Nalanda University, and enjoy its traditional cuisine." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/bihar.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1549887535-468fa9ade9f9?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/e/e1/Bihar_collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1549887535-468fa9ade9f9?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(3px);
+      color: #0a2540;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.8);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      font-size: 1.05rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    nav a[aria-current="page"] {
+      background-color: #2a4d9c;
+      color: white;
+    }
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #174a93;
+    }
+    h2 {
+      color: #3762cc;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+    }
+    p {
+      margin-bottom: 1.3rem;
+      font-size: 1.1rem;
+    }
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.6rem;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 15px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      margin: 1.2rem 0;
+      display: block;
+      border: 1px solid #cbd9ff;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      color: #3a75ff;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover,
+    footer a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    .ad-container {
+      margin: 1.5rem 0;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- State Info -->
-  <header class="state-header">
-    <h1>Bihar</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> Patna</p>
-      <p><strong>Population:</strong> ~124 million (2023 est.)</p>
-      <p><strong>Official Language:</strong> Hindi</p>
-      <p><strong>History:</strong> Bihar is one of the oldest inhabited places in the world. It was the center of the ancient Magadha Empire, home to scholars like Chanakya and rulers like Ashoka. It's also a key site for Buddhism and Jainism, with Bodh Gaya being the place where Buddha attained enlightenment.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Places -->
-  <section class="places-grid">
-
-    <!-- Bodh Gaya -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/Mahabodhi_Temple_India.jpg" alt="Bodh Gaya">
-      <div class="card-content">
-        <h3>Bodh Gaya</h3>
-        <p><strong>Location:</strong> Gaya District</p>
-        <p><strong>Famous for:</strong> Mahabodhi Temple, site of Buddha’s enlightenment</p>
-        <p><strong>How to reach:</strong> Gaya Airport (12 km), Gaya Railway Station (14 km)</p>
-      </div>
-    </div>
-
-    <!-- Nalanda -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Nalanda_Ruins.jpg" alt="Nalanda">
-      <div class="card-content">
-        <h3>Nalanda</h3>
-        <p><strong>Location:</strong> Nalanda District</p>
-        <p><strong>Famous for:</strong> Ancient Nalanda University ruins</p>
-        <p><strong>How to reach:</strong> 90 km from Patna; road and bus service available</p>
-      </div>
-    </div>
-
-    <!-- Rajgir -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Rajgir_Hot_Spring.jpg" alt="Rajgir">
-      <div class="card-content">
-        <h3>Rajgir</h3>
-        <p><strong>Location:</strong> Nalanda District</p>
-        <p><strong>Famous for:</strong> Buddhist and Jain heritage, hot springs, Venuvana</p>
-        <p><strong>How to reach:</strong> 100 km from Patna; buses and taxis available</p>
-      </div>
-    </div>
-
-    <!-- Patna Sahib -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Takht_Sri_Patna_Sahib.jpg" alt="Patna Sahib">
-      <div class="card-content">
-        <h3>Takht Sri Patna Sahib</h3>
-        <p><strong>Location:</strong> Patna</p>
-        <p><strong>Famous for:</strong> Birthplace of Guru Gobind Singh</p>
-        <p><strong>How to reach:</strong> Within Patna; accessible by road, rail, airport</p>
-      </div>
-    </div>
-
-    <!-- Vaishali -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Vaishali_Stupa.jpg" alt="Vaishali">
-      <div class="card-content">
-        <h3>Vaishali</h3>
-        <p><strong>Location:</strong> Vaishali District</p>
-        <p><strong>Famous for:</strong> Ancient republic, Buddha’s last sermon</p>
-        <p><strong>How to reach:</strong> 35 km from Patna by road</p>
-      </div>
-    </div>
-
-    <!-- Vikramshila Ruins -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Vikramshila_university.jpg" alt="Vikramshila Ruins">
-      <div class="card-content">
-        <h3>Vikramshila University</h3>
-        <p><strong>Location:</strong> Bhagalpur District</p>
-        <p><strong>Famous for:</strong> Ancient center of learning like Nalanda</p>
-        <p><strong>How to reach:</strong> Nearest rail: Bhagalpur (50 km), then taxi</p>
-      </div>
-    </div>
-
-    <!-- Barabar Caves -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Barabar_Caves.jpg" alt="Barabar Caves">
-      <div class="card-content">
-        <h3>Barabar Caves</h3>
-        <p><strong>Location:</strong> Jehanabad District</p>
-        <p><strong>Famous for:</strong> Oldest rock-cut caves in India, Mauryan era</p>
-        <p><strong>How to reach:</strong> 40 km from Gaya; by road or taxi</p>
-      </div>
-    </div>
-
-    <!-- Kesaria Stupa -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Kesaria_stupa_Bihar.jpg" alt="Kesaria Stupa">
-      <div class="card-content">
-        <h3>Kesaria Stupa</h3>
-        <p><strong>Location:</strong> East Champaran</p>
-        <p><strong>Famous for:</strong> Tallest stupa in India</p>
-        <p><strong>How to reach:</strong> 110 km from Patna via Muzaffarpur</p>
-      </div>
-    </div>
-
-    <!-- Bhagalpur -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Bhagalpur_Silk.jpg" alt="Bhagalpur">
-      <div class="card-content">
-        <h3>Bhagalpur</h3>
-        <p><strong>Location:</strong> Eastern Bihar</p>
-        <p><strong>Famous for:</strong> Tussar silk, Vikramshila, Ganga dolphin</p>
-        <p><strong>How to reach:</strong> Well connected by rail; nearest airport: Patna</p>
-      </div>
-    </div>
-
-    <!-- Maner Sharif -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Maner_Sharif_Bihar.jpg" alt="Maner Sharif">
-      <div class="card-content">
-        <h3>Maner Sharif</h3>
-        <p><strong>Location:</strong> Near Patna</p>
-        <p><strong>Famous for:</strong> Sufi shrines, Indo-Islamic architecture</p>
-        <p><strong>How to reach:</strong> 30 km from Patna; autos/taxis available</p>
-      </div>
-    </div>
-
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement top">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="4877919940"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Bihar</h1>
+  <img 
+    src="https://images.unsplash.com/photo-1549887535-468fa9ade9f9?auto=format&fit=crop&w=900&q=80"
+    alt="Historic Site in Bihar"
+    loading="lazy"
+    width="900"
+    height="600"
+  />
+
+  <h2>Brief History</h2>
+  <p>Bihar is known as the ancient land of Magadha, famous for its Buddhist pilgrimage sites such as Bodh Gaya and the ruins of Nalanda University. It has a rich cultural heritage and historical significance.</p>
+
+  <h2>Major Places to Visit</h2>
+  <ul class="places-list">
+    <li>Bodh Gaya
+      <p class="place-details">
+        <strong>Why visit:</strong> Site of Buddha's enlightenment and Mahabodhi Temple.<br />
+        <strong>How to reach:</strong> Airport: Gaya (12 km); Rail: Gaya Junction (15 km); Road: Bus and taxi available from Patna (110 km).
+      </p>
+      <img src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=800&q=80" alt="Mahabodhi Temple Bodh Gaya" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Nalanda & Rajgir
+      <p class="place-details">
+        <strong>Why visit:</strong> Ancient Buddhist university ruins and historic sites.<br/>
+        <strong>How to reach:</strong> Airport: Patna (90–100 km); Rail: Rajgir/Bihar Sharif; Road transport connects these towns.
+      </p>
+      <img src="https://images.unsplash.com/photo-1528257486770-f7aa3e93bbe9?auto=format&fit=crop&w=800&q=80" alt="Nalanda University Ruins" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Vaishali
+      <p class="place-details">
+        <strong>Why visit:</strong> Historic and archaeological site related to Lord Mahavira and Buddha.<br/>
+        <strong>How to reach:</strong> Airport: Patna (60 km); Rail: Hajipur (35 km); Road connections available.
+      </p>
+    </li>
+    <li>Patna (Golghar, museums)
+      <p class="place-details">
+        <strong>Why visit:</strong> Capital city with museums and historic sites like Golghar.<br/>
+        <strong>How to reach:</strong> Airport and Rail available in city.
+      </p>
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Popular dishes include Litti-chokha, sattu paratha, khaja sweets, thekua, and delicious malpua. Bihar is also known for its folk arts, including Madhubani paintings.</p>
+  <img src="https://images.unsplash.com/photo-1608219954731-e62308980928?auto=format&fit=crop&w=900&q=80" alt="Traditional Bihar food" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="4877919940"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> | 
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
