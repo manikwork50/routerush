@@ -2,156 +2,212 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gujarat - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gujarat Tourism | History, Places to Visit & Local Cuisine</title>
+  <meta name="description" content="Explore Gujarat - Home to the Statue of Unity, Gir National Park, Somnath Temple, Rann of Kutch and rich cultural heritage. Discover key places and delicious cuisine." />
+  <meta name="keywords" content="Gujarat tourism, Statue of Unity, Gir National Park, Somnath Temple, Rann of Kutch, Dwarkadhish Temple, Modhera Sun Temple, Gujarat cuisine, Gujarat heritage sites" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Gujarat Tourism | History, Places to Visit & Local Cuisine" />
+  <meta property="og:description" content="Discover Gujarat’s cultural landmarks, natural wonders and traditional cuisine with travel information and tips." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/gujarat.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1565036027310-40cc0f2c7ccc?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/9/9f/Gujarat_Collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1565036027310-40cc0f2c7ccc?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(3px);
+      color: #0a2540;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.8);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      font-size: 1.05rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    nav a[aria-current="page"] {
+      background-color: #2a4d9c;
+      color: white;
+    }
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #174a93;
+    }
+    h2 {
+      color: #3762cc;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+    }
+    p {
+      margin-bottom: 1.3rem;
+      font-size: 1.1rem;
+    }
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.6rem;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 15px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      margin: 1.2rem 0;
+      display: block;
+      border: 1px solid #cbd9ff;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      color: #3a75ff;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover,
+    footer a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    .ad-container {
+      margin: 1.5rem 0;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- State Info -->
-  <header class="state-header">
-    <h1>Gujarat</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> Gandhinagar</p>
-      <p><strong>Population:</strong> ~70 million (2023 est.)</p>
-      <p><strong>Official Language:</strong> Gujarati</p>
-      <p><strong>History:</strong> Gujarat, known for its vibrant culture, ancient Indus Valley sites, and industrial development, was home to Mahatma Gandhi. It boasts incredible temples, wildlife, and unique salt desert landscapes like the Rann of Kutch.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Places -->
-  <section class="places-grid">
-
-    <!-- Rann of Kutch -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/White_Rann_Kutch.jpg" alt="Rann of Kutch">
-      <div class="card-content">
-        <h3>Rann of Kutch</h3>
-        <p><strong>Location:</strong> Kutch District</p>
-        <p><strong>Famous for:</strong> Salt desert, Rann Utsav festival</p>
-        <p><strong>How to reach:</strong> Bhuj (80 km); well connected by train/air</p>
-      </div>
-    </div>
-
-    <!-- Gir National Park -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/Gir_Lion.jpg" alt="Gir National Park">
-      <div class="card-content">
-        <h3>Gir National Park</h3>
-        <p><strong>Location:</strong> Junagadh District</p>
-        <p><strong>Famous for:</strong> Asiatic lions, wildlife safaris</p>
-        <p><strong>How to reach:</strong> Nearest rail: Veraval (42 km); road from Junagadh</p>
-      </div>
-    </div>
-
-    <!-- Somnath Temple -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Somnath_Temple.jpg" alt="Somnath Temple">
-      <div class="card-content">
-        <h3>Somnath Temple</h3>
-        <p><strong>Location:</strong> Prabhas Patan, Gir Somnath</p>
-        <p><strong>Famous for:</strong> One of 12 Jyotirlingas of Shiva</p>
-        <p><strong>How to reach:</strong> Veraval Railway Station (7 km)</p>
-      </div>
-    </div>
-
-    <!-- Statue of Unity -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Statue_of_Unity_near_Narmada_Dam.jpg" alt="Statue of Unity">
-      <div class="card-content">
-        <h3>Statue of Unity</h3>
-        <p><strong>Location:</strong> Kevadiya, Narmada District</p>
-        <p><strong>Famous for:</strong> World's tallest statue (Sardar Patel)</p>
-        <p><strong>How to reach:</strong> Nearest city: Vadodara (90 km); by train/bus</p>
-      </div>
-    </div>
-
-    <!-- Dwarkadhish Temple -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Dwarkadhish_Temple_Gujarat.jpg" alt="Dwarka Temple">
-      <div class="card-content">
-        <h3>Dwarkadhish Temple</h3>
-        <p><strong>Location:</strong> Dwarka</p>
-        <p><strong>Famous for:</strong> One of the Char Dham pilgrimage sites</p>
-        <p><strong>How to reach:</strong> Dwarka Railway Station; well connected</p>
-      </div>
-    </div>
-
-    <!-- Saputara Hill Station -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Saputara_Hill_Station.jpg" alt="Saputara">
-      <div class="card-content">
-        <h3>Saputara</h3>
-        <p><strong>Location:</strong> Dang District</p>
-        <p><strong>Famous for:</strong> Gujarat's only hill station, lake & gardens</p>
-        <p><strong>How to reach:</strong> Nearest rail: Waghai (50 km); road from Surat (160 km)</p>
-      </div>
-    </div>
-
-    <!-- Lothal -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Lothal_Dockyard.jpg" alt="Lothal">
-      <div class="card-content">
-        <h3>Lothal</h3>
-        <p><strong>Location:</strong> Ahmedabad District</p>
-        <p><strong>Famous for:</strong> Indus Valley ruins, dockyard</p>
-        <p><strong>How to reach:</strong> 78 km from Ahmedabad via road</p>
-      </div>
-    </div>
-
-    <!-- Champaner-Pavagadh -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Champaner_Mosque.jpg" alt="Champaner-Pavagadh">
-      <div class="card-content">
-        <h3>Champaner-Pavagadh</h3>
-        <p><strong>Location:</strong> Panchmahal District</p>
-        <p><strong>Famous for:</strong> UNESCO World Heritage city ruins</p>
-        <p><strong>How to reach:</strong> 50 km from Vadodara by road</p>
-      </div>
-    </div>
-
-    <!-- Rani ki Vav -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Rani_ki_Vav_Gujarat.jpg" alt="Rani ki Vav">
-      <div class="card-content">
-        <h3>Rani ki Vav</h3>
-        <p><strong>Location:</strong> Patan</p>
-        <p><strong>Famous for:</strong> Stepwell architecture, UNESCO heritage site</p>
-        <p><strong>How to reach:</strong> 125 km from Ahmedabad by road/train</p>
-      </div>
-    </div>
-
-    <!-- Girnar Hills -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Girnar_hill_temple.jpg" alt="Girnar Hills">
-      <div class="card-content">
-        <h3>Girnar Hills</h3>
-        <p><strong>Location:</strong> Junagadh</p>
-        <p><strong>Famous for:</strong> Jain temples, trekking, ropeway</p>
-        <p><strong>How to reach:</strong> Junagadh city by train/road</p>
-      </div>
-    </div>
-
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement top">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Gujarat</h1>
+  <img src="https://images.unsplash.com/photo-1565036027310-40cc0f2c7ccc?auto=format&fit=crop&w=900&q=80" alt="Statue of Unity, Gujarat" loading="lazy" width="900" height="600" />
+
+  <h2>Brief History</h2>
+  <p>Gujarat is a land of rich heritage, famous for the Statue of Unity honoring Sardar Vallabhbhai Patel, ancient architectural wonders like Rani ki Vav, and vibrant cultural festivals.</p>
+
+  <h2>Major Places to Visit</h2>
+  <ul class="places-list">
+    <li>Statue of Unity
+      <p class="place-details">
+        <strong>Why visit:</strong> World's tallest statue honoring Sardar Vallabhbhai Patel.<br/>
+        <strong>How to reach:</strong> Closest airport: Vadodara, 90 km; Rail: Kevadia Station.
+      </p>
+      <img src="https://images.unsplash.com/photo-1582146837158-347f572dbd5b?auto=format&fit=crop&w=800&q=80" alt="Statue of Unity" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Gir National Park
+      <p class="place-details">
+        <strong>Why visit:</strong> Last refuge of Asiatic lions and rich wildlife.<br/>
+        <strong>How to reach:</strong> Airports in Rajkot, Diu; Rail: Junagadh.
+      </p>
+    </li>
+    <li>Somnath Temple
+      <p class="place-details">
+        <strong>Why visit:</strong> One of the 12 Jyotirlinga shrines.<br/>
+        <strong>How to reach:</strong> Airport: Diu; Rail: Veraval.
+      </p>
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Somnath Temple" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Rann of Kutch
+      <p class="place-details">
+        <strong>Why visit:</strong> Largest salt desert famous for Rann Utsav festival.<br/>
+        <strong>How to reach:</strong> Airport: Bhuj; Rail: Bhuj.
+      </p>
+    </li>
+    <li>Dwarkadhish Temple
+      <p class="place-details">
+        <strong>Why visit:</strong> Sacred Hindu pilgrimage site on Arabian Sea.<br/>
+        <strong>How to reach:</strong> Airport: Jamnagar; Rail: Dwarka station.
+      </p>
+      <img src="https://images.unsplash.com/photo-1486308510493-cb542f81e4a9?auto=format&fit=crop&w=800&q=80" alt="Dwarkadhish Temple" loading="lazy" width="800" height="500" />
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Gujarat offers flavorsome vegetarian dishes like Undhiyu, Khaman, Thepla, along with exquisite sweets and vibrant handicrafts such as bandhani and patola silk.</p>
+  <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80" alt="Gujarati cuisine" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> | 
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
