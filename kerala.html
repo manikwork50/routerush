@@ -2,156 +2,212 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kerala - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kerala Tourism | History, Places to Visit & Local Cuisine</title>
+  <meta name="description" content="Explore Kerala - Known as God's Own Country, famous for backwaters, hill stations like Munnar, historic forts, temples, and delicious traditional Kerala cuisine." />
+  <meta name="keywords" content="Kerala tourism, Kerala backwaters, Munnar, Athirapally Falls, Kovalam Beach, Kerala cuisine, Kerala temples, Kerala culture" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Kerala Tourism | History, Places to Visit & Local Cuisine" />
+  <meta property="og:description" content="Discover Kerala’s scenic backwaters, hill stations, temples and flavorful local delicacies." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/kerala.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/b/b7/Kerala_Background_Collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(2px);
+      color: #0a2540;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.8);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      font-size: 1.05rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    nav a[aria-current="page"] {
+      background-color: #2a4d9c;
+      color: white;
+    }
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #174a93;
+    }
+    h2 {
+      color: #3762cc;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+    }
+    p {
+      margin-bottom: 1.3rem;
+      font-size: 1.1rem;
+    }
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.6rem;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 15px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      margin: 1.2rem 0;
+      display: block;
+      border: 1px solid #cbd9ff;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      color: #3a75ff;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover,
+    footer a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    .ad-container {
+      margin: 1.5rem 0;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- Kerala Info -->
-  <header class="state-header">
-    <h1>Kerala</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> Thiruvananthapuram</p>
-      <p><strong>Population:</strong> ~35 million (2023 est.)</p>
-      <p><strong>Official Language:</strong> Malayalam</p>
-      <p><strong>History:</strong> Known as "God's Own Country", Kerala is famous for its palm-lined beaches, backwaters, spices, classical arts, Ayurveda, and literacy. It was formed in 1956 on linguistic grounds.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Tourist Places -->
-  <section class="places-grid">
-
-    <!-- Munnar -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Munnar_tea_gardens.jpg" alt="Munnar">
-      <div class="card-content">
-        <h3>Munnar</h3>
-        <p><strong>Location:</strong> Idukki district</p>
-        <p><strong>Famous for:</strong> Tea plantations, scenic hills</p>
-        <p><strong>How to reach:</strong> Cochin Airport (110 km), Aluva Railway (100 km)</p>
-      </div>
-    </div>
-
-    <!-- Alleppey -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Alleppey_backwaters.jpg" alt="Alleppey">
-      <div class="card-content">
-        <h3>Alleppey (Alappuzha)</h3>
-        <p><strong>Location:</strong> Alappuzha district</p>
-        <p><strong>Famous for:</strong> Backwaters, houseboat cruises</p>
-        <p><strong>How to reach:</strong> Rail to Alappuzha, Cochin Airport (75 km)</p>
-      </div>
-    </div>
-
-    <!-- Wayanad -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Wayanad_Kerala.jpg" alt="Wayanad">
-      <div class="card-content">
-        <h3>Wayanad</h3>
-        <p><strong>Location:</strong> Wayanad district</p>
-        <p><strong>Famous for:</strong> Forests, waterfalls, wildlife</p>
-        <p><strong>How to reach:</strong> Road from Calicut (86 km); no direct rail</p>
-      </div>
-    </div>
-
-    <!-- Thekkady -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Thekkady_Boat.jpg" alt="Thekkady">
-      <div class="card-content">
-        <h3>Thekkady</h3>
-        <p><strong>Location:</strong> Idukki district</p>
-        <p><strong>Famous for:</strong> Periyar Tiger Reserve, lake cruise</p>
-        <p><strong>How to reach:</strong> 150 km from Kochi by road</p>
-      </div>
-    </div>
-
-    <!-- Kochi -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Cochin_Chinese_Net.jpg" alt="Kochi">
-      <div class="card-content">
-        <h3>Kochi</h3>
-        <p><strong>Location:</strong> Ernakulam district</p>
-        <p><strong>Famous for:</strong> Fort Kochi, Chinese fishing nets</p>
-        <p><strong>How to reach:</strong> Cochin International Airport, Ernakulam Junction</p>
-      </div>
-    </div>
-
-    <!-- Varkala -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Varkala_Beach_Kerala.jpg" alt="Varkala">
-      <div class="card-content">
-        <h3>Varkala</h3>
-        <p><strong>Location:</strong> Thiruvananthapuram</p>
-        <p><strong>Famous for:</strong> Cliffside beach, clean waters</p>
-        <p><strong>How to reach:</strong> Varkala Railway Station; 40 km from Trivandrum</p>
-      </div>
-    </div>
-
-    <!-- Kovalam -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Kovalam_Lighthouse_Beach.jpg" alt="Kovalam">
-      <div class="card-content">
-        <h3>Kovalam</h3>
-        <p><strong>Location:</strong> Near Thiruvananthapuram</p>
-        <p><strong>Famous for:</strong> Lighthouse Beach, surfing</p>
-        <p><strong>How to reach:</strong> 15 km from Trivandrum by road</p>
-      </div>
-    </div>
-
-    <!-- Bekal Fort -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Bekal_Fort_Kerala.jpg" alt="Bekal Fort">
-      <div class="card-content">
-        <h3>Bekal Fort</h3>
-        <p><strong>Location:</strong> Kasaragod district</p>
-        <p><strong>Famous for:</strong> Sea-facing historic fort</p>
-        <p><strong>How to reach:</strong> Bekal Fort Railway Station nearby</p>
-      </div>
-    </div>
-
-    <!-- Athirappilly Falls -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Athirappilly_Falls_Wide_View.jpg" alt="Athirappilly">
-      <div class="card-content">
-        <h3>Athirappilly Falls</h3>
-        <p><strong>Location:</strong> Thrissur district</p>
-        <p><strong>Famous for:</strong> Largest waterfall in Kerala</p>
-        <p><strong>How to reach:</strong> 55 km from Kochi by road</p>
-      </div>
-    </div>
-
-    <!-- Silent Valley -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Silent_Valley_National_Park.jpg" alt="Silent Valley">
-      <div class="card-content">
-        <h3>Silent Valley</h3>
-        <p><strong>Location:</strong> Palakkad district</p>
-        <p><strong>Famous for:</strong> Evergreen rainforests, rare wildlife</p>
-        <p><strong>How to reach:</strong> Road from Mannarkkad (40 km)</p>
-      </div>
-    </div>
-
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement top">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Kerala</h1>
+  <img 
+    src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80"
+    alt="Kerala Backwaters"
+    loading="lazy"
+    width="900"
+    height="600"
+  />
+
+  <h2>Brief History</h2>
+  <p>Kerala, known as God's Own Country, is famous for idyllic backwaters, hill stations like Munnar, historic forts, temples, and a rich cultural heritage.</p>
+
+  <h2>Major Places to Visit</h2>
+  <ul class="places-list">
+    <li>Alleppey Backwaters
+      <p class="place-details">
+        <strong>Why visit:</strong> Famous for houseboat cruises through scenic canals.<br/>
+        <strong>How to reach:</strong> Cochin International Airport (75 km), accessible by road.
+      </p>
+      <img src="https://images.unsplash.com/photo-1486308510493-cb542f81e4a9?auto=format&fit=crop&w=800&q=80" alt="Alleppey Backwaters" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Munnar
+      <p class="place-details">
+        <strong>Why visit:</strong> Picturesque hill station famous for tea plantations.<br/>
+        <strong>How to reach:</strong> Cochin International Airport (110 km), road from Kochi or Thekkady.
+      </p>
+      <img src="https://images.unsplash.com/photo-1534081333815-ae5019106622?auto=format&fit=crop&w=800&q=80" alt="Munnar Tea Plantations" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Kovalam Beach
+      <p class="place-details">
+        <strong>Why visit:</strong> Popular beach resort with clean sands and surfing.<br/>
+        <strong>How to reach:</strong> Trivandrum International Airport (15 km).
+      </p>
+      <img src="https://images.unsplash.com/photo-1506744070254-5a6838c0b0d3?auto=format&fit=crop&w=800&q=80" alt="Kovalam Beach" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Fort Kochi
+      <p class="place-details">
+        <strong>Why visit:</strong> Historic port area with colonial architecture.<br/>
+        <strong>How to reach:</strong> Cochin International Airport (40 km).
+      </p>
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Kerala cuisine features coconut-based curries, seafood specialties, appam, puttu, and the traditional Sadya feast.</p>
+  <img src="https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=900&q=80" alt="Kerala Sadya Feast" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> | 
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
