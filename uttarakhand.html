@@ -2,156 +2,232 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Uttarakhand - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Uttarakhand Tourism | History, Holy Places & Local Cuisine</title>
+  <meta name="description" content="Explore Uttarakhand - Land of the Himalayas, sacred temples like Haridwar & Rishikesh, hill stations like Nainital, and rich culture with delicious cuisine." />
+  <meta name="keywords" content="Uttarakhand tourism, Haridwar, Rishikesh, Nainital, Jim Corbett National Park, Kedarnath, Badrinath, Char Dham, Uttarakhand cuisine" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Uttarakhand Tourism | History, Holy Places & Local Cuisine" />
+  <meta property="og:description" content="Discover Uttarakhand's spiritual towns, scenic hill stations, nature reserves, and delicious local food with travel tips." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/uttarakhand.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/8/83/Uttarakhand_collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(3px);
+      color: #0a2540;
+      line-height: 1.6;
+      min-height: 100vh;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.85);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      font-size: 1.05rem;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus,
+    nav a[aria-current="page"] {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #174a93;
+    }
+    h2 {
+      color: #3762cc;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+    }
+    p, ul {
+      font-size: 1.1rem;
+      margin-bottom: 1.3rem;
+    }
+    ul.places-list {
+      list-style: disc inside;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 18px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 1.2rem 0;
+      display: block;
+      border: 1px solid #cbd9ff;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+    }
+    .ad-container {
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      font-weight: 700;
+      color: #3a75ff;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover, footer a:focus {
+      text-decoration: underline;
+      outline: none;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- Uttarakhand Info -->
-  <header class="state-header">
-    <h1>Uttarakhand</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> Dehradun (Winter), Gairsain (Summer)</p>
-      <p><strong>Population:</strong> ~11 million (2023 est.)</p>
-      <p><strong>Official Language:</strong> Hindi</p>
-      <p><strong>History:</strong> Uttarakhand, known as "Devbhumi" (Land of the Gods), is home to the majestic Himalayas, ancient temples, and sacred rivers. It was carved out of Uttar Pradesh in 2000 and is a major center for yoga, pilgrimage, and trekking.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Tourist Places -->
-  <section class="places-grid">
-
-    <!-- Rishikesh -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Rishikesh_Ganga.jpg" alt="Rishikesh">
-      <div class="card-content">
-        <h3>Rishikesh</h3>
-        <p><strong>Location:</strong> Tehri Garhwal</p>
-        <p><strong>Famous for:</strong> Yoga capital, river rafting, Ganga Aarti</p>
-        <p><strong>How to reach:</strong> 25 km from Haridwar Railway Station</p>
-      </div>
-    </div>
-
-    <!-- Haridwar -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Har_Ki_Pauri.jpg" alt="Haridwar">
-      <div class="card-content">
-        <h3>Haridwar</h3>
-        <p><strong>Location:</strong> Haridwar District</p>
-        <p><strong>Famous for:</strong> Ganga Aarti, pilgrimage site, Kumbh Mela</p>
-        <p><strong>How to reach:</strong> Haridwar Railway Station</p>
-      </div>
-    </div>
-
-    <!-- Mussoorie -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Mussoorie_hills.jpg" alt="Mussoorie">
-      <div class="card-content">
-        <h3>Mussoorie</h3>
-        <p><strong>Location:</strong> Dehradun District</p>
-        <p><strong>Famous for:</strong> Hill station, waterfalls, Mall Road</p>
-        <p><strong>How to reach:</strong> 34 km from Dehradun by road</p>
-      </div>
-    </div>
-
-    <!-- Nainital -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Naini_Lake.jpg" alt="Nainital">
-      <div class="card-content">
-        <h3>Nainital</h3>
-        <p><strong>Location:</strong> Kumaon region</p>
-        <p><strong>Famous for:</strong> Naini Lake, boating, hill views</p>
-        <p><strong>How to reach:</strong> Kathgodam Railway Station (35 km)</p>
-      </div>
-    </div>
-
-    <!-- Kedarnath -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Kedarnath_Temple.jpg" alt="Kedarnath">
-      <div class="card-content">
-        <h3>Kedarnath</h3>
-        <p><strong>Location:</strong> Rudraprayag District</p>
-        <p><strong>Famous for:</strong> Shiva temple, Char Dham Yatra</p>
-        <p><strong>How to reach:</strong> Trek from Gaurikund (16 km), nearest rail: Rishikesh</p>
-      </div>
-    </div>
-
-    <!-- Badrinath -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Badrinath_Temple.jpg" alt="Badrinath">
-      <div class="card-content">
-        <h3>Badrinath</h3>
-        <p><strong>Location:</strong> Chamoli District</p>
-        <p><strong>Famous for:</strong> Vishnu temple, Char Dham Yatra</p>
-        <p><strong>How to reach:</strong> Road from Joshimath; nearest rail: Rishikesh</p>
-      </div>
-    </div>
-
-    <!-- Valley of Flowers -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Valley_of_Flowers_Uttarakhand.jpg" alt="Valley of Flowers">
-      <div class="card-content">
-        <h3>Valley of Flowers</h3>
-        <p><strong>Location:</strong> Chamoli District</p>
-        <p><strong>Famous for:</strong> Alpine flowers, trekking, UNESCO site</p>
-        <p><strong>How to reach:</strong> Govindghat → Ghangaria → Trek</p>
-      </div>
-    </div>
-
-    <!-- Auli -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Auli_Skiing.jpg" alt="Auli">
-      <div class="card-content">
-        <h3>Auli</h3>
-        <p><strong>Location:</strong> Chamoli District</p>
-        <p><strong>Famous for:</strong> Ski resort, ropeway, Himalaya views</p>
-        <p><strong>How to reach:</strong> Joshimath by road, then cable car</p>
-      </div>
-    </div>
-
-    <!-- Jim Corbett National Park -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Jim_Corbett_Tiger.jpg" alt="Jim Corbett">
-      <div class="card-content">
-        <h3>Jim Corbett National Park</h3>
-        <p><strong>Location:</strong> Nainital District</p>
-        <p><strong>Famous for:</strong> Tigers, elephants, jeep safari</p>
-        <p><strong>How to reach:</strong> Ramnagar Railway Station</p>
-      </div>
-    </div>
-
-    <!-- Tungnath -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Tungnath_Temple.jpg" alt="Tungnath">
-      <div class="card-content">
-        <h3>Tungnath</h3>
-        <p><strong>Location:</strong> Rudraprayag District</p>
-        <p><strong>Famous for:</strong> Highest Shiva temple in the world</p>
-        <p><strong>How to reach:</strong> Trek from Chopta, road from Ukhimath</p>
-      </div>
-    </div>
-
+  <section class="ad-container" aria-label="Advertisement top">
+    <ins class="adsbygoogle" 
+         style="display:block; text-align:center;" 
+         data-ad-client="ca-pub-8124807245840632" 
+         data-ad-slot="4877919940" 
+         data-ad-format="auto" 
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Uttarakhand</h1>
+  <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80" alt="Uttarakhand Himalayas" loading="lazy" width="900" height="600" />
+
+  <h2>Brief History</h2>
+  <p>Uttarakhand, the 'Land of the Gods', is famed for its majestic Himalayan ranges and deeply spiritual heritage. It boasts of ancient pilgrimage sites and serene hill stations integral to Hindu mythology and culture.</p>
+
+  <h2>Major Holy Places & Attractions</h2>
+  <ul class="places-list">
+    <li><strong>Haridwar</strong>
+      <p class="place-details">
+        An ancient city situated on the banks of the Ganges, renowned for the Kumbh Mela, Ganga Aarti at Har Ki Pauri, and sacred ghats.<br />
+        <strong>How to reach:</strong> Jolly Grant Airport (Dehradun - approx. 35 km); Haridwar railway station.
+      </p>
+    </li>
+    <li><strong>Rishikesh</strong>
+      <p class="place-details">
+        The 'Yoga Capital of the World', ideal for river rafting and spiritual retreats.<br />
+        <strong>How to reach:</strong> Jolly Grant Airport (Dehradun - approx. 20 km); Rishikesh railway station.
+      </p>
+    </li>
+    <li><strong>Dehradun</strong>
+      <p class="place-details">
+        Capital city with scenic surrounds, historic Robber's Cave, and forest reserves.<br />
+        <strong>How to reach:</strong> Jolly Grant Airport; Dehradun railway station.
+      </p>
+    </li>
+    <li><strong>Kedarnath</strong>
+      <p class="place-details">
+        Famous for the Kedarnath Temple, one of the twelve Jyotirlingas devoted to Lord Shiva.<br />
+        <strong>How to reach:</strong> Airports: Jolly Grant (Dehradun), road and helicopter access to Gaurikund, then trek.
+      </p>
+    </li>
+    <li><strong>Badrinath</strong>
+      <p class="place-details">
+        Renowned for the Badrinath Temple dedicated to Lord Vishnu, part of Char Dham pilgrimage.<br />
+        <strong>How to reach:</strong> Airports: Jolly Grant or Dehradun; road access during summer months.
+      </p>
+    </li>
+    <li><strong>Mussoorie</strong>
+      <p class="place-details">
+        Popular hill station known as the 'Queen of Hills' with panoramic mountain views.<br />
+        <strong>How to reach:</strong> Jolly Grant Airport; road from Dehradun.
+      </p>
+    </li>
+    <li><strong>Nainital</strong>
+      <p class="place-details">
+        Scenic lake city, famous for boating, lakeside markets, and pleasant climate.<br />
+        <strong>How to reach:</strong> Pantnagar Airport; Kathgodam railway station; road access.
+      </p>
+    </li>
+    <li><strong>Jim Corbett National Park</strong>
+      <p class="place-details">
+        India's oldest national park, popular for wildlife safaris and rich biodiversity.<br />
+        <strong>How to reach:</strong> Pantnagar Airport; Ramnagar railway station.
+      </p>
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Uttarakhand cuisine is simple and wholesome, featuring dishes like Aloo Ke Gutke, Kafuli, Chainsoo, and Bal Mithai, a popular local sweet.</p>
+  <img src="https://images.unsplash.com/photo-1540206395-68808572332f?auto=format&fit=crop&w=900&q=80" alt="Uttarakhand cuisine" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="4877919940"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> |
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
