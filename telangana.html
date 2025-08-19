@@ -2,156 +2,207 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Telangana - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Telangana Tourism | History, Places to Visit & Local Cuisine</title>
+  <meta name="description" content="Explore Telangana - Known for historic Hyderabad, Charminar, Golconda Fort, rich culture, and exquisite Telangana cuisine. Discover travel tips and attractions." />
+  <meta name="keywords" content="Telangana tourism, Hyderabad, Charminar, Golconda Fort, Ramoji Film City, Telangana cuisine, Telangana culture, Hyderabad travel guide" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Telangana Tourism | History, Places to Visit & Local Cuisine" />
+  <meta property="og:description" content="Discover Telangana’s vibrant history, grand monuments, festivals, and delicious local food with travel information." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/telangana.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/4/4f/Telangana_collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(3px);
+      color: #0a2540;
+      line-height: 1.6;
+      min-height: 100vh;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.85);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      font-size: 1.05rem;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus,
+    nav a[aria-current="page"] {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    h1 {
+      font-size: 2.6rem;
+      color: #174a93;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    h2 {
+      color: #3762cc;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+      margin: 2.4rem 0 1rem 0;
+    }
+    p, ul {
+      font-size: 1.1rem;
+      margin-bottom: 1.3rem;
+    }
+    ul.places-list {
+      list-style: disc inside;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 18px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      border: 1px solid #cbd9ff;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      margin: 1.2rem 0;
+      display: block;
+    }
+    .ad-container {
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      font-weight: 700;
+      color: #3a75ff;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover, footer a:focus {
+      text-decoration: underline;
+      outline: none;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- Telangana Info -->
-  <header class="state-header">
-    <h1>Telangana</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> Hyderabad</p>
-      <p><strong>Population:</strong> ~38 million (2023 est.)</p>
-      <p><strong>Official Language:</strong> Telugu</p>
-      <p><strong>History:</strong> Telangana, India's youngest state formed in 2014, has a rich legacy of the Kakatiya, Qutb Shahi, and Nizam dynasties. The region is known for its unique blend of South and Deccan cultures, rich history, architecture, and spicy cuisine.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Tourist Places -->
-  <section class="places-grid">
-
-    <!-- Charminar -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/13/Charminar_Hyderabad.jpg" alt="Charminar">
-      <div class="card-content">
-        <h3>Charminar</h3>
-        <p><strong>Location:</strong> Hyderabad</p>
-        <p><strong>Famous for:</strong> Historical Islamic architecture, iconic monument</p>
-        <p><strong>How to reach:</strong> Near Nampally Railway Station or Hyderabad Metro</p>
-      </div>
-    </div>
-
-    <!-- Golconda Fort -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Golconda_Fort.jpg" alt="Golconda Fort">
-      <div class="card-content">
-        <h3>Golconda Fort</h3>
-        <p><strong>Location:</strong> Hyderabad outskirts</p>
-        <p><strong>Famous for:</strong> Fort acoustics, light & sound show</p>
-        <p><strong>How to reach:</strong> 11 km from Hyderabad, local transport</p>
-      </div>
-    </div>
-
-    <!-- Ramoji Film City -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Ramoji_Film_City_Hyderabad.jpg" alt="Ramoji Film City">
-      <div class="card-content">
-        <h3>Ramoji Film City</h3>
-        <p><strong>Location:</strong> Near Hayathnagar, Hyderabad</p>
-        <p><strong>Famous for:</strong> World’s largest film studio complex</p>
-        <p><strong>How to reach:</strong> 30 km from Hyderabad by bus/cab</p>
-      </div>
-    </div>
-
-    <!-- Hussain Sagar Lake -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Hussain_Sagar_Lake.jpg" alt="Hussain Sagar">
-      <div class="card-content">
-        <h3>Hussain Sagar Lake</h3>
-        <p><strong>Location:</strong> Hyderabad</p>
-        <p><strong>Famous for:</strong> Buddha statue, boating, Tank Bund</p>
-        <p><strong>How to reach:</strong> Necklace Road / Lakdikapul Metro</p>
-      </div>
-    </div>
-
-    <!-- Warangal Fort -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Warangal_Fort_Gateway.jpg" alt="Warangal Fort">
-      <div class="card-content">
-        <h3>Warangal Fort</h3>
-        <p><strong>Location:</strong> Warangal</p>
-        <p><strong>Famous for:</strong> Kakatiya dynasty ruins and temples</p>
-        <p><strong>How to reach:</strong> Warangal Railway Station</p>
-      </div>
-    </div>
-
-    <!-- Thousand Pillar Temple -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Thousand_Pillar_Temple_Warangal.jpg" alt="Thousand Pillar Temple">
-      <div class="card-content">
-        <h3>Thousand Pillar Temple</h3>
-        <p><strong>Location:</strong> Hanamkonda, Warangal</p>
-        <p><strong>Famous for:</strong> Intricate pillars, star-shaped architecture</p>
-        <p><strong>How to reach:</strong> Auto from Warangal city center</p>
-      </div>
-    </div>
-
-    <!-- Bhongir Fort -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Bhongir_Fort.jpg" alt="Bhongir Fort">
-      <div class="card-content">
-        <h3>Bhongir Fort</h3>
-        <p><strong>Location:</strong> Yadadri Bhuvanagiri District</p>
-        <p><strong>Famous for:</strong> Trekking fort on a monolithic rock</p>
-        <p><strong>How to reach:</strong> Bhongir Railway Station</p>
-      </div>
-    </div>
-
-    <!-- Yadagirigutta Temple -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Yadadri_Temple.jpg" alt="Yadagirigutta Temple">
-      <div class="card-content">
-        <h3>Yadagirigutta Temple</h3>
-        <p><strong>Location:</strong> Yadadri</p>
-        <p><strong>Famous for:</strong> Newly developed Narasimha Swamy temple</p>
-        <p><strong>How to reach:</strong> 60 km from Hyderabad, via train/bus</p>
-      </div>
-    </div>
-
-    <!-- Nagarjuna Sagar Dam -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Nagarjuna_Sagar_Dam.jpg" alt="Nagarjuna Sagar">
-      <div class="card-content">
-        <h3>Nagarjuna Sagar</h3>
-        <p><strong>Location:</strong> Nalgonda District</p>
-        <p><strong>Famous for:</strong> Massive dam, waterfalls, island museum</p>
-        <p><strong>How to reach:</strong> 165 km from Hyderabad by bus/cab</p>
-      </div>
-    </div>
-
-    <!-- KBR National Park -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/KBR_National_Park.jpg" alt="KBR Park">
-      <div class="card-content">
-        <h3>KBR National Park</h3>
-        <p><strong>Location:</strong> Jubilee Hills, Hyderabad</p>
-        <p><strong>Famous for:</strong> Urban forest with peacocks and walking trails</p>
-        <p><strong>How to reach:</strong> Easily accessible from any part of Hyderabad</p>
-      </div>
-    </div>
-
+  <section class="ad-container" aria-label="Advertisement top">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="4877919940"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Telangana</h1>
+  <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80" alt="Charminar, Hyderabad" loading="lazy" width="900" height="600" />
+
+  <h2>Brief History</h2>
+  <p>Telangana, carved from Andhra Pradesh in 2014, is known for Hyderabad city, rich heritage of the Golconda Sultanate, and its unique Telangana culture and cuisine.</p>
+
+  <h2>Major Places to Visit</h2>
+  <ul class="places-list">
+    <li>Charminar, Hyderabad
+      <p class="place-details">
+        <strong>Why visit:</strong> Iconic 16th-century monument and mosque.<br/>
+        <strong>How to reach:</strong> Rajiv Gandhi International Airport; well-connected by metro and road.
+      </p>
+    </li>
+    <li>Golconda Fort
+      <p class="place-details">
+        <strong>Why visit:</strong> Majestic ruins of medieval fort and mining city.<br/>
+        <strong>How to reach:</strong> 11 km from Hyderabad city center by road.
+      </p>
+    </li>
+    <li>Ramoji Film City
+      <p class="place-details">
+        <strong>Why visit:</strong> World’s largest integrated film studio and theme park.<br/>
+        <strong>How to reach:</strong> About 30 km from Hyderabad, accessible by road.
+      </p>
+    </li>
+    <li>Hussain Sagar Lake
+      <p class="place-details">
+        <strong>Why visit:</strong> Large lake with Buddha statue and recreational activities.<br/>
+        <strong>How to reach:</strong> Located in Hyderabad city center.
+      </p>
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Telangana cuisine features Hyderabadi Biryani, Mirchi ka Salan, Pesarattu, and other spicy and flavorful dishes reflecting Nizami traditions.</p>
+  <img src="https://images.unsplash.com/photo-1540206395-68808572332f?auto=format&fit=crop&w=900&q=80" alt="Hyderabadi Biryani" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="4877919940"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> |
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
