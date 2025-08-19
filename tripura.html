@@ -2,156 +2,214 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tripura - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tripura Tourism | History, Places to Visit & Local Cuisine</title>
+  <meta name="description" content="Explore Tripura - Known for its palaces, temples, scenic hills, wildlife sanctuaries, and vibrant tribal culture and cuisine." />
+  <meta name="keywords" content="Tripura tourism, Ujjayanta Palace, Neermahal Palace, Sepahijala Wildlife Sanctuary, Tripura tribal culture, Tripura cuisine, Unakoti, Jampui Hills" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Tripura Tourism | History, Places to Visit & Local Cuisine" />
+  <meta property="og:description" content="Discover Tripura’s historic palaces, beautiful hills, rich tribal heritage, and delicious local food with travel details." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/tripura.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1506748686214-5b8c4a9bbdbb?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/3/3e/Tripura_collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1506748686214-5b8c4a9bbdbb?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(3px);
+      color: #0a2540;
+      line-height: 1.6;
+      min-height: 100vh;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.85);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      font-size: 1.05rem;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus,
+    nav a[aria-current="page"] {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    h1 {
+      font-size: 2.6rem;
+      color: #174a93;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    h2 {
+      color: #3762cc;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+      margin: 2.4rem 0 1rem 0;
+    }
+    p, ul {
+      font-size: 1.1rem;
+      margin-bottom: 1.3rem;
+    }
+    ul.places-list {
+      list-style: disc inside;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 18px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      border: 1px solid #cbd9ff;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      margin: 1.2rem 0;
+      display: block;
+    }
+    .ad-container {
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      font-weight: 700;
+      color: #3a75ff;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover, footer a:focus {
+      text-decoration: underline;
+      outline: none;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- Tripura Info -->
-  <header class="state-header">
-    <h1>Tripura</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> Agartala</p>
-      <p><strong>Population:</strong> ~4 million (2023 est.)</p>
-      <p><strong>Official Languages:</strong> Bengali, Kokborok, English</p>
-      <p><strong>History:</strong> Tripura, one of the seven sister states in Northeast India, has a rich tribal and royal heritage. It was ruled by the Manikya dynasty for centuries and became a part of independent India in 1949. Known for palaces, hills, temples, and tribal culture, Tripura remains one of India’s hidden gems.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Places in Tripura -->
-  <section class="places-grid">
-
-    <!-- Ujjayanta Palace -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Ujjayanta_Palace.jpg" alt="Ujjayanta Palace">
-      <div class="card-content">
-        <h3>Ujjayanta Palace</h3>
-        <p><strong>Location:</strong> Agartala</p>
-        <p><strong>Famous for:</strong> Royal palace, museum, architecture</p>
-        <p><strong>How to reach:</strong> 2 km from Agartala Railway Station</p>
-      </div>
-    </div>
-
-    <!-- Neermahal Palace -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Neermahal_Tripura.jpg" alt="Neermahal">
-      <div class="card-content">
-        <h3>Neermahal</h3>
-        <p><strong>Location:</strong> Rudrasagar Lake</p>
-        <p><strong>Famous for:</strong> Lake palace, boating, Mughal architecture</p>
-        <p><strong>How to reach:</strong> 53 km from Agartala by road</p>
-      </div>
-    </div>
-
-    <!-- Unakoti -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Unakoti_Sculptures_Tripura.jpg" alt="Unakoti">
-      <div class="card-content">
-        <h3>Unakoti</h3>
-        <p><strong>Location:</strong> Kailashahar</p>
-        <p><strong>Famous for:</strong> Ancient rock carvings and sculptures</p>
-        <p><strong>How to reach:</strong> 178 km from Agartala by road/train</p>
-      </div>
-    </div>
-
-    <!-- Sepahijala Wildlife Sanctuary -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Sepahijala_Zoo_Tripura.jpg" alt="Sepahijala Sanctuary">
-      <div class="card-content">
-        <h3>Sepahijala Wildlife Sanctuary</h3>
-        <p><strong>Location:</strong> Bishalgarh</p>
-        <p><strong>Famous for:</strong> Clouded leopards, zoo, boating</p>
-        <p><strong>How to reach:</strong> 25 km from Agartala</p>
-      </div>
-    </div>
-
-    <!-- Jampui Hills -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Jampui_Hills_Tripura.jpg" alt="Jampui Hills">
-      <div class="card-content">
-        <h3>Jampui Hills</h3>
-        <p><strong>Location:</strong> North Tripura</p>
-        <p><strong>Famous for:</strong> Sunrise views, oranges, hill station</p>
-        <p><strong>How to reach:</strong> 200 km from Agartala by road</p>
-      </div>
-    </div>
-
-    <!-- Tripura Sundari Temple -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Tripura_Sundari_Temple.jpg" alt="Tripura Sundari Temple">
-      <div class="card-content">
-        <h3>Tripura Sundari Temple</h3>
-        <p><strong>Location:</strong> Udaipur</p>
-        <p><strong>Famous for:</strong> Shakti Peeth, pilgrimage site</p>
-        <p><strong>How to reach:</strong> 55 km from Agartala by road</p>
-      </div>
-    </div>
-
-    <!-- Dumboor Lake -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Dumboor_Lake.jpg" alt="Dumboor Lake">
-      <div class="card-content">
-        <h3>Dumboor Lake</h3>
-        <p><strong>Location:</strong> Gandacherra</p>
-        <p><strong>Famous for:</strong> Scenic lake, boating, water birds</p>
-        <p><strong>How to reach:</strong> 120 km from Agartala</p>
-      </div>
-    </div>
-
-    <!-- Chabimura Rock Carvings -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Chabimura_Tripura.jpg" alt="Chabimura">
-      <div class="card-content">
-        <h3>Chabimura</h3>
-        <p><strong>Location:</strong> Gomati River banks</p>
-        <p><strong>Famous for:</strong> Rock carvings on steep hills</p>
-        <p><strong>How to reach:</strong> 85 km from Agartala by car</p>
-      </div>
-    </div>
-
-    <!-- Heritage Park -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Heritage_Park_Tripura.jpg" alt="Heritage Park">
-      <div class="card-content">
-        <h3>Heritage Park</h3>
-        <p><strong>Location:</strong> Agartala</p>
-        <p><strong>Famous for:</strong> Landscaped gardens, Tripura culture showcase</p>
-        <p><strong>How to reach:</strong> Within Agartala city</p>
-      </div>
-    </div>
-
-    <!-- Baramura Eco Park -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Baramura_Eco_Park.jpg" alt="Baramura Eco Park">
-      <div class="card-content">
-        <h3>Baramura Eco Park</h3>
-        <p><strong>Location:</strong> Baramura Hills</p>
-        <p><strong>Famous for:</strong> Scenic hills, eco-tourism</p>
-        <p><strong>How to reach:</strong> 35 km from Agartala</p>
-      </div>
-    </div>
-
+  <section class="ad-container" aria-label="Advertisement top">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="4877919940"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Tripura</h1>
+  <img 
+    src="https://images.unsplash.com/photo-1506748686214-5b8c4a9bbdbb?auto=format&fit=crop&w=900&q=80"
+    alt="Ujjayanta Palace, Tripura"
+    loading="lazy"
+    width="900"
+    height="600"
+  />
+
+  <h2>Brief History</h2>
+  <p>Tripura is a land of palaces, dense hills, diverse tribal culture, and rich heritage with beautiful wildlife sanctuaries and ancient rock carvings.</p>
+
+  <h2>Major Places to Visit</h2>
+  <ul class="places-list">
+    <li>Ujjayanta Palace
+      <p class="place-details">
+        <strong>Why visit:</strong> Former royal palace now a state museum showcasing Tripura’s history.<br/>
+        <strong>How to reach:</strong> Agartala Airport and railway station nearby.
+      </p>
+    </li>
+    <li>Neermahal Palace
+      <p class="place-details">
+        <strong>Why visit:</strong> Water palace located in Rudrasagar Lake, blending Hindu and Mughal architecture.<br/>
+        <strong>How to reach:</strong> Accessible from Agartala by road.
+      </p>
+    </li>
+    <li>Sepahijala Wildlife Sanctuary
+      <p class="place-details">
+        <strong>Why visit:</strong> Home to a variety of tropical flora and fauna including primates.<br/>
+        <strong>How to reach:</strong> 25 km from Agartala, well connected by road.
+      </p>
+    </li>
+    <li>Unakoti
+      <p class="place-details">
+        <strong>Why visit:</strong> Historic rock-cut sculptures and pilgrimage site.<br/>
+        <strong>How to reach:</strong> Road access from Kailashahar.
+      </p>
+    </li>
+    <li>Jampui Hills
+      <p class="place-details">
+        <strong>Why visit:</strong> Scenic hills known for orange orchards and tribal villages.<br/>
+        <strong>How to reach:</strong> Accessible by road from North Tripura district.
+      </p>
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Try Tripuri dishes like Bamboo shoot pork, Chakhwi, and a variety of preparations using fresh forest produce and local herbs.</p>
+  <img src="https://images.unsplash.com/photo-1540206395-68808572332f?auto=format&fit=crop&w=900&q=80" alt="Tripura traditional food" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> | 
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
