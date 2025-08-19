@@ -2,156 +2,220 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Manipur - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manipur Tourism | History, Places to Visit & Local Cuisine</title>
+  <meta name="description" content="Explore Manipur - The stunning land of Loktak Lake, Kangla Fort, Imphal’s rich culture, vibrant markets, and traditional cuisine." />
+  <meta name="keywords" content="Manipur tourism, Loktak Lake, Kangla Fort, Manipur State Museum, Imphal markets, Manipur cuisine, Keibul Lamjao National Park" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Manipur Tourism | History, Places to Visit & Local Cuisine" />
+  <meta property="og:description" content="Discover Manipur’s natural beauty, historical sites, vibrant markets plus travel tips and food specialties." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/manipur.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/8/83/Manipur_Collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(3px);
+      color: #0a2540;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.8);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      font-size: 1.05rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    nav a[aria-current="page"] {
+      background-color: #2a4d9c;
+      color: white;
+    }
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #174a93;
+    }
+    h2 {
+      color: #3762cc;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+    }
+    p {
+      margin-bottom: 1.3rem;
+      font-size: 1.1rem;
+    }
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.6rem;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 15px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      margin: 1.2rem 0;
+      display: block;
+      border: 1px solid #cbd9ff;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      color: #3a75ff;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover,
+    footer a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    .ad-container {
+      margin: 1.5rem 0;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- Manipur Info -->
-  <header class="state-header">
-    <h1>Manipur</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> Imphal</p>
-      <p><strong>Population:</strong> ~3.1 million (2023 est.)</p>
-      <p><strong>Official Languages:</strong> Meitei (Manipuri), English</p>
-      <p><strong>History:</strong> Manipur, known as the "Jewel of India", joined the Indian Union in 1949 and became a state in 1972. Rich in tribal and classical culture, dance, and natural beauty, it is the birthplace of Manipuri dance and the game of modern polo.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Places in Manipur -->
-  <section class="places-grid">
-
-    <!-- Loktak Lake -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Loktak_Lake.jpg" alt="Loktak Lake">
-      <div class="card-content">
-        <h3>Loktak Lake</h3>
-        <p><strong>Location:</strong> Moirang, 48 km from Imphal</p>
-        <p><strong>Famous for:</strong> Floating phumdis, Keibul Lamjao National Park</p>
-        <p><strong>How to reach:</strong> By road from Imphal</p>
-      </div>
-    </div>
-
-    <!-- Kangla Fort -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Kangla_Fort_Imphal.jpg" alt="Kangla Fort">
-      <div class="card-content">
-        <h3>Kangla Fort</h3>
-        <p><strong>Location:</strong> Imphal</p>
-        <p><strong>Famous for:</strong> Ancient Meitei royal palace, sacred heritage</p>
-        <p><strong>How to reach:</strong> Within city, accessible by auto or cab</p>
-      </div>
-    </div>
-
-    <!-- INA Memorial, Moirang -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/INA_Museum_Moirang.jpg" alt="INA Memorial">
-      <div class="card-content">
-        <h3>INA Memorial</h3>
-        <p><strong>Location:</strong> Moirang</p>
-        <p><strong>Famous for:</strong> Netaji Subhas Chandra Bose's Indian National Army HQ</p>
-        <p><strong>How to reach:</strong> 45 km from Imphal by road</p>
-      </div>
-    </div>
-
-    <!-- Keibul Lamjao National Park -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Keibul_Lamjao_Park.jpg" alt="Keibul Lamjao">
-      <div class="card-content">
-        <h3>Keibul Lamjao National Park</h3>
-        <p><strong>Location:</strong> On Loktak Lake</p>
-        <p><strong>Famous for:</strong> World’s only floating national park, Sangai deer</p>
-        <p><strong>How to reach:</strong> Moirang > Boat to park</p>
-      </div>
-    </div>
-
-    <!-- Shri Govindajee Temple -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Shree_Govindajee_Temple_Manipur.jpg" alt="Shree Govindajee Temple">
-      <div class="card-content">
-        <h3>Shree Govindajee Temple</h3>
-        <p><strong>Location:</strong> Imphal</p>
-        <p><strong>Famous for:</strong> Vaishnavite temple, cultural epicenter</p>
-        <p><strong>How to reach:</strong> Near Kangla Fort in Imphal</p>
-      </div>
-    </div>
-
-    <!-- Imphal War Cemetery -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/Imphal_War_Cemetery.jpg" alt="Imphal War Cemetery">
-      <div class="card-content">
-        <h3>Imphal War Cemetery</h3>
-        <p><strong>Location:</strong> Imphal</p>
-        <p><strong>Famous for:</strong> WWII cemetery maintained by CWGC</p>
-        <p><strong>How to reach:</strong> Within Imphal, easily accessible</p>
-      </div>
-    </div>
-
-    <!-- Andro Village -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Andro_Village_Manipur.jpg" alt="Andro Village">
-      <div class="card-content">
-        <h3>Andro Village</h3>
-        <p><strong>Location:</strong> 27 km from Imphal</p>
-        <p><strong>Famous for:</strong> Pottery, tribal crafts, heritage museum</p>
-        <p><strong>How to reach:</strong> Local cab from Imphal</p>
-      </div>
-    </div>
-
-    <!-- Khongjom War Memorial -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/Khongjom_War_Memorial.jpg" alt="Khongjom">
-      <div class="card-content">
-        <h3>Khongjom War Memorial</h3>
-        <p><strong>Location:</strong> 36 km from Imphal</p>
-        <p><strong>Famous for:</strong> Battle of Anglo-Manipuri War site</p>
-        <p><strong>How to reach:</strong> Bus or taxi from Imphal</p>
-      </div>
-    </div>
-
-    <!-- Tharon Cave -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Tharon_Cave_Manipur.jpg" alt="Tharon Cave">
-      <div class="card-content">
-        <h3>Tharon Cave</h3>
-        <p><strong>Location:</strong> Tamenglong district</p>
-        <p><strong>Famous for:</strong> 5 ancient chambers, pre-historic significance</p>
-        <p><strong>How to reach:</strong> 160 km from Imphal by road</p>
-      </div>
-    </div>
-
-    <!-- Moreh Town -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Moreh_Indo-Myanmar_Border.jpg" alt="Moreh">
-      <div class="card-content">
-        <h3>Moreh</h3>
-        <p><strong>Location:</strong> Indo-Myanmar border</p>
-        <p><strong>Famous for:</strong> Border trade, Burmese culture influence</p>
-        <p><strong>How to reach:</strong> 110 km from Imphal by highway</p>
-      </div>
-    </div>
-
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement top">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="4877919940"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Manipur</h1>
+  <img 
+    src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80" 
+    alt="Loktak Lake, Manipur" 
+    loading="lazy" 
+    width="900" 
+    height="600" 
+  />
+
+  <h2>Brief History</h2>
+  <p>Manipur is a picturesque land known for Loktak Lake, vibrant tribal cultures, rich historical sites, and lively markets like the unique all-women’s market, Ima Keithel.</p>
+
+  <h2>Major Places to Visit</h2>
+  <ul class="places-list">
+    <li>Loktak Lake
+      <p class="place-details">
+        <strong>Why visit:</strong> The largest freshwater lake in Northeast India with floating phumdis.<br/>
+        <strong>How to reach:</strong> Imphal Airport; well connected by road.
+      </p>
+    </li>
+    <li>Kangla Fort
+      <p class="place-details">
+        <strong>Why visit:</strong> Historic fort and cultural center in Imphal.<br/>
+        <strong>How to reach:</strong> Located in Imphal city.
+      </p>
+      <img src="https://images.unsplash.com/photo-1508154048109-de555266b032?auto=format&fit=crop&w=800&q=80" alt="Kangla Fort" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Manipur State Museum
+      <p class="place-details">
+        <strong>Why visit:</strong> Displays tribal arts, history, and culture.<br/>
+        <strong>How to reach:</strong> In Imphal city.
+      </p>
+    </li>
+    <li>Ima Keithel Market
+      <p class="place-details">
+        <strong>Why visit:</strong> Unique all-women’s market selling local produce and crafts.<br/>
+        <strong>How to reach:</strong> Imphal city.
+      </p>
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Enjoy traditional dishes such as Eromba, Chak-hao rice, and fish preparations reflecting the rich Manipuri heritage.</p>
+  <img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?auto=format&fit=crop&w=900&q=80" alt="Manipuri cuisine" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="4877919940"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> | 
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
