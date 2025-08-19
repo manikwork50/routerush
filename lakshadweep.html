@@ -2,156 +2,203 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lakshadweep - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lakshadweep Tourism | History, Places to Visit & Local Cuisine</title>
+  <meta name="description" content="Explore Lakshadweep - India's tropical paradise famous for coral atolls, pristine beaches, scuba diving, and traditional island culture and cuisine." />
+  <meta name="keywords" content="Lakshadweep tourism, coral atolls, Bangaram Island, Kavaratti, Minicoy Island, scuba diving Lakshadweep, local cuisine Lakshadweep, island tourism India" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Lakshadweep Tourism | History, Places to Visit & Local Cuisine" />
+  <meta property="og:description" content="Discover the coral reefs, beaches, and rich cultural heritage of Lakshadweep with complete travel guide and local flavors." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/lakshadweep.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1543932803-7e09f38e5960?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/2/2f/Lakshadweep_collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1543932803-7e09f38e5960?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(3px);
+      color: #0a2540;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.8);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      font-size: 1.05rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    nav a[aria-current="page"] {
+      background-color: #2a4d9c;
+      color: white;
+    }
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #174a93;
+    }
+    h2 {
+      color: #3762cc;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+    }
+    p {
+      margin-bottom: 1.3rem;
+      font-size: 1.1rem;
+    }
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.6rem;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 15px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      margin: 1.2rem 0;
+      display: block;
+      border: 1px solid #cbd9ff;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      color: #3a75ff;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover,
+    footer a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    .ad-container {
+      margin: 1.5rem 0;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- Lakshadweep Info -->
-  <header class="state-header">
-    <h1>Lakshadweep</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> Kavaratti</p>
-      <p><strong>Population:</strong> ~65,000 (2023 est.)</p>
-      <p><strong>Official Languages:</strong> Malayalam, Jeseri, Mahl, English</p>
-      <p><strong>History:</strong> Lakshadweep is India's smallest Union Territory, consisting of 36 islands in the Arabian Sea. Only 10 are inhabited. Known for white sandy beaches, coral atolls, and blue lagoons, it is a pristine and eco-sensitive region. Access is limited, and a permit is required to visit.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Places in Lakshadweep -->
-  <section class="places-grid">
-
-    <!-- Kavaratti Island -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Kavaratti_Island.jpg" alt="Kavaratti Island">
-      <div class="card-content">
-        <h3>Kavaratti Island</h3>
-        <p><strong>Location:</strong> Capital Island</p>
-        <p><strong>Famous for:</strong> Marine aquarium, mosques, lagoon views</p>
-        <p><strong>How to reach:</strong> Ship from Kochi or flight to Agatti + boat</p>
-      </div>
-    </div>
-
-    <!-- Agatti Island -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Agatti_Airstrip_Lakshadweep.jpg" alt="Agatti Island">
-      <div class="card-content">
-        <h3>Agatti Island</h3>
-        <p><strong>Location:</strong> Western Lakshadweep</p>
-        <p><strong>Famous for:</strong> Airport, snorkeling, lagoons</p>
-        <p><strong>How to reach:</strong> Only airport in Lakshadweep (from Kochi)</p>
-      </div>
-    </div>
-
-    <!-- Minicoy Island -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Minicoy_Island_Lakshadweep.jpg" alt="Minicoy Island">
-      <div class="card-content">
-        <h3>Minicoy Island</h3>
-        <p><strong>Location:</strong> Southernmost island</p>
-        <p><strong>Famous for:</strong> Lighthouse, tuna fishing, Mahl culture</p>
-        <p><strong>How to reach:</strong> Ship from Kochi (14-16 hrs)</p>
-      </div>
-    </div>
-
-    <!-- Bangaram Island -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Bangaram_Island_Lakshadweep.jpg" alt="Bangaram Island">
-      <div class="card-content">
-        <h3>Bangaram Island</h3>
-        <p><strong>Location:</strong> Near Agatti</p>
-        <p><strong>Famous for:</strong> Dive resort, lagoons, bioluminescence</p>
-        <p><strong>How to reach:</strong> Boat from Agatti Island</p>
-      </div>
-    </div>
-
-    <!-- Kadmat Island -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Kadmat_Island.jpg" alt="Kadmat Island">
-      <div class="card-content">
-        <h3>Kadmat Island</h3>
-        <p><strong>Location:</strong> North of Kavaratti</p>
-        <p><strong>Famous for:</strong> Water sports, coral reefs</p>
-        <p><strong>How to reach:</strong> Ship from Kochi or boat from Agatti</p>
-      </div>
-    </div>
-
-    <!-- Kalpeni Island -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Kalpeni_Lakshadweep.jpg" alt="Kalpeni Island">
-      <div class="card-content">
-        <h3>Kalpeni Island</h3>
-        <p><strong>Location:</strong> Central Lakshadweep</p>
-        <p><strong>Famous for:</strong> Scenic lagoon, kayaking, coral debris</p>
-        <p><strong>How to reach:</strong> Ship from Kochi (overnight)</p>
-      </div>
-    </div>
-
-    <!-- Lighthouse Beach (Minicoy) -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Minicoy_Lighthouse_Beach.jpg" alt="Minicoy Lighthouse">
-      <div class="card-content">
-        <h3>Minicoy Lighthouse Beach</h3>
-        <p><strong>Location:</strong> Minicoy Island</p>
-        <p><strong>Famous for:</strong> Tall lighthouse, panoramic view</p>
-        <p><strong>How to reach:</strong> Accessible while exploring Minicoy</p>
-      </div>
-    </div>
-
-    <!-- Suheli Par Atoll -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Suheli_Par_Lakshadweep.jpg" alt="Suheli Par">
-      <div class="card-content">
-        <h3>Suheli Par Atoll</h3>
-        <p><strong>Location:</strong> Uninhabited atoll southwest of Kavaratti</p>
-        <p><strong>Famous for:</strong> Biodiversity, untouched coral life</p>
-        <p><strong>How to reach:</strong> Special boat trips (with permit)</p>
-      </div>
-    </div>
-
-    <!-- Marine Museum (Kavaratti) -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Kavaratti_Marine_Aquarium.jpg" alt="Marine Museum">
-      <div class="card-content">
-        <h3>Marine Museum</h3>
-        <p><strong>Location:</strong> Kavaratti</p>
-        <p><strong>Famous for:</strong> Coral specimens, marine awareness</p>
-        <p><strong>How to reach:</strong> Walkable from Kavaratti port</p>
-      </div>
-    </div>
-
-    <!-- Thinnakara Island -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Thinnakara_Lakshadweep.jpg" alt="Thinnakara Island">
-      <div class="card-content">
-        <h3>Thinnakara Island</h3>
-        <p><strong>Location:</strong> Near Bangaram</p>
-        <p><strong>Famous for:</strong> Tented stays, peaceful lagoon</p>
-        <p><strong>How to reach:</strong> Boat from Agatti</p>
-      </div>
-    </div>
-
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement top">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Lakshadweep</h1>
+  <img 
+    src="https://images.unsplash.com/photo-1543932803-7e09f38e5960?auto=format&fit=crop&w=900&q=80"
+    alt="Pristine beaches of Lakshadweep" 
+    loading="lazy" 
+    width="900" 
+    height="600" 
+  />
+
+  <h2>Brief History</h2>
+  <p>Lakshadweep is a group of coral islands known for their pristine beaches, coral reefs, vibrant maritime culture, and calm island life.</p>
+
+  <h2>Major Places to Visit</h2>
+  <ul class="places-list">
+    <li>Kavaratti Island
+      <p class="place-details">
+        <strong>Why visit:</strong> Administrative capital with beautiful lagoons and a mosque.<br/>
+        <strong>How to reach:</strong> By boat or helicopter from Kochi.
+      </p>
+    </li>
+    <li>Bangaram Island
+      <p class="place-details">
+        <strong>Why visit:</strong> Coral islands with great snorkeling and diving opportunities.<br/>
+        <strong>How to reach:</strong> Accessible by boat from Kavaratti.
+      </p>
+    </li>
+    <li>Minicoy Island
+      <p class="place-details">
+        <strong>Why visit:</strong> Known for its lighthouse and distinct culture.<br/>
+        <strong>How to reach:</strong> Flights from Kochi to Minicoy or by boat.
+      </p>
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Lakshadweep cuisine is rich in seafood, coconut, and rice-based dishes with influences from Kerala and Maldives.</p>
+  <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80" alt="Seafood dish" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> | 
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
