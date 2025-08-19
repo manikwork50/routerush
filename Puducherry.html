@@ -2,156 +2,222 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Puducherry - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Puducherry Tourism | History, Places to Visit & Local Cuisine</title>
+  <meta name="description" content="Explore Puducherry - Former French colonial territory known for its beaches, Auroville, and unique Franco-Tamil culture. Discover local cuisine and cultural charms." />
+  <meta name="keywords" content="Puducherry tourism, Auroville, French Quarter Puducherry, Serenity Beach, Puducherry cuisine, Franco-Tamil culture, travel guide Puducherry" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Puducherry Tourism | History, Places to Visit & Local Cuisine" />
+  <meta property="og:description" content="Discover beautiful beaches, Auroville, and vibrant culture in Puducherry." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/puducherry.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/d/db/Pondicherry_collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(3px);
+      color: #0a2540;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.8);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      font-size: 1.05rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    nav a[aria-current="page"] {
+      background-color: #2a4d9c;
+      color: white;
+    }
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #174a93;
+    }
+    h2 {
+      color: #3762cc;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+    }
+    p {
+      margin-bottom: 1.3rem;
+      font-size: 1.1rem;
+    }
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.6rem;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 15px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      margin: 1.2rem 0;
+      display: block;
+      border: 1px solid #cbd9ff;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      color: #3a75ff;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover,
+    footer a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    .ad-container {
+      margin: 1.5rem 0;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- Puducherry Info -->
-  <header class="state-header">
-    <h1>Puducherry</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> Puducherry</p>
-      <p><strong>Population:</strong> ~1.6 million (2023 est.)</p>
-      <p><strong>Official Languages:</strong> Tamil, French, Telugu, Malayalam, English</p>
-      <p><strong>History:</strong> Puducherry (formerly Pondicherry) was a French colonial settlement until 1954. Its streets still reflect French architecture, culture, and language. It’s a peaceful coastal territory known for Auroville, beaches, spiritual centers, and vibrant street life.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Places in Puducherry -->
-  <section class="places-grid">
-
-    <!-- Promenade Beach -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Promenade_Beach_Puducherry.jpg" alt="Promenade Beach">
-      <div class="card-content">
-        <h3>Promenade Beach</h3>
-        <p><strong>Location:</strong> White Town</p>
-        <p><strong>Famous for:</strong> Seaside stroll, French War Memorial</p>
-        <p><strong>How to reach:</strong> Auto or walk from city center</p>
-      </div>
-    </div>
-
-    <!-- Auroville -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Auroville_Matrimandir.jpg" alt="Auroville">
-      <div class="card-content">
-        <h3>Auroville</h3>
-        <p><strong>Location:</strong> 12 km from Puducherry</p>
-        <p><strong>Famous for:</strong> Matrimandir, spiritual community</p>
-        <p><strong>How to reach:</strong> Bus or cab</p>
-      </div>
-    </div>
-
-    <!-- Paradise Beach -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Paradise_Beach_Puducherry.jpg" alt="Paradise Beach">
-      <div class="card-content">
-        <h3>Paradise Beach</h3>
-        <p><strong>Location:</strong> Chunnambar</p>
-        <p><strong>Famous for:</strong> Golden sand, boat rides</p>
-        <p><strong>How to reach:</strong> Ferry from Chunnambar Boat House</p>
-      </div>
-    </div>
-
-    <!-- Sri Aurobindo Ashram -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Sri_Aurobindo_Ashram_Puducherry.jpg" alt="Sri Aurobindo Ashram">
-      <div class="card-content">
-        <h3>Sri Aurobindo Ashram</h3>
-        <p><strong>Location:</strong> White Town</p>
-        <p><strong>Famous for:</strong> Meditation, peace</p>
-        <p><strong>How to reach:</strong> Easily walkable in French Quarter</p>
-      </div>
-    </div>
-
-    <!-- French War Memorial -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/French_War_Memorial_Puducherry.jpg" alt="French War Memorial">
-      <div class="card-content">
-        <h3>French War Memorial</h3>
-        <p><strong>Location:</strong> Goubert Avenue</p>
-        <p><strong>Famous for:</strong> Tribute to soldiers of WWI</p>
-        <p><strong>How to reach:</strong> 10-minute walk from Promenade</p>
-      </div>
-    </div>
-
-    <!-- Serenity Beach -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Serenity_Beach_Puducherry.jpg" alt="Serenity Beach">
-      <div class="card-content">
-        <h3>Serenity Beach</h3>
-        <p><strong>Location:</strong> East Coast Road (ECR)</p>
-        <p><strong>Famous for:</strong> Surfing, quiet sunsets</p>
-        <p><strong>How to reach:</strong> 10 km from city center</p>
-      </div>
-    </div>
-
-    <!-- Botanical Garden -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Botanical_Garden_Pondicherry.jpg" alt="Botanical Garden">
-      <div class="card-content">
-        <h3>Botanical Garden</h3>
-        <p><strong>Location:</strong> Near Puducherry Railway Station</p>
-        <p><strong>Famous for:</strong> French layout, rare species</p>
-        <p><strong>How to reach:</strong> Walkable from bus stand</p>
-      </div>
-    </div>
-
-    <!-- Manakula Vinayagar Temple -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Manakula_Vinayagar_Temple_Puducherry.jpg" alt="Manakula Vinayagar Temple">
-      <div class="card-content">
-        <h3>Manakula Vinayagar Temple</h3>
-        <p><strong>Location:</strong> Near Ashram</p>
-        <p><strong>Famous for:</strong> Lord Ganesha, golden chariot</p>
-        <p><strong>How to reach:</strong> Walking distance from French Colony</p>
-      </div>
-    </div>
-
-    <!-- Puducherry Museum -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Puducherry_Museum.jpg" alt="Puducherry Museum">
-      <div class="card-content">
-        <h3>Puducherry Museum</h3>
-        <p><strong>Location:</strong> St Louis Street</p>
-        <p><strong>Famous for:</strong> Colonial artifacts, sculptures</p>
-        <p><strong>How to reach:</strong> Close to Bharathi Park</p>
-      </div>
-    </div>
-
-    <!-- Bharathi Park -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Bharathi_Park_Puducherry.jpg" alt="Bharathi Park">
-      <div class="card-content">
-        <h3>Bharathi Park</h3>
-        <p><strong>Location:</strong> White Town</p>
-        <p><strong>Famous for:</strong> Aayi Mandapam monument, relaxation</p>
-        <p><strong>How to reach:</strong> Central location, walkable</p>
-      </div>
-    </div>
-
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement top">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="4877919940"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Puducherry</h1>
+  <img 
+    src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=900&q=80" 
+    alt="Beautiful view of Puducherry beach"
+    loading="lazy"
+    width="900"
+    height="600"
+  />
+
+  <h2>Brief History</h2>
+  <p>Puducherry was a former French colonial territory known for its serene French Quarter, spiritual hub at Auroville, and scenic beaches. It holds a unique blend of Franco-Tamil culture.</p>
+
+  <h2>Major Places to Visit</h2>
+  <ul class="places-list">
+    <li>White Town Promenade
+      <p class="place-details">
+        <strong>Why visit:</strong> French Colonial architecture, tasty cafes and a scenic walkway.<br/>
+        <strong>How to reach:</strong> Nearest airport: Puducherry (PNY), 10 km; from Chennai Airport ~150 km by road; Rail: Villupuram, 35 km.
+      </p>
+      <img src="https://images.unsplash.com/photo-1582235736221-b67a21181965?auto=format&fit=crop&w=800&q=80" alt="White Town Puducherry" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Auroville
+      <p class="place-details">
+        <strong>Why visit:</strong> International spiritual community with unique architecture and communal living.<br/>
+        <strong>How to reach:</strong> Road from Puducherry town, about 12 km.
+      </p>
+      <img src="https://images.unsplash.com/photo-1543448585-932927f26199?auto=format&fit=crop&w=800&q=80" alt="Auroville Matrimandir" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Paradise and Serenity Beaches
+      <p class="place-details">
+        <strong>Why visit:</strong> Relaxing clean beaches less crowded than other coastal areas.<br/>
+        <strong>How to reach:</strong> Local buses and taxis easily accessible from Puducherry.
+      </p>
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Puducherry Beach" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Arikamedu
+      <p class="place-details">
+        <strong>Why visit:</strong> Ancient Roman trade site with archaeological ruins.<br/>
+        <strong>How to reach:</strong> By road approx 7 km from Puducherry town.
+      </p>
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Puducherry cuisine combines Tamil and French influences — try Meen Kuzhambu (spicy fish curry), Creole seafood, and delicious French-style bakeries and pastries.</p>
+  <img src="https://images.unsplash.com/photo-1590080877777-eb1f091215a4?auto=format&fit=crop&w=900&q=80" alt="Traditional foods of Puducherry" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="4877919940"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> | 
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
