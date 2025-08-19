@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Explore Destinations - Modern Animation Style</title>
+  <title>Explore India - All States & Union Territories</title>
   <style>
     /* Reset */
     * {
@@ -13,15 +13,13 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     html, body {
-      height: 100%;
+      min-height: 100vh;
       background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
       background-size: cover;
       color: #c7e0ff;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
       scroll-behavior: smooth;
-      overscroll-behavior: contain;
       background-blend-mode: lighten;
       background-color: #cae4ff;
     }
@@ -87,16 +85,13 @@
     }
 
     main {
-      max-width: 1150px;
+      max-width: 1200px;
       margin: 0 auto 4rem;
       padding: 1rem 2rem 3rem;
       background: rgba(255, 255, 255, 0.18);
       border-radius: 22px;
       box-shadow: 0 0 42px rgba(58, 141, 255, 0.65);
       backdrop-filter: saturate(180%) blur(10px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       color: #1662ff;
       min-height: 70vh;
       position: relative;
@@ -104,13 +99,13 @@
 
     #search-container {
       width: 100%;
-      max-width: 450px;
-      margin-bottom: 2.2rem;
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
       position: relative;
     }
     #search {
       width: 100%;
-      padding: 0.85rem 1.3rem;
+      padding: 0.9rem 1.5rem;
       font-size: 1.25rem;
       border-radius: 40px;
       border: none;
@@ -130,7 +125,6 @@
       background-color: white;
       font-style: normal;
     }
-
     #autocomplete-list {
       position: absolute;
       width: 100%;
@@ -158,33 +152,31 @@
       color: #fff;
     }
 
-    /* Cards container with fade & slide animation */
     ul#destination-list {
       width: 100%;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.4rem;
       padding: 0;
       list-style: none;
       position: relative;
-      min-height: 430px;
+      min-height: 480px;
     }
     ul#destination-list li {
       background: linear-gradient(135deg, rgba(255 255 255 / 0.12), rgba(255 255 255 / 0.02));
       border-radius: 24px;
       box-shadow:
-        0 6px 22px rgba(58, 141, 255, 0.75),
+        0 6px 26px rgba(58, 141, 255, 0.75),
         inset 0 0 28px rgba(255, 255, 255, 0.06);
-      padding: 1rem 1.2rem 2rem;
+      padding: 1.5rem 2rem 2.5rem;
       color: #275fca;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
+      align-items: start;
+      text-align: left;
       user-select: none;
       cursor: default;
       overflow: hidden;
-      min-height: 400px;
       backdrop-filter: saturate(150%) blur(6px);
       opacity: 0;
       transform: translateY(40px);
@@ -192,52 +184,70 @@
       animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
       animation-name: fadeSlideUp;
       will-change: transform, opacity;
+      position: relative;
+      transition: box-shadow 0.3s ease;
     }
     ul#destination-list li:hover,
     ul#destination-list li:focus-within {
       transform: translateY(-10px) scale(1.05);
-      box-shadow: 0 20px 48px rgba(58, 141, 255, 0.9);
+      box-shadow: 0 22px 50px rgba(58, 141, 255, 0.9);
       outline: none;
       z-index: 11;
     }
-    ul#destination-list li:nth-child(1) { animation-delay: 0.15s;}
-    ul#destination-list li:nth-child(2) { animation-delay: 0.3s;}
-    ul#destination-list li:nth-child(3) { animation-delay: 0.45s;}
-    ul#destination-list li:nth-child(4) { animation-delay: 0.6s;}
-    ul#destination-list li:nth-child(5) { animation-delay: 0.75s;}
-    ul#destination-list li:nth-child(6) { animation-delay: 0.9s;}
-    ul#destination-list li:nth-child(7) { animation-delay: 1.05s;}
-    ul#destination-list li:nth-child(8) { animation-delay: 1.2s;}
-    ul#destination-list li:nth-child(9) { animation-delay: 1.35s;}
-    ul#destination-list li:nth-child(10) { animation-delay: 1.5s;}
-
+    ul#destination-list li:nth-child(1) { animation-delay: 0.12s;}
+    ul#destination-list li:nth-child(2) { animation-delay: 0.24s;}
+    ul#destination-list li:nth-child(3) { animation-delay: 0.36s;}
+    ul#destination-list li:nth-child(4) { animation-delay: 0.48s;}
+    ul#destination-list li:nth-child(5) { animation-delay: 0.6s;}
+    ul#destination-list li:nth-child(6) { animation-delay: 0.72s;}
+    ul#destination-list li:nth-child(7) { animation-delay: 0.84s;}
+    ul#destination-list li:nth-child(8) { animation-delay: 0.96s;}
+    ul#destination-list li:nth-child(9) { animation-delay: 1.08s;}
+    ul#destination-list li:nth-child(10) { animation-delay: 1.2s;}
+    ul#destination-list li:nth-child(11) { animation-delay: 1.32s;}
+    ul#destination-list li:nth-child(12) { animation-delay: 1.44s;}
+    ul#destination-list li:nth-child(13) { animation-delay: 1.56s;}
+    ul#destination-list li:nth-child(14) { animation-delay: 1.68s;}
+    ul#destination-list li:nth-child(15) { animation-delay: 1.8s;}
     ul#destination-list li h3 {
-      font-size: 1.55rem;
+      font-size: 1.5rem;
       margin-bottom: 0.5rem;
-      text-shadow: 0 0 7px #5d8effcc;
+      color: #1a2a78;
+      text-shadow: 0 0 6px #5d8effcc;
     }
     ul#destination-list li p {
-      font-size: 1.05rem;
+      font-size: 1rem;
       line-height: 1.5;
-      padding: 0 1rem;
-      color: #4a6bbe;
-      text-shadow: 0 0 5px #b0cdfdcc;
-      flex-grow: 1;
+      color: #183a8dbb;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 4px #b0cdfdcc;
     }
-    ul#destination-list li img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 18px;
-      box-shadow: 0 0 32px #6cb1ffbb;
-      margin-bottom: 1.2rem;
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-      filter: drop-shadow(0 0 8px rgba(58, 141, 255, 0.9));
+    ul#destination-list li ul.places {
+      list-style: disc inside;
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+      color: #164787cc;
     }
-    ul#destination-list li:hover img {
-      transform: scale(1.07) rotate(1deg);
-      box-shadow: 0 0 70px #6cb1ffdd;
-      filter: drop-shadow(0 0 15px rgba(58, 141, 255, 1));
+    ul#destination-list li ul.places li {
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+    ul#destination-list li strong {
+      color: #174a93;
+      font-weight: 800;
+    }
+    ul#destination-list li a.state-link {
+      text-decoration: none;
+      color: #2a55ff;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+    ul#destination-list li a.state-link:hover,
+    ul#destination-list li a.state-link:focus {
+      color: #72bbff;
+      outline: none;
+      text-decoration: underline;
+      cursor: pointer;
     }
 
     footer {
@@ -254,6 +264,7 @@
       border-radius: 18px 18px 0 0;
     }
 
+    /* Animations */
     @keyframes fadeInSlideDown {
       0% { opacity: 0; transform: translateY(-25px);}
       100% { opacity: 1; transform: translateY(0);}
@@ -263,32 +274,17 @@
       100% { opacity: 1; transform: translateY(0);}
     }
 
-    /* Responsive adjustments */
-    @media (max-width: 600px) {
-      nav {
-        gap: 1rem;
-        font-size: 0.9rem;
-        padding: 0.8rem 1rem;
-      }
-      main {
-        padding: 1rem 1.2rem 2rem;
-        min-height: 60vh;
-      }
-      header {
-        font-size: 2.4rem;
-      }
+    /* Responsive */
+    @media (max-width: 768px) {
       ul#destination-list {
         grid-template-columns: 1fr;
-        gap: 1.8rem;
+        gap: 2rem;
       }
       ul#destination-list li {
-        min-height: 370px;
+        min-height: auto;
       }
-      ul#destination-list li img {
-        height: 140px;
-      }
-      #search {
-        font-size: 1.05rem;
+      ul#destination-list li ul.places li {
+        font-size: 0.95rem;
       }
     }
   </style>
@@ -307,16 +303,16 @@
   <a href="games.html">Games</a>
 </nav>
 
-<header>Discover Epic Destinations</header>
+<header>Explore India's States & Union Territories</header>
 
 <main>
   <div id="search-container">
-    <input type="text" id="search" placeholder="Search destinations..." aria-label="Search destinations" autocomplete="off" />
+    <input type="text" id="search" placeholder="Search states or UTs..." aria-label="Search states or UTs" autocomplete="off" />
     <div id="autocomplete-list" role="listbox"></div>
   </div>
 
-  <ul id="destination-list" aria-live="polite" aria-relevant="additions removals" aria-label="List of destinations">
-    <!-- Place cards rendered here -->
+  <ul id="destination-list" aria-live="polite" aria-relevant="additions removals" aria-label="Indian states and union territories">
+    <!-- Populated by JS -->
   </ul>
 </main>
 
@@ -325,126 +321,407 @@
 </footer>
 
 <script>
-  (() => {
-    const destinations = [
-      {
-        name: "Leh-Ladakh, Jammu & Kashmir",
-        description: "Majestic mountain views and rich Buddhist culture.",
-        img: "https://images.unsplash.com/photo-1582395761536-7d7e4a092b08?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        name: "Valley of Flowers, Uttarakhand",
-        description: "UNESCO World Heritage site full of vibrant alpine flora.",
-        img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        name: "Munnar, Kerala",
-        description: "Lush tea gardens and refreshing mountain air.",
-        img: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        name: "Coorg, Karnataka",
-        description: "Coffee plantations, waterfalls and scenic hills.",
-        img: "https://images.unsplash.com/photo-1552072095-be1df17c13bb?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        name: "Spiti Valley, Himachal Pradesh",
-        description: "Remote, high-altitude desert with ancient monasteries.",
-        img: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        name: "Darjeeling, West Bengal",
-        description: "Famous for tea, panoramic views of Kanchenjunga & toy train.",
-        img: "https://images.unsplash.com/photo-1506748686214-fb9f1f9d1b31?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        name: "Sikkim",
-        description: "A Himalayan jewel with diverse culture and serene landscapes.",
-        img: "https://images.unsplash.com/photo-1549887535-468fa9ade9f9?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        name: "Nainital, Uttarakhand",
-        description: "Charming hill station cradling a beautiful lake.",
-        img: "https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        name: "Swiss Alps Valley",
-        description: "Breathtaking views of snowy peaks and serene valleys.",
-        img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        name: "Himalayan Mountain Range",
-        description: "Explore majestic Himalayan peaks and vibrant cultures.",
-        img: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=600&q=80"
-      }
-    ];
+(() => {
+  const statesAndUTs = [
+    // Andhra Pradesh
+    {
+      name: "Andhra Pradesh",
+      brief: "Known as the “Rice Bowl of India,” Andhra Pradesh has a history tied to the Satavahanas, Eastern Chalukyas, and Vijayanagara Empire. Amaravati was an ancient Buddhist center blending Dravidian and Telugu traditions.",
+      places: [
+        { name: "Tirupati & Tirumala", desc: "World-famous Sri Venkateswara Temple, one of the richest pilgrimages." },
+        { name: "Vishakhapatnam (Vizag)", desc: "Beaches, Kailasagiri Hills, Araku Valley, and Submarine Museum." },
+        { name: "Amaravati", desc: "Historic Buddhist ruins and new capital." },
+        { name: "Lepakshi", desc: "Veerabhadra Temple, murals, giant Nandi statue." }
+      ],
+      food: "Gongura pachadi, Royyala iguru, Kodi vepudu, Pulihora; sweets like Pootharekulu, Bobbatlu.",
+      image: "https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=640&q=80",
+      link: "andhra-pradesh.html"
+    },
+    // Arunachal Pradesh
+    {
+      name: "Arunachal Pradesh",
+      brief: "Former NEFA; statehood in 1987 with diverse tribes and traditions including Buddhism and animism.",
+      places: [
+        { name: "Tawang", desc: "Largest monastery, accessible via Tezpur Airport and road." },
+        { name: "Ziro Valley", desc: "Known for music festivals and Apatani culture." }
+      ],
+      food: "Thukpa, momos, gyapa khazi, apong (rice beer), bamboo shoot pickle.",
+      image: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=640&q=80",
+      link: "arunachal-pradesh.html"
+    },
+    // Assam
+    {
+      name: "Assam",
+      brief: "Rich history under Ahom dynasty; tea gardens, silk production, and wetlands.",
+      places: [
+        { name: "Kaziranga NP", desc: "World heritage site for one-horned rhinos." },
+        { name: "Majuli", desc: "Largest river island with Vaishnavite culture." }
+      ],
+      food: "Khar, masor tenga, pitha, duck curry, Muga silk production.",
+      image: "https://images.unsplash.com/photo-1558981403-c94feb28b3fb?auto=format&fit=crop&w=640&q=80",
+      link: "assam.html"
+    },
+    // Bihar
+    {
+      name: "Bihar",
+      brief: "Ancient Magadha; Maurya/Gupta dynasties; Buddhist/Jain sites.",
+      places: [
+        { name: "Bodh Gaya", desc: "Site of Buddha's enlightenment with Mahabodhi Temple." },
+        { name: "Nalanda & Rajgir", desc: "Ancient university and Buddhist sites." }
+      ],
+      food: "Litti-chokha, sattu paratha, thekua, malpua.",
+      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=640&q=80",
+      link: "bihar.html"
+    },
+    // Chhattisgarh
+    {
+      name: "Chhattisgarh",
+      brief: "Dense forests and tribal culture; ancient Sirpur ruins.",
+      places: [
+        { name: "Chitrakote & Tirathgarh Falls", desc: "Bastar area's waterfalls." },
+        { name: "Kanger Valley NP", desc: "National park with caves and waterfalls." }
+      ],
+      food: "Chila, faraa, bafauri, aamat.",
+      image: "https://images.unsplash.com/photo-1549366029-013bc3f74a50?auto=format&fit=crop&w=640&q=80",
+      link: "chhattisgarh.html"
+    },
+    // Goa
+    {
+      name: "Goa",
+      brief: "Portuguese history, beaches and Latin quarter culture.",
+      places: [
+        { name: "Old Goa", desc: "Basilica of Bom Jesus and heritage churches." },
+        { name: "North beaches", desc: "Popular beaches like Baga and Anjuna." }
+      ],
+      food: "Goan fish curry, pork vindaloo, bebinca.",
+      image: "https://images.unsplash.com/photo-1506748686214-fb9f1f9d1b31?auto=format&fit=crop&w=640&q=80",
+      link: "goa.html"
+    },
+    // Gujarat
+    {
+      name: "Gujarat",
+      brief: "Harappan civilization, Solanki era, Rann of Kutch.",
+      places: [
+        { name: "Gir NP", desc: "Home of Asiatic lions." },
+        { name: "Somnath", desc: "The famous Somnath temple." }
+      ],
+      food: "Undhiyu, khaman, fafda-jalebi.",
+      image: "https://images.unsplash.com/photo-1518481615455-3d38877dd582?auto=format&fit=crop&w=640&q=80",
+      link: "gujarat.html"
+    },
+    // Haryana
+    {
+      name: "Haryana",
+      brief: "Kurukshetra heritage and agro-industrial centers.",
+      places: [
+        { name: "Kurukshetra", desc: "Brahma Sarovar, historic battlefield." },
+        { name: "Sultanpur NP", desc: "Bird sanctuary near Gurugram." }
+      ],
+      food: "Bajra roti, kachri chutney, kadhi.",
+      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=640&q=80",
+      link: "haryana.html"
+    },
+    // Himachal Pradesh
+    {
+      name: "Himachal Pradesh",
+      brief: "Hill states unified with Tibetan culture in Dharamshala.",
+      places: [
+        { name: "Shimla", desc: "Famous hill station with toy train." },
+        { name: "Manali", desc: "Mountain resort and Rohtang Pass." }
+      ],
+      food: "Dham thali, siddu, chha gosht.",
+      image: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=640&q=80",
+      link: "himachal-pradesh.html"
+    },
+    // Add remaining states and UTs similarly with name, brief, places, food, image, and link...
 
-    const listElm = document.getElementById('destination-list');
-    const searchInput = document.getElementById('search');
-    const autocompleteList = document.getElementById('autocomplete-list');
-
-    // Create a destination card element with animation
-    function createDestinationCard(dest, index) {
-      const li = document.createElement('li');
-      li.tabIndex = 0;
-      li.style.animationDelay = `${0.15 * index + 0.2}s`; // stagger fade-slide animation
-      li.innerHTML = `
-        <img loading="lazy" src="${dest.img}" alt="Image of ${dest.name}" />
-        <h3>${dest.name}</h3>
-        <p>${dest.description}</p>
-      `;
-      return li;
+    // For brevity, here are example placeholders for remaining states and UTs without detailed text:
+    // You can expand these similarly with actual details for each state.
+    {
+      name: "Jammu & Kashmir",
+      brief: "Princely state acceded 1947; scenic valleys and Mughal gardens.",
+      places: [{name:"Srinagar",desc:"Dal Lake and Mughal Gardens."}],
+      food: "Wazwan, pashmina, saffron.",
+      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=640&q=80",
+      link: "jammu-kashmir.html"
+    },
+    {
+      name: "Karnataka",
+      brief: "Chalukya and Vijayanagara empires; tech hub Bengaluru.",
+      places: [{name:"Hampi",desc:"Ancient ruins."}],
+      food: "Bisi bele bath, Mysore pak.",
+      image: "https://images.unsplash.com/photo-1552072095-be1df17c13bb?auto=format&fit=crop&w=640&q=80",
+      link: "karnataka.html"
+    },
+    {
+      name: "Kerala",
+      brief: "Land of spices and Ayurveda; Chera kingdom legacy.",
+      places: [{name:"Munnar",desc:"Tea gardens and hills."}],
+      food: "Sadya, appam, karimeen pollichathu.",
+      image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=640&q=80",
+      link: "kerala.html"
+    },
+    {
+      name: "Madhya Pradesh",
+      brief: "Heart of India; ancient forts and wildlife.",
+      places: [{name:"Khajuraho",desc:"Temples with erotic carvings."}],
+      food: "Poha-jalebi, dal bafla.",
+      image: "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=640&q=80",
+      link: "madhya-pradesh.html"
+    },
+    {
+      name: "Maharashtra",
+      brief: "Maratha empire and Bollywood capital Mumbai.",
+      places: [{name:"Mumbai",desc:"Gateway of India and beaches."}],
+      food: "Vada pav, pav bhaji.",
+      image: "https://images.unsplash.com/photo-1565036027310-40cc0f2c7ccc?auto=format&fit=crop&w=640&q=80",
+      link: "maharashtra.html"
+    },
+    {
+      name: "Manipur",
+      brief: "Kingdom of Kangleipak with rich tribal culture.",
+      places: [{name:"Loktak Lake",desc:"Largest freshwater lake in NE India."}],
+      food: "Eromba, singju.",
+      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=640&q=80",
+      link: "manipur.html"
+    },
+    {
+      name: "Meghalaya",
+      brief: "One of the wettest places on earth; living root bridges.",
+      places: [{name:"Cherrapunji",desc:"Root bridges and heavy rainfall."}],
+      food: "Jadoh, doh neiiong.",
+      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=640&q=80",
+      link: "meghalaya.html"
+    },
+    {
+      name: "Mizoram",
+      brief: "Lush hills and predominantly Mizo Christian culture.",
+      places: [{name:"Aizawl",desc:"Capital city with scenic views."}],
+      food: "Bai, vawksa rep.",
+      image: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=640&q=80",
+      link: "mizoram.html"
+    },
+    {
+      name: "Nagaland",
+      brief: "Home to 16+ Naga tribes; famous Hornbill Festival.",
+      places: [{name:"Kohima",desc:"Capital city with historic sites."}],
+      food: "Smoked pork with bamboo shoot.",
+      image: "https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=640&q=80",
+      link: "nagaland.html"
+    },
+    {
+      name: "Odisha",
+      brief: "Ancient Kalinga region with famous temples and tribal culture.",
+      places: [{name:"Puri",desc:"Jagannath Temple and beaches."}],
+      food: "Pakhala bhata, dalma.",
+      image: "https://images.unsplash.com/photo-1506748686214-fb9f1f9d1b31?auto=format&fit=crop&w=640&q=80",
+      link: "odisha.html"
+    },
+    {
+      name: "Punjab",
+      brief: "Land of five rivers; Sikh heritage and green revolution.",
+      places: [{name:"Amritsar",desc:"Golden Temple and Wagah border."}],
+      food: "Sarson-makki roti, Amritsari kulcha.",
+      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=640&q=80",
+      link: "punjab.html"
+    },
+    {
+      name: "Rajasthan",
+      brief: "Land of kings; forts and desert culture.",
+      places: [{name:"Jaipur",desc:"Pink City and Amber Fort."}],
+      food: "Dal baati churma, ghevar.",
+      image: "https://images.unsplash.com/photo-1565036027310-40cc0f2c7ccc?auto=format&fit=crop&w=640&q=80",
+      link: "rajasthan.html"
+    },
+    {
+      name: "Sikkim",
+      brief: "Himalayan state with Buddhist influence and Khangchendzonga.",
+      places: [{name:"Gangtok",desc:"Capital city, Tsomgo Lake."}],
+      food: "Phagshapa, thukpa.",
+      image: "https://images.unsplash.com/photo-1549887535-468fa9ade9f9?auto=format&fit=crop&w=640&q=80",
+      link: "sikkim.html"
+    },
+    {
+      name: "Tamil Nadu",
+      brief: "Dravidian history; Chola temples and cultural heritage.",
+      places: [{name:"Madurai",desc:"Meenakshi Temple."}],
+      food: "Idli, dosa, filter coffee.",
+      image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=640&q=80",
+      link: "tamil-nadu.html"
+    },
+    {
+      name: "Telangana",
+      brief: "New state (2014); Hyderabad and Kakatiya heritage.",
+      places: [{name:"Hyderabad",desc:"Charminar and Golconda Fort."}],
+      food: "Hyderabadi biryani, haleem.",
+      image: "https://images.unsplash.com/photo-1506748686214-fb9f1f9d1b31?auto=format&fit=crop&w=640&q=80",
+      link: "telangana.html"
+    },
+    {
+      name: "Tripura",
+      brief: "Manikya dynasty heritage; palaces and hills.",
+      places: [{name:"Agartala",desc:"Ujjayanta Palace."}],
+      food: "Mui borok, wahan mosdeng.",
+      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=640&q=80",
+      link: "tripura.html"
+    },
+    {
+      name: "Uttar Pradesh",
+      brief: "Ganga heartland; Mughal monuments and religious sites.",
+      places: [{name:"Varanasi",desc:"One of the oldest living cities and spiritual hub."}],
+      food: "Awadhi biryani, kebabs.",
+      image: "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=640&q=80",
+      link: "uttar-pradesh.html"
+    },
+    {
+      name: "Uttarakhand",
+      brief: "Char Dham pilgrimage sites; Garhwal & Kumaon hills.",
+      places: [{name:"Haridwar",desc:"Gateway to Himalayas and spiritual center."}],
+      food: "Kafuli, aloo gutka.",
+      image: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=640&q=80",
+      link: "uttarakhand.html"
+    },
+    {
+      name: "West Bengal",
+      brief: "British colonial heritage; cultural renaissance and cuisine.",
+      places: [{name:"Kolkata",desc:"Victoria Memorial, Howrah Bridge."}],
+      food: "Rosogolla, macher jhol.",
+      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=640&q=80",
+      link: "west-bengal.html"
+    },
+    // Union Territories
+    {
+      name: "Andaman & Nicobar Islands",
+      brief: "Pristine islands with tropical forests and coral reefs.",
+      places: [{name:"Port Blair",desc:"Cellular Jail and Ross Island."}],
+      food: "Seafood, coconut based dishes.",
+      image: "https://images.unsplash.com/photo-1506748686214-fb9f1f9d1b31?auto=format&fit=crop&w=640&q=80",
+      link: "andaman-nicobar.html"
+    },
+    {
+      name: "Chandigarh",
+      brief: "Planned city by Le Corbusier; clean and green.",
+      places: [{name:"Rock Garden",desc:"Sculpture garden from recycled materials."}],
+      food: "Tandoori dishes, local street foods.",
+      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=640&q=80",
+      link: "chandigarh.html"
+    },
+    {
+      name: "Dadra & Nagar Haveli and Daman & Diu",
+      brief: "Portuguese legacy islands and coastal towns.",
+      places: [{name:"Diu Fort",desc:"Historic Portuguese fort."}],
+      food: "Seafood curries, Parsee-influenced dishes.",
+      image: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=640&q=80",
+      link: "dadra-nagar-haveli.html"
+    },
+    {
+      name: "Delhi (NCT)",
+      brief: "Capital city with Mughal and colonial heritage.",
+      places: [{name:"Red Fort",desc:"Iconic Mughal fort and UNESCO site."}],
+      food: "Chaat, kebabs, butter chicken.",
+      image: "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=640&q=80",
+      link: "delhi.html"
+    },
+    {
+      name: "Jammu & Kashmir (UT)",
+      brief: "Valleys, Dal lake, and Himalayan mountains.",
+      places: [{name:"Srinagar",desc:"Dal Lake and Mughal Gardens."}],
+      food: "Wazwan, saffron delicacies.",
+      image: "https://images.unsplash.com/photo-1565036027310-40cc0f2c7ccc?auto=format&fit=crop&w=640&q=80",
+      link: "jammu-kashmir-ut.html"
+    },
+    {
+      name: "Ladakh",
+      brief: "High-altitude cold desert with Buddhist monasteries.",
+      places: [{name:"Leh Palace",desc:"Historic palace with stunning views."}],
+      food: "Thukpa, butter tea.",
+      image: "https://images.unsplash.com/photo-1565036027310-40cc0f2c7ccc?auto=format&fit=crop&w=640&q=80",
+      link: "ladakh.html"
+    },
+    {
+      name: "Lakshadweep",
+      brief: "Coral atolls with pristine lagoons and beaches.",
+      places: [{name:"Kavaratti",desc:"Capital island with lagoons."}],
+      food: "Tuna and coconut dishes.",
+      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=640&q=80",
+      link: "lakshadweep.html"
+    },
+    {
+      name: "Puducherry",
+      brief: "French colonial legacy with peaceful beaches.",
+      places: [{name:"White Town",desc:"French architecture and promenade."}],
+      food: "Creole cuisine, seafood.",
+      image: "https://images.unsplash.com/photo-1552072095-be1df17c13bb?auto=format&fit=crop&w=640&q=80",
+      link: "puducherry.html"
     }
+  ];
 
-    // Render list of cards with animation
-    function renderList(items) {
-      listElm.innerHTML = '';
-      if (items.length === 0) {
-        listElm.innerHTML = '<li>No destinations found.</li>';
-        return;
-      }
-      const fragment = document.createDocumentFragment();
-      items.forEach((dest, i) => {
-        fragment.appendChild(createDestinationCard(dest, i));
-      });
-      listElm.appendChild(fragment);
+  const destinationList = document.getElementById('destination-list');
+  const searchInput = document.getElementById('search');
+  const autocompleteList = document.getElementById('autocomplete-list');
+
+  // Create a card element
+  function createCard(state, index) {
+    const li = document.createElement('li');
+    li.tabIndex = 0;
+    li.style.animationDelay = `${0.12 * index + 0.2}s`;
+    li.innerHTML = `
+      <h3><a href="${state.link}" class="state-link" target="_blank" rel="noopener">${state.name}</a></h3>
+      <img loading="lazy" src="${state.image}" alt="Image of ${state.name}" width="320" height="180" style="border-radius:15px; margin-bottom:0.8rem; box-shadow: 0 0 25px rgba(54, 141, 255, 0.6);" />
+      <p><strong>Brief History:</strong> ${state.brief}</p>
+      <p><strong>Major Places to Visit:</strong></p>
+      <ul class="places">
+        ${state.places.map(place => `<li><strong>${place.name}:</strong> ${place.desc}</li>`).join('')}
+      </ul>
+      <p><strong>Local Specialties:</strong> ${state.food}</p>
+    `;
+    return li;
+  }
+
+  function renderList(states) {
+    destinationList.innerHTML = '';
+    if(states.length === 0) {
+      destinationList.innerHTML = '<li>No matches found.</li>';
+      return;
     }
-
-    // Autocomplete search suggestions
-    function autocomplete(value) {
-      autocompleteList.innerHTML = '';
-      if (!value) return;
-      const filtered = destinations.filter(d => d.name.toLowerCase().includes(value.toLowerCase()));
-      filtered.forEach(dest => {
-        const div = document.createElement('div');
-        div.textContent = dest.name;
-        div.setAttribute('role', 'option');
-        div.addEventListener('click', () => {
-          searchInput.value = dest.name;
-          autocompleteList.innerHTML = '';
-          renderList(filtered);
-        });
-        autocompleteList.appendChild(div);
-      });
-    }
-
-    // Search input handling
-    searchInput.addEventListener('input', e => {
-      const val = e.target.value.trim();
-      autocomplete(val);
-      if (!val) renderList(destinations);
+    const fragment = document.createDocumentFragment();
+    states.forEach((state, i) => {
+      fragment.appendChild(createCard(state, i));
     });
+    destinationList.appendChild(fragment);
+  }
 
-    // Close autocomplete on outside click
-    document.addEventListener('click', e => {
-      if (!searchInput.contains(e.target) && !autocompleteList.contains(e.target)) {
+  function autocomplete(value) {
+    autocompleteList.innerHTML = '';
+    if(!value) return;
+    const filtered = statesAndUTs.filter(s => s.name.toLowerCase().includes(value.toLowerCase()));
+    filtered.forEach(state => {
+      const div = document.createElement('div');
+      div.textContent = state.name;
+      div.setAttribute('role', 'option');
+      div.addEventListener('click', () => {
+        searchInput.value = state.name;
         autocompleteList.innerHTML = '';
-      }
+        renderList([state]);
+      });
+      autocompleteList.appendChild(div);
     });
+  }
 
-    // Initial render
-    renderList(destinations);
-  })();
+  searchInput.addEventListener('input', e => {
+    const val = e.target.value.trim();
+    autocomplete(val);
+    if(!val) renderList(statesAndUTs);
+  });
+
+  document.addEventListener('click', e => {
+    if(!searchInput.contains(e.target) && !autocompleteList.contains(e.target)) {
+      autocompleteList.innerHTML = '';
+    }
+  });
+
+  renderList(statesAndUTs);
+})();
 </script>
 
 </body>
