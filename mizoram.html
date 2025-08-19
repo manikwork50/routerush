@@ -2,156 +2,209 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mizoram - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mizoram Tourism | History, Places to Visit & Local Cuisine</title>
+  <meta name="description" content="Explore Mizoram - Known for rolling hills, serene lakes, tribal culture, vibrant festivals, and delectable local cuisine." />
+  <meta name="keywords" content="Mizoram tourism, Dzukou Valley, Aizawl, Palak Lake, Reiek Hills, Mizoram cuisine, tribal culture Mizoram, Mizoram travel guide" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Mizoram Tourism | History, Places to Visit & Local Cuisine" />
+  <meta property="og:description" content="Discover Mizoram’s natural beauty, cultural heritage, and traditional food with detailed travel information." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/mizoram.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1506748686214-4be64a9ae0c3?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/7/7b/Mizoram_collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1506748686214-4be64a9ae0c3?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(3px);
+      color: #0a2540;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.8);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      font-size: 1.05rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    nav a[aria-current="page"] {
+      background-color: #2a4d9c;
+      color: white;
+    }
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #174a93;
+    }
+    h2 {
+      color: #3762cc;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+    }
+    p {
+      margin-bottom: 1.3rem;
+      font-size: 1.1rem;
+    }
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.6rem;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 15px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      margin: 1.2rem 0;
+      display: block;
+      border: 1px solid #cbd9ff;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      color: #3a75ff;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover,
+    footer a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    .ad-container {
+      margin: 1.5rem 0;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- Mizoram Info -->
-  <header class="state-header">
-    <h1>Mizoram</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> Aizawl</p>
-      <p><strong>Population:</strong> ~1.2 million (2023 est.)</p>
-      <p><strong>Official Languages:</strong> Mizo, English, Hindi</p>
-      <p><strong>History:</strong> Mizoram, meaning "land of the Mizos," became a state in 1987. It is known for its vibrant tribal culture, lush green hills, and peaceful cities. The majority of the population belongs to various Mizo tribes, who follow rich cultural traditions, dances, and festivals like Chapchar Kut.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Places in Mizoram -->
-  <section class="places-grid">
-
-    <!-- Aizawl -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Aizawl_City.jpg" alt="Aizawl">
-      <div class="card-content">
-        <h3>Aizawl</h3>
-        <p><strong>Location:</strong> Capital city</p>
-        <p><strong>Famous for:</strong> Hillside city, culture, shopping</p>
-        <p><strong>How to reach:</strong> Lengpui Airport (32 km), taxis and buses available</p>
-      </div>
-    </div>
-
-    <!-- Reiek -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Reiek_Heritage_Village.jpg" alt="Reiek">
-      <div class="card-content">
-        <h3>Reiek</h3>
-        <p><strong>Location:</strong> 30 km from Aizawl</p>
-        <p><strong>Famous for:</strong> Heritage village, trekking, hilltop views</p>
-        <p><strong>How to reach:</strong> Cab from Aizawl</p>
-      </div>
-    </div>
-
-    <!-- Phawngpui (Blue Mountain) -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Phawngpui_Blue_Mountain.jpg" alt="Phawngpui">
-      <div class="card-content">
-        <h3>Phawngpui (Blue Mountain)</h3>
-        <p><strong>Location:</strong> Lawngtlai District</p>
-        <p><strong>Famous for:</strong> Tallest peak, orchids, wildlife</p>
-        <p><strong>How to reach:</strong> 300 km from Aizawl, road trip</p>
-      </div>
-    </div>
-
-    <!-- Vantawng Falls -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/13/Vantawng_Falls.jpg" alt="Vantawng Falls">
-      <div class="card-content">
-        <h3>Vantawng Falls</h3>
-        <p><strong>Location:</strong> Near Thenzawl</p>
-        <p><strong>Famous for:</strong> 229m tall waterfall, scenic beauty</p>
-        <p><strong>How to reach:</strong> 137 km from Aizawl by road</p>
-      </div>
-    </div>
-
-    <!-- Hmuifang -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Hmuifang_Mountain_Mizoram.jpg" alt="Hmuifang">
-      <div class="card-content">
-        <h3>Hmuifang</h3>
-        <p><strong>Location:</strong> 50 km from Aizawl</p>
-        <p><strong>Famous for:</strong> Lush meadows, rock cliffs, adventure</p>
-        <p><strong>How to reach:</strong> Cabs from Aizawl</p>
-      </div>
-    </div>
-
-    <!-- Tam Dil Lake -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Tam_Dil_Lake_Mizoram.jpg" alt="Tam Dil">
-      <div class="card-content">
-        <h3>Tam Dil</h3>
-        <p><strong>Location:</strong> 110 km from Aizawl</p>
-        <p><strong>Famous for:</strong> Peaceful lake, picnic spot</p>
-        <p><strong>How to reach:</strong> By road from Aizawl</p>
-      </div>
-    </div>
-
-    <!-- Lunglei -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Lunglei_City_Mizoram.jpg" alt="Lunglei">
-      <div class="card-content">
-        <h3>Lunglei</h3>
-        <p><strong>Location:</strong> 170 km from Aizawl</p>
-        <p><strong>Famous for:</strong> Scenic town, river views</p>
-        <p><strong>How to reach:</strong> Taxi or bus from Aizawl</p>
-      </div>
-    </div>
-
-    <!-- Durtlang Hills -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Durtlang_Hills_Mizoram.jpg" alt="Durtlang Hills">
-      <div class="card-content">
-        <h3>Durtlang Hills</h3>
-        <p><strong>Location:</strong> Near Aizawl</p>
-        <p><strong>Famous for:</strong> Sunset views, trekking</p>
-        <p><strong>How to reach:</strong> Auto or cab from Aizawl</p>
-      </div>
-    </div>
-
-    <!-- Falkawn Village -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Falkawn_Village.jpg" alt="Falkawn Village">
-      <div class="card-content">
-        <h3>Falkawn Village</h3>
-        <p><strong>Location:</strong> 18 km from Aizawl</p>
-        <p><strong>Famous for:</strong> Traditional Mizo village lifestyle</p>
-        <p><strong>How to reach:</strong> Taxi from Aizawl</p>
-      </div>
-    </div>
-
-    <!-- Solomons Temple -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Solomon%27s_Temple_Aizawl.jpg" alt="Solomon's Temple">
-      <div class="card-content">
-        <h3>Solomon's Temple</h3>
-        <p><strong>Location:</strong> Aizawl</p>
-        <p><strong>Famous for:</strong> Modern architecture, religious site</p>
-        <p><strong>How to reach:</strong> Within Aizawl city</p>
-      </div>
-    </div>
-
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement top">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Mizoram</h1>
+  <img 
+    src="https://images.unsplash.com/photo-1506748686214-4be64a9ae0c3?auto=format&fit=crop&w=900&q=80"
+    alt="Scenic hills in Mizoram" 
+    loading="lazy" 
+    width="900" 
+    height="600" 
+  />
+
+  <h2>Brief History</h2>
+  <p>Mizoram is renowned for its rolling hills, lush green landscapes, vibrant tribal festivals, and unique cultural traditions.</p>
+
+  <h2>Major Places to Visit</h2>
+  <ul class="places-list">
+    <li>Dzukou Valley
+      <p class="place-details">
+        <strong>Why visit:</strong> Beautiful valley known for trekking and seasonal flowers.<br/>
+        <strong>How to reach:</strong> Nearest airport: Dimapur; road access via Kohima.
+      </p>
+    </li>
+    <li>Aizawl
+      <p class="place-details">
+        <strong>Why visit:</strong> Capital city with scenic viewpoints and cultural museums.<br/>
+        <strong>How to reach:</strong> Lengpui Airport, well connected by road.
+      </p>
+    </li>
+    <li>Palak Lake
+      <p class="place-details">
+        <strong>Why visit:</strong> Famous freshwater lake surrounded by hills.<br/>
+        <strong>How to reach:</strong> Accessible via road from Aizawl.
+      </p>
+    </li>
+    <li>Reiek Hills
+      <p class="place-details">
+        <strong>Why visit:</strong> Hill station with panoramic views and tribal villages.<br/>
+        <strong>How to reach:</strong> Near Aizawl city, accessible by road.
+      </p>
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Try traditional Mizoram dishes like Bai (vegetable stew), Vawksa Rep (smoked pork), and local rice beer reflecting the state’s culinary heritage.</p>
+  <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80" alt="Mizoram traditional cuisine" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> | 
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
