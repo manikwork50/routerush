@@ -2,156 +2,213 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rajasthan - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rajasthan Tourism | History, Places to Visit & Local Cuisine</title>
+  <meta name="description" content="Explore Rajasthan - Land of the majestic forts, palaces, Thar desert, colorful culture, and delicious Rajasthani cuisine." />
+  <meta name="keywords" content="Rajasthan tourism, Jaipur, Udaipur, Jodhpur, Thar Desert, Amber Fort, City Palace, Rajasthani cuisine, Rajasthan culture" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Rajasthan Tourism | History, Places to Visit & Local Cuisine" />
+  <meta property="og:description" content="Discover Rajasthan’s royal heritage, desert safaris, historic forts, and traditional food with detailed travel information." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/rajasthan.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/2/24/Rajasthan_Collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(3px);
+      color: #0a2540;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.8);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      font-size: 1.05rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    nav a[aria-current="page"] {
+      background-color: #2a4d9c;
+      color: white;
+    }
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #174a93;
+    }
+    h2 {
+      color: #3762cc;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+    }
+    p {
+      margin-bottom: 1.3rem;
+      font-size: 1.1rem;
+    }
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.6rem;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 15px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      margin: 1.2rem 0;
+      display: block;
+      border: 1px solid #cbd9ff;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      color: #3a75ff;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover,
+    footer a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    .ad-container {
+      margin: 1.5rem 0;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- Rajasthan Info -->
-  <header class="state-header">
-    <h1>Rajasthan</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> Jaipur</p>
-      <p><strong>Population:</strong> ~82 million (2023 est.)</p>
-      <p><strong>Official Language:</strong> Hindi</p>
-      <p><strong>History:</strong> Rajasthan, the "Land of Kings", is renowned for its royal palaces, majestic forts, colorful festivals, desert landscapes, and vibrant heritage. The state has deep Rajputana roots and attracts millions of tourists worldwide.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Tourist Places -->
-  <section class="places-grid">
-
-    <!-- Jaipur -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Hawa_Mahal_2011.jpg" alt="Jaipur">
-      <div class="card-content">
-        <h3>Jaipur</h3>
-        <p><strong>Location:</strong> Jaipur District</p>
-        <p><strong>Famous for:</strong> Hawa Mahal, Amber Fort, City Palace</p>
-        <p><strong>How to reach:</strong> Jaipur Airport & Railway Station</p>
-      </div>
-    </div>
-
-    <!-- Udaipur -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/City_Palace_Udaipur_Panorama.jpg" alt="Udaipur">
-      <div class="card-content">
-        <h3>Udaipur</h3>
-        <p><strong>Location:</strong> Udaipur District</p>
-        <p><strong>Famous for:</strong> Lakes, palaces, and romance</p>
-        <p><strong>How to reach:</strong> Udaipur Airport & Railway Station</p>
-      </div>
-    </div>
-
-    <!-- Jaisalmer -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Jaisalmer_Fort_Rajasthan.jpg" alt="Jaisalmer Fort">
-      <div class="card-content">
-        <h3>Jaisalmer</h3>
-        <p><strong>Location:</strong> Jaisalmer District</p>
-        <p><strong>Famous for:</strong> Golden Fort, desert safari</p>
-        <p><strong>How to reach:</strong> Jaisalmer Railway Station, road from Jodhpur</p>
-      </div>
-    </div>
-
-    <!-- Jodhpur -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Mehrangarh_Fort.jpg" alt="Jodhpur">
-      <div class="card-content">
-        <h3>Jodhpur</h3>
-        <p><strong>Location:</strong> Jodhpur District</p>
-        <p><strong>Famous for:</strong> Mehrangarh Fort, Blue City</p>
-        <p><strong>How to reach:</strong> Jodhpur Airport & Railway Station</p>
-      </div>
-    </div>
-
-    <!-- Mount Abu -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/Mount_Abu_Hills.jpg" alt="Mount Abu">
-      <div class="card-content">
-        <h3>Mount Abu</h3>
-        <p><strong>Location:</strong> Sirohi District</p>
-        <p><strong>Famous for:</strong> Hill station, Dilwara Temples</p>
-        <p><strong>How to reach:</strong> Abu Road Railway Station, road from Udaipur</p>
-      </div>
-    </div>
-
-    <!-- Ranthambore National Park -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Ranthambore_Tiger.jpg" alt="Ranthambore">
-      <div class="card-content">
-        <h3>Ranthambore National Park</h3>
-        <p><strong>Location:</strong> Sawai Madhopur</p>
-        <p><strong>Famous for:</strong> Tigers, wildlife safaris</p>
-        <p><strong>How to reach:</strong> Sawai Madhopur Railway Station</p>
-      </div>
-    </div>
-
-    <!-- Pushkar -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Pushkar_Ghat.jpg" alt="Pushkar Lake">
-      <div class="card-content">
-        <h3>Pushkar</h3>
-        <p><strong>Location:</strong> Ajmer District</p>
-        <p><strong>Famous for:</strong> Brahma Temple, camel fair, ghats</p>
-        <p><strong>How to reach:</strong> Ajmer Railway Station (14 km)</p>
-      </div>
-    </div>
-
-    <!-- Chittorgarh Fort -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Chittorgarh_Fort.jpg" alt="Chittorgarh Fort">
-      <div class="card-content">
-        <h3>Chittorgarh Fort</h3>
-        <p><strong>Location:</strong> Chittorgarh District</p>
-        <p><strong>Famous for:</strong> Largest fort in India, Rajput valor</p>
-        <p><strong>How to reach:</strong> Chittorgarh Railway Station</p>
-      </div>
-    </div>
-
-    <!-- Bikaner -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Junagarh_Fort_Bikaner.jpg" alt="Bikaner">
-      <div class="card-content">
-        <h3>Bikaner</h3>
-        <p><strong>Location:</strong> Bikaner District</p>
-        <p><strong>Famous for:</strong> Junagarh Fort, camel breeding</p>
-        <p><strong>How to reach:</strong> Bikaner Railway Station</p>
-      </div>
-    </div>
-
-    <!-- Ajmer Sharif Dargah -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Ajmer_Sharif_Dargah.jpg" alt="Ajmer Dargah">
-      <div class="card-content">
-        <h3>Ajmer Sharif Dargah</h3>
-        <p><strong>Location:</strong> Ajmer</p>
-        <p><strong>Famous for:</strong> Sufi shrine of Khwaja Moinuddin Chishti</p>
-        <p><strong>How to reach:</strong> Ajmer Railway Station</p>
-      </div>
-    </div>
-
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement top">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Rajasthan</h1>
+  <img 
+    src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80"
+    alt="Amber Fort, Rajasthan"
+    loading="lazy"
+    width="900"
+    height="600"
+  />
+
+  <h2>Brief History</h2>
+  <p>Rajasthan is renowned for its magnificent forts and palaces, the vast Thar desert, vibrant folk traditions, and royal heritage.</p>
+
+  <h2>Major Places to Visit</h2>
+  <ul class="places-list">
+    <li>Amber Fort, Jaipur
+      <p class="place-details">
+        <strong>Why visit:</strong> Majestic hilltop fort with stunning architecture and views.<br/>
+        <strong>How to reach:</strong> Jaipur International Airport; 11 km from Jaipur city center.
+      </p>
+    </li>
+    <li>Udaipur
+      <p class="place-details">
+        <strong>Why visit:</strong> Known as the 'City of Lakes' with royal palaces and lakeside beauty.<br/>
+        <strong>How to reach:</strong> Maharana Pratap Airport; rail and road connectivity.
+      </p>
+    </li>
+    <li>Jodhpur
+      <p class="place-details">
+        <strong>Why visit:</strong> The 'Blue City' with Mehrangarh Fort and vibrant bazaars.<br/>
+        <strong>How to reach:</strong> Jodhpur Airport and rail station.
+      </p>
+    </li>
+    <li>Thar Desert
+      <p class="place-details">
+        <strong>Why visit:</strong> Desert safaris, cultural experiences, and camel rides.<br/>
+        <strong>How to reach:</strong> Accessible from Jaisalmer and other desert towns by road.
+      </p>
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Enjoy traditional dishes like Dal Baati Churma, Gatte ki Sabzi, Laal Maas, and various sweets like Ghewar and Mawa Kachori.</p>
+  <img src="https://images.unsplash.com/photo-1540206395-68808572332f?auto=format&fit=crop&w=900&q=80" alt="Rajasthani cuisine" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" 
+         data-ad-client="ca-pub-8124807245840632" 
+         data-ad-slot="4877919940" 
+         data-ad-format="auto" 
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> | 
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
