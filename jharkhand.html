@@ -2,156 +2,220 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jharkhand - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jharkhand Tourism | History, Places to Visit & Local Cuisine</title>
+  <meta name="description" content="Explore Jharkhand – Known for rich mineral resources, tribal culture, waterfalls like Hundru and Dassam, Betla National Park, and traditional cuisine." />
+  <meta name="keywords" content="Jharkhand tourism, Betla National Park, Hundru Falls, Dassam Falls, tribal culture Jharkhand, Jharkhand cuisine, Jharkhand travel guide" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Jharkhand Tourism | History, Places to Visit & Local Cuisine" />
+  <meta property="og:description" content="Discover Jharkhand’s natural beauty, waterfalls, national parks, and tribal heritage with travel and food guides." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/jharkhand.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/6/67/Jharkhand_Collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(3px);
+      color: #0a2540;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.8);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      font-size: 1.05rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    nav a[aria-current="page"] {
+      background-color: #2a4d9c;
+      color: white;
+    }
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #174a93;
+    }
+    h2 {
+      color: #3762cc;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+    }
+    p {
+      margin-bottom: 1.3rem;
+      font-size: 1.1rem;
+    }
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.6rem;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 15px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      margin: 1.2rem 0;
+      display: block;
+      border: 1px solid #cbd9ff;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      color: #3a75ff;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover,
+    footer a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    .ad-container {
+      margin: 1.5rem 0;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- State Info -->
-  <header class="state-header">
-    <h1>Jharkhand</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> Ranchi</p>
-      <p><strong>Population:</strong> ~39 million (2023 est.)</p>
-      <p><strong>Official Language:</strong> Hindi</p>
-      <p><strong>History:</strong> Jharkhand was carved out of Bihar in 2000. Known for its forests, waterfalls, rich tribal culture, and mineral wealth, it is a blend of natural beauty and heritage.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Places -->
-  <section class="places-grid">
-
-    <!-- Hundru Falls -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Hundru_Falls_Ranchi.jpg" alt="Hundru Falls">
-      <div class="card-content">
-        <h3>Hundru Falls</h3>
-        <p><strong>Location:</strong> Ranchi District</p>
-        <p><strong>Famous for:</strong> One of the highest waterfalls in Jharkhand</p>
-        <p><strong>How to reach:</strong> 45 km from Ranchi; accessible by road</p>
-      </div>
-    </div>
-
-    <!-- Dassam Falls -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Dassam_Falls.jpg" alt="Dassam Falls">
-      <div class="card-content">
-        <h3>Dassam Falls</h3>
-        <p><strong>Location:</strong> Near Taimara village</p>
-        <p><strong>Famous for:</strong> 10-stream waterfall, scenic spot</p>
-        <p><strong>How to reach:</strong> 34 km from Ranchi on NH-33</p>
-      </div>
-    </div>
-
-    <!-- Netarhat -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Netarhat_Sunrise_Point.jpg" alt="Netarhat">
-      <div class="card-content">
-        <h3>Netarhat</h3>
-        <p><strong>Location:</strong> Latehar District</p>
-        <p><strong>Famous for:</strong> Hill station, sunrise & sunset views</p>
-        <p><strong>How to reach:</strong> 156 km from Ranchi by road</p>
-      </div>
-    </div>
-
-    <!-- Betla National Park -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Betla_National_Park.jpg" alt="Betla National Park">
-      <div class="card-content">
-        <h3>Betla National Park</h3>
-        <p><strong>Location:</strong> Palamu District</p>
-        <p><strong>Famous for:</strong> Wildlife safari, elephants, tigers</p>
-        <p><strong>How to reach:</strong> Daltonganj (25 km); connected by train/road</p>
-      </div>
-    </div>
-
-    <!-- Patratu Valley -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Patratu_Valley.jpg" alt="Patratu Valley">
-      <div class="card-content">
-        <h3>Patratu Valley</h3>
-        <p><strong>Location:</strong> Ramgarh District</p>
-        <p><strong>Famous for:</strong> Scenic road curves and lake</p>
-        <p><strong>How to reach:</strong> 40 km from Ranchi via road</p>
-      </div>
-    </div>
-
-    <!-- Rajrappa Temple -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Rajrappa_Temple_Jharkhand.jpg" alt="Rajrappa Temple">
-      <div class="card-content">
-        <h3>Rajrappa Temple</h3>
-        <p><strong>Location:</strong> Ramgarh</p>
-        <p><strong>Famous for:</strong> Chhinnamasta Temple and river confluence</p>
-        <p><strong>How to reach:</strong> 65 km from Ranchi; buses/taxis available</p>
-      </div>
-    </div>
-
-    <!-- Jagannath Temple, Ranchi -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Jagannath_Temple_Ranchi.jpg" alt="Jagannath Temple Ranchi">
-      <div class="card-content">
-        <h3>Jagannath Temple</h3>
-        <p><strong>Location:</strong> Ranchi</p>
-        <p><strong>Famous for:</strong> 17th-century temple similar to Puri</p>
-        <p><strong>How to reach:</strong> 10 km from Ranchi city center</p>
-      </div>
-    </div>
-
-    <!-- McCluskieganj -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/McCluskieganj_Ranchi.jpg" alt="McCluskieganj">
-      <div class="card-content">
-        <h3>McCluskieganj</h3>
-        <p><strong>Location:</strong> Ranchi District</p>
-        <p><strong>Famous for:</strong> Colonial-era Anglo-Indian town</p>
-        <p><strong>How to reach:</strong> 65 km from Ranchi by road</p>
-      </div>
-    </div>
-
-    <!-- Deoghar (Baidyanath Dham) -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Baidyanath_Dham.jpg" alt="Baidyanath Dham">
-      <div class="card-content">
-        <h3>Baidyanath Dham</h3>
-        <p><strong>Location:</strong> Deoghar</p>
-        <p><strong>Famous for:</strong> One of the 12 Jyotirlingas of Lord Shiva</p>
-        <p><strong>How to reach:</strong> Jasidih Railway Station (7 km)</p>
-      </div>
-    </div>
-
-    <!-- Parasnath Hills -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Parasnath_Hill.jpg" alt="Parasnath">
-      <div class="card-content">
-        <h3>Parasnath Hills</h3>
-        <p><strong>Location:</strong> Giridih District</p>
-        <p><strong>Famous for:</strong> Jain pilgrimage site with temples</p>
-        <p><strong>How to reach:</strong> Rail to Parasnath Station; trek to summit</p>
-      </div>
-    </div>
-
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement top">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="4877919940"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Jharkhand</h1>
+  <img 
+    src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80"
+    alt="Beauty of Jharkhand" 
+    loading="lazy" 
+    width="900" 
+    height="600" 
+  />
+
+  <h2>Brief History</h2>
+  <p>Jharkhand is known for its rich mineral resources, dense forests, tribal culture, and waterfalls such as Hundru and Dassam, along with Betla National Park.</p>
+
+  <h2>Major Places to Visit</h2>
+  <ul class="places-list">
+    <li>Betla National Park
+      <p class="place-details">
+        <strong>Why visit:</strong> Protected area for tigers, elephants, and diverse wildlife.<br />
+        <strong>How to reach:</strong> Airport: Ranchi (~160 km); Rail: Daltonganj.
+      </p>
+      <img src="https://images.unsplash.com/photo-1508154048109-de555266b032?auto=format&fit=crop&w=800&q=80" alt="Betla National Park" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Hundru & Dassam Falls
+      <p class="place-details">
+        <strong>Why visit:</strong> Beautiful natural waterfalls near Ranchi.<br />
+        <strong>How to reach:</strong> Airport/Rail: Ranchi (40-50 km by road).
+      </p>
+    </li>
+    <li>Parasnath Hills
+      <p class="place-details">
+        <strong>Why visit:</strong> Pilgrimage site for Jainism and scenic trekking.<br />
+        <strong>How to reach:</strong> Airport/Rail: Ranchi and Deoghar.
+      </p>
+    </li>
+    <li>Patratu Valley
+      <p class="place-details">
+        <strong>Why visit:</strong> Picturesque valley with lush greenery and rivers.<br />
+        <strong>How to reach:</strong> About 40 km from Ranchi.
+      </p>
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Try traditional dishes like Dhuska, Rugra mushroom curry, Litti-style snacks, and local rice beer called Handia.</p>
+  <img src="https://images.unsplash.com/photo-1608219954731-eb1f091215a4?auto=format&fit=crop&w=900&q=80" alt="Jharkhand Traditional Food" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="4877919940"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> | 
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
