@@ -2,156 +2,215 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chhattisgarh - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chhattisgarh Tourism | History, Places to Visit & Local Cuisine</title>
+  <meta name="description" content="Explore Chhattisgarh - Known for dense forests, tribal culture, waterfalls like Chitrakote and Tirathgarh, and ancient temple ruins at Sirpur." />
+  <meta name="keywords" content="Chhattisgarh tourism, Chitrakote Falls, Tirathgarh Falls, Sirpur ruins, Bastar culture, Chhattisgarh food, tribal handicrafts" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Chhattisgarh Tourism | History, Places to Visit & Local Cuisine" />
+  <meta property="og:description" content="Discover the forests, waterfalls, tribal culture, and heritage temples of Chhattisgarh." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/chhattisgarh.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1549366029-013bc3f74a50?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/e/e2/Chhattisgarh_collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1549366029-013bc3f74a50?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(3px);
+      color: #0a2540;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.8);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      font-size: 1.05rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    nav a[aria-current="page"] {
+      background-color: #2a4d9c;
+      color: white;
+    }
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #174a93;
+    }
+    h2 {
+      color: #3762cc;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+    }
+    p {
+      margin-bottom: 1.3rem;
+      font-size: 1.1rem;
+    }
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.6rem;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 15px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      margin: 1.2rem 0;
+      display: block;
+      border: 1px solid #cbd9ff;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      color: #3a75ff;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover,
+    footer a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    .ad-container {
+      margin: 1.5rem 0;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- State Info -->
-  <header class="state-header">
-    <h1>Chhattisgarh</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> Raipur</p>
-      <p><strong>Population:</strong> ~30 million (2023 est.)</p>
-      <p><strong>Official Language:</strong> Hindi, Chhattisgarhi</p>
-      <p><strong>History:</strong> Carved out of Madhya Pradesh in 2000, Chhattisgarh is a mineral-rich state with dense forests, tribal culture, and scenic waterfalls. It holds archaeological and natural wonders, along with ancient temples and forts.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Places -->
-  <section class="places-grid">
-
-    <!-- Chitrakote Falls -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Chitrakote_falls.jpg" alt="Chitrakote Falls">
-      <div class="card-content">
-        <h3>Chitrakote Falls</h3>
-        <p><strong>Location:</strong> Bastar District</p>
-        <p><strong>Famous for:</strong> "Niagara of India", wide horseshoe-shaped fall</p>
-        <p><strong>How to reach:</strong> Jagdalpur (40 km); Jagdalpur connected by rail & bus</p>
-      </div>
-    </div>
-
-    <!-- Barnawapara Wildlife Sanctuary -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Barnawapara_Wildlife.jpg" alt="Barnawapara Sanctuary">
-      <div class="card-content">
-        <h3>Barnawapara Sanctuary</h3>
-        <p><strong>Location:</strong> Mahasamund District</p>
-        <p><strong>Famous for:</strong> Leopards, bison, sloth bears, eco-tourism</p>
-        <p><strong>How to reach:</strong> 100 km from Raipur by road</p>
-      </div>
-    </div>
-
-    <!-- Bhoramdeo Temple -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Bhoramdeo_Temple.jpg" alt="Bhoramdeo Temple">
-      <div class="card-content">
-        <h3>Bhoramdeo Temple</h3>
-        <p><strong>Location:</strong> Kabirdham District</p>
-        <p><strong>Famous for:</strong> Khajuraho-style temple, 11th century architecture</p>
-        <p><strong>How to reach:</strong> 135 km from Raipur via Kawardha</p>
-      </div>
-    </div>
-
-    <!-- Tirathgarh Falls -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Tirathgarh_Waterfalls.jpg" alt="Tirathgarh Falls">
-      <div class="card-content">
-        <h3>Tirathgarh Falls</h3>
-        <p><strong>Location:</strong> Kanger Valley National Park</p>
-        <p><strong>Famous for:</strong> Tiered white waterfalls in lush forest</p>
-        <p><strong>How to reach:</strong> 38 km from Jagdalpur by road</p>
-      </div>
-    </div>
-
-    <!-- Kanger Valley National Park -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Kanger_Ghati_Caves.jpg" alt="Kanger Valley Park">
-      <div class="card-content">
-        <h3>Kanger Valley National Park</h3>
-        <p><strong>Location:</strong> Bastar</p>
-        <p><strong>Famous for:</strong> Limestone caves, wildlife, tribal forests</p>
-        <p><strong>How to reach:</strong> Access from Jagdalpur by road</p>
-      </div>
-    </div>
-
-    <!-- Danteshwari Temple -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Danteshwari_Temple.jpg" alt="Danteshwari Temple">
-      <div class="card-content">
-        <h3>Danteshwari Temple</h3>
-        <p><strong>Location:</strong> Dantewada</p>
-        <p><strong>Famous for:</strong> One of the 52 Shakti Peethas</p>
-        <p><strong>How to reach:</strong> Nearest major town: Jagdalpur (80 km); by road</p>
-      </div>
-    </div>
-
-    <!-- Rajim -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Rajim_Temple.jpg" alt="Rajim">
-      <div class="card-content">
-        <h3>Rajim</h3>
-        <p><strong>Location:</strong> Raipur District</p>
-        <p><strong>Famous for:</strong> Triveni Sangam, ancient temples, Rajim Kumbh</p>
-        <p><strong>How to reach:</strong> 45 km from Raipur; buses and taxis available</p>
-      </div>
-    </div>
-
-    <!-- Sirpur -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Sirpur_Buddha_Vihara.jpg" alt="Sirpur">
-      <div class="card-content">
-        <h3>Sirpur</h3>
-        <p><strong>Location:</strong> Mahasamund District</p>
-        <p><strong>Famous for:</strong> Buddhist monasteries, archaeological ruins</p>
-        <p><strong>How to reach:</strong> 78 km from Raipur via NH6</p>
-      </div>
-    </div>
-
-    <!-- Malhar -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Malhar_Temple.jpg" alt="Malhar">
-      <div class="card-content">
-        <h3>Malhar</h3>
-        <p><strong>Location:</strong> Bilaspur District</p>
-        <p><strong>Famous for:</strong> Ancient temple ruins, Pataleshwar temple</p>
-        <p><strong>How to reach:</strong> 40 km from Bilaspur; local buses available</p>
-      </div>
-    </div>
-
-    <!-- Maitri Bagh Zoo & Garden -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Maitri_Bagh_Bhilai.jpg" alt="Maitri Bagh Bhilai">
-      <div class="card-content">
-        <h3>Maitri Bagh</h3>
-        <p><strong>Location:</strong> Bhilai</p>
-        <p><strong>Famous for:</strong> Zoo, musical fountain, Japanese-style garden</p>
-        <p><strong>How to reach:</strong> Within Bhilai city; 30 km from Raipur</p>
-      </div>
-    </div>
-
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement top">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="4877919940"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Chhattisgarh</h1>
+  <img 
+    src="https://images.unsplash.com/photo-1549366029-013bc3f74a50?auto=format&fit=crop&w=900&q=80"
+    alt="Scenic waterfall in Chhattisgarh"
+    loading="lazy"
+    width="900"
+    height="600"
+  />
+
+  <h2>Brief History</h2>
+  <p>Carved from Madhya Pradesh in 2000, Chhattisgarh is known for its dense forests, rich tribal culture, and ancient heritage with sites like Sirpur.</p>
+
+  <h2>Major Places to Visit</h2>
+  <ul class="places-list">
+    <li>Chitrakote & Tirathgarh Falls
+      <p class="place-details">
+        <strong>Why visit:</strong> Beautiful waterfalls in Bastar region.<br />
+        <strong>How to reach:</strong> Airport and Rail: Jagdalpur (~40 km); Road from Raipur (~300 km).
+      </p>
+      <img src="https://images.unsplash.com/photo-1506748686214-fb9f1f9d1b31?auto=format&fit=crop&w=800&q=80" alt="Chitrakote Waterfalls" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Kanger Valley National Park
+      <p class="place-details">
+        <strong>Why visit:</strong> Protected area with caves and waterfalls.<br/>
+        <strong>How to reach:</strong> Airport/Rail: Jagdalpur; road access to park.
+      </p>
+    </li>
+    <li>Sirpur (Buddhist/Temple Ruins)
+      <p class="place-details">
+        <strong>Why visit:</strong> Archaeological site with ancient temples.<br/>
+        <strong>How to reach:</strong> Airport: Raipur (~80 km); Rail: Mahasamund (~30 km); road NH53.
+      </p>
+      <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80" alt="Sirpur Temples" loading="lazy" width="800" height="500" />
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Experience local dishes like Chila, Faraa, Bafauri, and Aamat. The tribal handicrafts including bell-metal works, dokra art, and kosa silk are cultural highlights.</p>
+  <img src="https://images.unsplash.com/photo-1508154048109-de555266b032?auto=format&fit=crop&w=900&q=80" alt="Traditional food of Chhattisgarh" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-client="ca-pub-8124807245840632"
+         data-ad-slot="4877919940"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> | 
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
