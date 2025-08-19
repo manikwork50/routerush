@@ -2,156 +2,210 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Punjab - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Punjab Tourism | History, Places to Visit & Local Cuisine</title>
+  <meta name="description" content="Explore Punjab - Land of the Golden Temple, vibrant fairs, historic forts, and delicious Punjabi cuisine. Discover travel tips and cultural highlights." />
+  <meta name="keywords" content="Punjab tourism, Golden Temple Amritsar, Wagah Border, Patiala, Jallianwala Bagh, Punjabi cuisine, Punjab festivals, Punjab culture" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Punjab Tourism | History, Places to Visit & Local Cuisine" />
+  <meta property="og:description" content="Discover Punjab’s spiritual sites, historic landmarks, lively fairs, and flavorful cuisine with full travel info." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/punjab.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/f/f9/Punjab_Collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(3px);
+      color: #0a2540;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.8);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      font-size: 1.05rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    nav a[aria-current="page"] {
+      background-color: #2a4d9c;
+      color: white;
+    }
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #174a93;
+    }
+    h2 {
+      color: #3762cc;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+    }
+    p {
+      margin-bottom: 1.3rem;
+      font-size: 1.1rem;
+    }
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.6rem;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 15px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      margin: 1.2rem 0;
+      display: block;
+      border: 1px solid #cbd9ff;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      color: #3a75ff;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover,
+    footer a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    .ad-container {
+      margin: 1.5rem 0;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- Punjab Info -->
-  <header class="state-header">
-    <h1>Punjab</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> Chandigarh</p>
-      <p><strong>Population:</strong> ~30 million (2023 est.)</p>
-      <p><strong>Official Language:</strong> Punjabi</p>
-      <p><strong>History:</strong> Punjab, meaning "Land of Five Rivers", is known for its rich Sikh heritage, vibrant culture, fertile fields, and historic landmarks. It's a key agricultural hub and the birthplace of the Sikh faith.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Tourist Places -->
-  <section class="places-grid">
-
-    <!-- Golden Temple -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Golden_Temple_in_Amritsar.jpg" alt="Golden Temple">
-      <div class="card-content">
-        <h3>Golden Temple</h3>
-        <p><strong>Location:</strong> Amritsar</p>
-        <p><strong>Famous for:</strong> Holiest Sikh shrine with a gold-covered sanctum</p>
-        <p><strong>How to reach:</strong> Amritsar Airport or Amritsar Railway Station</p>
-      </div>
-    </div>
-
-    <!-- Jallianwala Bagh -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Jallianwala_Bagh_Memorial.jpg" alt="Jallianwala Bagh">
-      <div class="card-content">
-        <h3>Jallianwala Bagh</h3>
-        <p><strong>Location:</strong> Amritsar</p>
-        <p><strong>Famous for:</strong> Memorial to 1919 massacre</p>
-        <p><strong>How to reach:</strong> Near Golden Temple, same city access</p>
-      </div>
-    </div>
-
-    <!-- Wagah Border -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Wagah_Border_Ceremony.jpg" alt="Wagah Border">
-      <div class="card-content">
-        <h3>Wagah Border</h3>
-        <p><strong>Location:</strong> Near Amritsar</p>
-        <p><strong>Famous for:</strong> India-Pakistan daily retreat parade</p>
-        <p><strong>How to reach:</strong> 30 km from Amritsar by taxi/bus</p>
-      </div>
-    </div>
-
-    <!-- Anandpur Sahib -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Takht_Sri_Keshgarh_Sahib.jpg" alt="Anandpur Sahib">
-      <div class="card-content">
-        <h3>Anandpur Sahib</h3>
-        <p><strong>Location:</strong> Rupnagar district</p>
-        <p><strong>Famous for:</strong> Birthplace of Khalsa, major Sikh pilgrimage</p>
-        <p><strong>How to reach:</strong> Nangal Railway Station nearby</p>
-      </div>
-    </div>
-
-    <!-- Patiala Qila Mubarak -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Patiala_Qila_Mubarak.jpg" alt="Qila Mubarak">
-      <div class="card-content">
-        <h3>Qila Mubarak</h3>
-        <p><strong>Location:</strong> Patiala</p>
-        <p><strong>Famous for:</strong> 18th-century royal fort and palace</p>
-        <p><strong>How to reach:</strong> Patiala Railway Station, by road</p>
-      </div>
-    </div>
-
-    <!-- Virasat-e-Khalsa -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Virasat-e-Khalsa.jpg" alt="Virasat-e-Khalsa">
-      <div class="card-content">
-        <h3>Virasat-e-Khalsa</h3>
-        <p><strong>Location:</strong> Anandpur Sahib</p>
-        <p><strong>Famous for:</strong> Sikh heritage museum</p>
-        <p><strong>How to reach:</strong> 80 km from Chandigarh by road</p>
-      </div>
-    </div>
-
-    <!-- Ludhiana Museum -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Ludhiana_Museum_Punjab.jpg" alt="Ludhiana Museum">
-      <div class="card-content">
-        <h3>Ludhiana Museum</h3>
-        <p><strong>Location:</strong> Ludhiana</p>
-        <p><strong>Famous for:</strong> Culture, history, and folk art of Punjab</p>
-        <p><strong>How to reach:</strong> Ludhiana Railway Station</p>
-      </div>
-    </div>
-
-    <!-- Ropar Wetland -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Ropar_Wetlands.jpg" alt="Ropar Wetland">
-      <div class="card-content">
-        <h3>Ropar Wetland</h3>
-        <p><strong>Location:</strong> Rupnagar</p>
-        <p><strong>Famous for:</strong> Birdwatching, biodiversity</p>
-        <p><strong>How to reach:</strong> Road/train to Ropar (Rupnagar)</p>
-      </div>
-    </div>
-
-    <!-- Bathinda Fort -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Qila_Mubarak_Bathinda.jpg" alt="Bathinda Fort">
-      <div class="card-content">
-        <h3>Bathinda Fort</h3>
-        <p><strong>Location:</strong> Bathinda</p>
-        <p><strong>Famous for:</strong> Historic 1900-year-old fort</p>
-        <p><strong>How to reach:</strong> Bathinda Railway Station</p>
-      </div>
-    </div>
-
-    <!-- Harike Wetland -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Harike_Barrage_and_Wetland.jpg" alt="Harike Wetland">
-      <div class="card-content">
-        <h3>Harike Wetland</h3>
-        <p><strong>Location:</strong> Tarn Taran district</p>
-        <p><strong>Famous for:</strong> Migratory birds, nature reserve</p>
-        <p><strong>How to reach:</strong> 60 km from Amritsar by road</p>
-      </div>
-    </div>
-
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement top">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Punjab</h1>
+  <img 
+    src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80"
+    alt="Golden Temple, Amritsar"
+    loading="lazy"
+    width="900"
+    height="600"
+  />
+
+  <h2>Brief History</h2>
+  <p>Punjab is known as the Land of Five Rivers, famous for the Golden Temple, historic forts, vibrant Baisakhi festival, and the rich traditions of Punjabi culture and cuisine.</p>
+
+  <h2>Major Places to Visit</h2>
+  <ul class="places-list">
+    <li>Golden Temple, Amritsar
+      <p class="place-details">
+        <strong>Why visit:</strong> The holiest shrine of Sikhism and a symbol of peace.<br/>
+        <strong>How to reach:</strong> Sri Guru Ram Dass Jee International Airport, Amritsar railway station.
+      </p>
+      <img src="https://images.unsplash.com/photo-1508154048109-de555266b032?auto=format&fit=crop&w=800&q=80" alt="Golden Temple at night" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Jallianwala Bagh
+      <p class="place-details">
+        <strong>Why visit:</strong> Historical site commemorating the 1919 massacre.<br/>
+        <strong>How to reach:</strong> Near Golden Temple, Amritsar.
+      </p>
+    </li>
+    <li>Wagah Border
+      <p class="place-details">
+        <strong>Why visit:</strong> Daily ceremonial border closing between India and Pakistan.<br/>
+        <strong>How to reach:</strong> 30 km from Amritsar by road.
+      </p>
+    </li>
+    <li>Patiala
+      <p class="place-details">
+        <strong>Why visit:</strong> Known for its regal palaces, forts and vibrant culture.<br/>
+        <strong>How to reach:</strong> Patiala airport and rail station.
+      </p>
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Popular Punjabi dishes include Butter Chicken, Amritsari Kulcha, Sarson da Saag with Makki di Roti, and a variety of parathas and sweets.</p>
+  <img src="https://images.unsplash.com/photo-1540206395-68808572332f?auto=format&fit=crop&w=900&q=80" alt="Punjabi food" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> | 
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
