@@ -2,156 +2,210 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Delhi - WanderMap</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Delhi Tourism | History, Places to Visit & Local Cuisine</title>
+  <meta name="description" content="Explore Delhi - India's capital city with rich history, famous landmarks like Red Fort, Qutub Minar, India Gate, bustling markets and diverse cuisine." />
+  <meta name="keywords" content="Delhi tourism, Red Fort, Qutub Minar, India Gate, Delhi street food, Chandni Chowk, Delhi monuments, Delhi travel guide" />
+  <meta name="author" content="Manikrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Delhi Tourism | History, Places to Visit & Local Cuisine" />
+  <meta property="og:description" content="Visit Delhi’s iconic monuments, vibrant markets and taste the famous Delhi street food." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com/delhi.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80" />
   <style>
     body {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/0/0e/Delhi_Collage.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 1.5rem;
+      background: url('https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1600&q=60') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(3px);
+      color: #0a2540;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(232, 241, 255, 0.8);
+      pointer-events: none;
+      z-index: -1;
+    }
+    nav {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    nav a {
+      color: #2a4d9c;
+      text-decoration: none;
+      font-size: 1.05rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #3a75ff;
+      color: white;
+      outline: none;
+    }
+    nav a[aria-current="page"] {
+      background-color: #2a4d9c;
+      color: white;
+    }
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #174a93;
+    }
+    h2 {
+      color: #3762cc;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #3a75ff;
+      padding-bottom: 0.25rem;
+    }
+    p {
+      margin-bottom: 1.3rem;
+      font-size: 1.1rem;
+    }
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.6rem;
+    }
+    ul.places-list li {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .place-details {
+      margin-left: 15px;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(54, 104, 171, 0.45);
+      margin: 1.2rem 0;
+      display: block;
+      border: 1px solid #cbd9ff;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3762cc;
+      font-size: 1rem;
+      user-select: none;
+      line-height: 1.6;
+    }
+    footer a {
+      color: #3a75ff;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0 0.6rem;
+    }
+    footer a:hover,
+    footer a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    .ad-container {
+      margin: 1.5rem 0;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div><a href="index.html">🏠 WanderMap</a></div>
-    <div>
-      <a href="states.html">States</a>
-      <a href="union_territories.html">UTs</a>
-      <a href="blog.html">Blog</a>
-      <a href="submit-gem.html">Submit a Gem</a>
-      <a href="login.html">Admin</a>
-    </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations/index.html" aria-current="page">Destinations</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="bookings/index.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
   </nav>
 
-  <!-- Delhi Info -->
-  <header class="state-header">
-    <h1>Delhi (National Capital Territory)</h1>
-    <div class="state-info">
-      <p><strong>Capital:</strong> New Delhi</p>
-      <p><strong>Population:</strong> ~32 million (2023 est.)</p>
-      <p><strong>Official Languages:</strong> Hindi, English, Punjabi, Urdu</p>
-      <p><strong>History:</strong> Delhi has been the seat of power for several empires including the Mughals and British. Today, it is a blend of history, politics, food, and modern development. Home to three UNESCO World Heritage Sites and India’s capital region, Delhi is a must-visit cultural powerhouse.</p>
-    </div>
-  </header>
-
-  <!-- Top 10 Places in Delhi -->
-  <section class="places-grid">
-
-    <!-- Red Fort -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Red_Fort_delhi.jpg" alt="Red Fort">
-      <div class="card-content">
-        <h3>Red Fort</h3>
-        <p><strong>Location:</strong> Old Delhi</p>
-        <p><strong>Famous for:</strong> UNESCO site, Mughal fort complex</p>
-        <p><strong>How to reach:</strong> Chandni Chowk metro station</p>
-      </div>
-    </div>
-
-    <!-- India Gate -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/India_Gate_Delhi.jpg" alt="India Gate">
-      <div class="card-content">
-        <h3>India Gate</h3>
-        <p><strong>Location:</strong> Rajpath</p>
-        <p><strong>Famous for:</strong> War memorial, patriotic events</p>
-        <p><strong>How to reach:</strong> Central Secretariat metro</p>
-      </div>
-    </div>
-
-    <!-- Qutub Minar -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Qutub_Minar_Delhi.jpg" alt="Qutub Minar">
-      <div class="card-content">
-        <h3>Qutub Minar</h3>
-        <p><strong>Location:</strong> Mehrauli</p>
-        <p><strong>Famous for:</strong> Tallest brick minaret, UNESCO heritage</p>
-        <p><strong>How to reach:</strong> Qutub Minar metro station</p>
-      </div>
-    </div>
-
-    <!-- Humayun's Tomb -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Humayun%27s_Tomb_Delhi.jpg" alt="Humayun's Tomb">
-      <div class="card-content">
-        <h3>Humayun's Tomb</h3>
-        <p><strong>Location:</strong> Nizamuddin</p>
-        <p><strong>Famous for:</strong> Persian-style Mughal tomb, UNESCO site</p>
-        <p><strong>How to reach:</strong> JLN Stadium metro or taxi</p>
-      </div>
-    </div>
-
-    <!-- Lotus Temple -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Lotus_Temple_Delhi.jpg" alt="Lotus Temple">
-      <div class="card-content">
-        <h3>Lotus Temple</h3>
-        <p><strong>Location:</strong> South Delhi</p>
-        <p><strong>Famous for:</strong> Baháʼí House of Worship, architecture</p>
-        <p><strong>How to reach:</strong> Kalkaji Mandir metro</p>
-      </div>
-    </div>
-
-    <!-- Akshardham Temple -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Akshardham_Temple_Delhi.jpg" alt="Akshardham">
-      <div class="card-content">
-        <h3>Akshardham Temple</h3>
-        <p><strong>Location:</strong> NH 24, East Delhi</p>
-        <p><strong>Famous for:</strong> Monumental architecture, musical fountain</p>
-        <p><strong>How to reach:</strong> Akshardham metro</p>
-      </div>
-    </div>
-
-    <!-- Jama Masjid -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Jama_Masjid_Delhi.jpg" alt="Jama Masjid">
-      <div class="card-content">
-        <h3>Jama Masjid</h3>
-        <p><strong>Location:</strong> Near Red Fort</p>
-        <p><strong>Famous for:</strong> One of India’s largest mosques</p>
-        <p><strong>How to reach:</strong> Jama Masjid metro or walk from Red Fort</p>
-      </div>
-    </div>
-
-    <!-- Raj Ghat -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/Raj_Ghat.jpg" alt="Raj Ghat">
-      <div class="card-content">
-        <h3>Raj Ghat</h3>
-        <p><strong>Location:</strong> Ring Road, Delhi</p>
-        <p><strong>Famous for:</strong> Mahatma Gandhi’s memorial</p>
-        <p><strong>How to reach:</strong> Indraprastha metro station</p>
-      </div>
-    </div>
-
-    <!-- National Rail Museum -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Steam_Locomotive_Delhi.jpg" alt="Rail Museum">
-      <div class="card-content">
-        <h3>National Rail Museum</h3>
-        <p><strong>Location:</strong> Chanakyapuri</p>
-        <p><strong>Famous for:</strong> Vintage trains, interactive exhibits</p>
-        <p><strong>How to reach:</strong> Auto or taxi from AIIMS metro</p>
-      </div>
-    </div>
-
-    <!-- Connaught Place -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Connaught_Place_Delhi.jpg" alt="Connaught Place">
-      <div class="card-content">
-        <h3>Connaught Place</h3>
-        <p><strong>Location:</strong> Central Delhi</p>
-        <p><strong>Famous for:</strong> Shopping, colonial architecture, food joints</p>
-        <p><strong>How to reach:</strong> Rajiv Chowk metro station</p>
-      </div>
-    </div>
-
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement top">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </section>
 
+  <h1>Delhi</h1>
+  <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" alt="Red Fort, Delhi" loading="lazy" width="900" height="600" />
+
+  <h2>Brief History</h2>
+  <p>Delhi, the capital of India, has served as the seat of several empires including the Delhi Sultanate and Mughal Empire. It is famous for its rich history, architecture, and vibrant culture blending old and new.</p>
+
+  <h2>Major Places to Visit</h2>
+  <ul class="places-list">
+    <li>Red Fort
+      <p class="place-details">
+        <strong>Why visit:</strong> Iconic UNESCO World Heritage Site and Mughal palace.<br />
+        <strong>How to reach:</strong> Airport: DEL; Metro & Rail: Lal Qila station; located in Old Delhi.
+      </p>
+      <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=80" alt="Red Fort" loading="lazy" width="800" height="500" />
+    </li>
+    <li>Qutub Minar
+      <p class="place-details">
+        <strong>Why visit:</strong> Tallest brick minaret and panoramic park.<br />
+        <strong>How to reach:</strong> Airport: DEL; Metro: Qutub Minar station; South Delhi.
+      </p>
+    </li>
+    <li>India Gate
+      <p class="place-details">
+        <strong>Why visit:</strong> War memorial popular for evening strolls.<br />
+        <strong>How to reach:</strong> City center, Metro: Central Secretariat.
+      </p>
+    </li>
+    <li>Chandni Chowk
+      <p class="place-details">
+        <strong>Why visit:</strong> Bustling market known for street food, shopping.<br />
+        <strong>How to reach:</strong> Metro: Chandni Chowk.
+      </p>
+    </li>
+    <li>Humayun’s Tomb
+      <p class="place-details">
+        <strong>Why visit:</strong> Mughal mausoleum and precursor to Taj Mahal.<br />
+        <strong>How to reach:</strong> Metro: JLN Stadium station.
+      </p>
+    </li>
+  </ul>
+
+  <h2>Local Cuisine</h2>
+  <p>Delhi is famous for street food like chaat, paranthas, kebabs, butter chicken, and rich Mughlai dishes.</p>
+  <img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?auto=format&fit=crop&w=900&q=80" alt="Delhi Street Food" loading="lazy" width="900" height="600" />
+
+  <section class="ad-container" data-aos="fade-up" aria-label="Advertisement bottom">
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8124807245840632" data-ad-slot="4877919940" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </section>
+
+  <footer>
+    <p>
+      Developed and managed by Manik Rao &copy; All rights reserved.<br />
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> | 
+      <a href="https://www.youtube.com/channel/UCexample" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </p>
+    <a href="index.html" aria-label="Back to All States and Union Territories">← Back to All States & UTs</a>
+  </footer>
 </body>
 </html>
