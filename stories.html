@@ -9,14 +9,12 @@
   <meta name="author" content="Manik Rao" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://yourdomain.com/stories.html" />
-
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632" crossorigin="anonymous"></script>
-
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -195,7 +193,6 @@
   </style>
 </head>
 <body>
-
 <nav>
   <a href="index.html">Home</a>
   <a href="map.html">Map</a>
@@ -207,12 +204,10 @@
   <a href="contact.html">Contact</a>
   <a href="games.html">Games</a>
 </nav>
-
 <header>
   <h1>Share Your Wonderful Travel Journey</h1>
   <p>Write about your adventures and share your travel pictures with the WanderMap community! Submit your story below.</p>
 </header>
-
 <main>
   <form id="storyForm" enctype="multipart/form-data">
     <label for="username">Your Name</label>
@@ -223,13 +218,11 @@
     <input type="file" id="images" name="images" accept="image/*" multiple required />
     <button type="submit">Submit Your Story</button>
   </form>
-
-  <div class="admin-approval" id="adminApproval" >
+  <div class="admin-approval" id="adminApproval">
     <label for="adminPassword">Admin Password for Approval:</label>
     <input type="password" id="adminPassword" placeholder="Enter admin password" />
     <button id="approveBtn">Approve Pending Stories</button>
   </div>
-
   <section class="filter-section" aria-label="Filter Stories">
     <label for="filterDate">Filter by Date:</label>
     <input type="date" id="filterDate" />
@@ -250,12 +243,10 @@
       <option value="12">December</option>
     </select>
   </section>
-
   <section class="stories-list" aria-live="polite" aria-relevant="additions" aria-atomic="true" id="approvedStories">
     <!-- Approved stories will appear here -->
   </section>
 </main>
-
 <footer>
   <p>© 2025 WanderMap | Developed & Managed by Manik Rao | Travel Better 🌏</p>
   <p class="social-links">
@@ -266,22 +257,9 @@
 </footer>
 
 <script>
-  // Initialize Firebase
-  const firebaseConfig = {
-    apiKey: "AIzaSyAZ2ys4SmAYsEkcMomH234x3ROLSio072k",
-    authDomain: "wandermapstories.firebaseapp.com",
-    projectId: "wandermapstories",
-    storageBucket: "wandermapstories.firebasestorage.app",
-    messagingSenderId: "1080107971740",
-    appId: "1:1080107971740:web:6ab2bc29500f7e76b92959",
-    measurementId: "G-ZTPGX0W7L7"
-  };
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-  const storage = firebase.storage();
-  const auth = firebase.auth();
-
   const MAX_IMAGES = 5;
+  const ADMIN_PASSWORD = 'admin123'; // Change this password or implement Firebase Auth for security
+
   const form = document.getElementById('storyForm');
   const imagesInput = document.getElementById('images');
   const adminApprovalDiv = document.getElementById('adminApproval');
@@ -294,7 +272,6 @@
   let pendingStories = [];
   let approvedStories = [];
 
-  // Validate image count on selection
   imagesInput.addEventListener('change', () => {
     if(imagesInput.files.length > MAX_IMAGES) {
       alert(`You can upload up to ${MAX_IMAGES} images only.`);
@@ -302,133 +279,109 @@
     }
   });
 
-  async function uploadImages(files) {
-    const urls = [];
-    for(let i=0; i<files.length; i++) {
-      const file = files[i];
-      const storageRef = storage.ref().child(`stories-images/${Date.now()}_${file.name}`);
-      await storageRef.put(file);
-      const url = await storageRef.getDownloadURL();
-      urls.push(url);
-    }
-    return urls;
-  }
-
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
     if(imagesInput.files.length > MAX_IMAGES) {
       alert(`You can upload up to ${MAX_IMAGES} images only.`);
       return;
     }
-
-    try {
-      const imageUrls = await uploadImages(imagesInput.files);
-      await db.collection('stories').add({
-        name: form.username.value.trim(),
-        storyText: form.storyText.value.trim(),
-        imageUrls,
-        approved: false,
-        submittedAt: firebase.firestore.FieldValue.serverTimestamp()
+    // Read images as Data URLs (demo purpose)
+    const imagePromises = Array.from(imagesInput.files).map(file => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = e => reject(e);
+        reader.readAsDataURL(file);
       });
-      alert('Story submitted successfully! Waiting for admin approval.');
+    });
+    try {
+      const imagesDataURLs = await Promise.all(imagePromises);
+      pendingStories.push({
+        id: Date.now(),
+        name: form.username.value.trim(),
+        text: form.storyText.value.trim(),
+        images: imagesDataURLs,
+        date: new Date().toISOString()
+      });
+      alert('Thank you for your submission! Your story is pending approval.');
       form.reset();
-    } catch (error) {
-      alert('Error submitting story: ' + error.message);
-    }
+      console.log('Simulated email alert sent to admin.');
+    } catch(e) { alert('Error reading images: ' + e.message); }
   });
 
-  // Admin approval — for demo, simple prompt password to show approval UI
   function promptAdminLogin() {
     const pwd = prompt('Enter admin password:');
-    if(pwd === 'admin123') { // Change password or implement Firebase Auth for real use
+    if(pwd === ADMIN_PASSWORD) {
       adminApprovalDiv.style.display = 'block';
       loadPendingStories();
     } else {
-      alert('Incorrect password');
+      alert('Incorrect password.');
     }
   }
 
   document.querySelector('nav').addEventListener('dblclick', promptAdminLogin);
 
-  async function loadPendingStories() {
+  function loadPendingStories() {
     approvedStoriesContainer.innerHTML = '';
-    pendingStories = [];
-    const snapshot = await db.collection('stories').where('approved', '==', false).get();
-    snapshot.forEach(doc => {
-      let story = doc.data();
-      story.id = doc.id;
-      pendingStories.push(story);
-    });
     if(pendingStories.length === 0) {
       approvedStoriesContainer.innerHTML = '<p>No pending stories to approve.</p>';
-    } else {
-      pendingStories.forEach(story => {
-        const div = document.createElement('div');
-        div.className = 'story-entry';
-        div.innerHTML = `
-          <h3>${story.name || 'Anonymous'}</h3>
-          <p>${story.storyText}</p>
-          <button data-id="${story.id}">Approve</button>
-        `;
-        approvedStoriesContainer.appendChild(div);
-        div.querySelector('button').onclick = () => approveStory(story.id);
-      });
-    }
-  }
-
-  async function approveStory(storyId) {
-    await db.collection('stories').doc(storyId).update({ approved: true });
-    alert('Story approved!');
-    loadPendingStories();
-    loadApprovedStories();
-  }
-
-  // Load approved stories and show
-  async function loadApprovedStories() {
-    approvedStoriesContainer.innerHTML = '';
-    let query = db.collection('stories').where('approved', '==', true).orderBy('submittedAt', 'desc');
-    if(filterDate.value) {
-      const dateString = filterDate.value;
-      const start = new Date(dateString);
-      const end = new Date(dateString);
-      end.setHours(23,59,59,999);
-      query = query.where('submittedAt', '>=', start).where('submittedAt', '<=', end);
-    } else if(filterMonth.value) {
-      const year = new Date().getFullYear();
-      const start = new Date(`${year}-${filterMonth.value}-01`);
-      const end = new Date(start);
-      end.setMonth(end.getMonth() + 1);
-      query = query.where('submittedAt', '>=', start).where('submittedAt', '<', end);
-    }
-    const snapshot = await query.get();
-    if(snapshot.empty) {
-      approvedStoriesContainer.innerHTML = '<p>No stories found for the selected filter.</p>';
       return;
     }
-    snapshot.forEach(doc => {
-      const story = doc.data();
-      const container = document.createElement('article');
-      container.className = 'story-entry';
-      const date = story.submittedAt ? story.submittedAt.toDate().toLocaleString() : '';
-      container.innerHTML = `
+    approvedStoriesContainer.innerHTML = '';
+    pendingStories.forEach(story => {
+      const div = document.createElement('div');
+      div.className = 'story-entry';
+      div.innerHTML = `
         <h3>${story.name || 'Anonymous'}</h3>
-        <time datetime="${story.submittedAt ? story.submittedAt.toDate().toISOString() : ''}">${date}</time>
-        <p>${story.storyText}</p>
-        <div class="story-images">
-          ${story.imageUrls.map(url => `<img src="${url}" alt="Story Image" />`).join('')}
-        </div>
+        <p>${story.text}</p>
+        <button data-id="${story.id}">Approve</button>
       `;
-      approvedStoriesContainer.appendChild(container);
+      approvedStoriesContainer.appendChild(div);
+      div.querySelector('button').onclick = () => approveStory(story.id);
     });
   }
 
-  filterDate.addEventListener('change', () => { filterMonth.value=''; loadApprovedStories(); });
-  filterMonth.addEventListener('change', () => { filterDate.value=''; loadApprovedStories(); });
+  function approveStory(id) {
+    const index = pendingStories.findIndex(s => s.id === id);
+    if(index !== -1) {
+      const [story] = pendingStories.splice(index,1);
+      approvedStories.unshift(story);
+      alert('Story approved!');
+      loadPendingStories();
+      renderApprovedStories();
+    }
+  }
 
-  // Load approved stories initially
-  loadApprovedStories();
+  function renderApprovedStories() {
+    approvedStoriesContainer.innerHTML = '';
+    let filteredStories = [...approvedStories];
+    if(filterDate.value) {
+      filteredStories = filteredStories.filter(s => s.date.startsWith(filterDate.value));
+    } else if(filterMonth.value) {
+      filteredStories = filteredStories.filter(s => s.date.slice(5,7) === filterMonth.value);
+    }
+    if(filteredStories.length === 0) {
+      approvedStoriesContainer.innerHTML = '<p>No approved stories found for the selected filter.</p>';
+      return;
+    }
+    filteredStories.forEach(story => {
+      const div = document.createElement('div');
+      div.className = 'story-entry';
+      div.innerHTML = `
+        <h3>${story.name || 'Anonymous'}</h3>
+        <time datetime="${story.date}">${new Date(story.date).toLocaleString()}</time>
+        <p>${story.text}</p>
+        <div class="story-images">${story.images.map(img => `<img src="${img}" alt="Story Image">`).join('')}</div>
+      `;
+      approvedStoriesContainer.appendChild(div);
+    });
+  }
+
+  filterDate.addEventListener('change', () => { filterMonth.value=''; renderApprovedStories(); });
+  filterMonth.addEventListener('change', () => { filterDate.value=''; renderApprovedStories(); });
+
+  // Show approved stories on page load
+  renderApprovedStories();
 </script>
-
 </body>
 </html>
