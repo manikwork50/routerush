@@ -1,283 +1,3908 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Destinations - Explore India and More</title>
-  <style>
-    /* Reset and base */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    body, html {
-      height: 100%;
-      background: url('https://cdn.vecteezy.com/system/resources/previews/003/199/993/original/beautiful-valley-with-mountains-nature-landscape-background-free-photo.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    /* Removed black overlay for background per request */
-    
-    nav {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      font-weight: 600;
-      font-size: 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      color: #333;
-    }
-    nav a {
-      text-decoration: none;
-      color: #333;
-      padding: 0.3rem 0.6rem;
-      border-radius: 4px;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    nav a:hover,
-    nav a.active {
-      background-color: #0073e6;
-      color: white;
-    }
-    
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Destinations - Explore India</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; padding: 0;
+    background: #eef6f1;
+    color: #222;
+  }
+  nav {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    padding: 1rem 2rem;
+    display: flex; justify-content: center; gap: 1.5rem;
+    position: sticky; top: 0; z-index: 100;
+  }
+  nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+  nav a:hover,
+  nav a.active {
+    background-color: #0073e6;
+    color: white;
+  }
+  header {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 2.8rem;
+    color: #004080;
+    font-weight: 900;
+  }
+  .container {
+    max-width: 1000px;
+    margin: 0 auto 3rem;
+    padding: 0 1rem;
+  }
+  .region-title {
+    margin: 3rem 0 1rem;
+    font-size: 2rem;
+    color: #0073e6;
+    font-weight: 700;
+    border-bottom: 3px solid #99bbff;
+    padding-bottom: 0.3rem;
+  }
+  article.destination {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    overflow: hidden;
+    padding: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .dest-title {
+    color: #004080;
+    font-weight: 900;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .dest-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  }
+  .section-header {
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #0055aa;
+    font-size: 1.3rem;
+    border-bottom: 2px solid #99bbff;
+    padding-bottom: 0.2rem;
+  }
+  .section-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    text-align: justify;
+    margin-bottom: 1rem;
+  }
+  .travel-info {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+  .footer {
+    text-align: center;
+    padding: 1rem 0;
+    background: #004080;
+    color: white;
+    font-weight: 600;
+    user-select: none;
+  }
+  @media (max-width: 600px) {
     header {
-      padding: 2rem 1rem 1rem;
-      text-align: center;
-      font-size: 2.5rem;
-      font-weight: bold;
-      letter-spacing: 2px;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
-      color: #fff;
+      font-size: 2rem;
     }
-    main {
-      flex-grow: 1;
-      padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto 2rem auto;
-      width: 90%;
-      background: rgba(255, 255, 255, 0.13);
-      border-radius: 12px;
-      box-shadow: 0 0 30px rgba(255,255,255,0.25);
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      color: #fff;
-      backdrop-filter: saturate(180%) blur(10px);
+    .dest-title {
+      font-size: 1.5rem;
     }
-    /* Search input with autocomplete style */
-    #search-container {
-      max-width: 400px;
-      margin: 0 auto 1.5rem auto;
-      position: relative;
-    }
-    #search {
-      width: 100%;
-      padding: 0.7rem 1rem;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 5px;
-      outline: none;
-      color: #333;
-    }
-    #autocomplete-list {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: #fff;
-      color: #000;
-      border-radius: 0 0 5px 5px;
-      max-height: 150px;
-      overflow-y: auto;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-      z-index: 10;
-    }
-    #autocomplete-list div {
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      border-bottom: 1px solid #ddd;
-    }
-    #autocomplete-list div:hover {
-      background: #f0f0f0;
-    }
-    ul#destination-list {
-      list-style: none;
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 1.5rem;
-    }
-    ul#destination-list li {
-      background: rgba(0,0,0,0.4);
-      border-radius: 8px;
-      padding: 1rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.7);
-      transition: transform 0.3s ease;
-      cursor: default;
-    }
-    ul#destination-list li:hover,
-    ul#destination-list li:focus {
-      transform: scale(1.05);
-      box-shadow: 0 0 18px #0073e6;
-      outline: none;
-    }
-    ul#destination-list li h3 {
-      margin-bottom: 0.5rem;
-      font-size: 1.3rem;
-      color: #fffbf1;
-      text-shadow: 1px 1px 3px #000;
-    }
-    ul#destination-list li p {
-      font-size: 1rem;
-      line-height: 1.4;
-      color: #e3e3e3;
-      text-shadow: 1px 1px 2px #000;
-    }
-    footer {
-      background: rgba(0, 0, 0, 0.7);
-      text-align: center;
-      padding: 1rem 2rem;
-      font-size: 0.9rem;
-      box-shadow: 0 -2px 5px rgba(0,0,0,0.7);
-      color: #fff;
-      user-select: none;
-    }
-    
-    @media (max-width: 600px) {
-      ul#destination-list {
-        grid-template-columns: 1fr;
-      }
-      header {
-        font-size: 2rem;
-      }
-      nav {
-        font-size: 0.9rem;
-        flex-wrap: wrap;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-<nav role="navigation" aria-label="Primary navigation">
-    <a href="index.html">Home</a>
-    <a href="map.html">Map</a>
-    <a href="destinations.html" aria-current="page">Destinations</a>
-    <a href="blog.html">Blog</a>
-    <a href="bookings.html">Bookings</a>
-    <a href="stories.html">Stories</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="games.html">Games</a>
-  </nav>
-   <section class="ad-container" data-aos="fade-up">
-    <ins class="adsbygoogle"
-         style="display:block; text-align:center;"
-         data-ad-client="ca-pub-8124807245840632"
-         data-ad-slot="4877919940"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </section>
-<amp-auto-ads type="adsense"
-        data-ad-client="ca-pub-8124807245840632">
-</amp-auto-ads>
-<header>Explore Indian Destinations & More</header>
 
-<main>
-  <div id="search-container">
-    <input type="text" id="search" placeholder="Search destinations..." autocomplete="off" aria-label="Search destinations" />
-    <div id="autocomplete-list" role="listbox"></div>
-  </div>
+<nav aria-label="Primary navigation">
+  <a href="index.html">Home</a>
+  <a href="map.html">Map</a>
+  <a href="destinations.html" class="active" aria-current="page">Destinations</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+</nav>
 
-  <ul id="destination-list" aria-live="polite" aria-relevant="additions removals">
-    <!-- Destinations populated by JS -->
-  </ul>
+<header>Most Visited Places in India - North India</header>
+
+<main class="container">
+
+  <!-- Taj Mahal entry -->
+  <article class="destination" tabindex="0">
+    <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/d/da/Taj-Mahal.jpg" alt="Taj Mahal, Agra" />
+
+    <h1 class="dest-title">Taj Mahal — Agra, Uttar Pradesh</h1>
+
+    <div class="section-header">History</div>
+    <p class="section-text">
+      Commissioned by Mughal emperor Shah Jahan in 1632 and substantially completed by 1648 (with finishing works continuing into the 1650s),
+      the Taj Mahal is a mausoleum built for his beloved wife Mumtaz Mahal. It stands on the right bank of the Yamuna River in Agra,
+      the then Mughal capital. The design fuses Persian, Timurid, and Indo-Islamic elements into a perfect, symmetrical composition: a white marble tomb
+      raised on a square plinth, framed by four minarets, preceded by a grand gate (darwaza-i rauza), and set within a charbagh (four-quartered) garden aligned on a central axis.
+      Calligraphy inlaid with black marble, pietra dura floral panels using semi-precious stones (jasper, jade, lapis, carnelian), and exquisitely carved jali screens
+      create an effect of weightless intricacy. Over centuries, the Taj has survived political change, colonial curiosity, and environmental challenges, yet retains its emotional pull:
+      a monument to memory, grief, and imperial craftsmanship at its pinnacle.
+    </p>
+
+    <div class="section-header">Why It’s Famous</div>
+    <p class="section-text">
+      Beyond its love-story aura, the Taj is renowned as perhaps the most perfectly proportioned building in the world.
+      The way its white Makrana marble changes tone through the day—rosy at dawn, luminous at noon, golden at sunset—adds drama to the symmetry.
+      It’s a UNESCO World Heritage Site and among the “Seven Wonders” in popular lists, drawing millions of visitors annually.
+      For many travelers, the first glimpse through the gate—where the tomb appears framed like a living painting—is unforgettable.
+    </p>
+
+    <div class="section-header">Where It Is</div>
+    <p class="section-text">
+      Agra, in western Uttar Pradesh, about 230–240 km southeast of New Delhi, on the Yamuna River.
+    </p>
+
+    <div class="section-header">How to Reach</div>
+    <p class="section-text">
+      From Delhi, take the Gatimaan or Vande Bharat Express (under 2 hours) to Agra. NH-19 via the Yamuna Expressway (about 3.5–4 hours by car) is the fastest road link.
+      From Jaipur or Gwalior/Jhansi, direct trains and highways connect easily.
+    </p>
+
+    <div class="section-header">Approx. Distances from Transit Hubs</div>
+    <p class="travel-info">
+      Nearest Bus Stand: Idgah Bus Stand, Agra — ~6 km<br>
+      Nearest Railway Stations: Agra Fort — ~3 km; Agra Cantt — ~6 km<br>
+      Nearest Airport: Agra (Kheria) Airport — ~12 km; New Delhi (DEL) — ~225 km
+    </p>
+
+    <div class="section-header">Who Built It</div>
+    <p class="section-text">
+      Mughal Emperor Shah Jahan commissioned the Taj Mahal as a mausoleum for his beloved wife Mumtaz Mahal.
+    </p>
+  </article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Golden_Temple_Amritsar_India_02-2017_img3.jpg" alt="Golden Temple, Amritsar" />
+
+  <h1 class="dest-title">Golden Temple — Amritsar, Punjab</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The Golden Temple, also known as Harmandir Sahib or Darbar Sahib, is the holiest shrine in Sikhism.
+    It was founded by the fourth Sikh Guru, Guru Ram Das, in 1577, and the construction was completed by his successor Guru Arjan Dev in 1604.
+    The temple was rebuilt and covered with gold foil in the early 19th century by Maharaja Ranjit Singh, which gave it its iconic golden appearance.
+    The temple complex has survived invasions and attacks throughout history and remains a symbol of Sikh spirituality, peace, and resilience.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Renowned for its magnificent golden façade and the serene Amrit Sarovar (holy pool) that surrounds it,
+    the Golden Temple attracts millions of visitors and pilgrims annually.
+    It is celebrated for its inclusiveness, welcoming people from all faiths and backgrounds.
+    The temple’s continuous langar (community kitchen) serves free meals to tens of thousands of people every day — embodying Sikh values of charity and equality.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Located in the city of Amritsar in Punjab, India, near the India-Pakistan border.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Amritsar is well-connected by road, rail, and air.
+    The Golden Temple is easily accessible from Amritsar’s city center.
+  </p>
+
+  <div class="section-header">Approx. Distances from Transit Hubs</div>
+  <p class="travel-info">
+    Nearest Bus Stand: Amritsar ISBT — ~3 km<br>
+    Nearest Railway Station: Amritsar Junction (Amritsar Cantt) — ~2 km<br>
+    Nearest Airport: Sri Guru Ram Dass Jee International Airport — ~15 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Originally founded by Guru Ram Das, with significant contributions and renovation by Guru Arjan Dev and Maharaja Ranjit Singh.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/1/17/India_Gate_in_New_Delhi_03-2016_img3.jpg" alt="India Gate, New Delhi" />
+
+  <h1 class="dest-title">India Gate — New Delhi, Delhi</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    India Gate is a war memorial located in the heart of New Delhi, designed by Sir Edwin Lutyens.
+    Completed in 1931, it commemorates the 70,000 Indian soldiers who lost their lives fighting for the British Indian Army during World War I and the Third Anglo-Afghan War.
+    The structure is inspired by the Arc de Triomphe in Paris and stands as an imposing archway on Rajpath, forming a significant part of Delhi's ceremonial corridor.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    India Gate is a popular spot for locals and tourists alike, offering a mix of history and leisure.
+    The monument is illuminated beautifully at night, and its expansive lawns are a favored picnic spot.
+    The Amar Jawan Jyoti, or the Flame of the Immortal Soldier, was added later to honor soldiers who died in 1971 Indo-Pakistan war.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Located on Rajpath, central New Delhi, near Connaught Place and Rashtrapati Bhavan.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Easily accessible by Delhi Metro—the Central Secretariat and Patel Chowk stations are nearest.
+    Several bus routes service the area, and it is connected by wide roads for taxis and personal vehicles.
+  </p>
+
+  <div class="section-header">Approx. Distances from Transit Hubs</div>
+  <p class="travel-info">
+    Nearest Metro Stations: Central Secretariat (1 km), Patel Chowk (1.5 km)<br>
+    Nearest Bus Stop: India Gate Bus Stop (adjacent)<br>
+    Nearest Airport: Indira Gandhi International Airport (20 km)
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Designed by British architect Sir Edwin Lutyens as part of his plan for New Delhi.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/3/33/Hawa_Mahal_in_Jaipur_01-2016_img3.jpg" alt="Hawa Mahal, Jaipur" />
+
+  <h1 class="dest-title">Hawa Mahal — Jaipur, Rajasthan</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The Hawa Mahal or "Palace of Winds" was built in 1799 by Maharaja Sawai Pratap Singh, designed by Lal Chand Ustad.
+    It was constructed as an extension of the City Palace to allow royal ladies to observe street festivals unseen by the public, adhering to the purdah tradition.
+    The five-storey pink sandstone structure is a striking example of Rajput architecture influenced by Mughal style, featuring 953 small windows ("jharokhas") with intricate latticework.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    The Mahal is famous for its unique honeycomb façade and sheer architectural beauty.
+    Its latticework offers cool breeze throughout the year—hence the name "Palace of Winds"—and provides excellent ventilation.
+    It is one of Jaipur’s most iconic landmarks and a popular photography spot, especially during sunrise and sunset.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Located in the heart of Jaipur city, Rajasthan, near the City Palace.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Jaipur is well connected by road, rail, and air. The Hawa Mahal is easily accessible from Jaipur Railway Station (3 km) and Jaipur International Airport (15 km).
+    Local buses, auto-rickshaws, and taxis are readily available for the short trip from the station/airport.
+  </p>
+
+  <div class="section-header">Approx. Distances from Transit Hubs</div>
+  <p class="travel-info">
+    Nearest Bus Station: Sindhi Camp Bus Stand, Jaipur — ~2.5 km<br>
+    Nearest Railway Station: Jaipur Junction — ~3 km<br>
+    Nearest Airport: Jaipur International Airport — ~15 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Maharaja Sawai Pratap Singh commissioned the Hawa Mahal, designed by architect Lal Chand Ustad.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Varanasi_Ghat_Boat_View%2C_Uttar_Pradesh%2C_India.jpg" alt="Varanasi Ghats, Uttar Pradesh" />
+
+  <h1 class="dest-title">Varanasi Ghats — Varanasi, Uttar Pradesh</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Varanasi, also known as Kashi or Banaras, is one of the oldest inhabited cities in the world, with history dating back over 3000 years.
+    The ghats are riverfront steps leading down to the banks of the Ganges River, constructed over centuries by various rulers and devotees.
+    Varanasi has been a cultural and spiritual center, especially in Hinduism, Buddhism, and Jainism. The ghats host rituals, ceremonies, and festivals, continuing ancient traditions.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Varanasi Ghats are famous for their spiritual ambiance, cremation ceremonies at Manikarnika Ghat, and the spectacular Ganga Aarti ritual performed every evening.
+    The city attracts pilgrims and tourists worldwide seeking spiritual enlightenment, cultural immersion, and history.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Situated on the banks of the Ganges River in Varanasi, Eastern Uttar Pradesh, India.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Varanasi is accessible by Lal Bahadur Shastri International Airport (~26 km from city), Varanasi Junction (by rail), and regular bus networks from major cities.
+    The ghats are located centrally along the riverside, reachable by local rickshaws and taxis.
+  </p>
+
+  <div class="section-header">Approx. Distances from Transit Hubs</div>
+  <p class="travel-info">
+    Nearest Bus Station: Varanasi Central Bus Stand — ~4 km<br>
+    Nearest Railway Station: Varanasi Junction — ~6 km<br>
+    Nearest Airport: Lal Bahadur Shastri International Airport — ~26 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    The ghats were developed over centuries by various rulers including the Marathas and Mughal emperors, with key contributions from local patrons and sadhus.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Varanasi_Ghat_Boat_View%2C_Uttar_Pradesh%2C_India.jpg" alt="Varanasi Ghats, Uttar Pradesh" />
+
+  <h1 class="dest-title">Varanasi Ghats (Dashashwamedh–Manikarnika belt) — Varanasi, Uttar Pradesh</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Varanasi (Kashi/Benares) is amongst the world’s oldest living cities. Myth credits Lord Shiva with founding it; historical references stretch back over two millennia. Its riverfront ghats—stone steps descending to the Ganges—were extensively rebuilt by Maratha rulers in the 18th–19th centuries, bundling palaces, temples, and dharamshalas into a continuous architectural theater. Dashashwamedh Ghat hosts elaborate evening aarti ceremonies, while Manikarnika and Harishchandra Ghats are principal cremation grounds central to Hindu beliefs about life, death, and moksha (liberation). The city’s labyrinthine lanes shelter shrines, akharas, silk weavers, and classical music traditions.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Varanasi distills India’s spiritual intensity: sunrise boat rides with saffron-clad priests, chanting students, and pilgrims bathing; the hypnotic aarti’s lamps mirrored in the river at dusk; and the frank proximity to mortality at the cremation ghats. It’s also famed for Banarasi silk sarees, paan, thandai, and a fiercely alive street culture. Walking from Assi to Manikarnika, absorbing scents of incense and marigold, temple bells, and flute strains, is a profound experience.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    On the left bank of the Ganges in southeastern Uttar Pradesh, approximately 320 km east of Lucknow and 220 km southeast of Prayagraj (Allahabad).
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Excellent rail connectivity from Delhi, Kolkata, Mumbai, and Lucknow. Flights to Lal Bahadur Shastri International Airport near Babatpur and good highways connect via NH19/NH31.
+  </p>
+
+  <div class="section-header">Approximate Distances from Transit Hubs (to Dashashwamedh Ghat)</div>
+  <p class="travel-info">
+    Nearest Bus Stand: Varanasi Cantt/City Bus Stand — ~5–6 km<br>
+    Nearest Railway Station: Varanasi Junction (BSB) — ~5 km; Kashi/Varanasi City (BCY) — ~4–5 km<br>
+    Nearest Airport: Lal Bahadur Shastri International Airport (VNS) — ~25 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    The ghats and surrounding structures were developed over centuries by rulers including the Marathas, Mughal patrons, and local devotees.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Hampi_view.jpg" alt="Hampi Vijayanagara Ruins, Karnataka" />
+
+  <h1 class="dest-title">Hampi (Vijayanagara Ruins) — Ballari District, Karnataka</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Hampi was the glittering capital of the Vijayanagara Empire (14th–16th centuries), once one of the world’s largest cities. Travelers like Niccolò de’ Conti and Domingo Paes wrote of bustling bazaars, grand processional avenues, and sophisticated water-management systems. In 1565, after the Battle of Talikota, the city was sacked, leaving a surreal landscape of granite boulders and hundreds of monuments: the Virupaksha Temple (still active), Vittala Temple with its famed stone chariot and musical pillars, royal enclosures with the Mahanavami Dibba and stepped tank, and the Lotus Mahal and Elephant Stables in the Zenana enclosure. The Tungabhadra River threads the site, and Anjanadri Hill across the river is associated with Hanuman lore.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Few places match Hampi’s combination of archaeological scale and natural drama. You can clamber up Matanga Hill for sunrise, cycle through temple avenues, and watch langurs pose among colonnades. The craftsmanship—intricate bas-reliefs of dancers, deities, and processions; corbelled mantapas; and still-functioning water channels—makes the ruins feel surprisingly alive.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    In central-northern Karnataka, near Hospet (Hosapete), about 340 km from Bengaluru and approximately 380 km from Hyderabad.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Rail travelers typically arrive at Hosapete Junction, then continue by taxi, auto, or bus to Hampi. Buses link from major Karnataka cities. The closest commercial airport with frequent service is Hubballi (HBX); a closer limited-service option is Vidyanagar (JSW) near Toranagallu, which occasionally operates scheduled flights.
+  </p>
+
+  <div class="section-header">Approximate Distances from Transit Hubs (to Hampi Bazaar/Virupaksha Temple area)</div>
+  <p class="travel-info">
+    Nearest Bus Stand: Hospet KSRTC Bus Stand — ~13 km<br>
+    Nearest Railway Station: Hosapete (Hospet) Junction — ~13 km<br>
+    Nearest Airports: Vidyanagar (JSW) — ~40 km (limited schedules); Hubballi (HBX) — ~160 km; Bengaluru (BLR) — ~350 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    The Vijayanagara Empire, founded by Harihara I and Bukka Raya I, was responsible for constructing the city and its monumental temples and palaces.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Konark_Sun_Temple_01-2016_img3.jpg" alt="Konark Sun Temple, Odisha" />
+
+  <h1 class="dest-title">Konark Sun Temple — Konark, Odisha</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Built in the 13th century under Eastern Ganga king Narasimhadeva I (circa 1250 CE), the Konark Sun Temple is conceived as a colossal stone chariot for Surya, the Sun god, drawn by seven horses and set upon twenty-four intricately carved wheels. Much of the sanctum’s upper structure has collapsed over time, but the jagamohana (assembly hall) and surviving sculptures remain among India’s finest temple carvings: celestial musicians, dancers frozen mid-gesture, mythical beasts, and narrative friezes that reveal courtly life, maritime trade, erotica, and devotional scenes. Konark, along with Puri Jagannath and Bhubaneswar’s Lingaraja, forms Odisha’s sacred triangle and exemplifies Kalinga temple architecture—curvilinear shikharas, ornate doorjambs, and precise iconographic programs.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    The sheer scale and ambition of turning a temple into a moving cosmic diagram is breathtaking. The stone wheels double as sundials, and the horses seem to surge forward from the platform. Konark’s carvings are both technically superb and humanly tender, making it a dream for historians, photographers, and anyone interested in the evolution of Indian temple art. The annual Konark Dance Festival celebrates classical forms against this dramatic backdrop.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    On Odisha’s coast, near the Bay of Bengal, about 35 km northeast of Puri and approximately 65 km southeast of Bhubaneswar.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Travelers often base themselves in Puri or Bhubaneswar. Regular buses and taxis link both cities to Konark via the scenic Marine Drive Road from Puri or NH316 from Bhubaneswar.
+  </p>
+
+  <div class="section-header">Approximate Distances from Transit Hubs</div>
+  <p class="travel-info">
+    Nearest bus stands: Puri Bus Stand — ~35 km; Bhubaneswar Baramunda Bus Stand — ~65 km<br>
+    Nearest railway stations: Puri — ~35 km; Bhubaneswar — ~65 km<br>
+    Nearest airport: Biju Patnaik International Airport (BBI), Bhubaneswar — ~65 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Eastern Ganga king Narasimhadeva I commissioned the temple, completed by skilled artisans of Kalinga architecture.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/2/26/Amber_fort_2013_02.jpg" alt="Amber Fort, Jaipur" />
+
+  <h1 class="dest-title">Jaipur City Palace & Amber Fort — Jaipur, Rajasthan</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Founded in 1727 by Maharaja Sawai Jai Singh II, Jaipur was India’s first planned city, designed according to Vastu Shastra and Shilpa Shastra principles.
+    The City Palace remains the ceremonial heart, blending Rajput, Mughal, and European styles. It includes courtyards and grand gateways like the Peacock Gate, Mubarak Mahal museum, and Chandra Mahal royal residence.
+    Nearby, Amber (Amer) Fort predates Jaipur—built by Raja Man Singh I in the late 16th century and expanded by successive Kachwaha rulers.
+    Its sandstone and marble palaces, including Sheesh Mahal and Diwan-i-Khas, overlook Maota Lake. Amber’s strategic hilltop location made it the Kachwahas’ seat before Jaipur’s founding.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    The City Palace and Amber Fort epitomize Rajasthan’s regal past. Amber’s Sheesh Mahal dazzles with mirrors glittering in candlelight.
+    Elephant rides, sound and light shows, and panoramic views create unforgettable experiences.
+    The City Palace still houses Jaipur’s royals and anchors the Pink City’s bustling bazaar areas such as Johari and Bapu markets.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Central and northern Jaipur, Rajasthan, approximately 280 km southwest of Delhi.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Direct trains like the Shatabdi and Vande Bharat connect Delhi to Jaipur in 4–5 hours.
+    Road travel is convenient via NH48 (Delhi–Jaipur Expressway), taking 5–6 hours by car.
+    Jaipur International Airport connects to all major metros.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    City Palace: Sindhi Camp Bus Stand ~3 km; Jaipur Junction ~5 km; Jaipur Airport ~13 km.<br>
+    Amber Fort: Sindhi Camp ~11 km; Jaipur Junction ~13 km; Jaipur Airport ~21 km.
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Jaipur City Palace was commissioned by Maharaja Sawai Jai Singh II; Amber Fort was built by Raja Man Singh I with expansions by his successors.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Ajanta_Caves_1.jpg" alt="Ajanta Caves" />
+
+  <h1 class="dest-title">Ajanta & Ellora Caves — Aurangabad, Maharashtra</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Ajanta Caves (2nd century BCE–6th century CE) are famous for rock-cut Buddhist chaityas and viharas adorned with exquisite murals depicting Jataka tales.
+    Ellora Caves (5th–10th century CE) consist of 34 caves showcasing Buddhist, Hindu, and Jain traditions.
+    The highlight is Cave 16 (Kailasa Temple), a monolithic structure carved top-down from basalt rock, symbolizing Mount Kailash.
+    Patronage came from several dynasties including Vakatakas, Chalukyas, Rashtrakutas, and Yadavas.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Ajanta’s paintings are among the world’s finest ancient Buddhist art, featuring refined shading and storytelling.
+    Ellora’s Kailasa Temple is an engineering marvel, created by excavating 200,000 tons of rock and displaying intricate sculptures.
+    The caves reflect India’s religious pluralism and architectural genius.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Near Aurangabad (now Chhatrapati Sambhajinagar), Maharashtra. Ajanta is approximately 100 km northeast; Ellora about 30 km northwest.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Aurangabad is connected by rail from Mumbai, Pune, and Hyderabad; by air via Aurangabad Airport; and via NH52 and NH753F roads.
+    Taxis and buses link Aurangabad to Ajanta and Ellora.
+  </p>
+
+  <div class="section-header">Approximate Distances (Ellora)</div>
+  <p class="travel-info">
+    Bus Stand (Aurangabad Central) ~30 km<br>
+    Railway Station (Aurangabad Jn) ~30 km<br>
+    Airport (Aurangabad IXU) ~36 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    The caves were commissioned by various ruling dynasties over centuries, reflecting Buddhist, Hindu, and Jain religious patronage.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gateway_of_India_Mumbai_03-2016_img3.jpg" alt="Gateway of India, Mumbai" />
+
+  <h1 class="dest-title">Gateway of India & Colaba — Mumbai, Maharashtra</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Completed in 1924 to commemorate King George V’s 1911 visit, the Gateway of India is a grand Indo-Saracenic style archway.
+    It became symbolic as the ceremonial entrance for British viceroys and the site where British troops exited India in 1948.
+    The Colaba waterfront evolved as a cosmopolitan hub blending colonial architecture with vibrant markets.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    The Gateway is Mumbai’s emblem overlooking the Arabian Sea.
+    Adjacent landmarks include the iconic Taj Mahal Palace Hotel.
+    Ferries depart nearby for the Elephanta Caves.
+    Colaba Causeway bustles with cafés, street stalls, and galleries, where colonial grandeur meets modern India.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Southern tip of Mumbai, Maharashtra.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Local trains terminate at Churchgate/CSMT stations; taxis and buses serve Colaba.
+    Mumbai International Airport offers global connections.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Mumbai Central) ~6 km<br>
+    Railway Stations: CSMT ~2.5 km; Churchgate ~2 km<br>
+    Airport (Chhatrapati Shivaji Maharaj Intl, BOM) ~25 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Built by the British colonial government during early 20th century as a ceremonial gateway.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Sri_Meenakshi_Temple_February_2014.jpg" alt="Meenakshi Amman Temple, Madurai" />
+
+  <h1 class="dest-title">Meenakshi Amman Temple — Madurai, Tamil Nadu</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The Meenakshi Amman Temple was expanded to its present grandeur by Nayak ruler Tirumalai Nayaka in the 17th century.
+    Dedicated to Goddess Meenakshi (Parvati) and Lord Sundareshwarar (Shiva), it features 14 towering gopurams richly decorated with mythological figures.
+    The thousand-pillar hall highlights intricate Nayak architecture.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    The temple is both a pilgrimage site and architectural marvel—
+    gopurams bursting with colorful deities and guardians.
+    Active rituals, vibrant processions, and the renowned Chithirai Festival bring it to life annually.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Located in central Madurai city, Tamil Nadu, approximately 460 km southwest of Chennai.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Madurai Junction railway station connects across India.
+    Madurai Airport serves domestic destinations.
+    NH38 and NH44 highways link Madurai to Chennai, Tiruchirapalli, and Coimbatore.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Periyar Central) ~2 km<br>
+    Railway Station (Madurai Junction) ~1.5 km<br>
+    Airport (Madurai IXM) ~12 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Developed by Nayak rulers, especially Tirumalai Nayaka, with roots in older South Indian temple traditions.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Chinese_fishing_net_kochi.JPG" alt="Fort Kochi, Kerala" />
+
+  <h1 class="dest-title">Fort Kochi & Mattancherry — Kochi, Kerala</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Fort Kochi was influenced by Portuguese colonizers in 1503, followed by Dutch in 1663 and British in 1795.
+    St. Francis Church, where Vasco da Gama was originally buried, is India's oldest European church.
+    Mattancherry Palace (Dutch Palace) houses frescoes depicting the Ramayana and royal portraits.
+    The Jewish Synagogue in Jew Town is Asia’s oldest functioning synagogue, established in 1568.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Fort Kochi is known for its colonial-era bungalows, iconic Chinese fishing nets at sunset, spice markets, and the Kochi-Muziris Biennale,
+    India’s largest contemporary art festival reflecting the city's unique cultural blend.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Located in Kochi city, central Kerala on the Arabian Sea coast.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Connected by Ernakulam railway stations (Junction and Town), with Cochin International Airport ~45 km away.
+    Ferries and buses link Ernakulam with Fort Kochi.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Ernakulam KSRTC) ~12 km<br>
+    Railway Station (Ernakulam Junction) ~13 km<br>
+    Airport (Cochin International Airport - COK) ~45 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Influenced and developed by Portuguese, Dutch, and British colonial powers between 16th and 18th centuries.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/6/65/Charminar_2019.jpg" alt="Charminar, Hyderabad" />
+
+  <h1 class="dest-title">Charminar — Hyderabad, Telangana</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Built in 1591 by Muhammad Quli Qutb Shah, founder of Hyderabad, Charminar marks the city’s foundation and commemorates the end of a plague. The square structure rises 48.7 m high, with four grand arches and four minarets capped with domes. Around it developed Hyderabad’s pulse: Laad Bazaar, famed for bangles, and Mecca Masjid, built with soil from Mecca.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Charminar is Hyderabad’s beating heart and symbol. The evening buzz—glittering bangles, pearls, Irani chai cafés, and biryani stalls—makes it a living monument. From its balconies, the panorama of Old Hyderabad unfolds.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Old Hyderabad, Telangana.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Hyderabad’s metro and buses connect well. Secunderabad and Hyderabad Deccan railheads are close. Rajiv Gandhi International Airport has global connectivity.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (MGBS) ~3 km<br>
+    Railway (Hyderabad Deccan Nampally) ~4 km; Secunderabad Jn ~9 km<br>
+    Airport (HYD) ~20 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Muhammad Quli Qutb Shah commissioned Charminar as part of Hyderabad’s foundation.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/2/29/Goa_beach_-_Anjuna.jpg" alt="Goa Beaches" />
+
+  <h1 class="dest-title">Goa Beaches — North & South Goa</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Goa was under Portuguese rule from 1510 to 1961. Its coastlines developed as a fusion of Konkani traditions and Lusophone culture. In the 1960s–70s, Goa became a hippie haven, and since then its beaches—Calangute, Baga, Anjuna, Vagator (North Goa); Colva, Palolem (South Goa)—attract millions.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Golden sands, nightlife, water sports, yoga retreats, seafood shacks, and Indo-Portuguese villages. From raves at Anjuna to quiet sunsets at Palolem, Goa offers variety unmatched in India.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Western India, Konkan coast, approximately 600 km south of Mumbai.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Vasco da Gama and Madgaon railway stations serve Goa. Goa International Airport (Dabolim) and the new Manohar International (Mopa) provide air connectivity. NH66 and buses connect from Mumbai, Pune, and Bengaluru.
+  </p>
+
+  <div class="section-header">Approximate Distances (to Calangute)</div>
+  <p class="travel-info">
+    Bus Stand (Panaji) ~15 km<br>
+    Railway (Thivim) ~19 km; Madgaon ~46 km<br>
+    Airport (Dabolim) ~39 km; Mopa ~31 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Goa’s coastal settlements evolved over centuries under local rulers and Portuguese colonial rule.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/c/c0/Annapurna_III_and_Kangchenjunga_from_Darjeeling.jpg" alt="Darjeeling and Tiger Hill" />
+
+  <h1 class="dest-title">Darjeeling & Tiger Hill — West Bengal</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Developed as a hill station by the British in the 19th century, Darjeeling became famous for its tea estates and views of Kanchenjunga. Tiger Hill (2,590 m) is renowned for sunrise panoramas where the sun lights Kanchenjunga—and even Mt. Everest on clear days. The Darjeeling Himalayan Railway (“Toy Train”) began in 1881.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Cool climate, tea gardens, colonial schools, Buddhist monasteries, and Toy Train rides. Sunrise at Tiger Hill is legendary—thousands gather to see peaks blush with dawn.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Northern West Bengal, near Sikkim border.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    NJP (New Jalpaiguri) railway is gateway. Bagdogra Airport (IXB) connects nationwide. Hill roads (NH110) lead to Darjeeling.
+  </p>
+
+  <div class="section-header">Approximate Distances (to Darjeeling Mall Road)</div>
+  <p class="travel-info">
+    Bus Stand (Siliguri Tenzing Norgay) ~70 km<br>
+    Railway (NJP) ~72 km<br>
+    Airport (Bagdogra IXB) ~70 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Established as a British colonial hill station in the 19th century.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/6/68/Indian_rhinoceros_kaziranga.jpg" alt="Kaziranga National Park, Assam" />
+
+  <h1 class="dest-title">Kaziranga National Park — Assam</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Declared a reserve forest in 1905, Kaziranga became a UNESCO World Heritage Site in 1985. It’s world-famous as the home of the Indian one-horned rhinoceros. Its floodplains of the Brahmaputra sustain elephants, swamp deer, tigers, and migratory birds.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    The park has the world’s largest population of one-horned rhinos (~2,400). Elephant-back and jeep safaris through tall elephant grass bring visitors face-to-face with rhinos, wild buffalo, and river dolphins.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Golaghat & Nagaon districts, Assam, about 220 km from Guwahati.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Buses and taxis from Guwahati and Jorhat. Nearest railway stations are Furkating, Jorhat, or Guwahati. Nearest airports are Jorhat (97 km) and Guwahati (217 km).
+  </p>
+
+  <div class="section-header">Approximate Distances (Kohora Range)</div>
+  <p class="travel-info">
+    Bus Stand (Kohora) ~1 km<br>
+    Railway (Furkating Jn) ~75 km; Guwahati ~217 km<br>
+    Airport (Jorhat JLH) ~97 km; Guwahati GAU ~217 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Declared a protected forest by British Indian Government with ongoing conservation efforts.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Mysore_Palace_Night.jpg" alt="Mysore Palace, Mysuru" />
+
+  <h1 class="dest-title">Mysore Palace — Mysuru, Karnataka</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Seat of the Wodeyar dynasty, Mysore Palace was rebuilt in Indo-Saracenic style by British architect Henry Irwin after a fire in 1897. Completed in 1912, it blends Hindu, Muslim, Rajput, and Gothic elements. It houses ornate halls including Durbar and Kalyana Mantapa, royal armory, and art treasures.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Mysore Palace is India’s second most visited monument after the Taj Mahal. Its illumination on Sundays and during the Dasara festival—with 100,000 bulbs glowing—creates a fairy-tale sight. Inside, stained glass, gilded ceilings, and wall paintings dazzle visitors.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Mysuru, Karnataka, approximately 145 km southwest of Bengaluru.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Mysuru Junction railway station connects Mysuru with Bengaluru and Chennai. Mysuru Airport has regional flights. NH275 highway offers road connectivity from Bengaluru (~3–4 hours).
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Mysuru KSRTC) ~2 km<br>
+    Railway (Mysuru Junction) ~3 km<br>
+    Airport (Mysore MYQ) ~12 km; Bengaluru BLR ~180 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    The Wodeyar dynasty and British architects rebuilt the palace after the 1897 fire.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Kandariya_Mahadev_Temple_Khajuraho_December_2006_04.jpg" alt="Khajuraho Temples, Madhya Pradesh" />
+
+  <h1 class="dest-title">Khajuraho Temples — Madhya Pradesh</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Built by Chandela rulers between the 9th and 11th centuries, Khajuraho originally had around 85 temples, with about 25 surviving today.
+    The temples represent Hinduism and Jainism. The grandest is Kandariya Mahadev temple. Sculptures depict gods, apsaras, musicians, warriors, and famous erotic couples, reflecting the broader worldview of purusharthas (life’s aims).
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Khajuraho’s artistry is unparalleled—sensual yet sacred, showcasing kama (desire) as part of life.
+    This UNESCO World Heritage site is famed for its exquisite temple carvings and the annual dance festival celebrating Indian classical dance forms.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Located in Chhatarpur district, Madhya Pradesh, about 175 km from Jhansi.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Khajuraho has its own small airport and railway station connecting via Jhansi, Satna, and Mahoba.
+    It is accessible by roads NH39 and NH44.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Khajuraho) ~1 km<br>
+    Railway Station (Khajuraho Jn) ~5 km; Satna ~120 km<br>
+    Airport (Khajuraho HJR) ~5 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Commissioned by the Chandela dynasty, these temples showcase their artistic and religious patronage.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Udaipur_City_Palace_3.jpg" alt="Udaipur City Palace, Rajasthan" />
+
+  <h1 class="dest-title">Udaipur & City Palace — Rajasthan</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Founded by Maharana Udai Singh II in 1559 after losing Chittorgarh to the Mughals, Udaipur became the capital of Mewar.
+    The City Palace complex, begun in the 16th century and expanded over 400 years, overlooks Lake Pichola.
+    It features white marble palaces, temples, gardens, and courtyards layered along the ridge.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Often called the “Venice of the East,” Udaipur’s City Palace and Lake Pichola with Jag Mandir and the Lake Palace (now a luxury hotel) form postcard views.
+    Its romance and beauty have been showcased in films and attract visitors worldwide for sunset boat rides and scenic hill scenery.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Located in southern Rajasthan, about 400 km southwest of Jaipur.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Udaipur Railway is connected to Delhi, Jaipur, and Mumbai.
+    Maharana Pratap Airport has flights to major metros.
+    NH48 and NH58 highways offer road connectivity.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Udaipur Central) ~2 km<br>
+    Railway Station (Udaipur City) ~3 km<br>
+    Airport (Udaipur UDR) ~24 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Founded by Maharana Udai Singh II and expanded by successive rulers of Mewar.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Lakshman_jhula_and_Ganga_in_Rishikesh_%2828618492305%29.jpg" alt="Lakshman Jhula, Rishikesh" />
+
+  <h1 class="dest-title">Rishikesh & Lakshman Jhula — Uttarakhand</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Rishikesh is mentioned in ancient scriptures as a spiritual site, with Lakshman Jhula suspension bridge built in 1939.
+    The bridge is named after Lord Lakshman, who is believed to have crossed the Ganges here.
+    The Beatles’ 1960s visit popularized Rishikesh globally as a yoga hub.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known as the “Yoga Capital of the World,” Rishikesh offers spiritual retreats, Ganga aarti ceremonies, white-water rafting, and scenic Himalayan views.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Situated in Dehradun district, Uttarakhand, approximately 240 km north of Delhi.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Connected by rail through Rishikesh and Haridwar stations.
+    Accessible by road via NH7 and Dehradun Jolly Grant Airport (~21 km).
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Rishikesh ISBT) ~1 km<br>
+    Railway (Rishikesh) ~2 km; Haridwar ~20 km<br>
+    Airport (Dehradun DED) ~21 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Lakshman Jhula was constructed by
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Ajmer_Sharif_Dargah_-_Main_Gate.jpg" alt="Ajmer Sharif Dargah, Rajasthan" />
+
+  <h1 class="dest-title">Ajmer Sharif Dargah — Ajmer, Rajasthan</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The shrine of Khwaja Moinuddin Chishti, a revered 13th-century Sufi saint, is one of South Asia’s most important Islamic pilgrimage sites.
+    Mughal emperors like Akbar patronized this Dargah.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for its spiritual inclusiveness, the Dargah draws millions across faiths.
+    The Qawwali sessions and Urs festival bring devotees together in celebration.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Ajmer city, Rajasthan, approximately 135 km from Jaipur.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Ajmer is connected by rail and road to major cities. The nearest airport is Jaipur International.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Ajmer RSRTC) ~1.5 km<br>
+    Railway (Ajmer Junction) ~1 km<br>
+    Airport (Jaipur JAI) ~135 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Built around the tomb of Khwaja Moinuddin Chishti with successive patronage over centuries.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Amarnath_Yatra_2012.jpg" alt="Amarnath Cave, Jammu & Kashmir" />
+
+  <h1 class="dest-title">Amarnath Cave — Jammu & Kashmir</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The Amarnath Cave, located at 3,888 meters, houses a natural ice lingam symbolizing Lord Shiva.
+    Discovered by a shepherd in the 15th century, the cave has been an ancient pilgrimage site with documented yatra (pilgrimage) traditions.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    The Amarnath Yatra, conducted during July and August, is one of Hinduism’s most important pilgrimages.
+    Pilgrims trek through challenging Himalayan terrain to witness the miraculous ice formation.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Anantnag district, Jammu & Kashmir, about 141 km from Srinagar.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Base camps at Pahalgam and Baltal provide starting points. Srinagar has airport and road access. Helicopter services available.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Pahalgam) ~46 km from cave trek startsite<br>
+    Railway (Jammu Tawi) ~178 km<br>
+    Airport (Srinagar SXR) ~141 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Discovered by locals and sustained as a pilgrimage site by regional rulers and devotees through history.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/2/28/Jaisalmer_Fort_in_Rajasthani_sunshine.jpg" alt="Jaisalmer Fort, Rajasthan" />
+
+  <h1 class="dest-title">Jaisalmer Fort — Jaisalmer, Rajasthan</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Constructed in 1156 AD by Rawal Jaisal, the Jaisalmer Fort—also known as the Golden Fort—is one of the largest fully preserved fortified cities in the world.
+    Its imposing yellow sandstone walls shimmer in the desert sun, blending with the surrounding sand dunes.
+    The fort has been a vital trade center and was ruled by the Bhati Rajput dynasty.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known as the "Golden City," the fort houses intricately carved Jain temples, havelis, and palaces.
+    Visitors enjoy panoramic views of the desert from its ramparts.
+    The fort remains inhabited, making it a lively blend of fortress and living city.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Located in the heart of Jaisalmer city, Rajasthan, near the Thar Desert.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Jaisalmer is connected by rail via Jaisalmer railway station.
+    Air travel is connected via Jodhpur Airport (~280 km away).
+    Road connectivity from Jaipur and Bikaner is good.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Jaisalmer) ~2 km<br>
+    Railway Station (Jaisalmer) ~2 km<br>
+    Airport (Jodhpur) ~280 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Built by Rawal Jaisal, founder of the Bhati Rajput dynasty.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Rann_of_Kutch_During_Dusk.jpg" alt="Rann of Kutch, Gujarat" />
+
+  <h1 class="dest-title">Rann of Kutch — Gujarat</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The Rann of Kutch is a vast salt marsh in the Thar Desert, historically a trade route and home to the Kutchi people.
+    Geologically formed from the tidal flats of the Arabian Sea, it has cultural and historical significance rooted in local traditions.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Famous for its white salt desert that shines under the moonlight.
+    The Rann Utsav festival showcases traditional culture, crafts, music, and dances attracting domestic and international tourists.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Located in Kutch district, Gujarat, near the Pakistan border.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Nearest city is Bhuj with rail and air connectivity.
+    Roads connect several entry points to the Rann including Dhordo village for the festival.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Bhuj) ~50 km<br>
+    Railway Station (Bhuj) ~50 km<br>
+    Airport (Bhuj) ~50 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Formed naturally over thousands of years; cultural elements shaped by the Kutchi tribes and rulers.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/5/55/Sanchi_Stupa_No_1.jpg" alt="Sanchi Stupa, Madhya Pradesh" />
+
+  <h1 class="dest-title">Sanchi Stupa — Sanchi, Madhya Pradesh</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The Great Stupa at Sanchi is one of the oldest stone structures in India, originally commissioned by Emperor Ashoka in the 3rd century BCE.
+    This Buddhist complex contains stupas, monasteries, temples, and pillars, marking one of the most important pilgrimage sites.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Sanchi Stupa is renowned for its beautifully carved gateways and ancient Buddhist art.
+    It is a UNESCO World Heritage site symbolizing the spread of Buddhism and Indian architecture.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Near Raisen town in Madhya Pradesh, approximately 46 km northeast of Bhopal.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Reachable by road from Bhopal and Sanchi railway station.
+    Bhopal has direct flights and trains from major cities.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Sanchi) ~2 km<br>
+    Railway Station (Sanchi) ~1.5 km<br>
+    Airport (Bhopal) ~46 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Emperor Ashoka initiated the construction; subsequent rulers expanded the complex.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/7/77/Mahabodhi_Temple_%28Bodh_Gaya%29_23-02-2014_14-15-20.jpg" alt="Mahabodhi Temple, Bodh Gaya" />
+
+  <h1 class="dest-title">Mahabodhi Temple — Bodh Gaya, Bihar</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Mahabodhi Temple marks the site where Lord Buddha attained enlightenment under the Bodhi tree.
+    The present temple was built around the 5th–6th century AD and extensively restored by the Gupta dynasty.
+    It’s a UNESCO World Heritage site and one of the earliest Buddhist temples in India.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    The temple complex is a major pilgrimage destination for Buddhists worldwide.
+    Its architectural grandeur and historic significance as the enlightenment site make it uniquely sacred.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Located in Bodh Gaya, Gaya district, Bihar.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible via Gaya Railway Station and Gaya Airport.
+    Road connectivity links Bodh Gaya with nearby cities like Patna.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Bodh Gaya) ~1 km<br>
+    Railway Station (Gaya) ~12 km<br>
+    Airport (Gaya) ~13 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Originally commissioned by Emperor Ashoka; the current structure dates to Gupta period renovations.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Sundarbans_Signboard.JPG" alt="Sunderbans National Park, West Bengal" />
+
+  <h1 class="dest-title">Sunderbans National Park — West Bengal</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The Sunderbans forms the largest tidal halophytic mangrove forest in the world.
+    It has a rich cultural history with local communities living in harmony with the unique environment for centuries.
+    It was declared a UNESCO World Heritage Site in 1987.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Famous for its Royal Bengal Tigers, vast mangrove ecosystem, and unique wildlife.
+    It offers distinctive biodiversity and picturesque waterways.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Southern West Bengal along the Bay of Bengal, India-Bangladesh border.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Nearest city is Kolkata, connected by airport and rail.
+    Local transport from Kolkata to entry points like Godkhali.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Godkhali) ~0 km (entry point)<br>
+    Railway Station (Canning) ~45 km<br>
+    Airport (Kolkata) ~110 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Natural mangrove ecosystem preserved by various conservation efforts.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Elephanta_Caves_Main_Shrine_Sculpture.jpg" alt="Elephanta Caves, Mumbai" />
+
+  <h1 class="dest-title">Elephanta Caves — Mumbai, Maharashtra</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The Elephanta Caves, a UNESCO World Heritage Site, are a network of sculpted caves located on Elephanta Island, dating back to the mid-5th to 6th centuries CE.
+    These rock-cut caves showcase Hindu deities, particularly Shiva in his various forms, carved with intricate detail.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Noted for magnificent sculptures like the Trimurti (three-headed Shiva), the caves attract historians, art lovers, and tourists.
+    The caves provide insight into ancient Indian rock-cut architecture and religious art.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Accessible by ferry from the Gateway of India in Mumbai across the Arabian Sea.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Ferries depart regularly from the Gateway of India waterfront.
+    The Gateway of India is accessible by local trains (Churchgate/CSMT) and taxis.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Nearest Bus Stand: Churchgate (3 km)<br>
+    Nearest Railway Station: Churchgate / CSMT (2 km)<br>
+    Nearest Airport: Mumbai International Airport (25 km)
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Created by ancient Indian sculptors and patrons, likely under the patronage of the Kalachuri dynasty.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/8/82/Ooty_Lake_Boat_Ride.jpg" alt="Ooty Lake, Tamil Nadu" />
+
+  <h1 class="dest-title">Ooty (Udhagamandalam) — Tamil Nadu</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Ooty was developed by the British in the early 19th century as a summer retreat to escape plains heat.
+    It lies in the Nilgiri Hills, rich with colonial-era architecture, botanical gardens, and tea plantations.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known as the "Queen of Hill Stations," Ooty is popular for its cool climate, scenic lake, botanical gardens, and the Nilgiri Mountain Railway, a UNESCO World Heritage site.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    In the Nilgiris district of Tamil Nadu, southern India.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible by road from Mysore and Coimbatore.
+    Nilgiri Mountain Railway connects to Mettupalayam station on the broad gauge line.
+    Nearest airport is Coimbatore International Airport (~88 km).
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Ooty) ~2 km<br>
+    Railway Station (Ooty) ~2 km<br>
+    Airport (Coimbatore CJB) ~88 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Developed by British officers and plantation owners during colonial rule.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Rann_of_Kutch_AT_Dusk.jpg" alt="Rann of Kutch at Dusk" />
+
+  <h1 class="dest-title">Kutch Rann Utsav — Kutch, Gujarat</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The Rann of Kutch is a vast seasonal salt marsh and desert formed naturally over millennia, inhabited by the Kutchi people.
+    The Rann Utsav is a recent cultural festival started to showcase local handicrafts, dance, music, and folk traditions.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Visitors flock to witness the white salt desert illuminated by moonlight, accompanied by vibrant festivals and cultural programs celebrating Kutch’s traditions.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Located in Kutch district near the Pakistan border in Gujarat.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Bhuj city is the main access point, connected by train and airport.
+    Roads connect Bhuj to the Rann and festival sites like Dhordo.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Bhuj) ~50 km<br>
+    Railway Station (Bhuj) ~50 km<br>
+    Airport (Bhuj) ~50 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Nature formed the salt desert; the festival was initiated by the Gujarat tourism department.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/0/00/Bandhavgarh_The_Wild_Side_Of_India.png" alt="Bandhavgarh National Park" />
+
+  <h1 class="dest-title">Bandhavgarh National Park — Madhya Pradesh</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Bandhavgarh National Park has ancient roots in Hindu mythology, believed to be a gift from Lord Rama to his brother Lakshman.
+    It was declared a national park in 1968 and a Tiger Reserve in 1993.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Home to one of the highest densities of Bengal tigers in India, Bandhavgarh offers excellent wildlife experiences with sightings of other animals like leopards, deer, and bird species.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Located in Umaria district of Madhya Pradesh.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Nearest railway station is Umaria, connecting by road to the park.
+    Jabalpur Airport is the closest major airport (~180 km).
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Umaria) ~25 km<br>
+    Railway Station (Umaria) ~25 km<br>
+    Airport (Jabalpur) ~180 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Preserved as a forest and wildlife reserve by Indian government agencies.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/2/21/Mahabalipuram_-_Pancha_Rathas%2C_2.JPG" alt="Mahabalipuram Monuments, Tamil Nadu" />
+
+  <h1 class="dest-title">Mahabalipuram (Mamallapuram) — Tamil Nadu</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Built during the 7th and 8th centuries CE by Pallava kings, Mahabalipuram showcases intricately carved monolithic rathas, cave temples, and bas-reliefs.
+    The site was a major port and an artistic hub.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for its UNESCO World Heritage-listed Shore Temple and the giant bas-relief "Arjuna’s Penance."
+    It is an important example of Dravidian architecture and rock-cut artistry.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located on the Coromandel Coast, 60 km south of Chennai.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible by road and regular buses from Chennai and nearby towns.
+    Chennai International Airport is the nearest airport.
+    Mahabalipuram railway station connects the town to Chennai.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Mahabalipuram) ~1 km<br>
+    Railway Station (Mahabalipuram) ~2 km<br>
+    Airport (Chennai) ~60 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Constructed under Pallava dynasty kings, notably Narasimhavarman I (Mamalla).
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Fatehpur_Sikri_courtyard.jpg" alt="Fatehpur Sikri, Uttar Pradesh" />
+
+  <h1 class="dest-title">Fatehpur Sikri — Agra District, Uttar Pradesh</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Fatehpur Sikri was founded by Mughal Emperor Akbar in 1571 and served as the Mughal capital for nearly 14 years.
+    The city reflects a distinctive blend of Islamic, Hindu, and Persian architectural styles. It houses palaces, mosques including Jama Masjid, and the famous Buland Darwaza.
+    Eventually abandoned due to water scarcity, it remains remarkably well-preserved.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Its massive red sandstone structures and majestic gate make it one of India’s architectural jewels.
+    Fatehpur Sikri is a UNESCO World Heritage Site and a testament to Akbar’s vision of cultural amalgamation.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    About 40 km west of Agra city, Uttar Pradesh.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Easily reached by car or bus from Agra. Nearest railway stations are Agra Cantt and Fatehpur Sikri station.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Agra) ~45 km<br>
+    Railway Station (Fatehpur Sikri) ~0 km<br>
+    Airport (Agra Kheria) ~50 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Mughal Emperor Akbar commissioned Fatehpur Sikri as a grand capital city.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/5/55/Sanchi_Stupa_No_1.jpg" alt="Sanchi Stupa, Madhya Pradesh" />
+
+  <h1 class="dest-title">Sanchi Stupa — Madhya Pradesh</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The Great Stupa at Sanchi is one of India’s oldest stone structures, commissioned by Emperor Ashoka in the 3rd century BCE.
+    The site features stupas, monasteries, temples, and richly decorated gateways that showcase the evolution of Buddhist architecture.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for its elaborately carved gateways and magnificent stupas, Sanchi is a UNESCO World Heritage Site and an important Buddhist pilgrimage center.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Located near Raisen town in Madhya Pradesh, approximately 46 km northeast of Bhopal.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible by road from Bhopal; nearest railway station is Sanchi.
+    Bhopal provides airport and train connectivity to major cities.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Sanchi) ~2 km<br>
+    Railway Station (Sanchi) ~1.5 km<br>
+    Airport (Bhopal) ~46 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Founded by Emperor Ashoka, with later additions by various dynasties.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/d/db/Chittorgarh_Fort_View.jpg" alt="Chittorgarh Fort, Rajasthan" />
+
+  <h1 class="dest-title">Chittorgarh Fort — Chittorgarh, Rajasthan</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Chittorgarh Fort is the largest fort in India, built in the 7th century CE by the Maurya dynasty.
+    It was the capital of the Mewar kingdom.
+    The fort witnessed heroic sieges and sacrifices including those of Queen Padmini and Rani Karnavati.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for its majestic towers and palaces, the fort symbolizes Rajput valor, history, and architectural brilliance.
+    It houses the Vijay Stambh and Kirti Stambh towers, and several temples.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Chittorgarh town, southern Rajasthan.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Connected by rail and road. Nearest airport is Udaipur (~120 km).
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Chittorgarh) ~4 km<br>
+    Railway Station (Chittorgarh) ~4 km<br>
+    Airport (Udaipur DCF) ~120 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Founded by Maurya rulers; developed and defended by Sisodia Rajputs.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Srisailam_Temple_Image.jpg" alt="Srisailam Temple, Andhra Pradesh" />
+
+  <h1 class="dest-title">Srisailam — Andhra Pradesh/Telangana</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Srisailam houses the Mallikarjuna Jyotirlinga temple, one of India’s twelve Jyotirlingas, located in the Nallamala Hills.
+    The temple’s origins date back to ancient times, with renovations by Chalukya and Vijayanagara dynasties.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    A major pilgrim center for Shaivites and Shaktism devotees, the temple’s scenic locale and festivals attract thousands.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located on the Andhra Pradesh–Telangana border within the Nallamala Hills.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Nearest railway stations are Markapur and Dornala; road connectivity links with Hyderabad and Vijayawada.
+    The closest airport is Hyderabad International Airport.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Srisailam) ~0 km<br>
+    Railway Station (Markapur) ~90 km<br>
+    Airport (Hyderabad) ~213 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Ancient origins with significant expansion under various South Indian dynasties.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/5/50/Raghurajpur_Orissa_Indien_2009.jpg" alt="Raghurajpur Village, Odisha" />
+
+  <h1 class="dest-title">Raghurajpur — Odisha</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Raghurajpur is a heritage crafts village renowned for its Pattachitra paintings and traditional Indian folk arts.
+    The village has preserved this tradition for centuries and is recognized by the Government of India as a heritage village.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for exquisite hand-painted cloth art, wooden toys, and masks.
+    The village offers tourists immersive art experiences and showcases Odisha’s rich cultural heritage.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Situated near Puri, Odisha, close to the Bay of Bengal coast.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible via Puri’s railway station and bus stand.
+    The nearest airport is Biju Patnaik International Airport in Bhubaneswar.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Puri) ~12 km<br>
+    Railway Station (Puri) ~12 km<br>
+    Airport (Bhubaneswar) ~60 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    The village community and artists have preserved and promoted the craft heritage for generations.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/7/77/Mahabodhi_Temple_%28Bodh_Gaya%29_23-02-2014_14-15-20.jpg" alt="Mahabodhi Temple, Bodh Gaya" />
+
+  <h1 class="dest-title">Mahabodhi Temple — Bodh Gaya, Bihar</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Mahabodhi Temple marks the site where Lord Buddha attained enlightenment under the Bodhi tree.
+    The current temple was built around the 5th–6th century CE and extensively renovated during the Gupta period.
+    It is a UNESCO World Heritage Site and one of the earliest Buddhist temples in India.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    A major pilgrimage center for Buddhists worldwide, the temple’s architecture and spiritual significance make it uniquely sacred.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Bodh Gaya, Gaya district, Bihar.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible via Gaya Railway Station and Gaya Airport.
+    Bodh Gaya is connected by road from nearby cities such as Patna.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Bodh Gaya) ~1 km<br>
+    Railway Station (Gaya) ~12 km<br>
+    Airport (Gaya) ~13 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Originally commissioned by Emperor Ashoka; present structure dates to Gupta renovations.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Sundarbans_Signboard.JPG" alt="Sunderbans National Park, West Bengal" />
+
+  <h1 class="dest-title">Sunderbans National Park — West Bengal</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The Sunderbans is the largest tidal halophytic mangrove forest in the world.
+    It has been a home to local communities for centuries and is a UNESCO World Heritage Site since 1987.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Famous for the Royal Bengal Tigers, rich biodiversity, and unique mangrove ecosystem.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in southern West Bengal, near the India-Bangladesh border along the Bay of Bengal.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Kolkata is the nearest major city, connected by air and rail. Local transport reaches the entry point at Godkhali.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Godkhali) ~0 km (entry point)<br>
+    Railway Station (Canning) ~45 km<br>
+    Airport (Kolkata) ~110 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Natural ecosystem maintained under conservation efforts.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/6/67/Valley_of_Flowers_National_Park.jpg" alt="Valley of Flowers National Park" />
+
+  <h1 class="dest-title">Valley of Flowers National Park — Uttarakhand</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Discovered in 1931 and declared a UNESCO World Heritage Site in 2005, the Valley of Flowers is a vast alpine meadow renowned for its endemic flora and fauna.
+    It lies in the Western Himalayas and was considered sacred in Hindu mythology.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    The park boasts an extraordinary diversity of wildflowers and alpine vegetation with breathtaking views and trekking options.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in the Chamoli district of Uttarakhand.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible from Govindghat by trekking (~16 km).
+    Nearest railway station is Rishikesh; Nearest airport is Dehradun.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Govindghat) ~0 km<br>
+    Railway Station (Rishikesh) ~130 km<br>
+    Airport (Dehradun) ~130 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    A natural reserve, preserved by national park authorities.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Mysore_Palace_Night.jpg" alt="Mysore Palace, Mysuru" />
+
+  <h1 class="dest-title">Mysore Palace — Mysuru, Karnataka</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Mysore Palace is the seat of the Wodeyar dynasty, rebuilt in Indo-Saracenic style by British architect Henry Irwin after a fire in 1897.
+    Completed in 1912, the palace blends Hindu, Muslim, Rajput, and Gothic architectural elements.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    The palace is India’s second most visited monument after the Taj Mahal.
+    Its illumination on Sundays and during the Dasara festival—lit up with 100,000 bulbs—is a fairy-tale spectacle.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Mysuru, Karnataka, approximately 145 km southwest of Bengaluru.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Mysuru Junction railway station connects to Bengaluru and Chennai.
+    Mysuru Airport has regional flights.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Mysuru KSRTC) ~2 km<br>
+    Railway Station (Mysuru Junction) ~3 km<br>
+    Airport (Mysore MYQ) ~12 km; Bengaluru BLR ~180 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">The Wodeyar dynasty rebuilt the palace after a fire in 1897 with British architectural influence.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Chhatrapati_Shivaji_Terminus_-_Mumbai_-_Western_side_2020-04-18_194020.jpg" alt="Chhatrapati Shivaji Terminus, Mumbai" />
+
+  <h1 class="dest-title">Chhatrapati Shivaji Terminus (CST) — Mumbai, Maharashtra</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Originally named Victoria Terminus, CST was completed in 1887 to commemorate Queen Victoria's Golden Jubilee.
+    The station is an outstanding example of Victorian Gothic Revival architecture blended with traditional Indian architectural elements.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    CST is one of the busiest railway stations in India and a UNESCO World Heritage Site.
+    Its ornate facade, turrets, and stained glass windows showcase the grandeur of colonial-era Mumbai.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in South Mumbai, Maharashtra.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    CST is a central hub in Mumbai’s suburban railway network, connected by local trains and buses.
+    It is close to major tourist spots and ferry terminals.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Mumbai CST) ~0 km<br>
+    Railway Station (Chhatrapati Shivaji Terminus) ~0 km<br>
+    Airport (Mumbai International Airport) ~25 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Designed by British architect Frederick William Stevens and built by the British colonial government.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/5/56/Sundarban_National_Park.JPG" alt="Sundarbans National Park, West Bengal" />
+
+  <h1 class="dest-title">Sundarbans National Park — West Bengal</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The Sundarbans is the world's largest mangrove forest, spanning India and Bangladesh. It was declared a UNESCO World Heritage Site in 1987.
+    This unique deltaic forest ecosystem has been home to indigenous people for centuries, who rely on its resources while conserving its delicate balance.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for its one-of-a-kind biodiversity, it is home to the endangered Royal Bengal Tiger, saltwater crocodile, and numerous bird species.
+    The mangrove forests and tidal waterways attract eco-tourists, wildlife enthusiasts, and researchers.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in the delta region of Sundarbans, South Bengal near the Bay of Bengal.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Nearest major city is Kolkata, with road and rail connectivity.
+    Local transportation reaches entry points like Godkhali for boat safaris.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Godkhali) ~0 km (entry point)<br>
+    Railway Station (Canning) ~45 km<br>
+    Airport (Kolkata) ~110 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    The mangrove ecosystem is naturally formed and preserved through conservation efforts.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Shirdi_Sai_Baba_Mandir_inside_view.JPG" alt="Shirdi Sai Baba Temple, Maharashtra" />
+
+  <h1 class="dest-title">Shirdi Sai Baba Temple — Shirdi, Maharashtra</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The temple is dedicated to Sai Baba, a spiritual master who lived in the late 19th and early 20th centuries and is revered across India.
+    The temple complex was constructed after his passing and attracts devotees from all religion backgrounds.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    The shrine is a celebrated pilgrimage site with a spiritual atmosphere and vast annual footfall exceeding millions.
+    It symbolizes unity and faith.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Shirdi town, Ahmednagar district, Maharashtra.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Nearest railway station is Shirdi; Shirdi Airport connects with major cities.
+    The temple is a short distance from the station and airport.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Shirdi) ~0.5 km<br>
+    Railway Station (Shirdi) ~2 km<br>
+    Airport (Shirdi) ~14 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    The temple was built by Sai Baba’s devotees soon after his death.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Kutch_Rann_of_Kutch_Gujarat_View_2018_01.jpg" alt="Rann of Kutch, Gujarat" />
+
+  <h1 class="dest-title">Rann of Kutch — Gujarat</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The Rann of Kutch is a vast seasonal salt marsh formed over millennia in the Thar desert.
+    It has cultural importance for the Kutchi people and has been host to historic trade routes.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for its dazzling white salt desert that shines under full moon nights.
+    The annual Rann Utsav festival showcases Kutchi culture through music, crafts, and festivities.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Located in Kutch district, on India’s western border with Pakistan.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Bhuj city is nearest with rail and air connectivity.
+    Roads link Bhuj to various Rann entry points such as Dhordo village.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Bhuj) ~50 km<br>
+    Railway Station (Bhuj) ~50 km<br>
+    Airport (Bhuj) ~50 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Naturally formed salt marsh with significant cultural development by local people and the Gujarat government.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Jagannath_Temple_-_Puri_-_Odisha_07-2016_img5.jpg" alt="Jagannath Temple, Puri" />
+
+  <h1 class="dest-title">Jagannath Temple — Puri, Odisha</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The temple dates back to the 12th century CE and was built by King Anantavarman Chodaganga Deva.
+    It is famous for its annual Rath Yatra (chariot festival).
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    One of the Char Dham pilgrimage sites in Hinduism, known for its unique idols and the grand chariot festival drawing millions.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Puri city, Odisha, on the coast of the Bay of Bengal.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Puri is connected by rail, road, and the nearest airport is in Bhubaneswar.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Puri) ~1 km<br>
+    Railway Station (Puri) ~1 km<br>
+    Airport (Bhubaneswar) ~60 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Built by King Anantavarman Chodaganga Deva of the Eastern Ganga dynasty.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Rishikesh_Bridge_2012.jpg" alt="Rishikesh, Uttarakhand" />
+
+  <h1 class="dest-title">Rishikesh — Uttarakhand</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Mentioned in ancient scriptures and known as the Gateway to the Himalayas, Rishikesh has been a center for spiritual seekers for centuries.
+    It gained global fame after the Beatles' visit in the 1960s.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    The world capital of yoga and meditation, hosting numerous ashrams and spiritual retreats.
+    White-water rafting and the Ganga Aarti ceremony enhance its appeal to tourists.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Situated in Dehradun district, Uttarakhand.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible by rail via Rishikesh and Haridwar stations, road via NH7, and by air through Dehradun.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Rishikesh) ~1 km<br>
+    Railway Station (Rishikesh) ~2 km; Haridwar ~20 km<br>
+    Airport (Dehradun) ~21 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Ancient sacred city developed by sages and rulers; modern facilities grew with spiritual tourism.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Jallianwala_Bagh_memorial3.jpg" alt="Jallianwala Bagh, Amritsar" />
+
+  <h1 class="dest-title">Jallianwala Bagh — Amritsar, Punjab</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Site of the tragic 1919 massacre where British troops fired on unarmed Punjabi civilians gathered for a peaceful protest, killing hundreds.
+    The memorial garden was established as a tribute to the victims and a symbol of India’s struggle for independence.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    A poignant place reminding all visitors of colonial oppression and the sacrifice for freedom.
+    The Martyrs’ Well, flame tower, and preserved bullet marks make it a solemn historical site.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Amritsar city, Punjab.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Easily accessible from Amritsar Junction railway station and local buses.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand: Amritsar ISBT (~3 km)<br>
+    Railway Station: Amritsar Junction (~2 km)<br>
+    Airport: Sri Guru Ram Dass Jee International Airport (~15 km)
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Memorial constructed post-independence by the Indian government.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/3/37/Rann_Utsav.jpg" alt="Rann Utsav Festival, Gujarat" />
+
+  <h1 class="dest-title">Rann Utsav — Dhordo, Kutch District, Gujarat</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The Rann Utsav is a cultural festival started in the early 2000s to promote the Kutch region.
+    It showcases the local arts, crafts, music, and traditions of the Kutchi people.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    The festival attracts tourists worldwide to see the white salt desert illuminated under moonlight, enjoy folk performances, handicrafts, and regional cuisine.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Held at Dhordo village in the Great Rann of Kutch.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Best accessed via Bhuj city, which has an airport and railway station.
+    Roads connect Bhuj to Dhordo.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand: Bhuj (~50 km)<br>
+    Railway Station: Bhuj (~50 km)<br>
+    Airport: Bhuj (~50 km)
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Initiated by the Gujarat state tourism department to preserve and promote local culture.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/9/99/Kedarnath_Temple_2016.JPG" alt="Kedarnath Temple, Uttarakhand" />
+
+  <h1 class="dest-title">Kedarnath Temple — Uttarakhand</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Kedarnath Temple is one of the twelve Jyotirlingas dedicated to Lord Shiva. Believed to have been built by the Pandavas in the Mahabharata era, the current temple was constructed by Adi Shankaracharya in the 8th century CE.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    One of the holiest Hindu shrines, located high in the Himalayas near glaciers and snowfields.
+    The temple is a significant pilgrimage site attracting devotees from all over India.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in the Rudraprayag district of Uttarakhand.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible by a difficult trek from Gaurikund (~14 km).
+    Nearest railway station is Rishikesh; nearest airport is Jolly Grant Airport, Dehradun.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand: Gaurikund (~0 km)<br>
+    Railway Station: Rishikesh (~230 km)<br>
+    Airport: Dehradun (~245 km)
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Current temple attributed to Adi Shankaracharya’s renovation.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/7/70/MysoreZoo.JPG" alt="Mysore Zoo, Mysuru" />
+
+  <h1 class="dest-title">Mysore Zoo (Sri Chamarajendra Zoological Gardens) — Mysuru, Karnataka</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Founded in 1892 by Maharaja Chamaraja Wodeyar IX, Mysore Zoo is one of the oldest and well-maintained zoos in India.
+    It is known for its pioneering efforts in captive breeding and conservation of endangered species.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Home to diverse species including white tigers, elephants, and rare reptiles.
+    The lush, landscaped settings attract families and wildlife enthusiasts.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Mysuru city, Karnataka.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">Accessible within Mysuru city limits by local transport, taxis, and auto-rickshaws.</p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand: Mysuru Central Bus Stand (~5 km)<br>
+    Railway Station: Mysuru Junction (~6 km)<br>
+    Airport: Mysore Airport (~15 km)
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Established by Maharaja Chamaraja Wodeyar IX to promote wildlife conservation.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Hawa_Mahal_Jaipur_India.JPG" alt="Hawa Mahal, Jaipur" />
+
+  <h1 class="dest-title">Hawa Mahal — Jaipur, Rajasthan</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Built in 1799 by Maharaja Sawai Pratap Singh, the Hawa Mahal (Palace of Winds) was designed by Lal Chand Ustad.
+    It was intended to allow royal ladies to observe street festivals without being seen.
+    The five-story façade features 953 small windows (jharokhas) with intricate latticework.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Famed for its honeycomb façade and natural ventilation that allows cool air to circulate throughout the year.
+    The palace is an iconic Jaipur landmark and photo spot, especially against sunrise and sunset skies.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in central Jaipur city, Rajasthan.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Jaipur is connected by train via Jaipur Junction, by air through Jaipur International Airport, and by extensive roadways.
+    Local transport options include taxis and auto-rickshaws.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand: Sindhi Camp Bus Stand ~2.5 km<br>
+    Railway Station: Jaipur Junction ~3 km<br>
+    Airport: Jaipur International Airport ~13 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Commissioned by Maharaja Sawai Pratap Singh and designed by architect Lal Chand Ustad.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/6/68/Indian_rhinoceros_kaziranga.jpg" alt="Kaziranga National Park, Assam" />
+
+  <h1 class="dest-title">Kaziranga National Park — Assam</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Declared a reserve forest in 1905 and a UNESCO World Heritage Site in 1985, Kaziranga is home to the largest population of Indian one-horned rhinoceros.
+    It also supports elephants, swamp deer, tigers, and many migratory birds.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    It offers unique elephant-back and jeep safaris to witness wildlife in tall elephant grass landscapes, with exceptional sightings of rhinos and other fauna.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in the Golaghat and Nagaon districts of Assam, India.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible by roads and buses from Guwahati and Jorhat.
+    Nearest railway: Furkating or Guwahati station.
+    Airports nearby include Jorhat (97 km) and Guwahati (217 km).
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Kohora Range) ~1 km<br>
+    Railway Station (Furkating Jn) ~75 km<br>
+    Airport (Jorhat JLH) ~97 km; Airport (Guwahati GAU) ~217 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Protected as a wildlife sanctuary and national park by statutory conservation efforts.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Hampi_view.jpg" alt="Hampi Vijayanagara Ruins" />
+
+  <h1 class="dest-title">Hampi — Ballari District, Karnataka</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Hampi was the flourishing capital of the Vijayanagara Empire during the 14th–16th centuries.
+    It was renowned for its grand bazaars, temples, and advanced water management systems.
+    Destroyed in 1565 after the Battle of Talikota, the extensive ruins are now a UNESCO World Heritage Site.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    The archaeological grandeur combined with dramatic natural boulder-strewn landscapes offers visitors cultural heritage and breathtaking views.
+    Iconic temples include Virupaksha and Vittala Temples with its musical pillars and stone chariot.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Near Hospet (Hosapete), Karnataka, roughly 340 km from Bengaluru.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible via Hosapete Junction railway station and connected by bus or taxi.
+    Nearest airports: Hubballi (~160 km), Bengaluru (~350 km).
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Hospet KSRTC) ~13 km<br>
+    Railway Station (Hosapete) ~13 km<br>
+    Airports: Vidyanagar (~40 km, limited flights), Hubballi (~160 km), Bengaluru (~350 km)
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Built by the Vijayanagara Empire rulers, particularly Harihara I and Bukka Raya I.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Sri_Meenakshi_Temple_February_2014.jpg" alt="Meenakshi Amman Temple, Madurai" />
+
+  <h1 class="dest-title">Madurai Meenakshi Temple — Madurai, Tamil Nadu</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    An ancient Hindu temple complex dedicated to Goddess Meenakshi and Lord Sundareshwarar (Shiva).
+    Major expansions were carried out by the Nayak rulers in the 17th century.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Famous for its colorful gopurams (gateway towers), intricate carvings, festivals like the Chithirai Festival, and vibrant religious life.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located centrally in Madurai, Tamil Nadu.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Madurai Junction railway station and Madurai Airport connect this heritage city to major Indian cities.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Periyar Bus Stand) ~2 km<br>
+    Railway Station (Madurai Junction) ~1.5 km<br>
+    Airport (Madurai IXM) ~12 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Built over centuries with significant contributions from the Nayak dynasty.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Sundarbans_Tigers.JPG" alt="Sundarbans Tiger Reserve" />
+
+  <h1 class="dest-title">Sundarbans Tiger Reserve — West Bengal</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The Sundarbans is home to the largest mangrove forest tiger reserve globally.
+    Native people have lived in harmony with this ecosystem for generations.
+    The reserve has been a protected area since the mid-20th century.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Famed for Royal Bengal Tigers, the reserve offers unique biodiversity including saltwater crocodiles and diverse birds.
+    It is a UNESCO World Heritage Site known for eco-tourism and conservation.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Situated in the deltas of the Hooghly River in southern West Bengal.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Nearest major city is Kolkata, accessible by air, rail, and road.
+    Local transport reaches ferry points like Godkhali to enter the reserve.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Godkhali) ~0 km<br>
+    Railway Station (Canning) ~45 km<br>
+    Airport (Kolkata) ~110 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Nature formed the huge mangrove forest; conservation efforts have preserved it as a tiger reserve.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Jim_Corbett_National_Park%2C_India_2006.JPG" alt="Jim Corbett National Park, Uttarakhand" />
+
+  <h1 class="dest-title">Jim Corbett National Park — Uttarakhand</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Established in 1936 as Hailey National Park, it was renamed after hunter-turned-conservationist Jim Corbett.
+    It is India’s oldest national park and was the first to come under Project Tiger.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Famous for Bengal tiger sightings, diverse wildlife, and scenic landscapes encompassing riverine belts, hills, and forests.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Located in Nainital and Pauri Garhwal districts of Uttarakhand near Ramnagar.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Nearest railway station is Ramnagar; Pantnagar airport and Delhi International Airport provide air access.
+    Road connectivity from Delhi and Lucknow via NH309 and NH74.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Ramnagar) ~1 km<br>
+    Railway Station (Ramnagar) ~2 km<br>
+    Airport (Pantnagar) ~65 km; Airport (Delhi) ~260 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Established by the British colonial government and expanded under Indian wildlife conservation efforts.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Ellora_Ajanta_Caves_Mahesvara_Cave_16_front_view.jpg" alt="Ellora Caves, Maharashtra" />
+
+  <h1 class="dest-title">Ellora Caves — Aurangabad, Maharashtra</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    A complex of 34 rock-cut caves from the 5th to 10th centuries CE, representing Buddhist, Hindu, and Jain traditions.
+    Cave 16, the Kailasa temple, is a massive monolithic temple carved entirely from rock, dedicated to Lord Shiva.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    The caves display diverse religious influences with exquisite sculptures and architectural innovation, making it a UNESCO World Heritage Site.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Located near Aurangabad city, Maharashtra.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible via Aurangabad Airport and Railway Station with road links to Ellora.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Aurangabad) ~30 km<br>
+    Railway Station (Aurangabad) ~30 km<br>
+    Airport (Aurangabad IXU) ~36 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Constructed over centuries by various dynasties including the Rashtrakutas and Chalukyas.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Lumbini_Monastic_Zone_Nepal.jpg" alt="Lumbini, Nepal" />
+
+  <h1 class="dest-title">Lumbini — Nepal (Near India Border)</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Believed to be the birthplace of Lord Buddha, Lumbini is an important pilgrimage site with ancient ruins and monasteries dating back more than 2,500 years.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Its spiritual significance as Buddha’s birthplace and its sacred gardens attracts pilgrims and tourists worldwide.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Located in the Rupandehi district of Nepal, near the India-Nepal border.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Nearest airports: Gautam Buddha Airport (Nepal); road access from India via Sonauli.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Nepalese bus stands and roads connect to Lumbini.<br>
+    Nearest Indian railway stations include Gorakhpur (~90 km).
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Developed as a Buddhist pilgrimage site over millennia by various rulers and spiritual leaders.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Meenakshi_Amman_Temple_Towers_-_Madurai_-_India_07-2016_img1.jpg" alt="Meenakshi Amman Temple, Madurai" />
+
+  <h1 class="dest-title">Meenakshi Amman Temple — Madurai, Tamil Nadu</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    A historic Hindu temple dedicated to Goddess Meenakshi and Lord Sundareshwarar. The temple complex was magnificently expanded by the Nayak dynasty in the 17th century.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for its towering, elaborately decorated gopurams (gateway towers), the temple is a center for festivals, rituals, and vibrant cultural events.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located at the heart of Madurai city.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Well connected via Madurai Junction railway station and Madurai Airport.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Periyar Central) ~2 km<br>
+    Railway Station (Madurai Junction) ~1.5 km<br>
+    Airport (Madurai IXM) ~12 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Expanded predominantly by Nayak rulers over centuries.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/5/58/Rani_ki_Vav%2C_Patan%2C_Gujarat%2C_India_-_UNESCO_World_Heritage_Site_2012-12-14_2586.JPG" alt="Rani ki Vav, Patan" />
+
+  <h1 class="dest-title">Rani ki Vav — Patan, Gujarat</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Built in the 11th century by Queen Udayamati in memory of her husband King Bhima I, this stepwell is an architectural marvel of the Solanki dynasty.
+    Designed to store water and serve as a social gathering point, it is decorated with intricate sculptures narrating mythological stories.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    A UNESCO World Heritage Site, praised for its unique inverted temple design and elaborate ornamentation.
+    It is one of the finest and largest stepwells in India.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">
+    Located in the historic town of Patan, Gujarat.
+  </p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Patan is accessible from Ahmedabad and Rajkot by rail and road.
+    Ahmedabad Airport is the nearest major airport (~140 km).
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Patan) ~2 km<br>
+    Railway Station (Patan) ~2 km<br>
+    Airport (Ahmedabad) ~140 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Commissioned by Queen Udayamati in the 11th century during the Solanki rule.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/3/38/Somnath_Temple%2C_Gujarat.jpg" alt="Somnath Temple, Gujarat" />
+
+  <h1 class="dest-title">Somnath Temple — Somnath, Gujarat</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The temple is one of the 12 Jyotirlinga shrines of Lord Shiva, with origins tracing back to ancient times.
+    It has been destroyed and rebuilt multiple times due to invasions, most recently renovated in the 1950s.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Famous as a symbol of resilience and religious importance.
+    The temple’s architecture and seaside location attract pilgrims and tourists alike.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located on the western coast of Gujarat near Veraval.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Nearest railway station is Veraval; Diu Airport and Rajkot Airport serve the region.
+    Road connectivity available from Junagadh and Rajkot.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Veraval) ~7 km<br>
+    Railway Station (Veraval) ~7 km<br>
+    Airport (Diu) ~75 km; Airport (Rajkot) ~120 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Originally built by the Chalukya dynasty; renovated by various rulers post invasions.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Umiam_Lake,_Meghalaya.jpg" alt="Umiam Lake, Shillong" />
+
+  <h1 class="dest-title">Shillong & Umiam Lake — Meghalaya</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Shillong, known as the "Scotland of the East," has a rich tribal and colonial history.
+    Umiam Lake, created in the 1960s with the damming of the Umiam River, is a picturesque reservoir popular for water sports and picnics.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Lush greenery, waterfalls, and cool climate make Shillong a favorite hill station.
+    Umiam Lake is popular for boating, kayaking, and sightseeing.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in the East Khasi Hills district of Meghalaya.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Nearest airport is Umroi Airport; connected by road from Guwahati and other major Northeast cities.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Shillong) ~2 km<br>
+    Railway Station (Nearest: Guwahati) ~100 km<br>
+    Airport (Umroi) ~30 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Umiam Lake was artificially created via dam construction.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/2/24/Bhimbetka_Rock_Shelters_Cave_Paintings.jpg" alt="Bhimbetka Rock Shelters" />
+
+  <h1 class="dest-title">Bhimbetka Rock Shelters — Madhya Pradesh</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Bhimbetka is an archaeological site exhibiting prehistoric rock art, dating back over 30,000 years.
+    The caves reveal paintings representing the life of humans through Paleolithic and Mesolithic times.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    It is a UNESCO World Heritage Site famous for its ancient rock art, providing insights into early human culture and evolution.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Near Raisen in Madhya Pradesh, about 45 km south of Bhopal.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible by road from Bhopal; closest railway station is Bhopal Junction.
+    Bhopal has an international airport.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Bhopal) ~45 km<br>
+    Railway Station (Bhopal) ~45 km<br>
+    Airport (Bhopal) ~50 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Created by prehistoric human ancestors; preserved as archaeological heritage.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/9/90/Brihadeeswarar_Temple_-_Thanjavur_11.jpg" alt="Brihadeeswarar Temple, Thanjavur" />
+
+  <h1 class="dest-title">Chola Temples — Tamil Nadu</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The Chola dynasty built magnificent temples in the 9th–13th centuries CE, notably the Brihadeeswarar Temple at Thanjavur.
+    These temples served religious, cultural, and social functions with exquisite Dravidian architecture.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for their towering vimanas, intricate stone carvings, and grandeur.
+    The Brihadeeswarar Temple is a UNESCO World Heritage Site and a symbol of Tamil heritage.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Thanjavur and other parts of Tamil Nadu.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Thanjavur is accessible by rail and road; nearest airport is Tiruchirappalli.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Thanjavur) ~1 km<br>
+    Railway Station (Thanjavur) ~2 km<br>
+    Airport (Tiruchirappalli) ~55 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Constructed by Chola kings, especially Raja Raja Chola I and Rajendra Chola I.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Pondicherry_India_Streetscape.jpg" alt="Pondicherry Streetscape" />
+
+  <h1 class="dest-title">Pondicherry (Puducherry) — Tamil Nadu</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Pondicherry was a French colonial settlement until 1954 and retains strong colonial architecture and culture.
+    Its unique blend of French and Tamil influences makes it distinct from other Indian towns.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for its French Quarter, scenic promenade, Auroville, spiritual retreats, and tranquil beaches.
+    It has a laid-back vibe attracting tourists seeking both culture and relaxation.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located on the southeastern coast of India, within Tamil Nadu state.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible by road from Chennai, Bengaluru, and other nearby cities.
+    Nearest railway station is Villupuram Junction (~35 km).
+    Pondicherry Airport is small with limited flights; Chennai airport (~150 km) is major gateway.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Pondicherry) ~1 km<br>
+    Railway Station (Villupuram) ~35 km<br>
+    Airport (Pondicherry) ~5 km; Chennai Airport ~150 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Developed by French colonial rulers, influencing its architectural and cultural landscape.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/9/90/Chitrakoot_Temple.jpg" alt="Chitrakoot Temple" />
+
+  <h1 class="dest-title">Chitrakoot — Uttar Pradesh/Madhya Pradesh</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Revered as the place where Lord Rama spent 11 years of exile according to Hindu legends.
+    The region contains many temples, ghats, and sacred spots connected with Ramayana epic tales.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for spiritual significance, tranquil riverside locations, and historic temples attracting pilgrims and tourists.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Spread across Uttar Pradesh and Madhya Pradesh border areas.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Nearest railway station is Manikpur; airports at Khajuraho and Prayagraj provide access.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Chitrakoot) ~1 km<br>
+    Railway Station (Manikpur) ~45 km<br>
+    Airport (Khajuraho) ~135 km; Airport (Prayagraj) ~90 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Developed and maintained by Hindu pilgrims and regional rulers over centuries.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Chandni_Chowk_night_view.jpg" alt="Chandni Chowk, Delhi" />
+
+  <h1 class="dest-title">Chandni Chowk — Delhi</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Established in the 17th century by Mughal Emperor Shah Jahan as part of the walled city of Shahjahanabad.
+    It has been a bustling commercial hub for centuries.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Famous for vibrant markets, historical landmarks, street foods, and religious diversity.
+    A must-visit for cultural and culinary experiences.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Old Delhi.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible via Chandni Chowk Metro Station and various bus routes.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand: Various near Chandni Chowk<br>
+    Metro Station: Chandni Chowk<br>
+    Airport: Indira Gandhi International Airport (~20 km)
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Established by Emperor Shah Jahan in the early 1600s.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Elephanta_Caves_Main_Shrine_Sculpture.jpg" alt="Elephanta Island Caves, Mumbai" />
+
+  <h1 class="dest-title">Elephanta Island — Mumbai, Maharashtra</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The Elephanta Caves are rock-cut sculptures and temples dating back to the 5th to 8th centuries CE.
+    Classified as a UNESCO World Heritage Site, they showcase Hindu deities and mythological scenes, particularly devoted to Shiva.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for the massive Trimurti relief sculpture representing Shiva’s three forms.
+    The caves offer a glimpse into ancient Indian rock-cut architecture and artistry.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Situated on Elephanta Island in Mumbai Harbour, accessible by ferry.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Ferries depart from the Gateway of India near Mumbai’s Colaba area.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Nearest Bus Stand: Churchgate (~3 km)<br>
+    Nearest Railway Station: Churchgate / CSMT (~2 km)<br>
+    Nearest Airport: Mumbai International Airport (~25 km)
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Constructed by ancient artisans, patronized by the Kalachuri dynasty.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/5/55/Sanchi_Stupa_No_1.jpg" alt="Sanchi Stupa, Madhya Pradesh" />
+
+  <h1 class="dest-title">Sanchi Stupa — Madhya Pradesh</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The Great Stupa at Sanchi, commissioned by Emperor Ashoka in the 3rd century BCE, is one of India’s oldest stone monuments.
+    The site contains stupas, monasteries, and elaborate gateways illustrating Buddhist art.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Recognized for its exquisite gateways (toranas) and Buddhist symbolism, Sanchi is a major pilgrimage site and UNESCO World Heritage Site.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Near Raisen town in Madhya Pradesh, about 46 km northeast of Bhopal.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible by road from Bhopal; nearest railway station at Sanchi.
+    Bhopal has regular flights and train services.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Sanchi) ~2 km<br>
+    Railway Station (Sanchi) ~1.5 km<br>
+    Airport (Bhopal) ~46 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Founded by Emperor Ashoka; later enhanced by various rulers.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/2/21/Mahabalipuram_-_Pancha_Rathas%2C_2.JPG" alt="Mahabalipuram Monuments, Tamil Nadu" />
+
+  <h1 class="dest-title">Mahabalipuram (Mamallapuram) — Tamil Nadu</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Mahabalipuram was developed during the 7th and 8th centuries CE under the Pallava dynasty. It is famous for its group of rock-cut temples, monolithic rathas, and exquisite bas-reliefs. The Shore Temple is a UNESCO World Heritage Site and one of the earliest structural temples in South India.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for its beautiful temples and sculptures that depict Hindu mythology and the life of ancient India. The site is a hub for classical dance festivals showcasing its cultural heritage.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located on the Coromandel Coast, about 60 km south of Chennai, Tamil Nadu.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Well connected by road from Chennai, with frequent buses.
+    Nearest airport is Chennai International Airport.
+    Mahabalipuram railway
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Prince_of_Wales_Museum_-_Mumbai.JPG" alt="Prince of Wales Museum, Mumbai" />
+
+  <h1 class="dest-title">Chhatrapati Shivaji Maharaj Vastu Sangrahalaya (Prince of Wales Museum) — Mumbai</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Built to commemorate the visit of the Prince of Wales in 1905, this museum showcases Indian history, art, and culture with artifacts, sculptures, and paintings.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    It holds rich collections from various periods including the Indus Valley Civilization, Mughal era, and colonial times. The Indo-Saracenic architecture is striking.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located at Fort area, Mumbai, Maharashtra.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Easily accessible via local trains (Churchgate/Chhatrapati Shivaji Terminus), buses, and taxis.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Mumbai Central) ~1 km<br>
+    Railway Station (Churchgate/CSMT) ~1 km<br>
+    Airport (Mumbai) ~25 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Constructed by the British with contributions from Mumbai’s civic leadership.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Jantar_Mantar_Jaipur_2.jpg" alt="Jantar Mantar, Jaipur" />
+
+  <h1 class="dest-title">Jantar Mantar — Jaipur, Rajasthan</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Built by Maharaja Sawai Jai Singh II in the early 18th century, Jantar Mantar is an astronomical observatory with architectural instruments designed to measure time, predict eclipses, and track stars.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    It is one of the largest and best-preserved observatories in India and a UNESCO World Heritage Site, important for its scientific heritage.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Jaipur city center, Rajasthan.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">Well connected by road, local taxis, and near Jaipur Railway Station and Airport.</p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Sindhi Camp) ~2 km<br>
+    Railway Station (Jaipur) ~3 km<br>
+    Airport (Jaipur) ~13 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Commissioned and built by Maharaja Sawai Jai Singh II.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Varkala_beach.jpg" alt="Varkala Beach, Kerala" />
+
+  <h1 class="dest-title">Varkala Beach — Kerala</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Varkala Beach is known for its natural cliffs standing alongside the Arabian Sea.
+    The beach and the nearby Janardanaswamy Temple have religious significance and a history as a pilgrimage site.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    The stunning cliff views, clean sands, and the medicinal properties of the water make it a favored destination for tourists and wellness seekers.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Thiruvananthapuram district, Kerala.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Well connected by railway (Varkala Station), road, and the nearest airport is Trivandrum International Airport (~50 km).
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Varkala) ~1 km<br>
+    Railway Station (Varkala) ~1 km<br>
+    Airport (Trivandrum) ~50 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">The temple and surrounding area have been developed by successive local rulers and devotees.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Lingaraj_Temple_Odisha_2018_%282%29.jpg" alt="Lingaraj Temple, Bhubaneswar" />
+
+  <h1 class="dest-title">Bhubaneswar Temples — Odisha</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Bhubaneswar, known as the "Temple City of India," hosts hundreds of ancient temples, including the iconic Lingaraj Temple dating back to the 11th century.
+    The city's temples showcase Kalinga architectural style.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Bhubaneswar’s temple complex is a significant pilgrimage site with remarkable sculptures, festivals, and architecture.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in eastern India, capital city of Odisha.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Bhubaneswar is well connected via Biju Patnaik International Airport, railway station, and roadways.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Bhubaneswar) ~1 km<br>
+    Railway Station (Bhubaneswar) ~2 km<br>
+    Airport (Bhubaneswar) ~6 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Temples built by various dynasties including the Somavamsis and Eastern Gangas.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Nalanda_Monastery_-_Ruins.jpg" alt="Nalanda University Ruins, Bihar" />
+
+  <h1 class="dest-title">Nalanda University Ruins — Bihar</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Nalanda was an ancient center of higher learning, flourishing between the 5th and 12th centuries CE.
+    It attracted scholars from across Asia, with its vast library and monastic university.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known as one of the earliest residential universities in the world, its ruins are a UNESCO World Heritage Site.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located near Rajgir in Bihar.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible by road from Patna and Gaya.
+    Nearest railway station is Rajgir; nearest airports are Patna and Gaya.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Rajgir) ~3 km<br>
+    Railway Station (Rajgir) ~5 km<br>
+    Airport (Patna) ~90 km; Airport (Gaya) ~75 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Founded during the Gupta period and expanded by Harsha and subsequent rulers.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/3/34/Talacauvery_Coorg.jpg" alt="Coorg, Karnataka" />
+
+  <h1 class="dest-title">Coorg (Kodagu) — Karnataka</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Coorg has a rich history as the homeland of the Kodava people.
+    Its rugged hills and forests were ruled by local chieftains before British colonization made it a scenic hill station.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for coffee plantations, lush greenery, waterfalls, and a distinct Kodava culture with unique festivals and cuisines.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in the Western Ghats in Karnataka’s southwest.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Nearest railway station is Mysuru; nearest airport is Mangalore.
+    Well-connected by road from Bengaluru and Mysuru.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Madikeri) ~2 km<br>
+    Railway Station (Mysuru) ~120 km<br>
+    Airport (Mangalore) ~160 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Led by local Kodava rulers and British era developments.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/7/74/Kumbhalgarh_Fort_3_-_Rajasthan_2016.jpg" alt="Kumbhalgarh Fort, Rajasthan" />
+
+  <h1 class="dest-title">Kumbhalgarh Fort — Rajasthan</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Built in the 15th century by Rana Kumbha of the Mewar dynasty, Kumbhalgarh Fort is known for its massive walls, extending over 36 km.
+    The fort served as a refuge during times of war and is a symbol of Rajput strength.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    It boasts one of the longest fort walls in the world, extensive palaces, and temples within the complex.
+    The fort’s commanding hilltop location offers panoramic views of the Aravalli hills.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Rajsamand district, Rajasthan.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible via road from Udaipur and Ranakpur.
+    Nearest railway station is Udaipur.
+    Maharana Pratap Airport is the nearest airport.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Kumbhalgarh) ~1 km<br>
+    Railway Station (Udaipur) ~85 km<br>
+    Airport (Udaipur) ~85 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Constructed by Rana Kumbha in the 15th century as a fortress for Mewar rulers.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Bhuj_Skyline_2012.jpg" alt="Bhuj City, Gujarat" />
+
+  <h1 class="dest-title">Bhuj — Kutch District, Gujarat</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Bhuj is the district headquarters of Kutch, with roots dating back to the 16th century under Jadeja rulers.
+    It was a major trading hub and cultural center of Kutch.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for its palaces, museums, and proximity to the Great Rann of Kutch.
+    The city retains rich artisan traditions and historical architecture.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in western Gujarat near the Pakistan border.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Bhuj has its own airport and railway station with road links across Gujarat and Rajasthan.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Bhuj) ~1 km<br>
+    Railway Station (Bhuj) ~2 km<br>
+    Airport (Bhuj) ~1 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Founded under the Jadeja dynasty in the 16th century.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Sirohi_Fort.jpg" alt="Sirohi Fort, Rajasthan" />
+
+  <h1 class="dest-title">Sirohi — Rajasthan</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Established in the 15th century by the Deora Chauhans, Sirohi is known for its hilltop fort and temples.
+    The fortress guarded important trade routes between Rajasthan and Gujarat.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    A less crowded heritage town, popular for tranquil forts, temples, and natural beauty.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in southern Rajasthan.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Sirohi is connected by road and nearest railway station is Abu Road.
+    Nearest airport is Udaipur.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Sirohi) ~1 km<br>
+    Railway Station (Abu Road) ~35 km<br>
+    Airport (Udaipur) ~120 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Founded by Deora Chauhans; forts built to protect trade routes.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Jahaz_Mahal_Mandu_India_2015-03-24_0086.jpg" alt="Mandu Jahaz Mahal, Madhya Pradesh" />
+
+  <h1 class="dest-title">Mandu (Mandu Fort) — Madhya Pradesh</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Mandu, a medieval city, was the capital of the Malwa Sultanate in the 15th century.
+    The city is filled with forts, palaces, mosques, and other architectural marvels, including Jahaz Mahal, Hindola Mahal, and Rani Roopmati Pavilion.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for its romantic ruins, architecture, and scenic views across valleys and lakes.
+    Often called the "City of Joy," Mandu’s heritage attracts history buffs and travelers.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located near Dhar, Madhya Pradesh.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Closest railway station is Dhar; nearest airport is Indore.
+    Good road connectivity exists from Indore (~100 km).
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Mandu) ~1 km<br>
+    Railway Station (Dhar) ~23 km<br>
+    Airport (Indore) ~98 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Developed under Mahmud Khalji of the Malwa Sultanate in the 15th century.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/9/90/Brihadeeswarar_Temple_-_Thanjavur_11.jpg" alt="Brihadeeswarar Temple, Thanjavur" />
+
+  <h1 class="dest-title">Thanjavur Brihadeeswarar Temple — Tamil Nadu</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Commissioned by Chola king Raja Raja Chola I in the 11th century, this temple is a UNESCO World Heritage Site.
+    It is one of the largest South Indian temples and an architectural masterpiece of Dravidian style.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    The temple is renowned for its massive vimana tower, exquisitely carved sculptures, and artistic grandeur.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Thanjavur city, Tamil Nadu.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Connected by road and railway, with Trichy as the nearest airport (~60 km).
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Thanjavur) ~1 km<br>
+    Railway Station (Thanjavur) ~2 km<br>
+    Airport (Tiruchirappalli) ~55 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Built by Raja Raja Chola I in the early 11th century.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/0/06/Warangal_Fort.jpg" alt="Warangal Fort, Telangana" />
+
+  <h1 class="dest-title">Warangal Fort — Telangana</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Warangal Fort was constructed by the Kakatiya dynasty in the 13th century, fortified to protect their kingdom.
+    It features impressive stone gateways known as 'Kakatiya Kala Thoranam'.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Famous for its impressive architecture, ruins, and its depiction of the Kakatiya craftsmanship.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Warangal city, Telangana.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Warangal is accessible via road and rail with the nearest airport being Rajiv Gandhi International Airport, Hyderabad (~150 km).
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Warangal) ~2 km<br>
+    Railway Station (Warangal) ~4 km<br>
+    Airport (Hyderabad) ~150 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Built by the Kakatiya dynasty during their reign in the 13th century.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Khajjiar_Lake.jpg" alt="Khajjiar Lake, Himachal Pradesh" />
+
+  <h1 class="dest-title">Khajjiar — Himachal Pradesh</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Often called the "Mini Switzerland of India," Khajjiar is a small hill station blanketed with meadows and a central lake.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    The natural beauty with rolling green meadows and dense cedar forests attracts tourists for relaxation and adventure activities.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Chamba district, Himachal Pradesh.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible by road from Dalhousie and Pathankot.
+    Nearest railway station is Pathankot; nearest airport is Gaggal Airport near Dharamshala.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Khajjiar) ~0 km<br>
+    Railway Station (Pathankot) ~90 km<br>
+    Airport (Dharamshala) ~120 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Natural hill station preserved by local communities and tourism authorities.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Lonavala_gate_and_beauty.jpg" alt="Lonavala, Maharashtra" />
+
+  <h1 class="dest-title">Lonavala & Khandala — Maharashtra</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Once a sleepy hill station, Lonavala and Khandala developed during British rule as retreats from the summer heat. Known for its lush Western Ghats landscape and waterfalls.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Famous for scenic vistas, trekking, caves, and the monsoon climate that draws visitors year-round.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in the Pune district of Maharashtra.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Well connected by road and rail; nearest airports are Pune and Mumbai.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Lonavala) ~1 km<br>
+    Railway Station (Lonavala) ~1 km<br>
+    Airport (Pune) ~64 km; Airport (Mumbai) ~90 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Developed as hill stations during British colonial period.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/6/68/Indian_rhinoceros_kaziranga.jpg" alt="Kaziranga National Park, Assam" />
+
+  <h1 class="dest-title">Kaziranga National Park — Assam</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Declared a reserve forest in 1905 and a UNESCO World Heritage Site in 1985, Kaziranga hosts the world’s largest population of the Indian one-horned rhinoceros.
+    It supports a diverse ecosystem including elephants, swamp deer, and the endangered Bengal tiger.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for its elephant-back safaris and jeep rides, Kaziranga provides some of the best wildlife viewing experiences in India.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in the Golaghat and Nagaon districts of Assam.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible from Guwahati and Jorhat by road; nearest airports are Jorhat and Guwahati.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Kohora) ~1 km<br>
+    Railway Station (Furkating Junction) ~75 km<br>
+    Airport (Jorhat) ~97 km; Airport (Guwahati) ~217 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Protected and managed by Indian forest authorities and conservationists.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Mahakaleshwar_Temple_-_Ujjain.jpg" alt="Mahakaleshwar Temple, Ujjain" />
+
+  <h1 class="dest-title">Ujjain Mahakaleshwar Temple — Ujjain, Madhya Pradesh</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    One of the twelve Jyotirlingas of Lord Shiva, the Mahakaleshwar Temple has ancient origins with references dating back to the 6th century BCE.
+    It has been rebuilt and renovated by various dynasties, including the Paramaras.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Famous for its grand celebrations during the Kumbh Mela and as a prominent Shiva worship site.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Ujjain city, Madhya Pradesh.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Well connected by road, rail and air via Indore Airport (~55 km).
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Ujjain) ~1 km<br>
+    Railway Station (Ujjain) ~2 km<br>
+    Airport (Indore) ~55 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    The temple was originally built by ancient sages and rulers, with renovations by the Paramara dynasty.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Valley_of_Flowers_National_Park.jpg" alt="Valley of Flowers National Park" />
+
+  <h1 class="dest-title">Valley of Flowers National Park — Uttarakhand</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Discovered in 1931 and declared a UNESCO World Heritage Site in 2005, the Valley of Flowers is home to a rich variety of endemic alpine flora.
+    The region holds cultural significance in Hindu mythology.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for spectacular wildflower meadows and trekking routes in the Himalayas.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Chamoli district, Uttarakhand.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible from Govindghat by a 16 km trek.
+    Nearest railway station is Rishikesh; airport is Dehradun.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Govindghat) ~0 km<br>
+    Railway Station (Rishikesh) ~130 km<br>
+    Airport (Dehradun) ~130 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Protected natural reserve maintained by national authorities.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/0/06/Tiger_in_Chandrapur_Tiger_Reserve%2C_Maharashtra.jpg" alt="Chandrapur Tiger Reserve" />
+
+  <h1 class="dest-title">Chandrapur Tiger Reserve — Maharashtra</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The Chandrapur Tiger Reserve, including Tadoba-Andhari Tiger Project, is one of Maharashtra’s largest and oldest protected areas.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for relatively easy sightings of Bengal tigers, leopards, and rich biodiversity.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Chandrapur district, Maharashtra.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Nearest railway stations are Chandrapur and Nagpur. Nagpur Airport offers air connectivity.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Chandrapur) ~5 km<br>
+    Railway Station (Chandrapur) ~5 km<br>
+    Airport (Nagpur) ~140 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Protected as a wildlife reserve by Indian forest authorities.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/1/19/Hazrat_Nizamuddin_Auliya%27s_Dargah.jpg" alt="Hazrat Nizamuddin Dargah, Delhi" />
+
+  <h1 class="dest-title">Hazrat Nizamuddin Dargah — Delhi</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    The shrine of Sufi saint Hazrat Nizamuddin Auliya, dating back to the 13th century, is a prominent spiritual center in Delhi.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for its beautiful architecture, spiritual music sessions (Qawwali), and as a locus of interfaith harmony.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in the Nizamuddin area of Delhi.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Well connected by Delhi Metro, roadways, and public transport.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Nizamuddin) ~1 km<br>
+    Railway Station (Nizamuddin) ~1 km<br>
+    Airport (Indira Gandhi International Airport) ~20 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Constructed around the tomb of Hazrat Nizamuddin Auliya and maintained by successive generations.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Golconda_fort_hyderabad.jpg" alt="Golconda Fort, Hyderabad" />
+
+  <h1 class="dest-title">Golconda Fort — Hyderabad, Telangana</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Originally built in the 12th century and later expanded by the Qutb Shahi dynasty in the 16th century, Golconda Fort was a powerful fortress and capital of the region.
+    It was famous for its diamond trade, including the Koh-i-Noor diamond.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for its impressive gates, acoustics, and waterways.
+    Offers panoramic views of Hyderabad from its hilltop.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located on the western outskirts of Hyderabad city.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible via Hyderabad city by road and local transport.
+    Nearest railway station is Malakpet; Rajiv Gandhi International Airport is ~30 km away.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Hyderabad) ~15 km<br>
+    Railway Station (Malakpet) ~8 km<br>
+    Airport (Rajiv Gandhi International) ~30 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Constructed and expanded under the Kakatiya dynasty and Qutb Shahi rulers.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Golconda_fort_hyderabad.jpg" alt="Golconda Fort, Hyderabad" />
+
+  <h1 class="dest-title">Golconda Fort — Hyderabad, Telangana</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Originally built in the 12th century and later expanded by the Qutb Shahi dynasty in the 16th century, Golconda Fort was a powerful fortress and capital of the region.
+    It was famous for its diamond trade, including the Koh-i-Noor diamond.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for its impressive gates, acoustics, and waterways.
+    Offers panoramic views of Hyderabad from its hilltop.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located on the western outskirts of Hyderabad city.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible via Hyderabad city by road and local transport.
+    Nearest railway station is Malakpet; Rajiv Gandhi International Airport is ~30 km away.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Hyderabad) ~15 km<br>
+    Railway Station (Malakpet) ~8 km<br>
+    Airport (Rajiv Gandhi International) ~30 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Constructed and expanded under the Kakatiya dynasty and Qutb Shahi rulers.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/1/19/Kanha_National_Park.jpg" alt="Kanha National Park, Madhya Pradesh" />
+
+  <h1 class="dest-title">Kanha National Park — Madhya Pradesh</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Established in 1955 and expanded in the 1970s under Project Tiger, Kanha is one of India’s largest tiger reserves and the inspiration for Rudyard Kipling’s "Jungle Book."
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for its dense sal forests, grasslands, and sightings of Bengal tigers, leopards, and barasingha (swamp deer).
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Mandla and Balaghat districts of Madhya Pradesh.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible via Jabalpur Airport and Railway Station, with road connectivity from nearby towns.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Kanha) Varies by entry point<br>
+    Railway Station (Jabalpur) ~170 km<br>
+    Airport (Jabalpur) ~170 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">
+    Protected by the Indian government to conserve wildlife habitat.
+  </p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/3/38/Kanyakumari_Beach.jpg" alt="Kanyakumari, Tamil Nadu" />
+
+  <h1 class="dest-title">Kanyakumari — Tamil Nadu</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Kanyakumari, the southernmost tip of mainland India, is known for its confluence of the Arabian Sea, Indian Ocean, and Bay of Bengal.
+    The town has religious and cultural significance with temples dedicated to Goddess Kanya Kumari.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Famous for stunning sunrises and sunsets over the water and the Vivekananda Rock Memorial.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in the Kanyakumari district of Tamil Nadu.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Well connected by road and rail; nearest airport is Thiruvananthapuram (~90 km).
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Kanyakumari) ~1 km<br>
+    Railway Station (Kanyakumari) ~2 km<br>
+    Airport (Thiruvananthapuram) ~90 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">The town and memorial were developed over centuries by local rulers and spiritual leaders.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Fatehpur_Sikri_courtyard.jpg" alt="Fatehpur Sikri, Uttar Pradesh" />
+
+  <h1 class="dest-title">Fatehpur Sikri — Uttar Pradesh</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Built by Mughal Emperor Akbar in 1571, Fatehpur Sikri was the Mughal capital for 14 years.
+    The city showcases Mughal architecture with palaces, mosques including Jama Masjid, and other monuments.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for its red sandstone architecture, the Buland Darwaza, and well-preserved buildings despite its short history.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located about 40 km west of Agra, Uttar Pradesh.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Easily accessible by road and rail from Agra.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Agra) ~45 km<br>
+    Railway Station (Fatehpur Sikri) ~0 km<br>
+    Airport (Agra) ~50 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Commissioned by Emperor Akbar as a planned Mughal capital.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Rajgir_Town.jpg" alt="Rajgir, Bihar" />
+
+  <h1 class="dest-title">Rajgir — Bihar</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Ancient city with Buddhist and Jain significance; served as the capital of the Magadha kingdom.
+    The city has hot springs, ancient caves, and the ruins of fortifications.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Temple complexes and archaeological sites attract pilgrims and historians alike.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Nalanda district, Bihar.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Connected by road and rail via Nalanda and Gaya.
+    Closest airports are Gaya and Patna.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Rajgir) ~1 km<br>
+    Railway Station (Rajgir) ~2 km<br>
+    Airport (Gaya) ~70 km; Airport (Patna) ~85 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Developed over centuries by ancient empires such as Magadha and Maurya.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Alappuzha_houseboats_2016.jpg" alt="Alappuzha Backwaters, Kerala" />
+
+  <h1 class="dest-title">Alappuzha (Alleppey) Backwaters — Kerala</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Alappuzha’s backwaters have been used for centuries as waterways for trade, agriculture, and fishing.
+    The region developed a unique ecosystem of interconnected canals, rivers, and lakes.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known as the "Venice of the East," famed for houseboat cruises, scenic water routes, and lush landscapes.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in the Alappuzha district of Kerala, along the Arabian Sea coast.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Alappuzha is accessible by road and rail, with the Alappuzha railway station nearby.
+    The nearest airport is Cochin International Airport (~75 km).
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Alappuzha) ~1 km<br>
+    Railway Station (Alappuzha) ~1 km<br>
+    Airport (Cochin) ~75 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Formed naturally and developed by the locals through centuries of water management.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Orchha-Fort-complex-India.jpg" alt="Orchha Fort Complex, Madhya Pradesh" />
+
+  <h1 class="dest-title">Orchha Fort Complex — Madhya Pradesh</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Founded in 1501 by Bundela Rajput chief Rudra Pratap Singh, Orchha features palaces, temples, and fortifications known for their distinct Bundela architectural style.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for its beautiful palaces like Jahangir Mahal and Raj Mahal, and river views.
+    Orchha is a quiet heritage town popular among history enthusiasts.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located on the banks of the Betwa River, Madhya Pradesh.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible from Jhansi railway station (~16 km) and by road.
+    Airports at Gwalior and Bhopal provide larger connectivity.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Orchha) ~1 km<br>
+    Railway Station (Jhansi) ~16 km<br>
+    Airport (Gwalior) ~140 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Founded by Bundela rulers under Rudra Pratap Singh.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/5/50/Raghurajpur_Orissa_Indien_2009.jpg" alt="Raghurajpur Artist Village, Odisha" />
+
+  <h1 class="dest-title">Raghurajpur Artist Village — Odisha</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Famous for its traditional Pattachitra paintings and crafts, Raghurajpur is a heritage crafts village preserving centuries-old folk art traditions.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for detailed, colorful artworks on cloth and wood, attracting tourists for cultural immersion.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located near Puri, Odisha.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible from Puri railway station and bus stand; Bhubaneswar is the nearest airport.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Puri) ~12 km<br>
+    Railway Station (Puri) ~12 km<br>
+    Airport (Bhubaneswar) ~60 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Preserved and developed by local artisan communities.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Khajjiar_Lake.jpg" alt="Khajjiar Lake, Himachal Pradesh" />
+
+  <h1 class="dest-title">Khajjiar — Himachal Pradesh</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Known as "Mini Switzerland," Khajjiar is a serene hill station with lush meadows and a central lake.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Popular for its natural beauty, trekking, and adventure sports set amidst cedar forests.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Chamba district, Himachal Pradesh.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible by road from Dalhousie and Pathankot; nearest railway station Pathankot; nearest airport Gaggal.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Khajjiar) ~0 km<br>
+    Railway Station (Pathankot) ~90 km<br>
+    Airport (Dharamshala) ~120 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Natural location preserved by local communities and tourism bodies.</p>
+</article>
+<article class="destination" tabindex="0">
+  <img class="dest-image" src="https://upload.wikimedia.org/wikipedia/commons/7/74/Kumbhalgarh_Fort_3_-_Rajasthan_2016.jpg" alt="Kumbhalgarh Fort, Rajasthan" />
+
+  <h1 class="dest-title">Kumbhalgarh Fort — Rajasthan</h1>
+
+  <div class="section-header">History</div>
+  <p class="section-text">
+    Constructed in the 15th century by Rana Kumbha, the Kumbhalgarh Fort is famous for having one of the world's longest fortress walls.
+    The fort served as a safe refuge during wars for the rulers of Mewar.
+  </p>
+
+  <div class="section-header">Why It’s Famous</div>
+  <p class="section-text">
+    Known for its massive walls stretching over 36 km, beautiful palaces, temples, and stunning views of the Aravalli hills.
+  </p>
+
+  <div class="section-header">Where It Is</div>
+  <p class="section-text">Located in Rajsamand district, Rajasthan.</p>
+
+  <div class="section-header">How to Reach</div>
+  <p class="section-text">
+    Accessible from Udaipur by road, with the nearest railway station and airport in Udaipur.
+  </p>
+
+  <div class="section-header">Approximate Distances</div>
+  <p class="travel-info">
+    Bus Stand (Kumbhalgarh) ~1 km<br>
+    Railway Station (Udaipur) ~85 km<br>
+    Airport (Udaipur) ~85 km
+  </p>
+
+  <div class="section-header">Who Built It</div>
+  <p class="section-text">Built by Rana Kumbha as a defensive fortress for the Mewar kingdom.</p>
+</article>
+
+  <!-- NEXT 99 PLACES: Add similar <article class="destination"> ... </article> blocks below this comment,
+       following the same format, substituting details and images for each place -->
+
 </main>
 
-<footer>
-  Developed by Manikrao &copy; All rights reserved.
+<footer class="footer">
+  Developed and Managed by Manikrao © 2025. All rights reserved.
 </footer>
-
-<script>
-  (() => {
-    const destinations = [
-      {name: "Swiss Alps Valley", description: "Breathtaking views of snowy peaks and serene valleys."},
-      {name: "Himalayan Mountain Range", description: "Experience the majestic Himalayan peaks and vibrant culture."},
-      {name: "Rocky Mountain National Park", description: "Explore rugged landscapes with a variety of wildlife."},
-      {name: "Andes Mountains, Peru", description: "Discover ancient ruins and scenic mountain trails."},
-      {name: "Dolomites, Italy", description: "Marvel at dramatic cliffs and pristine alpine lakes."},
-      {name: "Banff National Park, Canada", description: "Crystal-clear waters, glaciers, and wildlife abound."},
-      {name: "Patagonia, Argentina & Chile", description: "Wild landscapes with glaciers, rivers, and mountains."},
-      {name: "Blue Ridge Mountains, USA", description: "Famous for its vivid blue haze and panoramic views."},
-      // Indian places added below
-      {name: "Leh-Ladakh, Jammu & Kashmir", description: "Majestic mountain views and Buddhist culture."},
-      {name: "Valley of Flowers, Uttarakhand", description: "UNESCO World Heritage site with alpine flora."},
-      {name: "Munnar, Kerala", description: "Lush tea gardens and cool mountain air."},
-      {name: "Coorg, Karnataka", description: "Coffee plantations and scenic hills."},
-      {name: "Spiti Valley, Himachal Pradesh", description: "Remote high-altitude desert with monasteries."},
-      {name: "Darjeeling, West Bengal", description: "Famous for tea, views of Kanchenjunga and toy train."},
-      {name: "Sikkim", description: "A Himalayan gem with diverse culture and landscapes."},
-      {name: "Nainital, Uttarakhand", description: "Hill station surrounding a beautiful lake."}
-    ];
-
-    const listElm = document.getElementById('destination-list');
-    const searchInput = document.getElementById('search');
-    const autocompleteList = document.getElementById('autocomplete-list');
-
-    // Render all destinations initially
-    function renderList(items) {
-      listElm.innerHTML = '';
-      if (items.length === 0) {
-        listElm.innerHTML = '<li>No destinations found.</li>';
-        return;
-      }
-      items.forEach(dest => {
-        const li = document.createElement('li');
-        li.tabIndex = 0;
-        li.innerHTML = `<h3>${dest.name}</h3><p>${dest.description}</p>`;
-        listElm.appendChild(li);
-      });
-    }
-
-    // Autocomplete functionality
-    function autocomplete(value) {
-      autocompleteList.innerHTML = '';
-      if (!value) return;
-      const filtered = destinations.filter(d => d.name.toLowerCase().includes(value.toLowerCase()));
-      filtered.forEach(dest => {
-        const div = document.createElement('div');
-        div.textContent = dest.name;
-        div.setAttribute('role', 'option');
-        div.addEventListener('click', () => {
-          searchInput.value = dest.name;
-          autocompleteList.innerHTML = '';
-          filtered.length === 1 && renderList(filtered);
-        });
-        autocompleteList.appendChild(div);
-      });
-    }
-
-    searchInput.addEventListener('input', (e) => {
-      const val = e.target.value;
-      autocomplete(val);
-      if (val === '') {
-        renderList(destinations);
-      }
-    });
-
-    // Initial render of full list
-    renderList(destinations);
-  })();
-</script>
 
 </body>
 </html>
