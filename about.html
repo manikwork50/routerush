@@ -4,152 +4,135 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>About WanderMap - Manik Rao</title>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632" crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632"
+  crossorigin="anonymous"></script>
 <style>
   * {
     margin: 0; padding: 0; box-sizing: border-box;
   }
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- AOS Animation CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8124807245840632" crossorigin="anonymous"></script>
-  <style>
-    * {margin:0; padding:0; box-sizing:border-box;}
-    body {
-      font-family: 'Nunito', Arial, sans-serif;
-      color: #333;
-      min-height: 100vh;
-      position: relative;
-      overflow-x: hidden;
-      /* Beautiful, free Unsplash waterfalls+forest image in a light color palette */
-      background: url('img/nature-about-bg.jpg') no-repeat center center fixed, #eef6f1;
-      background-size: cover;
-    }
-    .overlay {
-      position: fixed; top:0; left:0; width:100%; height:100%;
-      /* Subtle white-green overlay for readability, not dark */
-      background: linear-gradient(125deg,rgba(255,255,255,0.52) 70%,rgba(139,208,241,0.28) 94%);
-      z-index:-1;
-    }
-    nav {
-      background: transparent;
-      padding: 18px 0; text-align: center;
-      position: relative; z-index:1000; user-select:none;
-    }
-    nav a {
-      font-family: 'Montserrat', 'Nunito', Arial, sans-serif;
-      color: #000000; margin: 0 14px; text-decoration: none; font-weight: 700;
-      font-size: 1rem; letter-spacing: .03em; transition: color .3s, background .3s;
-      padding: 9px 12px; border-radius: 12px;
-    }
-    nav a:hover, nav a:focus {color: #2a3132; background: rgba(108,187,109,0.18);}
-    nav a.active {color: #000000; background: rgba(75,213,179,0.23);}
-    .hero {
-      padding: 90px 25px 40px;
-      text-align:center; max-width:880px; margin:0 auto 55px;
-      color: #000000; user-select:none;  animation: fadeIn 2s;
-      font-family:'Montserrat',Arial,sans-serif;
-      position:relative; z-index:10;
-      text-shadow:0 2px 14px #e0ffe0bb;
-    }
-  /* Profile image styles */
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Nunito:wght@400;600;700&display=swap');
+
+  body {
+    font-family: 'Nunito', Arial, sans-serif;
+    color: #333;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    background: url('img/nature-about-bg.jpg') no-repeat center center fixed, #eef6f1;
+    background-size: cover;
+  }
+  .overlay {
+    position: fixed; top:0; left:0; width:100%; height:100%;
+    background: linear-gradient(125deg,rgba(255,255,255,0.52) 70%,rgba(139,208,241,0.28) 94%);
+    z-index:-1;
+  }
+
+  nav {
+    background: transparent;
+    padding: 18px 0; text-align: center;
+    position: relative; z-index:1000; user-select:none;
+  }
+  nav a {
+    font-family: 'Montserrat', 'Nunito', Arial, sans-serif;
+    color: #000000; margin: 0 14px; text-decoration: none; font-weight: 700;
+    font-size: 1rem; letter-spacing: .03em; transition: color .3s, background .3s;
+    padding: 9px 12px; border-radius: 12px;
+  }
+  nav a:hover, nav a:focus {color: #2a3132; background: rgba(108,187,109,0.18);}
+  nav a.active {color: #000000; background: rgba(75,213,179,0.23);}
+
+  /* White box wrapper for about content */
+  .content-wrapper {
+    background: #ffffffdd;
+    max-width: 900px;
+    margin: 40px auto 20px;
+    border-radius: 20px;
+    padding: 2rem 2.5rem 3rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Profile container styled and repositioned */
   .profile-image-container {
+    flex: 0 0 180px;
     display: flex;
     justify-content: center;
-    margin: 1.5rem 0 3rem 0;
-    position: relative;
-    z-index: 102;
   }
   .profile-image-container img {
-    width: 160px;
-    height: 160px;
+    width: 180px;
+    height: 180px;
     object-fit: cover;
     border-radius: 50%;
-    border: 5px solid #99bbff;
-    box-shadow: 0 6px 20px rgba(60, 80, 130, 0.6);
+    border: 6px solid #99bbff;
+    box-shadow: 0 10px 25px rgba(60, 80, 130, 0.6);
     transition: transform 0.3s ease;
   }
   .profile-image-container img:hover {
-    transform: scale(1.05);
+    transform: scale(1.07);
   }
-  header {
-    padding: 1rem 1rem 2rem;
-    text-align: center;
+
+  /* Text content next to profile */
+  .about-text {
+    flex: 1 1 600px;
+  }
+  .about-text header {
+    text-align: left;
     color: #004080;
     text-shadow: 0 0 5px #99bbff;
-    position: relative;
-    z-index: 102;
-    max-width: 700px;
-    margin: 0 auto 2rem auto;
+    margin-bottom: 1rem;
   }
-  header h1 {
-    font-size: 3rem;
+  .about-text header h1 {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 3.2rem;
     margin-bottom: 0.3rem;
     animation: glow 4s ease-in-out infinite alternate;
   }
-  header p {
-    font-size: 1.4rem;
+  .about-text header p {
+    font-size: 1.3rem;
     font-weight: 600;
+    line-height: 1.5;
   }
+
   main {
-    flex: 1;
-    max-width: 900px;
-    margin: 0 auto 4rem;
-    padding: 0 1.5rem 2rem;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    z-index: 100;
-    position: relative;
+    padding: 0 1rem 2rem;
   }
   .section {
-    margin-bottom: 3rem;
-    padding: 2rem 2.5rem;
+    margin-bottom: 2.5rem;
   }
   .section h2 {
     color: #0073e6;
-    font-size: 2.4rem;
-    margin-bottom: 1.4rem;
+    font-size: 2rem;
+    margin-bottom: 1rem;
     font-weight: 700;
-    border-bottom: 4px solid #99bbff;
+    border-bottom: 3px solid #99bbff;
     padding-bottom: 0.4rem;
   }
   .section p, .section ul {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #203047;
     margin-bottom: 1rem;
-    line-height: 1.7;
+    line-height: 1.6;
   }
   .section ul {
-    padding-left: 1.4rem;
+    padding-left: 1.5rem;
   }
   .section ul li {
-    margin-bottom: 0.9rem;
+    margin-bottom: 0.8rem;
     list-style-type: disc;
   }
-  .story {
-    font-style: italic;
-    background-color: #e5ecff;
-    border-left: 8px solid #7aa9ff;
-    padding: 1.2rem 1.8rem;
-    border-radius: 12px;
-    margin-top: 1rem;
-    box-shadow: 2px 5px 15px rgba(120, 145, 255, 0.3);
-  }
-  .ad-container {
-    text-align: center;
-    margin: 2rem 0 4rem;
-  }
+
   footer {
     background: rgba(153, 187, 255, 0.9);
     color: #0a2463;
     text-align: center;
-    padding: 1.8rem 1rem;
+    padding: 1.5rem 1rem;
     font-size: 1rem;
     box-shadow: inset 0 15px 20px -15px rgba(0,0,80,0.3);
-    position: relative;
-    z-index: 99;
   }
   footer .social-links a {
     color: #3355aa;
@@ -163,6 +146,7 @@
     color: #001845;
     text-shadow: 0 0 10px #001845;
   }
+
   @keyframes glow {
     from {
       text-shadow: 0 0 15px #99bbff, 0 0 25px #99bbff;
@@ -173,79 +157,80 @@
       color: #003366;
     }
   }
-  @media (max-width: 600px) {
-    nav a {
-      margin: 0 0.6rem;
-      font-size: 1rem;
-      padding: 0.5rem 0.8rem;
-    }
-    header h1 {
-      font-size: 2.2rem;
-      max-width: 90vw;
-    }
-    .section h2 {
-      font-size: 1.8rem;
+
+  @media (max-width: 768px) {
+    .content-wrapper {
+      flex-direction: column;
+      padding: 1.5rem 1.5rem 2.5rem;
+      margin: 30px 15px 20px;
     }
     .profile-image-container {
-      margin: 1rem 0 2rem 0;
+      flex: none;
+      margin-bottom: 1.8rem;
     }
-    .profile-image-container img {
-      width: 120px;
-      height: 120px;
+    .about-text {
+      flex: none;
     }
   }
 </style>
 </head>
 <body>
+  <div class="overlay"></div>
+
 <nav>
-   <a href="index.html" class="active" aria-current="page">Home</a>
-   <a href="map.html">Map</a>
-   <a href="destinations.html">Destinations</a>
-   <a href="blog.html">Blog</a>
-   <a href="bookings.html">Bookings</a>
-   <a href="stories.html">Stories</a>
-   <a href="about.html">About</a>
-   <a href="contact.html">Contact</a>
-   <a href="games.html">Games</a>
+  <a href="index.html" class="active" aria-current="page">Home</a>
+  <a href="map.html">Map</a>
+  <a href="destinations.html">Destinations</a>
+  <a href="blog.html">Blog</a>
+  <a href="bookings.html">Bookings</a>
+  <a href="stories.html">Stories</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="games.html">Games</a>
 </nav>
 
-<div class="profile-image-container">
-  <img src="img/manik-profile.jpg" alt="Manik Rao Profile" />
-</div>
-
-<header>
-  <h1>🌍 About WanderMap</h1>
-  <p>Welcome to <strong>WanderMap</strong> — your ultimate travel companion for discovering places, calculating accurate travel routes, viewing live travel durations for multiple modes, and getting real-time destination weather.</p>
-</header>
-
 <main>
-  <section class="section" id="founder">
-    <h2>👨‍💻 About the Founder</h2>
-    <p>Hi, I'm <strong>Manik Rao</strong>, a passionate traveler and web developer from India. WanderMap exists to help travelers plan better journeys by combining maps, weather updates, and curated deals in one place.</p>
-  </section>
-  <section class="section" id="why-built">
-    <h2>🚀 Why I Built WanderMap</h2>
-    <p>Travel is more than just a hobby; it is a vital break from the constant buzz of work and daily stress. Growing up, I found the true meaning of peace and clarity nestled in nature's embrace and on journeys to new places. Wandering through forests, mountains, and rivers, I realized that traveling reconnects us—both with the world and ourselves.</p>
-    <p>In today’s fast-paced world, taking time off to travel among natural landscapes isn’t a luxury—it's a necessity. It restores our creativity, renews our mental health, and helps build perspectives that are hard to gain from behind a desk. That’s the spirit that inspired WanderMap: a one-stop platform to empower explorers to plan smarter, more fulfilling trips with ease.</p>
-    <p>With WanderMap, you can:</p>
-    <ul>
-      <li>📍 Calculate distances and durations easily across different travel modes.</li>
-      <li>🌦️ Check real-time weather for your destinations.</li>
-      <li>🗺️ Explore curated destinations thoughtfully selected to inspire and delight.</li>
-      <li>🛤️ Switch seamlessly between travel options at your fingertips.</li>
-      <li>🎒 Discover your next adventure with confidence and joy.</li>
-    </ul>
-    <p>So take a breath, plan that trip, and let nature guide you back to a balanced, inspired life.</p>
-  </section>
-  <div class="ad-container">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-8124807245840632"
-         data-ad-slot="1234567890"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
+  <div class="content-wrapper" data-aos="fade-up">
+    <div class="profile-image-container">
+      <img src="img/manik-profile.jpg" alt="Manik Rao Profile" />
+    </div>
+    <div class="about-text">
+      <header>
+        <h1>🌍 About WanderMap</h1>
+        <p>Welcome to <strong>WanderMap</strong> — your ultimate travel companion for discovering places, calculating accurate travel routes, viewing live travel durations for multiple modes, and getting real-time destination weather.</p>
+      </header>
+
+      <section class="section" id="founder">
+        <h2>👨‍💻 About the Founder</h2>
+        <p>Hi, I'm <strong>Manik Rao</strong>, a passionate traveler and web developer from India. WanderMap exists to help travelers plan better journeys by combining maps, weather updates, and curated deals in one place.</p>
+      </section>
+
+      <section class="section" id="why-built">
+        <h2>🚀 Why I Built WanderMap</h2>
+        <p>Travel is more than just a hobby; it is a vital break from the constant buzz of work and daily stress. Growing up, I found the true meaning of peace and clarity nestled in nature's embrace and on journeys to new places. Wandering through forests, mountains, and rivers, I realized that traveling reconnects us—both with the world and ourselves.</p>
+        <p>In today’s fast-paced world, taking time off to travel among natural landscapes isn’t a luxury—it's a necessity. It restores our creativity, renews our mental health, and helps build perspectives that are hard to gain from behind a desk. That’s the spirit that inspired WanderMap: a one-stop platform to empower explorers to plan smarter, more fulfilling trips with ease.</p>
+        <p>With WanderMap, you can:</p>
+        <ul>
+          <li>📍 Calculate distances and durations easily across different travel modes.</li>
+          <li>🌦️ Check real-time weather for your destinations.</li>
+          <li>🗺️ Explore curated destinations thoughtfully selected to inspire and delight.</li>
+          <li>🛤️ Switch seamlessly between travel options at your fingertips.</li>
+          <li>🎒 Discover your next adventure with confidence and joy.</li>
+        </ul>
+        <p>So take a breath, plan that trip, and let nature guide you back to a balanced, inspired life.</p>
+      </section>
+    </div>
   </div>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  <div class="ad-container" style="text-align:center;">
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-8124807245840632"
+      data-ad-slot="1234567890"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
 </main>
 
 <footer>
@@ -256,5 +241,6 @@
     <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener noreferrer">Instagram</a>
   </p>
 </footer>
+
 </body>
 </html>
