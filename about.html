@@ -41,89 +41,74 @@
   nav a:hover, nav a:focus {color: #2a3132; background: rgba(108,187,109,0.18);}
   nav a.active {color: #000000; background: rgba(75,213,179,0.23);}
 
-  /* White box wrapper for about content */
+  .profile-image-container {
+    width: 180px;
+    height: 180px;
+    margin: 20px auto 40px;
+    border-radius: 50%;
+    border: 6px solid #99bbff;
+    box-shadow: 0 10px 25px rgba(60, 80, 130, 0.6);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    background: white;
+    position: relative;
+    z-index: 1001;
+  }
+  .profile-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .profile-image-container:hover {
+    transform: scale(1.07);
+  }
+
   .content-wrapper {
     background: #ffffffdd;
     max-width: 900px;
-    margin: 40px auto 20px;
+    margin: 0 auto 40px;
     border-radius: 20px;
-    padding: 2rem 2.5rem 3rem;
+    padding: 2rem 3rem 3rem;
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 2rem;
     position: relative;
     z-index: 10;
   }
 
-  /* Profile container styled and repositioned */
-  .profile-image-container {
-    flex: 0 0 180px;
-    display: flex;
-    justify-content: center;
-  }
-  .profile-image-container img {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 6px solid #99bbff;
-    box-shadow: 0 10px 25px rgba(60, 80, 130, 0.6);
-    transition: transform 0.3s ease;
-  }
-  .profile-image-container img:hover {
-    transform: scale(1.07);
-  }
-
-  /* Text content next to profile */
-  .about-text {
-    flex: 1 1 600px;
-  }
-  .about-text header {
-    text-align: left;
-    color: #004080;
-    text-shadow: 0 0 5px #99bbff;
-    margin-bottom: 1rem;
-  }
-  .about-text header h1 {
-    font-family: 'Montserrat', Arial, sans-serif;
-    font-size: 3.2rem;
-    margin-bottom: 0.3rem;
-    animation: glow 4s ease-in-out infinite alternate;
-  }
-  .about-text header p {
-    font-size: 1.3rem;
-    font-weight: 600;
-    line-height: 1.5;
-  }
-
-  main {
-    padding: 0 1rem 2rem;
-  }
-  .section {
-    margin-bottom: 2.5rem;
-  }
+  /* Unified heading styles and sizes */
+  .about-text header h1,
   .section h2 {
-    color: #0073e6;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
+    font-family: 'Montserrat', Arial, sans-serif;
+    color: #004080;
+    font-size: 2.8rem; /* Increased size */
+    font-weight: 900;
+    margin-bottom: 0.8rem;
     border-bottom: 3px solid #99bbff;
-    padding-bottom: 0.4rem;
+    padding-bottom: 0.3rem;
   }
-  .section p, .section ul {
+
+  /* Paragraph styles unified */
+  .about-text header p,
+  .section p,
+  .section ul {
+    font-family: 'Nunito', Arial, sans-serif;
     font-size: 1.1rem;
+    font-weight: 600;
     color: #203047;
-    margin-bottom: 1rem;
     line-height: 1.6;
+    margin-bottom: 1rem;
   }
+
   .section ul {
     padding-left: 1.5rem;
   }
   .section ul li {
     margin-bottom: 0.8rem;
     list-style-type: disc;
+  }
+
+  main {
+    padding: 0 1rem 2rem;
   }
 
   footer {
@@ -160,16 +145,8 @@
 
   @media (max-width: 768px) {
     .content-wrapper {
-      flex-direction: column;
       padding: 1.5rem 1.5rem 2.5rem;
-      margin: 30px 15px 20px;
-    }
-    .profile-image-container {
-      flex: none;
-      margin-bottom: 1.8rem;
-    }
-    .about-text {
-      flex: none;
+      margin: 0 15px 30px;
     }
   }
 </style>
@@ -177,70 +154,71 @@
 <body>
   <div class="overlay"></div>
 
-<nav>
-  <a href="index.html" class="active" aria-current="page">Home</a>
-  <a href="map.html">Map</a>
-  <a href="destinations.html">Destinations</a>
-  <a href="blog.html">Blog</a>
-  <a href="bookings.html">Bookings</a>
-  <a href="stories.html">Stories</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-  <a href="games.html">Games</a>
-</nav>
+  <nav>
+    <a href="index.html" class="active" aria-current="page">Home</a>
+    <a href="map.html">Map</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="blog.html">Blog</a>
+    <a href="bookings.html">Bookings</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="games.html">Games</a>
+  </nav>
 
-<main>
-  <div class="content-wrapper" data-aos="fade-up">
-    <div class="profile-image-container">
-      <img src="img/manik-profile.jpg" alt="Manik Rao Profile" />
-    </div>
-    <div class="about-text">
-      <header>
-        <h1>🌍 About WanderMap</h1>
-        <p>Welcome to <strong>WanderMap</strong> — your ultimate travel companion for discovering places, calculating accurate travel routes, viewing live travel durations for multiple modes, and getting real-time destination weather.</p>
-      </header>
-
-      <section class="section" id="founder">
-        <h2>👨‍💻 About the Founder</h2>
-        <p>Hi, I'm <strong>Manik Rao</strong>, a passionate traveler and web developer from India. WanderMap exists to help travelers plan better journeys by combining maps, weather updates, and curated deals in one place.</p>
-      </section>
-
-      <section class="section" id="why-built">
-        <h2>🚀 Why I Built WanderMap</h2>
-        <p>Travel is more than just a hobby; it is a vital break from the constant buzz of work and daily stress. Growing up, I found the true meaning of peace and clarity nestled in nature's embrace and on journeys to new places. Wandering through forests, mountains, and rivers, I realized that traveling reconnects us—both with the world and ourselves.</p>
-        <p>In today’s fast-paced world, taking time off to travel among natural landscapes isn’t a luxury—it's a necessity. It restores our creativity, renews our mental health, and helps build perspectives that are hard to gain from behind a desk. That’s the spirit that inspired WanderMap: a one-stop platform to empower explorers to plan smarter, more fulfilling trips with ease.</p>
-        <p>With WanderMap, you can:</p>
-        <ul>
-          <li>📍 Calculate distances and durations easily across different travel modes.</li>
-          <li>🌦️ Check real-time weather for your destinations.</li>
-          <li>🗺️ Explore curated destinations thoughtfully selected to inspire and delight.</li>
-          <li>🛤️ Switch seamlessly between travel options at your fingertips.</li>
-          <li>🎒 Discover your next adventure with confidence and joy.</li>
-        </ul>
-        <p>So take a breath, plan that trip, and let nature guide you back to a balanced, inspired life.</p>
-      </section>
-    </div>
+  <div class="profile-image-container" aria-label="Manik Rao profile picture">
+    <img src="img/manik-profile.jpg" alt="Manik Rao Profile" />
   </div>
 
-  <div class="ad-container" style="text-align:center;">
-    <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-8124807245840632"
-      data-ad-slot="1234567890"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-</main>
+  <main>
+    <div class="content-wrapper" data-aos="fade-up">
+      <div class="about-text">
+        <header>
+          <h1>About WanderMap</h1>
+          <p>Welcome to <strong>WanderMap</strong> — your ultimate travel companion for discovering places, calculating accurate travel routes, viewing live travel durations for multiple modes, and getting real-time destination weather.</p>
+        </header>
 
-<footer>
-  <p>© 2025 Manik Rao</p>
-  <p class="social-links">
-    <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer">Twitter</a> |
-    <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
-    <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener noreferrer">Instagram</a>
-  </p>
-</footer>
+        <section class="section" id="founder">
+          <h2>👨‍💻 About the Founder</h2>
+          <p>Hi, I'm <strong>Manik Rao</strong>, a passionate traveler and web developer from India. WanderMap exists to help travelers plan better journeys by combining maps, weather updates, and curated deals in one place.</p>
+        </section>
+
+        <section class="section" id="why-built">
+          <h2>🚀 Why I Built WanderMap</h2>
+          <p>Travel is more than just a hobby; it is a vital break from the constant buzz of work and daily stress. Growing up, I found the true meaning of peace and clarity nestled in nature's embrace and on journeys to new places. Wandering through forests, mountains, and rivers, I realized that traveling reconnects us—both with the world and ourselves.</p>
+          <p>In today’s fast-paced world, taking time off to travel among natural landscapes isn’t a luxury—it's a necessity. It restores our creativity, renews our mental health, and helps build perspectives that are hard to gain from behind a desk. That’s the spirit that inspired WanderMap: a one-stop platform to empower explorers to plan smarter, more fulfilling trips with ease.</p>
+          <p>With WanderMap, you can:</p>
+          <ul>
+            <li>📍 Calculate distances and durations easily across different travel modes.</li>
+            <li>🌦️ Check real-time weather for your destinations.</li>
+            <li>🗺️ Explore curated destinations thoughtfully selected to inspire and delight.</li>
+            <li>🛤️ Switch seamlessly between travel options at your fingertips.</li>
+            <li>🎒 Discover your next adventure with confidence and joy.</li>
+          </ul>
+          <p>So take a breath, plan that trip, and let nature guide you back to a balanced, inspired life.</p>
+        </section>
+      </div>
+    </div>
+
+    <div class="ad-container" style="text-align:center;">
+      <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-8124807245840632"
+        data-ad-slot="1234567890"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Manik Rao</p>
+    <p class="social-links">
+      <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer">Twitter</a> |
+      <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+      <a href="https://www.instagram.com/manik_rao_b/" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </p>
+  </footer>
 
 </body>
 </html>
